@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -7,10 +7,8 @@ import { Subject } from 'rxjs';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnDestroy {
   private destroy$ = new Subject<void>();
-
-  public ngOnInit(): void {}
 
   public ngOnDestroy(): void {
     this.destroy$.next();
