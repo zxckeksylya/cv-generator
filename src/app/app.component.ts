@@ -1,29 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
+import { Language } from './core/interfaces/language';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   public selectedLanguage = '';
-  public languages: { id: string; title: string }[] = [];
+  public languages: Language[] = [];
+
+  private destroy$ = new Subject<void>();
 
   constructor(private translateService: TranslateService) {}
 
-  public ngOnInit(): void {
-    this.translateService.use(environment.defaultLocale);
-    this.selectedLanguage = environment.defaultLocale;
-    this.translateService
-      .get(environment.locales.map((x) => `LANGUAGES.${x.toUpperCase()}`))
-      .subscribe((translations) => {
-        this.languages = environment.locales.map((x) => ({
-          id: x,
-          title: translations[`LANGUAGES.${x.toUpperCase()}`],
-        }));
-      });
+  public ngOnInit(): void {}
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   public changeLocale(): void {
