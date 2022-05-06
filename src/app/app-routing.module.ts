@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
+  { path: '', component: AppComponent },
   {
     path: 'authorization',
     loadChildren: () =>
@@ -12,6 +14,10 @@ const routes: Routes = [
   {
     path: 'main',
     loadChildren: () => import('./lazy-modules/main/main.module').then((m) => m.MainModule),
+  },
+  {
+    path: '**',
+    redirectTo: '/',
   },
 ];
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/employees' },
   {
     path: 'projects',
     loadChildren: () => import('../projects/projects.module').then((m) => m.ProjectsModule),
