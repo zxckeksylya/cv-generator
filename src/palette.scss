@@ -1,54 +1,39 @@
 :root {
   .palette {
+    --error: #ff4d4f;
+
+    --success: #6bc502;
+
+    --warning: #ffcc00;
+
     &-white {
-      --error: #ff4d4f;
+      --primary-300: #b0d8fe;
+      --primary-799: #188fff;
+      --primary-800: #1890ff;
 
-      --success: #6bc502;
+      --header: #001529;
 
-      --header-bg: #001529;
+      --header-on: #fff;
 
-      --header-text: #fff;
-
-      --base-bg: #fff;
-
-      --base-text: #000;
-
-      --base-text-gray: #8c8c8c;
-
-      --placeholder: darken(#fff, 25%);
-
-      --input-border: #d9d9d9;
-
-      --button-bg: #188fff;
-
-      --button-text: #fff;
-
-      --link-text: #1890ff;
-
-      --tab-text: #1890ff;
+      --neutrals-0: #fff;
+      --neutrals-50: #efefef;
+      --neutrals-100: #d9d9d9;
+      --neutrals-150: #c6c6c6;
+      --neutrals-500: #8c8c8c;
+      --neutrals-900: #000;
     }
     &-dark {
-      --header-bg: #001529;
+      --primary-799: #6c757d;
+      --primary-800: #6c757d;
 
-      --header-text: #fff;
+      --header: #001529;
+      --header-on: #fff;
 
-      --base-bg: #4b4b4b;
-
-      --base-text: #fff;
-
-      --base-text-gray: #cfcfcf;
-
-      --placeholder: darken(#fff, 25%);
-
-      --input-border: #d9d9d9;
-
-      --button-bg: #cfcfcf;
-
-      --button-text: #000;
-
-      --link-text: #cfcfcf;
-
-      --tab-text: #cfcfcf;
+      --neutrals-0: #212529;
+      --neutrals-100: #343a40;
+      --neutrals-150: #6c757d;
+      --neutrals-500: #ced4da;
+      --neutrals-900: #f8f9fa;
     }
   }
 }
