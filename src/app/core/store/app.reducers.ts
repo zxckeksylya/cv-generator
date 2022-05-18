@@ -1,19 +1,11 @@
-import { ActionReducerMap, createReducer, MetaReducer } from '@ngrx/store';
+import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
-
-export interface AppState {
-  prop: boolean;
-}
+import { TemaState, temaReducer } from './main/main.reducers';
 
 export interface State {
-  prop: AppState;
+  tema: TemaState;
 }
-export const initioalState: AppState = {
-  prop: true,
-};
 
-export const appReducer = createReducer(initioalState);
-
-export const reducers: ActionReducerMap<State> = { prop: appReducer };
+export const reducers: ActionReducerMap<State> = { tema: temaReducer };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

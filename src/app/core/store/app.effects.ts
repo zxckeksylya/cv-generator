@@ -1,7 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Actions } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs';
+import { changeLocalStorageTema, setDark, setLight } from './main/main.actions';
 
 @Injectable()
 export class AppEffects {
-  constructor(private actions$: Actions) {}
+  public setDarkTemaLocalStorage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(setDark),
+      map(() => {
+        localStorage.setItem('tema', 'dark');
+        return changeLocalStorageTema();
+      }),
+    ),
+  );
+  public setLightTemaLocalStorage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(setLight),
+      map(() => {
+        localStorage.setItem('tema', 'light');
+        return changeLocalStorageTema();
+      }),
+    ),
+  );
+  constructor(private actions$: Actions, private store: Store) {}
 }
