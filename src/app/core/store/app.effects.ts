@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { changeLocalStorageTema, setDark, setLight } from './main/main.actions';
 
@@ -24,5 +23,5 @@ export class AppEffects {
       }),
     ),
   );
-  constructor(private actions$: Actions, private store: Store) {}
+  constructor(private actions$: Actions) {}
 }
