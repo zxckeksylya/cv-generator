@@ -6,13 +6,12 @@
 
     --warning: #ffcc00;
 
-    &-white {
+    &-light {
       --primary-300: #b0d8fe;
-      --primary-799: #188fff;
+      --primary-750: #188fff;
       --primary-800: #1890ff;
 
       --header: #001529;
-
       --header-on: #fff;
 
       --neutrals-0: #fff;
@@ -23,13 +22,15 @@
       --neutrals-900: #000;
     }
     &-dark {
-      --primary-799: #6c757d;
+      --primary-300: #b4c3d0;
+      --primary-750: #6c757d;
       --primary-800: #6c757d;
 
       --header: #001529;
       --header-on: #fff;
 
       --neutrals-0: #212529;
+      --neutrals-50: #2f343a;
       --neutrals-100: #343a40;
       --neutrals-150: #6c757d;
       --neutrals-500: #ced4da;
