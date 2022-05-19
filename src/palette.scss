@@ -6,7 +6,7 @@
 
     --warning: #ffcc00;
 
-    &-light {
+    &.light {
       --primary-300: #b0d8fe;
       --primary-750: #188fff;
       --primary-800: #1890ff;
@@ -21,7 +21,7 @@
       --neutrals-500: #8c8c8c;
       --neutrals-900: #000;
     }
-    &-dark {
+    &.dark {
       --primary-300: #b4c3d0;
       --primary-750: #6c757d;
       --primary-800: #6c757d;
