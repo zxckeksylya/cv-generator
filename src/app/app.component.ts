@@ -1,11 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
-import {
-  initThemeAction,
-  setDarkThemeAction,
-  setLightThemeAction,
-} from './core/store/theme/theme.actions';
+import { Themes } from './core/enums/themes';
+import { changeThemeAction, initThemeAction } from './core/store/theme/theme.actions';
 
 @Component({
   selector: 'app-root',
@@ -28,10 +25,10 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public setLight(): void {
-    this.store.dispatch(setLightThemeAction());
+    this.store.dispatch(changeThemeAction({ theme: Themes.LIGHT }));
   }
 
   public setDark(): void {
-    this.store.dispatch(setDarkThemeAction());
+    this.store.dispatch(changeThemeAction({ theme: Themes.DARK }));
   }
 }

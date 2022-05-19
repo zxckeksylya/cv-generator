@@ -1,48 +1,35 @@
-import { Inject, Injectable } from '@angular/core';
-import { createEffect, ofType, Actions } from '@ngrx/effects';
-import { tap } from 'rxjs';
-import { initThemeAction, setDarkThemeAction, setLightThemeAction } from './theme.actions';
-import { Themes } from '../../enums/themes';
 import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs';
+import { Themes } from '../../enums/themes';
+import { changeThemeAction, initThemeAction, initThemeSuccessAction } from './theme.actions';
 
 @Injectable()
 export class ThemeEffects {
-  public setDarkThemeLocalStorage$ = createEffect(
+  public changeTheme$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(setDarkThemeAction),
-        tap(() => {
-          if (!this.documentRef.body.classList.contains(Themes.DARK)) {
-            localStorage.setItem('theme', Themes.DARK);
-            this.documentRef.body.classList.add(Themes.DARK);
-            this.documentRef.body.classList.remove(Themes.LIGHT);
-          }
+        ofType(changeThemeAction),
+        map((parameter) => {
+          const { theme } = parameter;
+          this.documentRef.body.dataset['paletteTheme'] = theme;
+          localStorage.setItem('theme', theme);
+          return initThemeSuccessAction({ theme });
         }),
       ),
     { dispatch: false },
   );
 
-  public setLightThemeLocalStorage$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(setLightThemeAction),
-        tap(() => {
-          if (!this.documentRef.body.classList.contains(Themes.LIGHT)) {
-            localStorage.setItem('theme', Themes.LIGHT);
-            this.documentRef.body.classList.add(Themes.LIGHT);
-            this.documentRef.body.classList.remove(Themes.DARK);
-          }
-        }),
-      ),
-    { dispatch: false },
-  );
-
-  public initThemeinLocalStorage$ = createEffect(
+  public initTheme$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(initThemeAction),
-        tap(() => {
-          this.documentRef.body.classList.toggle(localStorage.getItem('theme') || Themes.LIGHT);
+        map(() => {
+          const theme = localStorage.getItem('theme') || Themes.LIGHT;
+          this.documentRef.body.dataset['paletteTheme'] = theme;
+          return initThemeSuccessAction({ theme });
         }),
       ),
     { dispatch: false },
@@ -51,5 +38,6 @@ export class ThemeEffects {
   constructor(
     private actions$: Actions,
     @Inject(DOCUMENT) private readonly documentRef: Document,
+    private store: Store,
   ) {}
 }
