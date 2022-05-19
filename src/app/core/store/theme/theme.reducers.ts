@@ -16,11 +16,11 @@ export const themeReducer = createReducer(
   initionalState,
   on(setDarkThemeAction, (state) => ({
     ...state,
-    theme: 'dark',
+    theme: Themes.DARK,
   })),
   on(setLightThemeAction, (state) => ({
     ...state,
-    theme: 'light',
+    theme: Themes.LIGHT,
   })),
   on(initThemeAction, (state) => ({
     ...state,
