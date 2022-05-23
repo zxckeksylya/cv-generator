@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { Themes } from './core/enums/themes';
+import { AppState } from './core/store/app.reducers';
 import { changeThemeAction, initThemeAction } from './core/store/theme/theme.actions';
 
 @Component({
@@ -13,7 +14,7 @@ import { changeThemeAction, initThemeAction } from './core/store/theme/theme.act
 export class AppComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<AppState>) {}
 
   public ngOnInit(): void {
     this.store.dispatch(initThemeAction());
