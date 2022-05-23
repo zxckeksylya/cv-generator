@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
+import { Themes } from './core/enums/themes';
+import { AppState } from './core/store/app.reducers';
+import { changeThemeAction, initThemeAction } from './core/store/theme/theme.actions';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +11,25 @@ import { Subject } from 'rxjs';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
+
+  constructor(private store: Store<AppState>) {}
+
+  public ngOnInit(): void {
+    this.store.dispatch(initThemeAction());
+  }
 
   public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  public setLight(): void {
+    this.store.dispatch(changeThemeAction({ theme: Themes.LIGHT }));
+  }
+
+  public setDark(): void {
+    this.store.dispatch(changeThemeAction({ theme: Themes.DARK }));
   }
 }

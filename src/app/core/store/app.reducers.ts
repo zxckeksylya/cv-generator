@@ -1,19 +1,11 @@
-import { ActionReducerMap, createReducer, MetaReducer } from '@ngrx/store';
+import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
+import { themeReducer, ThemeState, THEME_FEATURE_KEY } from './theme/theme.reducers';
 
 export interface AppState {
-  prop: boolean;
+  [THEME_FEATURE_KEY]: ThemeState;
 }
 
-export interface State {
-  prop: AppState;
-}
-export const initioalState: AppState = {
-  prop: true,
-};
+export const reducers: ActionReducerMap<AppState> = { [THEME_FEATURE_KEY]: themeReducer };
 
-export const appReducer = createReducer(initioalState);
-
-export const reducers: ActionReducerMap<State> = { prop: appReducer };
-
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
