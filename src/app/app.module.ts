@@ -8,8 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppStoreModule } from './core/store/app-store.module';
 import { AppTranslateModule } from './core/app-translate/app-translate.module';
+import { AppStoreModule } from './core/store/app-store.module';
 
 registerLocaleData(en);
 

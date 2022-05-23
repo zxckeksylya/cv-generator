@@ -1,0 +1,4 @@
+<button (click)="onButtonClick($event)" nz-button [nzType]="type" [class]="'app-button ' + type + ' ' + classNames"
+    [disabled]="disabled" [type]="behaviorType">
+    <ng-content></ng-content>
+</button>
