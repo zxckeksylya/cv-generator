@@ -1,14 +1,12 @@
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
-import { OnInit, OnDestroy, Directive } from '@angular/core';
+import { OnInit, OnDestroy, Directive, Input } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
 @Directive()
 export class BaseControl implements ControlValueAccessor, OnInit, OnDestroy {
+  @Input() public errors = '';
   public formControl = new FormControl();
   private destroy$ = new Subject<void>();
-
-  private onChange!: (value: any) => void;
-  private onTouched!: () => void;
 
   constructor(private ngControl: NgControl) {
     this.ngControl.valueAccessor = this;
@@ -24,7 +22,7 @@ export class BaseControl implements ControlValueAccessor, OnInit, OnDestroy {
   }
 
   public writeValue(value: any): void {
-    this.formControl.setValue(value);
+    this.formControl.setValue(value, { emitEvent: false });
   }
 
   public registerOnChange(fn: (value: any) => void): void {
@@ -42,6 +40,9 @@ export class BaseControl implements ControlValueAccessor, OnInit, OnDestroy {
       this.formControl.enable();
     }
   }
+
+  private onChange: (value: any) => void = () => {};
+  private onTouched: () => void = () => {};
 
   private onInputValueChange(): void {
     this.formControl.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((v) => {
