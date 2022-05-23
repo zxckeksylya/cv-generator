@@ -4,7 +4,7 @@ import { Subject, takeUntil } from 'rxjs';
 
 @Directive()
 export class BaseControl implements ControlValueAccessor, OnInit, OnDestroy {
-  @Input() public errors = '';
+  @Input() public errors: Array<string> = [];
   public formControl = new FormControl();
   private destroy$ = new Subject<void>();
 
