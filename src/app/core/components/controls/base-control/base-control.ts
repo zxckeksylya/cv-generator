@@ -1,19 +1,30 @@
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
-import { OnInit, OnDestroy, Directive, Input } from '@angular/core';
+import { OnInit, OnDestroy, Directive, Input, Optional, DoCheck } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+import { I18nKeyMessageConfig } from '../../../interfaces/I18nKeyMessageConfig';
 
 @Directive()
-export class BaseControl implements ControlValueAccessor, OnInit, OnDestroy {
-  @Input() public errors: Array<string> = [];
+export class BaseControl implements ControlValueAccessor, OnInit, DoCheck, OnDestroy {
+  @Input() public errorsMap: Record<string, I18nKeyMessageConfig> = {
+    required: {
+      i18nKey: 'control-errors.required',
+    },
+  };
+  @Input() public classNames = '';
+
   public formControl = new FormControl();
+
   private destroy$ = new Subject<void>();
 
-  constructor(private ngControl: NgControl) {
+  constructor(@Optional() protected ngControl: NgControl) {
     this.ngControl.valueAccessor = this;
   }
 
   public ngOnInit(): void {
     this.onInputValueChange();
+  }
+  public ngDoCheck(): void {
+    this.initErrors();
   }
 
   public ngOnDestroy(): void {
@@ -41,8 +52,16 @@ export class BaseControl implements ControlValueAccessor, OnInit, OnDestroy {
     }
   }
 
+  public onTouched: () => void = () => {};
+
+  protected initErrors(): void {
+    const ngControlErrors = this.ngControl.control?.errors;
+    if (ngControlErrors && ngControlErrors !== this.formControl.errors) {
+      this.formControl.setErrors(ngControlErrors);
+    }
+  }
+
   private onChange: (value: any) => void = () => {};
-  private onTouched: () => void = () => {};
 
   private onInputValueChange(): void {
     this.formControl.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((v) => {
