@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { I18nKeyMessageConfig } from '../interfaces/I18nKeyMessageConfig';
+import { I18nKeyMessageConfig } from '../../interfaces/I18nKeyMessageConfig';
 
 @Pipe({
   name: 'getControlErrorMessage',
