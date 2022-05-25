@@ -1,7 +1,7 @@
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { OnInit, OnDestroy, Directive, Input, Optional, DoCheck } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { I18nKeyMessageConfig } from '../../interfaces/I18n-key-message-config.interface';
+import { I18nKeyMessageConfig } from '../../interfaces/i18n-key-message-config.interface';
 
 @Directive()
 export class BaseControl implements ControlValueAccessor, OnInit, DoCheck, OnDestroy {
