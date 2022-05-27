@@ -1,23 +1,22 @@
-<nz-form-item class="app-autocomplite-control"
+<nz-form-item class="app-date-picker-control"
               [class]="classNames">
     <nz-form-label *ngIf="label"
                    [nzFor]="elementId"
                    [nzRequired]="required"
-                   class="app-autocomplite-control__label">
+                   class="app-date-picker-control__label">
         {{ label }}
     </nz-form-label>
     <ng-container *ngIf="formControl.errors | getControlErrorMessage:errorsMap as errorMessageConfig">
         <nz-form-control [nzValidateStatus]="formControl"
                          [nzErrorTip]="errorMessageConfig && (errorMessageConfig.i18nKey || '') | translate:errorMessageConfig?.i18nParams">
             <nz-input-group>
-                <input nz-input
-                       [id]="elementId"
-                       [formControl]="formControl"
-                       [placeholder]="placeholder"
-                       [autocomplete]="true"
-                       type="text"
-                       (blur)="onTouched()"
-                       class="app-autocomplite-control__input">
+                <nz-date-picker nz-input
+                                [id]="elementId"
+                                [formControl]="formControl"
+                                [nzMode]="mode"
+                                [nzPlaceHolder]="placeholder"
+                                (blur)="onTouched()"
+                                class="app-date-picker-control__input"></nz-date-picker>
             </nz-input-group>
         </nz-form-control>
     </ng-container>

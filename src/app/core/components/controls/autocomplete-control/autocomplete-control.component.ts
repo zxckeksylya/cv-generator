@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { BaseControl } from '../../../classes/base-control/base-control.class';
-import { Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BaseInputControl } from 'src/app/core/classes/base-control/base-input-control';
 
 @Component({
   selector: 'app-autocomplete-control',
@@ -8,14 +7,4 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./autocomplete-control.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AutocompleteControlComponent extends BaseControl implements OnInit {
-  @Input() public elementId = '';
-  @Input() public label = '';
-  @Input() public placeholder = '';
-
-  public required: boolean | undefined;
-
-  public override ngOnInit(): void {
-    this.required = this.ngControl.control?.hasValidator(Validators.required);
-  }
-}
+export class AutocompleteControlComponent extends BaseInputControl {}

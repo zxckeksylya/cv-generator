@@ -27,7 +27,7 @@
     background-color: var(--neutrals-0);
     border-color: var(--error);
   }
-  .app-autocomplite-control {
+  .app-date-picker-control {
     display: flex;
     flex-direction: column;
 
@@ -35,10 +35,6 @@
       background-color: var(--neutrals-0);
       border: 1px solid var(--neutrals-100);
       color: var(--neutrals-900);
-      min-width: 200px;
-      &::placeholder {
-        color: var(--neutrals-50);
-      }
     }
     &__label {
       font-size: 12px;

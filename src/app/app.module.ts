@@ -14,6 +14,7 @@ import { TextareaControlModule } from './core/components/controls/textarea-contr
 import { AppStoreModule } from './core/store/app-store.module';
 import { AutocompleteControlModule } from './core/components/controls/autocomplete-control/autocomplete-control.module';
 import { ButtonModule } from './core/components/button/button.module';
+import { DatePickerControlModule } from './core/components/controls/date-picker-control/date-picker-control.module';
 
 registerLocaleData(en);
 
@@ -32,6 +33,7 @@ registerLocaleData(en);
     TextareaControlModule,
     AutocompleteControlModule,
     ButtonModule,
+    DatePickerControlModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

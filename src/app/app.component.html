@@ -10,8 +10,10 @@
       [formGroup]="fg"
       (ngSubmit)="submitForm()">
     <app-text-control formControlName="control"
-                      [errorsMap]="{}"></app-text-control>
+                      [label]="'text-control'"></app-text-control>
     <app-textarea-control formControlName="textarea"></app-textarea-control>
     <app-autocomplete-control formControlName="autocomplite"></app-autocomplete-control>
+    <app-date-picker-control formControlName="datePicker"
+                             [placeholder]="'test'"></app-date-picker-control>
     <app-button behaviorType="submit">add</app-button>
 </form>

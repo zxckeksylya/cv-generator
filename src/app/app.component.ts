@@ -38,13 +38,15 @@ export class AppComponent implements OnInit, OnDestroy {
   public submitForm(): void {
     if (this.fg.valid) {
       this.fg.reset();
+      //this.fg.get('control')?.markAsPristine();
     }
   }
   private initForm(): void {
     this.fg = this.formBuilder.group({
-      control: ['', Validators.required],
+      control: ['', [Validators.required]],
       textarea: [''],
       autocomplite: [''],
+      datePicker: [''],
     });
   }
 }
