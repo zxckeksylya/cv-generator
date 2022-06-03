@@ -1,9 +1,9 @@
-<nz-form-item class="app-text-control"
+<nz-form-item class="app-base-control app-text-control"
               [class]="classNames">
     <nz-form-label *ngIf="label"
                    [nzFor]="elementId"
                    [nzRequired]="required"
-                   class="app-text-control__label">
+                   class="app-base-control__label">
         {{ label }}
     </nz-form-label>
     <ng-container *ngIf="formControl.errors | getControlErrorMessage:errorsMap as errorMessageConfig">
@@ -16,7 +16,7 @@
                        [placeholder]="placeholder"
                        type="text"
                        (blur)="onTouched()"
-                       class="app-text-control__input">
+                       class="app-base-control__input">
             </nz-input-group>
         </nz-form-control>
     </ng-container>

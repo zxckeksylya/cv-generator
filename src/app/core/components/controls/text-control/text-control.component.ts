@@ -1,9 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BaseInputControl } from 'src/app/core/classes/base-control/base-input-control';
+import { BaseInputControl } from 'src/app/core/classes/base-control/base-input-control.class';
 @Component({
   selector: 'app-text-control',
   templateUrl: './text-control.component.html',
-  styleUrls: ['./text-control.component.scss'],
+  styleUrls: [
+    './text-control.component.scss',
+    '../../../../../assets/styles/base-control.styles.scss',
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextControlComponent extends BaseInputControl {}

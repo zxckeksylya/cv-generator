@@ -6,9 +6,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 
 @NgModule({
   imports: [
+    NzAutocompleteModule,
     NzInputModule,
     NzFormModule,
     ReactiveFormsModule,

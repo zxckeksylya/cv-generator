@@ -1,9 +1,9 @@
-<nz-form-item class="app-textarea-control"
+<nz-form-item class="app-base-control app-textarea-control"
               [class]="classNames">
     <nz-form-label *ngIf="label"
                    [nzFor]="elementId"
                    [nzRequired]="required"
-                   class="app-textarea-control__label">
+                   class="app-base-control__label">
         {{ label }}
     </nz-form-label>
     <ng-container *ngIf="formControl.errors | getControlErrorMessage:errorsMap as errorMessageConfig">
@@ -16,7 +16,7 @@
                           [placeholder]="placeholder"
                           type="textarea"
                           (blur)="onTouched()"
-                          class="app-textarea-control__input"></textarea>
+                          class="app-base-control__input"></textarea>
             </nz-input-group>
         </nz-form-control>
     </ng-container>

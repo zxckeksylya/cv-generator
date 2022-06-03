@@ -1,20 +1,10 @@
+import { Directive, DoCheck, Input, OnDestroy, OnInit, Optional } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, Validators } from '@angular/forms';
-import {
-  OnInit,
-  OnDestroy,
-  Directive,
-  Input,
-  Optional,
-  DoCheck,
-  AfterContentChecked,
-} from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { I18nKeyMessageConfig } from '../../interfaces/i18n-key-message-config.interface';
 
 @Directive()
-export class BaseControl
-  implements ControlValueAccessor, OnInit, DoCheck, OnDestroy, AfterContentChecked
-{
+export class BaseControl implements ControlValueAccessor, OnInit, DoCheck, OnDestroy {
   @Input() public errorsMap: Record<string, I18nKeyMessageConfig> = {
     required: {
       i18nKey: 'control-errors.required',
@@ -39,10 +29,7 @@ export class BaseControl
 
   public ngDoCheck(): void {
     this.initErrors();
-  }
-
-  public ngAfterContentChecked(): void {
-    this.resetProperties();
+    this.syncControlState();
   }
 
   public ngOnDestroy(): void {
@@ -86,7 +73,7 @@ export class BaseControl
   }
   protected onChange: (value: any) => void = () => {};
 
-  protected resetProperties(): void {
+  protected syncControlState(): void {
     if (this.ngControl.dirty !== this.formControl.dirty) {
       this.formControl.markAsDirty();
     }
