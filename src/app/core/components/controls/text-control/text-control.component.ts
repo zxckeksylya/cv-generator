@@ -3,10 +3,7 @@ import { BaseInputControl } from 'src/app/core/classes/base-control/base-input-c
 @Component({
   selector: 'app-text-control',
   templateUrl: './text-control.component.html',
-  styleUrls: [
-    './text-control.component.scss',
-    '../../../../../assets/styles/base-control.styles.scss',
-  ],
+  styleUrls: ['./text-control.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextControlComponent extends BaseInputControl {}

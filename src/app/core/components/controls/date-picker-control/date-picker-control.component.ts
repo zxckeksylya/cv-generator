@@ -6,10 +6,7 @@ type ModeType = 'date' | 'week' | 'month' | 'year';
 @Component({
   selector: 'app-date-picker-control',
   templateUrl: './date-picker-control.component.html',
-  styleUrls: [
-    './date-picker-control.component.scss',
-    '../../../../../assets/styles/base-control.styles.scss',
-  ],
+  styleUrls: ['./date-picker-control.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatePickerControlComponent extends BaseInputControl {

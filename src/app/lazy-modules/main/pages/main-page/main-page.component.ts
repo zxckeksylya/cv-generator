@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-main-page',
-  template: `<router-outlet></router-outlet>`,
+  templateUrl: './main-page.component.html',
+  styleUrls: ['main-page.component.scss'],
 })
 export class MainPageComponent {}
