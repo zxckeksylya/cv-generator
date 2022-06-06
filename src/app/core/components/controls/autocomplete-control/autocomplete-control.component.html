@@ -22,8 +22,8 @@
                                  [compareWith]="compareFun">
                     <nz-auto-option *ngFor="let item of dataSource"
                                     [nzValue]="item"
-                                    [nzLabel]="item.label">
-                        {{ item.label }}
+                                    [nzLabel]="item[optionLabelField]">
+                        {{ item[optionLabelField] }}
                     </nz-auto-option>
                 </nz-autocomplete>
             </nz-input-group>
