@@ -18,8 +18,14 @@
                        type="text"
                        (blur)="onTouched()"
                        class="app-base-control__input">
-                <nz-autocomplete [nzDataSource]="dataSource"
-                                 #auto></nz-autocomplete>
+                <nz-autocomplete #auto
+                                 [compareWith]="compareFun">
+                    <nz-auto-option *ngFor="let item of dataSource"
+                                    [nzValue]="item"
+                                    [nzLabel]="item.label">
+                        {{item.label}}
+                    </nz-auto-option>
+                </nz-autocomplete>
             </nz-input-group>
         </nz-form-control>
     </ng-container>
