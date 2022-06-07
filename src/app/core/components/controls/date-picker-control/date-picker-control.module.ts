@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { GetControlErrorMessagePipeModule } from 'src/app/core/pipes/get-control-error-message-pipe/get-control-error-message-pipe.module';
@@ -14,7 +14,6 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     NzDatePickerModule,
     NzFormModule,
     ReactiveFormsModule,
-    FormsModule,
     TranslateModule,
     CommonModule,
     GetControlErrorMessagePipeModule,

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { BaseInputControl } from 'src/app/core/classes/base-control/base-input-control.class';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BaseSelectControl } from '../../../classes/base-control/base-select-control.class';
 
 @Component({
   selector: 'app-autocomplete-control',
@@ -7,18 +7,4 @@ import { BaseInputControl } from 'src/app/core/classes/base-control/base-input-c
   styleUrls: ['./autocomplete-control.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AutocompleteControlComponent extends BaseInputControl {
-  @Input() public dataSource: any[] = [];
-  @Input() public optionValueField: string;
-  @Input() public optionLabelField: string;
-
-  public compareFun = (o1: any | string, o2: any): boolean => {
-    if (o1) {
-      return typeof o1 === 'string'
-        ? o1 === o2[this.optionLabelField]
-        : o1[this.optionValueField] === o2[this.optionValueField];
-    } else {
-      return false;
-    }
-  };
-}
+export class AutocompleteControlComponent extends BaseSelectControl {}

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -12,7 +12,6 @@ import { GetControlErrorMessagePipeModule } from '../../../pipes/get-control-err
     NzInputModule,
     NzFormModule,
     ReactiveFormsModule,
-    FormsModule,
     TranslateModule,
     CommonModule,
     GetControlErrorMessagePipeModule,

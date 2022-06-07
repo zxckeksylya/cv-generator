@@ -11,5 +11,4 @@ export class NumberControlComponent extends BaseInputControl {
   @Input() public min: number;
   @Input() public max: number;
   @Input() public step: number;
-  @Input() public isDisable: boolean;
 }

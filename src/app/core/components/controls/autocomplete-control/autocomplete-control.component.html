@@ -1,4 +1,4 @@
-<nz-form-item class="app-base-control app-autocomplite-control"
+<nz-form-item class="app-base-control"
               [class]="classNames">
     <nz-form-label *ngIf="label"
                    [nzFor]="elementId"
@@ -21,7 +21,7 @@
                 <nz-autocomplete #auto
                                  [compareWith]="compareFun">
                     <nz-auto-option *ngFor="let item of dataSource"
-                                    [nzValue]="item"
+                                    [nzValue]="item[optionValueField] ?? item"
                                     [nzLabel]="item[optionLabelField]">
                         {{ item[optionLabelField] }}
                     </nz-auto-option>
