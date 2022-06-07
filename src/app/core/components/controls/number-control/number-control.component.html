@@ -10,13 +10,15 @@
         <nz-form-control [nzValidateStatus]="formControl"
                          [nzErrorTip]="errorMessageConfig && (errorMessageConfig.i18nKey || '') | translate:errorMessageConfig?.i18nParams">
             <nz-input-group>
-                <input nz-input
-                       [id]="elementId"
-                       [formControl]="formControl"
-                       [placeholder]="placeholder"
-                       type="text"
-                       (blur)="onTouched()"
-                       class="app-base-control__input">
+                <nz-input-number nz-input
+                                 [id]="elementId"
+                                 [formControl]="formControl"
+                                 (blur)="onTouched()"
+                                 [nzPlaceHolder]="placeholder"
+                                 [nzMin]="min"
+                                 [nzMax]="max"
+                                 [nzStep]="step"
+                                 class="app-base-control__input"></nz-input-number>
             </nz-input-group>
         </nz-form-control>
     </ng-container>

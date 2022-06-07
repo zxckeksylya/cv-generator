@@ -1,3 +1,6 @@
 :host::ng-deep {
   display: block;
+  .app-datepicker__input {
+    display: block;
+  }
 }

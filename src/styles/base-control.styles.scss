@@ -31,6 +31,9 @@
       margin: 0;
     }
   }
+  .anticon svg {
+    color: var(--neutrals-150);
+  }
   &__input {
     background-color: var(--neutrals-0);
     border: 1px solid var(--neutrals-100);

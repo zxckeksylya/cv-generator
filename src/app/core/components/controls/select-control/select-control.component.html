@@ -9,15 +9,15 @@
     <ng-container *ngIf="formControl.errors | getControlErrorMessage:errorsMap as errorMessageConfig">
         <nz-form-control [nzValidateStatus]="formControl"
                          [nzErrorTip]="errorMessageConfig && (errorMessageConfig.i18nKey || '') | translate:errorMessageConfig?.i18nParams">
-            <nz-input-group>
-                <input nz-input
-                       [id]="elementId"
+            <nz-select [id]="elementId"
                        [formControl]="formControl"
-                       [placeholder]="placeholder"
-                       type="text"
                        (blur)="onTouched()"
-                       class="app-base-control__input">
-            </nz-input-group>
+                       class="app-base-control__input"
+                       [compareWith]="compareFun">
+                <nz-option *ngFor="let item of dataSource"
+                           [nzValue]="item"
+                           [nzLabel]="item[optionLabelField]"></nz-option>
+            </nz-select>
         </nz-form-control>
     </ng-container>
 </nz-form-item>
