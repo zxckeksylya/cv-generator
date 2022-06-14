@@ -1,23 +1,23 @@
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  OnDestroy,
   OnInit,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { BreadcrumbItem } from '../../interfaces/breadcrump-item.interface';
 import { breadcrumbSelector } from '../../store/breadcrumb/breadcrumb.selctors';
+import { BreadcrumbItem } from '../../interfaces/breadcrump-item.interface';
 
 @Component({
-  selector: 'app-breadcrumb',
-  templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss'],
+  selector: 'app-page-heading',
+  templateUrl: './page-heading.component.html',
+  styleUrls: ['./page-heading.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BreadcrumbComponent implements OnInit, OnDestroy {
-  public breadcrumbs: BreadcrumbItem[] = [];
+export class PageHeadingComponent implements OnInit, OnDestroy {
+  public lustBreadcumb!: BreadcrumbItem;
 
   private destroy$ = new Subject<void>();
 
@@ -27,7 +27,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
     this.store
       .pipe(select(breadcrumbSelector), takeUntil(this.destroy$))
       .subscribe((breadcrumbs) => {
-        this.breadcrumbs = breadcrumbs;
+        this.lustBreadcumb = breadcrumbs[breadcrumbs.length - 1];
         this.cdr.markForCheck();
       });
   }
