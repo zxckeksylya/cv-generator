@@ -1,0 +1,10 @@
+<nz-form-item class="app-base-control app-checkbox-control"
+              [class]="classNames">
+    <ng-container *ngIf="formControl.errors | getControlErrorMessage:errorsMap as errorMessageConfig">
+        <nz-form-control [nzValidateStatus]="formControl"
+                         [nzErrorTip]="errorMessageConfig && (errorMessageConfig.i18nKey || '') | translate:errorMessageConfig?.i18nParams">
+            <label nz-checkbox
+                   [formControl]="formControl">{{ label }}</label>
+        </nz-form-control>
+    </ng-container>
+</nz-form-item>

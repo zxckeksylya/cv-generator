@@ -1,5 +1,5 @@
-import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
-import { OnInit, OnDestroy, Directive, Input, Optional, DoCheck } from '@angular/core';
+import { Directive, DoCheck, Input, OnDestroy, OnInit, Optional } from '@angular/core';
+import { ControlValueAccessor, FormControl, NgControl, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { I18nKeyMessageConfig } from '../../interfaces/i18n-key-message-config.interface';
 
@@ -11,8 +11,10 @@ export class BaseControl implements ControlValueAccessor, OnInit, DoCheck, OnDes
     },
   };
   @Input() public classNames = '';
+  @Input() public elementId = '';
 
   public formControl = new FormControl();
+  public required: boolean | undefined;
 
   private destroy$ = new Subject<void>();
 
@@ -22,9 +24,12 @@ export class BaseControl implements ControlValueAccessor, OnInit, DoCheck, OnDes
 
   public ngOnInit(): void {
     this.onInputValueChange();
+    this.required = this.ngControl.control?.hasValidator(Validators.required);
   }
+
   public ngDoCheck(): void {
     this.initErrors();
+    this.syncControlState();
   }
 
   public ngOnDestroy(): void {
@@ -61,11 +66,28 @@ export class BaseControl implements ControlValueAccessor, OnInit, DoCheck, OnDes
     }
   }
 
-  private onChange: (value: any) => void = () => {};
-
-  private onInputValueChange(): void {
+  protected onInputValueChange(): void {
     this.formControl.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((v) => {
       this.onChange(v);
     });
+  }
+  protected onChange: (value: any) => void = () => {};
+
+  protected syncControlState(): void {
+    if (this.ngControl.dirty !== this.formControl.dirty) {
+      this.formControl.markAsDirty();
+    }
+    if (this.ngControl.pristine !== this.formControl.pristine) {
+      this.formControl.markAsPristine();
+    }
+    if (this.ngControl.pending !== this.formControl.pending) {
+      this.formControl.markAsPending();
+    }
+    if (this.ngControl.touched !== this.formControl.touched) {
+      this.formControl.markAsTouched();
+    }
+    if (this.ngControl.untouched !== this.formControl.untouched) {
+      this.formControl.markAsUntouched();
+    }
   }
 }

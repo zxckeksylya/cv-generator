@@ -1,0 +1,23 @@
+<nz-form-item class="app-base-control"
+              [class]="classNames">
+    <nz-form-label *ngIf="label"
+                   [nzFor]="elementId"
+                   [nzRequired]="required"
+                   class="app-base-control__label">
+        {{ label }}
+    </nz-form-label>
+    <ng-container *ngIf="formControl.errors | getControlErrorMessage:errorsMap as errorMessageConfig">
+        <nz-form-control [nzValidateStatus]="formControl"
+                         [nzErrorTip]="errorMessageConfig && (errorMessageConfig.i18nKey || '') | translate:errorMessageConfig?.i18nParams">
+            <nz-input-group>
+                <input nz-input
+                       [id]="elementId"
+                       [formControl]="formControl"
+                       [placeholder]="placeholder"
+                       type="text"
+                       (blur)="onTouched()"
+                       class="app-base-control__input">
+            </nz-input-group>
+        </nz-form-control>
+    </ng-container>
+</nz-form-item>
