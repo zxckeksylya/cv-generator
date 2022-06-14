@@ -1,8 +1,15 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.reducers';
 import { environment } from '../../../../environments/environment.prod';
-import { changeLanguageAction } from '../../store/language/language.actions';
+import { Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-language-button',
@@ -10,27 +17,46 @@ import { changeLanguageAction } from '../../store/language/language.actions';
   styleUrls: ['./language-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LanguageButtonComponent {
-  public language = localStorage.getItem('language') || environment.defaultLocale;
+export class LanguageButtonComponent implements OnInit, OnDestroy {
+  public language: string;
 
   public languages: string[] = environment.locales;
 
-  constructor(private store: Store<AppState>) {}
+  private destroy$ = new Subject<void>();
+
+  constructor(
+    private store: Store<AppState>,
+    private translateService: TranslateService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  public ngOnInit(): void {
+    this.language = this.translateService.getDefaultLang();
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   public setLanguage(language: string): void {
-    this.store.dispatch(changeLanguageAction({ language }));
-    this.language = language;
+    this.commitLanguage(language);
   }
 
   public changeLanguage(): void {
-    const numberOfSelectedLanguage = this.languages.findIndex((value) => value === this.language);
+    const selectedLanguageIndex = this.languages.findIndex((value) => value === this.language);
     let newLanguage = '';
-    if (numberOfSelectedLanguage + 1 === this.languages.length) {
+    if (selectedLanguageIndex + 1 === this.languages.length) {
       newLanguage = this.languages[0];
     } else {
-      newLanguage = this.languages[numberOfSelectedLanguage + 1];
+      newLanguage = this.languages[selectedLanguageIndex + 1];
     }
-    this.store.dispatch(changeLanguageAction({ language: newLanguage }));
-    this.language = newLanguage;
+    this.commitLanguage(newLanguage);
+  }
+
+  private commitLanguage(language: string): void {
+    this.translateService.use(language);
+    localStorage.setItem('language', language);
+    this.language = language;
   }
 }

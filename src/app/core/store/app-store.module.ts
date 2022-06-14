@@ -7,13 +7,12 @@ import { environment } from 'src/environments/environment';
 import { AppEffects } from './app.effects';
 import { metaReducers, reducers } from './app.reducers';
 import { ThemeEffects } from './theme/theme.effects';
-import { LanguageEffects } from './language/language.effects';
 
 @NgModule({
   imports: [
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AppEffects, ThemeEffects, LanguageEffects]),
+    EffectsModule.forRoot([AppEffects, ThemeEffects]),
     StoreRouterConnectingModule.forRoot(),
   ],
   exports: [StoreModule, EffectsModule, StoreRouterConnectingModule],

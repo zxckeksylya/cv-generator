@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './core/store/app.reducers';
 import { initThemeAction } from './core/store/theme/theme.actions';
-import { initLanguageAction } from './core/store/language/language.actions';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +11,9 @@ import { initLanguageAction } from './core/store/language/language.actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private translateService: TranslateService) {}
 
   public ngOnInit(): void {
     this.store.dispatch(initThemeAction());
-    this.store.dispatch(initLanguageAction());
   }
 }
