@@ -8,7 +8,7 @@ import { faEarthEurope } from '@fortawesome/free-solid-svg-icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthorizationPageComponent implements OnInit {
-  public faEarthEurope = faEarthEurope;
+  public readonly faEarthEurope = faEarthEurope;
 
   constructor() {}
 

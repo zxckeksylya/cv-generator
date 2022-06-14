@@ -10,8 +10,8 @@ import { faDatabase } from '@fortawesome/free-solid-svg-icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SiderComponent {
-  public faAddressCard = faAddressCard;
-  public faDatabase = faDatabase;
+  public readonly faAddressCard = faAddressCard;
+  public readonly faDatabase = faDatabase;
 
   constructor(private router: Router) {}
 
