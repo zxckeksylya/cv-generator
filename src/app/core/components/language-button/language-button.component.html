@@ -1,0 +1,6 @@
+<app-dropdown [dataSource]="languages"
+              (selectItem)="setLanguage($event)">
+    <app-button (buttonClick)="changeLanguage()">
+        <ng-content></ng-content>
+    </app-button>
+</app-dropdown>

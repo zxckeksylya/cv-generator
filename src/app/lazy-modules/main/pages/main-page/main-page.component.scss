@@ -1,0 +1,14 @@
+:host {
+  height: 100%;
+}
+
+.layout {
+  height: 100%;
+}
+
+.page-container {
+  padding-left: 24px;
+  padding-top: 20px;
+  padding-right: 24px;
+  height: calc(100% - 148px);
+}

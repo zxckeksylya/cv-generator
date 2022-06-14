@@ -1,14 +1,3 @@
-.block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  width: 200px;
-  background-color: var(--neutrals-0);
-}
-
-.inner-block {
-  height: 100px;
-  width: 100px;
-  background-color: var(--neutrals-500);
+:host {
+  height: 100%;
 }

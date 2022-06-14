@@ -3,4 +3,6 @@ export enum RoutingConstants {
   MAIN = '',
   EMPLOYEES = 'employees',
   PROJECTS = 'projects',
+  LOGIN = 'login',
+  REGISTRATION = 'registration',
 }

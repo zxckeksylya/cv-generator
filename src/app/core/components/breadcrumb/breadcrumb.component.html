@@ -1,0 +1,9 @@
+<div class="breadcrumb">
+
+    <nz-breadcrumb>
+        <nz-breadcrumb-item *ngFor="let item of breadcrumbs"
+                            [routerLink]="item.path">{{ item.name }}</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <h1>{{lustBreadcumb.section}}</h1>
+    <p>{{lustBreadcumb.description}}</p>
+</div>

@@ -1,0 +1,10 @@
+:host {
+  height: 100%;
+}
+.base-page {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--neutrals-0);
+  padding: 15px 24px;
+  height: 100%;
+}

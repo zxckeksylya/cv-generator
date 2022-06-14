@@ -1,4 +1,9 @@
+:host {
+  display: block;
+}
+
 .app-button {
+  display: block;
   padding: 5px 16px;
   border: 1px solid var(--neutrals-100);
 
@@ -80,4 +85,11 @@
       color: var(--neutrals-150);
     }
   }
+}
+
+.width100Procent {
+  width: 100%;
+}
+.noPadding {
+  padding: 0;
 }

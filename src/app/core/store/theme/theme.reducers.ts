@@ -7,12 +7,12 @@ export interface ThemeState {
   theme: string;
 }
 
-export const initionalState: ThemeState = {
+export const initionalThemeState: ThemeState = {
   theme: '',
 };
 
 export const themeReducer = createReducer(
-  initionalState,
+  initionalThemeState,
   on(initThemeAction, (state) => ({
     ...state,
   })),

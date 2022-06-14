@@ -1,0 +1,27 @@
+<nz-layout class="layout">
+    <nz-sider nzCollapsible
+              nzWidth="208px">
+        <ul nz-menu>
+            <li nz-menu-item
+                (click)="redirectToEmployees()">
+
+                <fa-icon [icon]="faAddressCard"></fa-icon>
+                <span>
+                    Employees
+                </span>
+            </li>
+            <li nz-menu-item
+                (click)="redirectToProjects()">
+                <fa-icon [icon]="faDatabase"></fa-icon>
+                <span>
+                    Projects
+                </span>
+            </li>
+        </ul>
+    </nz-sider>
+    <nz-content>
+        <ng-content>
+
+        </ng-content>
+    </nz-content>
+</nz-layout>

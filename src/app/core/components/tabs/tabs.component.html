@@ -1,0 +1,7 @@
+<nz-tabset>
+    <nz-tab *ngFor="let item of namesOfTabs"
+            [nzTitle]="item">
+        <ng-content [select]="item">
+        </ng-content>
+    </nz-tab>
+</nz-tabset>

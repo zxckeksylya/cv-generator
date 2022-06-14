@@ -1,2 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import './palette.scss';
+@import '../src/styles/palette.scss';
+
+body {
+  height: 100vh;
+}
