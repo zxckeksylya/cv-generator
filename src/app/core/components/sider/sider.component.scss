@@ -1,12 +1,20 @@
 :host {
   height: 100%;
+  display: flex;
   &::ng-deep {
     .ant-layout-sider-children {
       background-color: var(--neutrals-0);
     }
   }
-}
-
-.layout {
-  height: 100%;
+  .layout {
+    height: 100%;
+  }
+  .sider-item {
+    display: flex;
+    &__img {
+      width: 14px;
+      height: 14px;
+      margin-right: 10px;
+    }
+  }
 }
