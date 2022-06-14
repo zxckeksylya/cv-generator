@@ -45,9 +45,13 @@
   }
   &__label {
     font-size: 12px;
+    font-weight: 400;
     text-align: left;
     color: var(--neutrals-900);
     opacity: 0.85;
+    label {
+      height: 22px;
+    }
   }
   .success {
     border-color: var(--success);
