@@ -1,4 +1,4 @@
-<nz-table #Table
+<nz-table #table
           [nzData]="source"
           [nzFrontPagination]="false"
           [nzShowPagination]="false">
@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <ng-container *ngFor="let item of Table.data">
+        <ng-container *ngFor="let item of table.data">
             <ng-container *ngTemplateOutlet="rowTemplateRef;context:{$implicit:item}">
 
             </ng-container>
