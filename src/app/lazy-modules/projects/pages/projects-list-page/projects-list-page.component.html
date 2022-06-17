@@ -1,5 +1,14 @@
 <div class="base-page">
     <app-button class="button"
                 type="primary">add project</app-button>
-    <app-table [dataOfTable]="listOfData"></app-table>
+    <app-table [source]="listOfData"
+               [headerItems]="headerData"
+               [rowTemplateRef]="rowRef">
+        <ng-template #rowRef
+                     let-item>
+            <tr>
+                <td>{{item.name}}</td>
+            </tr>
+        </ng-template>
+    </app-table>
 </div>

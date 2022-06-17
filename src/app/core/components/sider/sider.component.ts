@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
+import { RoutingConstants } from '../../constants/routing.constants';
 
 @Component({
   selector: 'app-sider',
@@ -16,10 +17,10 @@ export class SiderComponent {
   constructor(private router: Router) {}
 
   public redirectToEmployees(): void {
-    this.router.navigate(['employees']);
+    this.router.navigate([RoutingConstants.MAIN, RoutingConstants.EMPLOYEES]);
   }
 
   public redirectToProjects(): void {
-    this.router.navigate(['projects']);
+    this.router.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
   }
 }

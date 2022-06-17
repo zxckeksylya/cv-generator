@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { TableData } from '../../interfaces/table-data.interface';
+import { Component, ChangeDetectionStrategy, Input, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { TableHeaderItem } from '../../interfaces/table-header-item.interface';
 
 @Component({
   selector: 'app-table',
@@ -9,11 +9,9 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent {
-  @Input() public dataOfTable!: TableData;
+  @Input() public headerItems: TableHeaderItem[] = [];
+  @Input() public rowTemplateRef: TemplateRef<any>;
+  @Input() public source: any[] = [];
 
   constructor(private router: Router) {}
-
-  public redirectTo(link: string): void {
-    this.router.navigate([link]);
-  }
 }

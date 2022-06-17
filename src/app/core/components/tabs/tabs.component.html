@@ -1,7 +1,7 @@
 <nz-tabset>
-    <nz-tab *ngFor="let item of namesOfTabs"
-            [nzTitle]="item">
-        <ng-content [select]="item">
-        </ng-content>
+    <nz-tab *ngFor="let item of tabs"
+            [nzTitle]="item.i18nKey">
+        <ng-container *ngTemplateOutlet="item.contentRef"></ng-container>
+
     </nz-tab>
 </nz-tabset>

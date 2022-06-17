@@ -1,17 +1,15 @@
-<nz-table #basicTable
-          [nzData]="dataOfTable.listOfTableItem">
+<nz-table #Table
+          [nzData]="source">
     <thead>
         <tr>
-            <th *ngFor="let item of dataOfTable.paramsOfDataObjects">{{ item.property }}</th>
+            <th *ngFor="let item of headerItems">{{ item.i18nKey | translate }}</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of basicTable.data"
-            (click)="redirectTo(item.link)">
-            <td *ngFor="let key of dataOfTable.paramsOfDataObjects">
-                {{ item.params[key.property] }}
+        <ng-container *ngFor="let item of Table.data">
+            <ng-container *ngTemplateOutlet="rowTemplateRef;context:{$implicit:item}">
 
-            </td>
-        </tr>
+            </ng-container>
+        </ng-container>
     </tbody>
 </nz-table>

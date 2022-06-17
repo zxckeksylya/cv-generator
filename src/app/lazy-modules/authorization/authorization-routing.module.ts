@@ -10,13 +10,13 @@ const routes: Routes = [
     component: AuthorizationPageComponent,
     children: [
       {
-        path: `${RoutingConstants.LOGIN}`,
+        path: RoutingConstants.LOGIN,
         component: SignInPageComponent,
       },
-      { path: '**', redirectTo: `${RoutingConstants.LOGIN}` },
+      { path: '**', redirectTo: RoutingConstants.LOGIN },
     ],
   },
-  { path: '**', redirectTo: `${RoutingConstants.LOGIN}` },
+  { path: '**', redirectTo: RoutingConstants.LOGIN },
 ];
 
 @NgModule({

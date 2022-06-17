@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { BreadcrumbItem } from '../../interfaces/breadcrump-item.interface';
-import { setNewBreadcrumb } from './breadcrumb.actions';
+import { setBreadcrumbs } from './breadcrumb.actions';
 
 export const BREADCRUMB_FEATURE_KEY = 'breadcrumb';
 
@@ -14,8 +14,8 @@ export const initionalBreadcrumbState: BreadcrumbState = {
 
 export const breadcrumbReducer = createReducer(
   initionalBreadcrumbState,
-  on(setNewBreadcrumb, (state, action) => ({
+  on(setBreadcrumbs, (state, action) => ({
     ...state,
-    breadcrumbs: action.arrayOfBreadcrumbs,
+    breadcrumbs: action.breadcrumbs,
   })),
 );

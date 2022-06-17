@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { setNewBreadcrumb } from '../../../../core/store/breadcrumb/breadcrumb.actions';
+import { setBreadcrumbs } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 
 @Component({
   selector: 'app-main-page',
@@ -15,8 +15,8 @@ export class MainPageComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.dispatch(
-      setNewBreadcrumb({
-        arrayOfBreadcrumbs: [
+      setBreadcrumbs({
+        breadcrumbs: [
           { name: 'Home', path: `${RoutingConstants.MAIN}`, description: 'Main', section: 'Home' },
         ],
       }),

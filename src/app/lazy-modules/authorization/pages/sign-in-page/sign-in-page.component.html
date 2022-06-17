@@ -4,20 +4,20 @@
 
     <form [formGroup]="myForm"
           (ngSubmit)="onSubmit()">
-        <!-- <app-text-control label="Username"
+        <app-text-control label="Username"
                           formControlName="username"></app-text-control>
         <app-text-control label="Password"
-                          formControlName="password"></app-text-control> -->
+                          formControlName="password"></app-text-control>
         <div class="block">
 
-            <!-- <app-checkbox-control label="Remeber me"
-                                  formControlName="rember"></app-checkbox-control> -->
+            <app-checkbox-control label="Remeber me"
+                                  formControlName="rember"></app-checkbox-control>
             <app-button type="link"
-                        classNames="noPadding">Forgot your password?</app-button>
+                        classNames="no-padding">Forgot your password?</app-button>
         </div>
         <app-button behaviorType="submit"
                     type="primary"
                     class="sign-in-form__submit"
-                    classNames="width100Procent">Login</app-button>
+                    classNames="width-100-procent">Login</app-button>
     </form>
 </div>

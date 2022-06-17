@@ -6,5 +6,9 @@
     "EN": "English",
     "RU": "Russian",
     "TITLE": "Language"
+  },
+  "SECTION": {
+    "EMPLOYEES": "Employees",
+    "PROJECTS": "Projects"
   }
 }

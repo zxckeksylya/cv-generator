@@ -1,11 +1,16 @@
 <nz-layout class="layout">
     <app-header> </app-header>
-    <app-sider>
-        <app-page-heading></app-page-heading>
-        <div class="page-container">
-            <router-outlet></router-outlet>
-        </div>
-    </app-sider>
+    <nz-layout class="inner__layout">
+
+        <app-sider>
+        </app-sider>
+        <nz-content>
+            <app-page-heading></app-page-heading>
+            <div class="page-container">
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+    </nz-layout>
 
 
 </nz-layout>

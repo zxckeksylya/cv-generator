@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { setNewBreadcrumb } from '../../../../core/store/breadcrumb/breadcrumb.actions';
+import { setBreadcrumbs } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 import { Store } from '@ngrx/store';
-import { TableData } from '../../../../core/interfaces/table-data.interface';
+import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
 
 @Component({
   selector: 'app-employees-list-page',
@@ -11,34 +11,25 @@ import { TableData } from '../../../../core/interfaces/table-data.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeesListPageComponent implements OnInit {
-  public listOfData: TableData = {
-    paramsOfDataObjects: [
-      { title: 'id', property: 'id' },
-      { title: 'name', property: 'name' },
-    ],
-    listOfTableItem: [
-      {
-        link: '',
-        params: {
-          id: 1,
-          name: 'yagor',
-        },
-      },
-      {
-        link: '',
-        params: {
-          id: 2,
-          name: 'pasha',
-        },
-      },
-    ],
-  };
+  public headerData: TableHeaderItem[] = [
+    {
+      i18nKey: 'LANGUAGES.TITLE',
+    },
+  ];
+  public listOfData: any[] = [
+    {
+      name: '123',
+    },
+    {
+      name: '23123',
+    },
+  ];
   constructor(private store: Store) {}
 
   public ngOnInit(): void {
     this.store.dispatch(
-      setNewBreadcrumb({
-        arrayOfBreadcrumbs: [
+      setBreadcrumbs({
+        breadcrumbs: [
           {
             name: 'Home',
             path: `${RoutingConstants.MAIN}`,

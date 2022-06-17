@@ -10,7 +10,7 @@ export class DropdownComponent {
   @Input() public dataSource: any[] = [];
   @Input() public optionValueField!: string;
   @Input() public optionLabelField!: string;
-  @Input() public elementId: any;
+  @Input() public elementId: string;
 
   @Output()
   public selectItem = new EventEmitter<any>();

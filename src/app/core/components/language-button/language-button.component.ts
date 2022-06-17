@@ -10,6 +10,7 @@ import { AppState } from '../../store/app.reducers';
 import { environment } from '../../../../environments/environment.prod';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { Languages } from '../../enums/languages.enum';
 
 @Component({
   selector: 'app-language-button',
@@ -18,9 +19,9 @@ import { TranslateService } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LanguageButtonComponent implements OnInit, OnDestroy {
-  public language: string;
+  public language: Languages;
 
-  public languages: string[] = environment.locales;
+  public languages: Languages[] = environment.locales;
 
   private destroy$ = new Subject<void>();
 
@@ -31,7 +32,7 @@ export class LanguageButtonComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.language = this.translateService.getDefaultLang();
+    this.language = this.translateService.getDefaultLang() as Languages;
   }
 
   public ngOnDestroy(): void {
@@ -39,7 +40,7 @@ export class LanguageButtonComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  public setLanguage(language: string): void {
+  public setLanguage(language: Languages): void {
     this.commitLanguage(language);
   }
 
@@ -51,10 +52,10 @@ export class LanguageButtonComponent implements OnInit, OnDestroy {
     } else {
       newLanguage = this.languages[selectedLanguageIndex + 1];
     }
-    this.commitLanguage(newLanguage);
+    this.commitLanguage(newLanguage as Languages);
   }
 
-  private commitLanguage(language: string): void {
+  private commitLanguage(language: Languages): void {
     this.translateService.use(language);
     localStorage.setItem('language', language);
     this.language = language;

@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -7,19 +7,26 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./sign-in-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignInPageComponent {
+export class SignInPageComponent implements OnInit {
   public myForm: FormGroup;
-  constructor() {
-    this.myForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      rember: new FormControl(''),
-    });
+
+  constructor(private formBuilder: FormBuilder) {}
+
+  public ngOnInit(): void {
+    this.initMyForm();
   }
 
   public onSubmit(): void {
     if (this.myForm.valid) {
       this.myForm.reset();
     }
+  }
+
+  private initMyForm(): void {
+    this.myForm = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      remember: [''],
+    });
   }
 }

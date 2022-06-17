@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { TabItem } from '../../interfaces/tab-item.interface';
 
 @Component({
   selector: 'app-tabs',
@@ -7,5 +8,5 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsComponent {
-  @Input() public namesOfTabs: string[] = [];
+  @Input() public tabs: TabItem[] = [];
 }
