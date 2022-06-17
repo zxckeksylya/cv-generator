@@ -3,6 +3,7 @@ import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { setBreadcrumbs } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 import { Store } from '@ngrx/store';
 import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
+import { setPageHeading } from 'src/app/core/store/page-heading/page-heading.actions';
 
 @Component({
   selector: 'app-employees-list-page',
@@ -31,19 +32,22 @@ export class EmployeesListPageComponent implements OnInit {
       setBreadcrumbs({
         breadcrumbs: [
           {
-            i18nKey: 'BREADCRUMB.HOME',
-
+            i18nKey: 'BREADCRUMB.MAIN',
             path: `${RoutingConstants.MAIN}`,
-            description: 'Main',
-            section: 'Home',
           },
           {
             i18nKey: 'BREADCRUMB.EMPLOYEES',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.EMPLOYEES}`,
-            description: 'Employess list',
-            section: 'Employess',
           },
         ],
+      }),
+    );
+    this.store.dispatch(
+      setPageHeading({
+        pageHeading: {
+          i18nKeySection: 'PAGE-HEADING.SECTION.EMPLOYEES',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.EMPLOYEES',
+        },
       }),
     );
   }

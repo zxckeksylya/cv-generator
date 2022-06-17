@@ -12,8 +12,32 @@
     "PROJECTS": "Проекты"
   },
   "BREADCRUMB": {
-    "HOME": "Дом",
+    "MAIN": "Дом",
     "EMPLOYEES": "Сотрудники",
     "PROJECTS": "Проекты"
+  },
+  "PAGE-HEADING": {
+    "SECTION": {
+      "EMPLOYEES": "Сотрудники",
+      "PROJECTS": "Проекты",
+      "MAIN": "Дом"
+    },
+    "DESCRIPTION": {
+      "EMPLOYEES": "Список сотрудников",
+      "PROJECTS": "Список проектов",
+      "MAIN": "Дом"
+    }
+  },
+  "SIGN_IN_PAGE": {
+    "TITLE": "Вход",
+    "FORGOT_PASS": "Забыли пароль?",
+    "SIGN_IN": "Войти",
+    "REMEMBER": "Запомнить меня"
+  },
+  "PROJECT_LIST": {
+    "BUTTON": "Добавить проект"
+  },
+  "EMPLOYEES_LIST": {
+    "BUTTON": "Добавить сотрудника"
   }
 }

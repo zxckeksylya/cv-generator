@@ -1,14 +1,14 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
-  OnDestroy,
   ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { breadcrumbSelector } from '../../store/breadcrumb/breadcrumb.selctors';
-import { BreadcrumbItem } from '../../interfaces/breadcrump-item.interface';
+import { PageHeadingItem } from '../../interfaces/page-heading-item.interface';
+import { pageHeadingSelector } from '../../store/page-heading/page-heading.selctors';
 
 @Component({
   selector: 'app-page-heading',
@@ -17,7 +17,7 @@ import { BreadcrumbItem } from '../../interfaces/breadcrump-item.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageHeadingComponent implements OnInit, OnDestroy {
-  public lustBreadcumb!: BreadcrumbItem;
+  public pageHeadingItem!: PageHeadingItem;
 
   private destroy$ = new Subject<void>();
 
@@ -25,9 +25,9 @@ export class PageHeadingComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.store
-      .pipe(select(breadcrumbSelector), takeUntil(this.destroy$))
-      .subscribe((breadcrumbs) => {
-        this.lustBreadcumb = breadcrumbs[breadcrumbs.length - 1];
+      .pipe(select(pageHeadingSelector), takeUntil(this.destroy$))
+      .subscribe((pageHeading) => {
+        this.pageHeadingItem = pageHeading;
         this.cdr.markForCheck();
       });
   }

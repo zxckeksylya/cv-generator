@@ -4,8 +4,11 @@
 
         <app-sider>
         </app-sider>
-        <nz-content>
-            <app-page-heading></app-page-heading>
+        <nz-content class="content">
+            <div class="page-heading">
+                <app-breadcrumb></app-breadcrumb>
+                <app-page-heading></app-page-heading>
+            </div>
             <div class="page-container">
                 <router-outlet></router-outlet>
             </div>

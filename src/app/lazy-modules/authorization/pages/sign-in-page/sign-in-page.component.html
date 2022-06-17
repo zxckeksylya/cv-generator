@@ -1,8 +1,8 @@
 <div class="sign-in-form">
 
-    <h1 class="title">SIGN IN</h1>
+    <h1 class="title">{{ 'SIGN_IN_PAGE.TITLE' | translate}}</h1>
 
-    <form [formGroup]="myForm"
+    <form [formGroup]="form"
           (ngSubmit)="onSubmit()">
         <app-text-control label="Username"
                           formControlName="username"></app-text-control>
@@ -10,14 +10,14 @@
                           formControlName="password"></app-text-control>
         <div class="block">
 
-            <app-checkbox-control label="Remeber me"
+            <app-checkbox-control [label]="'SIGN_IN_PAGE.REMEMBER' |  translate"
                                   formControlName="rember"></app-checkbox-control>
             <app-button type="link"
-                        classNames="no-padding">Forgot your password?</app-button>
+                        classNames="no-padding">{{ 'SIGN_IN_PAGE.FORGOT_PASS' | translate}}</app-button>
         </div>
         <app-button behaviorType="submit"
                     type="primary"
                     class="sign-in-form__submit"
-                    classNames="width-100-procent">Login</app-button>
+                    classNames="width-100-procent">{{ 'SIGN_IN_PAGE.SIGN_IN' | translate}}</app-button>
     </form>
 </div>

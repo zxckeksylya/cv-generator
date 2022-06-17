@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { setBreadcrumbs } from '../../../../core/store/breadcrumb/breadcrumb.actions';
+import { setPageHeading } from '../../../../core/store/page-heading/page-heading.actions';
 
 @Component({
   selector: 'app-main-page',
@@ -18,12 +19,18 @@ export class MainPageComponent implements OnInit {
       setBreadcrumbs({
         breadcrumbs: [
           {
-            i18nKey: 'BREADCRUMB.HOME',
+            i18nKey: 'BREADCRUMB.MAIN',
             path: `${RoutingConstants.MAIN}`,
-            description: 'Main',
-            section: 'Home',
           },
         ],
+      }),
+    );
+    this.store.dispatch(
+      setPageHeading({
+        pageHeading: {
+          i18nKeySection: 'PAGE-HEADING.SECTION.MAIN',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.MAIN',
+        },
       }),
     );
   }

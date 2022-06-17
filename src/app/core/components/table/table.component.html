@@ -1,5 +1,7 @@
 <nz-table #Table
-          [nzData]="source">
+          [nzData]="source"
+          [nzFrontPagination]="false"
+          [nzShowPagination]="false">
     <thead>
         <tr>
             <th *ngFor="let item of headerItems">{{ item.i18nKey | translate }}</th>

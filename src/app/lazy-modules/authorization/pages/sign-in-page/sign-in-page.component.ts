@@ -8,7 +8,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInPageComponent implements OnInit {
-  public myForm: FormGroup;
+  public form: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -17,16 +17,16 @@ export class SignInPageComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (this.myForm.valid) {
-      this.myForm.reset();
+    if (this.form.valid) {
+      this.form.reset();
     }
   }
 
   private initMyForm(): void {
-    this.myForm = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      remember: [''],
+      remember: [false],
     });
   }
 }

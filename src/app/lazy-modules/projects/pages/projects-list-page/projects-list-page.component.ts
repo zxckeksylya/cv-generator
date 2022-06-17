@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { setBreadcrumbs } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
+import { setPageHeading } from '../../../../core/store/page-heading/page-heading.actions';
 
 @Component({
   selector: 'app-projects-list-page',
@@ -32,18 +33,22 @@ export class ProjectsListPageComponent implements OnInit {
       setBreadcrumbs({
         breadcrumbs: [
           {
-            i18nKey: 'BREADCRUMB.HOME',
+            i18nKey: 'BREADCRUMB.MAIN',
             path: `${RoutingConstants.MAIN}`,
-            description: 'Main',
-            section: 'Home',
           },
           {
             i18nKey: 'BREADCRUMB.PROJECTS',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.PROJECTS}`,
-            description: 'Project list',
-            section: 'Projects',
           },
         ],
+      }),
+    );
+    this.store.dispatch(
+      setPageHeading({
+        pageHeading: {
+          i18nKeySection: 'PAGE-HEADING.SECTION.PROJECTS',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.PROJECTS',
+        },
       }),
     );
   }

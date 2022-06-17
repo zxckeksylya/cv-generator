@@ -1,6 +1,6 @@
 <nz-tabset>
     <nz-tab *ngFor="let item of tabs"
-            [nzTitle]="item.i18nKey">
+            [nzTitle]="item.i18nKey | translate">
         <ng-container *ngTemplateOutlet="item.contentRef"></ng-container>
 
     </nz-tab>
