@@ -1,6 +1,6 @@
 :host {
   display: block;
-  .sign-in-form {
+  & .sign-in-form {
     width: 360px;
     display: flex;
     flex-direction: column;
@@ -9,12 +9,12 @@
     }
   }
 
-  .block {
+  & .block {
     display: flex;
     justify-content: space-between;
   }
 
-  .title {
+  & .title {
     text-align: center;
   }
 }

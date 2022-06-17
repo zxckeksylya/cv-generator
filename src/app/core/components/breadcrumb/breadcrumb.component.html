@@ -1,6 +1,6 @@
 <div>
     <nz-breadcrumb>
         <nz-breadcrumb-item *ngFor="let item of breadcrumbs"
-                            [routerLink]="item.path">{{ item.name }}</nz-breadcrumb-item>
+                            [routerLink]="item.path">{{ item.i18nKey | translate }}</nz-breadcrumb-item>
     </nz-breadcrumb>
 </div>

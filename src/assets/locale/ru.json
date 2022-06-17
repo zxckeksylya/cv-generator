@@ -10,5 +10,10 @@
   "SECTION": {
     "EMPLOYEES": "Сотрудники",
     "PROJECTS": "Проекты"
+  },
+  "BREADCRUMB": {
+    "HOME": "Дом",
+    "EMPLOYEES": "Сотрудники",
+    "PROJECTS": "Проекты"
   }
 }

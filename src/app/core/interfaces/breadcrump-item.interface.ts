@@ -1,6 +1,6 @@
 export interface BreadcrumbItem {
   path: string;
-  name: string;
+  i18nKey: string;
   description: string;
   section: string;
 }

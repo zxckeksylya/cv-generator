@@ -17,7 +17,12 @@ export class MainPageComponent implements OnInit {
     this.store.dispatch(
       setBreadcrumbs({
         breadcrumbs: [
-          { name: 'Home', path: `${RoutingConstants.MAIN}`, description: 'Main', section: 'Home' },
+          {
+            i18nKey: 'BREADCRUMB.HOME',
+            path: `${RoutingConstants.MAIN}`,
+            description: 'Main',
+            section: 'Home',
+          },
         ],
       }),
     );

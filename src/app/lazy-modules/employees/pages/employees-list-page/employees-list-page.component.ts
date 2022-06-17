@@ -31,13 +31,14 @@ export class EmployeesListPageComponent implements OnInit {
       setBreadcrumbs({
         breadcrumbs: [
           {
-            name: 'Home',
+            i18nKey: 'BREADCRUMB.HOME',
+
             path: `${RoutingConstants.MAIN}`,
             description: 'Main',
             section: 'Home',
           },
           {
-            name: 'Employess',
+            i18nKey: 'BREADCRUMB.EMPLOYEES',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.EMPLOYEES}`,
             description: 'Employess list',
             section: 'Employess',

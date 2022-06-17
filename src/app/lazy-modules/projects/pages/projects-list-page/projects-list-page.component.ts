@@ -31,9 +31,14 @@ export class ProjectsListPageComponent implements OnInit {
     this.store.dispatch(
       setBreadcrumbs({
         breadcrumbs: [
-          { name: 'Home', path: `${RoutingConstants.MAIN}`, description: 'Main', section: 'Home' },
           {
-            name: 'Projects',
+            i18nKey: 'BREADCRUMB.HOME',
+            path: `${RoutingConstants.MAIN}`,
+            description: 'Main',
+            section: 'Home',
+          },
+          {
+            i18nKey: 'BREADCRUMB.PROJECTS',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.PROJECTS}`,
             description: 'Project list',
             section: 'Projects',
