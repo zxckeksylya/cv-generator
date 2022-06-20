@@ -12,7 +12,7 @@
     "PROJECTS": "Проекты"
   },
   "BREADCRUMB": {
-    "MAIN": "Дом",
+    "MAIN": "Главная",
     "EMPLOYEES": "Сотрудники",
     "PROJECTS": "Проекты"
   },
@@ -20,12 +20,12 @@
     "SECTION": {
       "EMPLOYEES": "Сотрудники",
       "PROJECTS": "Проекты",
-      "MAIN": "Дом"
+      "MAIN": "Главная"
     },
     "DESCRIPTION": {
       "EMPLOYEES": "Список сотрудников",
       "PROJECTS": "Список проектов",
-      "MAIN": "Дом"
+      "MAIN": "Главная"
     }
   },
   "SIGN_IN_PAGE": {
