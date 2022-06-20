@@ -1,3 +1,15 @@
 :host {
   height: 100%;
+  & ::ng-deep {
+    .ant-table-thead > tr > th {
+      background-color: var(--neutrals-50);
+      color: var(--neutrals-900);
+      border-bottom-color: var(--neutrals-50);
+    }
+    .ant-table-tbody > tr > td {
+      background-color: var(--neutrals-0);
+      color: var(--neutrals-900);
+      border-bottom-color: var(--neutrals-50);
+    }
+  }
 }

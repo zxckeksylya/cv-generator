@@ -32,7 +32,9 @@
     "TITLE": "Sign in",
     "FORGOT_PASS": "Forgot your password?",
     "SIGN_IN": "Sign in",
-    "REMEMBER": "Remember me"
+    "REMEMBER": "Remember me",
+    "USERNAME": "Username",
+    "PASSWORD": "Password"
   },
   "PROJECT_LIST": {
     "BUTTON": "Add projecte"

@@ -1,3 +1,7 @@
 :host {
   display: block;
+  color: var(--neutrals-900);
+  & .title {
+    color: var(--neutrals-900);
+  }
 }

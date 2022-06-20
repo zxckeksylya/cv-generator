@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.reducers';
-import { environment } from '../../../../environments/environment.prod';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '../../enums/language.enum';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-language-button',

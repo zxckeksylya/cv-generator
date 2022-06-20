@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { setBreadcrumbs } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 import { setPageHeading } from '../../../../core/store/page-heading/page-heading.actions';
+import { AppState } from '../../../../core/store/app.reducers';
 
 @Component({
   selector: 'app-main-page',
@@ -12,7 +13,7 @@ import { setPageHeading } from '../../../../core/store/page-heading/page-heading
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainPageComponent implements OnInit {
-  constructor(private store: Store, private router: Router) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   public ngOnInit(): void {
     this.store.dispatch(

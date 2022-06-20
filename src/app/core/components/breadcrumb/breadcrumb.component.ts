@@ -8,6 +8,7 @@ import {
 import { select, Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { BreadcrumbItem } from '../../interfaces/breadcrump-item.interface';
+import { AppState } from '../../store/app.reducers';
 import { breadcrumbSelector } from '../../store/breadcrumb/breadcrumb.selctors';
 
 @Component({
@@ -21,7 +22,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store, private cdr: ChangeDetectorRef) {}
+  constructor(private store: Store<AppState>, private cdr: ChangeDetectorRef) {}
 
   public ngOnInit(): void {
     this.store

@@ -1,23 +1,24 @@
 <div class="sign-in-form">
 
-    <h1 class="title">{{ 'SIGN_IN_PAGE.TITLE' | translate}}</h1>
+    <h1 class="title">{{ 'SIGN_IN_PAGE.TITLE' | translate }}</h1>
 
     <form [formGroup]="form"
           (ngSubmit)="onSubmit()">
-        <app-text-control label="Username"
+        <app-text-control [label]="'SIGN_IN_PAGE.USERNAME' | translate"
                           formControlName="username"></app-text-control>
-        <app-text-control label="Password"
+        <app-text-control [label]="'SIGN_IN_PAGE.PASSWORD' | translate"
                           formControlName="password"></app-text-control>
         <div class="block">
 
             <app-checkbox-control [label]="'SIGN_IN_PAGE.REMEMBER' |  translate"
-                                  formControlName="rember"></app-checkbox-control>
+                                  formControlName="remember"></app-checkbox-control>
             <app-button type="link"
-                        classNames="no-padding">{{ 'SIGN_IN_PAGE.FORGOT_PASS' | translate}}</app-button>
+                        classNames="no-padding">{{ 'SIGN_IN_PAGE.FORGOT_PASS' | translate }}</app-button>
         </div>
         <app-button behaviorType="submit"
                     type="primary"
                     class="sign-in-form__submit"
-                    classNames="width-100-procent">{{ 'SIGN_IN_PAGE.SIGN_IN' | translate}}</app-button>
+                    classNames="width-100-procent"
+                    [disabled]="form.invalid">{{ 'SIGN_IN_PAGE.SIGN_IN' | translate }}</app-button>
     </form>
 </div>

@@ -4,6 +4,7 @@ import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { setBreadcrumbs } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
 import { setPageHeading } from '../../../../core/store/page-heading/page-heading.actions';
+import { AppState } from 'src/app/core/store/app.reducers';
 
 @Component({
   selector: 'app-projects-list-page',
@@ -26,7 +27,7 @@ export class ProjectsListPageComponent implements OnInit {
     },
   ];
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<AppState>) {}
 
   public ngOnInit(): void {
     this.store.dispatch(

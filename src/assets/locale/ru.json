@@ -32,7 +32,9 @@
     "TITLE": "Вход",
     "FORGOT_PASS": "Забыли пароль?",
     "SIGN_IN": "Войти",
-    "REMEMBER": "Запомнить меня"
+    "REMEMBER": "Запомнить меня",
+    "USERNAME": "Имя пользователя",
+    "PASSWORD": "Пароль"
   },
   "PROJECT_LIST": {
     "BUTTON": "Добавить проект"
