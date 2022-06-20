@@ -1,9 +1,8 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
-import { Themes } from '../../enums/themes';
+import { Themes } from '../../enums/themes.enum';
 import { changeThemeAction, initThemeAction, initThemeSuccessAction } from './theme.actions';
 
 @Injectable()
@@ -38,6 +37,5 @@ export class ThemeEffects {
   constructor(
     private actions$: Actions,
     @Inject(DOCUMENT) private readonly documentRef: Document,
-    private store: Store,
   ) {}
 }

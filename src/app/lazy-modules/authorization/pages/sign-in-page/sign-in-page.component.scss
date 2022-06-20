@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  & .sign-in-form {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    &__submit {
+      width: 100%;
+    }
+  }
+
+  & .block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & .title {
+    text-align: center;
+    color: var(--neutrals-900);
+  }
+}

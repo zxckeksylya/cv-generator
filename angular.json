@@ -36,7 +36,12 @@
                 "output": "/assets/"
               }
             ],
-            "styles": ["src/theme.less", "src/styles.scss", "src/styles/base-control.styles.scss"],
+            "styles": [
+              "src/theme.less",
+              "src/styles.scss",
+              "src/styles/base-control.styles.scss",
+              "src/styles/base-page.styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -99,7 +104,11 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss", "src/styles/base-control.styles.scss"],
+            "styles": [
+              "src/styles.scss",
+              "src/styles/base-control.styles.scss",
+              "src/styles/base-page.styles.scss"
+            ],
             "scripts": []
           }
         },

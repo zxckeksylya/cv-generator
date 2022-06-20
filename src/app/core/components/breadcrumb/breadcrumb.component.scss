@@ -1,0 +1,16 @@
+:host {
+  display: block;
+
+  &::ng-deep {
+    .ant-breadcrumb-separator {
+      color: var(--neutrals-500);
+    }
+    .ant-breadcrumb > nz-breadcrumb-item:last-child {
+      color: var(--neutrals-900);
+    }
+
+    .ant-breadcrumb {
+      color: var(--neutrals-500);
+    }
+  }
+}

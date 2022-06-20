@@ -6,5 +6,40 @@
     "EN": "Английский",
     "RU": "Русский",
     "TITLE": "Язык"
+  },
+  "SECTION": {
+    "EMPLOYEES": "Сотрудники",
+    "PROJECTS": "Проекты"
+  },
+  "BREADCRUMB": {
+    "MAIN": "Главная",
+    "EMPLOYEES": "Сотрудники",
+    "PROJECTS": "Проекты"
+  },
+  "PAGE-HEADING": {
+    "SECTION": {
+      "EMPLOYEES": "Сотрудники",
+      "PROJECTS": "Проекты",
+      "MAIN": "Главная"
+    },
+    "DESCRIPTION": {
+      "EMPLOYEES": "Список сотрудников",
+      "PROJECTS": "Список проектов",
+      "MAIN": "Главная"
+    }
+  },
+  "SIGN_IN_PAGE": {
+    "TITLE": "Вход",
+    "FORGOT_PASS": "Забыли пароль?",
+    "SIGN_IN": "Войти",
+    "REMEMBER": "Запомнить меня",
+    "USERNAME": "Имя пользователя",
+    "PASSWORD": "Пароль"
+  },
+  "PROJECT_LIST": {
+    "BUTTON": "Добавить проект"
+  },
+  "EMPLOYEES_LIST": {
+    "BUTTON": "Добавить сотрудника"
   }
 }

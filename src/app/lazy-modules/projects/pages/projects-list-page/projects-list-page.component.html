@@ -1,0 +1,16 @@
+<div class="base-page">
+    <div class="list-button">
+        <app-button class="button"
+                    type="primary">{{ 'PROJECT_LIST.BUTTON' | translate}}</app-button>
+    </div>
+    <app-table [source]="listOfData"
+               [headerItems]="headerData"
+               [rowTemplateRef]="rowRef">
+        <ng-template #rowRef
+                     let-item>
+            <tr>
+                <td>{{ item.name }}</td>
+            </tr>
+        </ng-template>
+    </app-table>
+</div>

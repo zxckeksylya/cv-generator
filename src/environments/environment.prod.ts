@@ -1,5 +1,6 @@
+import { Language } from '../app/core/enums/language.enum';
 export const environment = {
   production: true,
-  locales: ['en', 'ru'],
-  defaultLocale: 'en',
+  locales: [Language.ENGLISH, Language.RUSSIAN],
+  defaultLocale: Language.ENGLISH,
 };

@@ -32,6 +32,6 @@ export const httpLoaderFactory = (http: HttpClient): TranslateLoader =>
 })
 export class AppTranslateModule {
   constructor(private translateService: TranslateService) {
-    this.translateService.use(environment.defaultLocale);
+    this.translateService.use(localStorage.getItem('language') || environment.defaultLocale);
   }
 }

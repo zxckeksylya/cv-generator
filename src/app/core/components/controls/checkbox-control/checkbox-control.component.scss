@@ -1,3 +1,13 @@
-.app-checkbox-control {
-  display: block;
+:host {
+  &::ng-deep {
+    .ant-checkbox-wrapper {
+      color: var(--neutrals-900);
+    }
+    .ant-checkbox-checked .ant-checkbox-inner {
+      background-color: var(--primary-800);
+    }
+  }
+  .app-checkbox-control {
+    display: block;
+  }
 }

@@ -16,7 +16,7 @@ const routes: Routes = [
         path: `${RoutingConstants.EMPLOYEES}`,
         loadChildren: () => import('../employees/employees.module').then((m) => m.EmployeesModule),
       },
-      { path: '', redirectTo: `${RoutingConstants.EMPLOYEES}` },
+      { path: '**', redirectTo: `${RoutingConstants.EMPLOYEES}` },
     ],
   },
   { path: '**', redirectTo: `${RoutingConstants.EMPLOYEES}` },
