@@ -38,8 +38,8 @@ export class AuthorizationEffects {
     this.$actions.pipe(
       ofType(loginAction),
       switchMap(({ email, password }) => this.authorizationService.login(email, password)),
-      switchMap(async ({ accessToken }) => changeTokenAction({ accessToken })),
-      //catchError(async (parameter) => initAlertsAction({parameter})),
+      map(({ accessToken }) => changeTokenAction({ accessToken })),
+      //catchError(async () => initAlertsAction()),
     ),
   );
 

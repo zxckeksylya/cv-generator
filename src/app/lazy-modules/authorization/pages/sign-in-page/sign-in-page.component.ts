@@ -23,7 +23,6 @@ export class SignInPageComponent implements OnInit {
     if (this.form.valid) {
       this.form.disable();
       this.store.dispatch(loginAction(this.form.getRawValue()));
-      this.form.reset();
       this.form.enable();
     }
   }
