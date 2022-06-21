@@ -1,5 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { loginAction } from 'src/app/core/store/autorization/autorization.actions';
+import { AppState } from '../../../../core/store/app.reducers';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -10,7 +13,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class SignInPageComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {}
 
   public ngOnInit(): void {
     this.initMyForm();
@@ -18,13 +21,16 @@ export class SignInPageComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.form.valid) {
+      this.form.disable();
+      this.store.dispatch(loginAction(this.form.getRawValue()));
       this.form.reset();
+      this.form.enable();
     }
   }
 
   private initMyForm(): void {
     this.form = this.formBuilder.group({
-      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       remember: [false],
     });

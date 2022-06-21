@@ -5,7 +5,7 @@
     <form [formGroup]="form"
           (ngSubmit)="onSubmit()">
         <app-text-control [label]="'SIGN_IN_PAGE.USERNAME' | translate"
-                          formControlName="username"></app-text-control>
+                          formControlName="email"></app-text-control>
         <app-text-control [label]="'SIGN_IN_PAGE.PASSWORD' | translate"
                           formControlName="password"></app-text-control>
         <div class="block">

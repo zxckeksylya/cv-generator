@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './core/store/app.reducers';
 import { initThemeAction } from './core/store/theme/theme.actions';
 import { TranslateService } from '@ngx-translate/core';
+import { initTokenAction } from './core/store/autorization/autorization.actions';
 
 @Component({
   selector: 'app-root',
@@ -15,5 +16,6 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.dispatch(initThemeAction());
+    this.store.dispatch(initTokenAction());
   }
 }
