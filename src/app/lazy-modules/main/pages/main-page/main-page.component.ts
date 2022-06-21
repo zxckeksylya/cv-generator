@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { setBreadcrumbs } from '../../../../core/store/breadcrumb/breadcrumb.actions';
-import { setPageHeading } from '../../../../core/store/page-heading/page-heading.actions';
+import { setBreadcrumbsAction } from '../../../../core/store/breadcrumb/breadcrumb.actions';
+import { setPageHeadingAction } from '../../../../core/store/page-heading/page-heading.actions';
 import { AppState } from '../../../../core/store/app.reducers';
 
 @Component({
@@ -17,7 +17,7 @@ export class MainPageComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.dispatch(
-      setBreadcrumbs({
+      setBreadcrumbsAction({
         breadcrumbs: [
           {
             i18nKey: 'BREADCRUMB.MAIN',
@@ -27,7 +27,7 @@ export class MainPageComponent implements OnInit {
       }),
     );
     this.store.dispatch(
-      setPageHeading({
+      setPageHeadingAction({
         pageHeading: {
           i18nKeySection: 'PAGE-HEADING.SECTION.MAIN',
           i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.MAIN',

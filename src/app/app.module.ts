@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppTranslateModule } from './core/app-translate/app-translate.module';
 import { AppStoreModule } from './core/store/app-store.module';
+import { MessageAlertModule } from './core/components/message-alert/message-alert.module';
 
 registerLocaleData(en);
 
@@ -21,6 +22,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     AppStoreModule,
     AppTranslateModule,
+    MessageAlertModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
