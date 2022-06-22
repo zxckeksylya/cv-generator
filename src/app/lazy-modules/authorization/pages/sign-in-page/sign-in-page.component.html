@@ -3,7 +3,8 @@
     <h1 class="title">{{ 'SIGN_IN_PAGE.TITLE' | translate }}</h1>
 
     <form [formGroup]="form"
-          (ngSubmit)="onSubmit()">
+          (ngSubmit)="onSubmit()"
+          novalidate>
         <app-text-control [label]="'SIGN_IN_PAGE.USERNAME' | translate"
                           formControlName="email"></app-text-control>
         <app-text-control [label]="'SIGN_IN_PAGE.PASSWORD' | translate"
