@@ -21,8 +21,11 @@ import { setAlertsAction } from '../../store/alert/alert.actions';
 })
 export class MessageAlertComponent implements OnInit, OnDestroy {
   public errors: string[] = [];
+
   private $destroy = new Subject<void>();
+
   @ViewChild(TemplateRef, { static: false }) template?: TemplateRef<{}>;
+
   constructor(private notifactionService: NzNotificationService, private store: Store<AppState>) {}
 
   public ngOnInit(): void {
@@ -36,6 +39,7 @@ export class MessageAlertComponent implements OnInit, OnDestroy {
       }
     });
   }
+
   public ngOnDestroy(): void {
     this.$destroy.next();
     this.$destroy.complete();

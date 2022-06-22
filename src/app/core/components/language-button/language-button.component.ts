@@ -54,7 +54,11 @@ export class LanguageButtonComponent implements OnInit, OnDestroy {
       newLanguage = this.languages[selectedLanguageIndex + 1];
     }
     this.commitLanguage(newLanguage as Language);
-    this.store.dispatch(setAlertsAction({ errors: ['asdas', 'adasd'] }));
+    this.store.dispatch(
+      setAlertsAction({
+        errors: ['asdabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbs', 'adasd'],
+      }),
+    );
   }
 
   private commitLanguage(language: Language): void {
