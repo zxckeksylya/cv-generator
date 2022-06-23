@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ServerConstants } from '../constants/server.constants';
 import { Observable } from 'rxjs';
-import { AuthorizationLoginResponce } from '../interfaces/authorization-login-responce.interface';
+import { AuthorizationLoginResponse } from '../interfaces/authorization-login-response.interface';
+import { environment } from 'src/environments/environment';
+import { LoginForm } from '../interfaces/login-form.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthorizationService {
   constructor(private http: HttpClient) {}
-  public login(email: string, password: string): Observable<AuthorizationLoginResponce> {
-    return this.http.post<AuthorizationLoginResponce>(
-      `${ServerConstants.HOST}/${ServerConstants.AUTH}/${ServerConstants.LOGIN}`,
-      { email, password },
-    );
+
+  public login(loginForm: LoginForm): Observable<AuthorizationLoginResponse> {
+    return this.http.post<AuthorizationLoginResponse>(`${environment.host}/auth/login`, loginForm);
   }
 }
