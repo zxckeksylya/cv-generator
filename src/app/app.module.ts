@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppTranslateModule } from './core/app-translate/app-translate.module';
 import { AppStoreModule } from './core/store/app-store.module';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 registerLocaleData(en);
 
@@ -21,6 +22,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     AppStoreModule,
     AppTranslateModule,
+    NzNotificationModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
