@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap, catchError } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs';
 import {
   initTokenAction,
   initTokenSuccessAction,
   changeTokenAction,
   loginUserAction,
   loginUserSuccessAction,
+  loginUserFailedAction,
 } from './authorization.actions';
 import { AuthorizationService } from '../../services/authorization.service';
 import { Router } from '@angular/router';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { loginUserFailedAction } from './authorization.actions';
 
 @Injectable()
 export class AuthorizationEffects {
@@ -41,7 +41,7 @@ export class AuthorizationEffects {
       ofType(loginUserAction),
       switchMap((loginUser) => this.authorizationService.login(loginUser)),
       map(({ accessToken }) => loginUserSuccessAction({ accessToken })),
-      catchError(map(() => loginUserFailedAction())),
+      catchError(async () => loginUserFailedAction()),
     ),
   );
 
