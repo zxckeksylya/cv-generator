@@ -11,7 +11,6 @@ import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '../../enums/language.enum';
 import { environment } from 'src/environments/environment';
-import { setAlertsAction } from '../../store/alert/alert.actions';
 
 @Component({
   selector: 'app-language-button',
@@ -54,11 +53,6 @@ export class LanguageButtonComponent implements OnInit, OnDestroy {
       newLanguage = this.languages[selectedLanguageIndex + 1];
     }
     this.commitLanguage(newLanguage as Language);
-    this.store.dispatch(
-      setAlertsAction({
-        errors: ['asdabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbs', 'adasd'],
-      }),
-    );
   }
 
   private commitLanguage(language: Language): void {
