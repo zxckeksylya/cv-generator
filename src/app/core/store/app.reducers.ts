@@ -15,7 +15,7 @@ import {
   AUTHORIZATION_FEATURE_KEY,
   AuthorizationState,
   authorizationReducer,
-} from './autorization/autorization.reducers';
+} from './authorization/authorization.reducers';
 
 export interface AppState {
   [THEME_FEATURE_KEY]: ThemeState;
