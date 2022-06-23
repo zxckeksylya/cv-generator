@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { loginAction } from 'src/app/core/store/autorization/autorization.actions';
+import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../../core/store/app.reducers';
+import { loginUserAction } from '../../../../core/store/authorization/authorization.actions';
+import { formEnabledSelector } from '../../../../core/store/authorization/authorization.selectors';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -17,15 +18,20 @@ export class SignInPageComponent implements OnInit {
 
   public ngOnInit(): void {
     this.initMyForm();
+    this.store.pipe(select(formEnabledSelector)).subscribe((isEnabled) => {
+      if (isEnabled) {
+        this.form.enable();
+      } else {
+        this.form.disable();
+      }
+    });
   }
 
   public onSubmit(): void {
-    if (this.form.valid) {
-      this.form.disable();
-      this.store.dispatch(loginAction(this.form.getRawValue()));
-      this.form.enable();
-      this.form.reset();
+    if (this.form.invalid) {
+      return;
     }
+    this.store.dispatch(loginUserAction(this.form.getRawValue()));
   }
 
   private initMyForm(): void {
