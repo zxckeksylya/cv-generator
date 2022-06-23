@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 import { AppEffects } from './app.effects';
 import { metaReducers, reducers } from './app.reducers';
 import { ThemeEffects } from './theme/theme.effects';
-import { AuthorizationEffects } from './autorization/autorization.effects';
+import { AuthorizationEffects } from './authorization/authorization.effects';
 
 @NgModule({
   imports: [
