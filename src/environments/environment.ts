@@ -8,6 +8,7 @@ export const environment = {
   production: false,
   locales: [Language.ENGLISH, Language.RUSSIAN],
   defaultLocale: Language.ENGLISH,
+  host: 'https://innowise-cv-generator.herokuapp.com',
 };
 
 /*
