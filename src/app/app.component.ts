@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './core/store/app.reducers';
 import { initThemeAction } from './core/store/theme/theme.actions';
 import { TranslateService } from '@ngx-translate/core';
-import { initTokenAction } from './core/store/autorization/autorization.actions';
+import { initTokenAction } from './core/store/authorization/authorization.actions';
 
 @Component({
   selector: 'app-root',
