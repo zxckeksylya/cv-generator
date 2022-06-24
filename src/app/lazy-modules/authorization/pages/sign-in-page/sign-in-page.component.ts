@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
 import { AppState } from '../../../../core/store/app.reducers';
 import { loginUserAction } from '../../../../core/store/authorization/authorization.actions';
 import { formEnabledSelector } from '../../../../core/store/authorization/authorization.selectors';
@@ -11,20 +12,29 @@ import { formEnabledSelector } from '../../../../core/store/authorization/author
   styleUrls: ['./sign-in-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignInPageComponent implements OnInit {
+export class SignInPageComponent implements OnInit, OnDestroy {
   public form: FormGroup;
+
+  private destroy$ = new Subject<void>();
 
   constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {}
 
   public ngOnInit(): void {
     this.initMyForm();
-    this.store.pipe(select(formEnabledSelector)).subscribe((isEnabled) => {
-      if (isEnabled) {
-        this.form.enable();
-      } else {
-        this.form.disable();
-      }
-    });
+    this.store
+      .pipe(takeUntil(this.destroy$), select(formEnabledSelector))
+      .subscribe((isEnabled) => {
+        if (isEnabled) {
+          this.form.enable();
+        } else {
+          this.form.disable();
+        }
+      });
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   public onSubmit(): void {

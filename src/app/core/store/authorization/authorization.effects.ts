@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import {
   initTokenAction,
   initTokenSuccessAction,
@@ -41,7 +41,7 @@ export class AuthorizationEffects {
       ofType(loginUserAction),
       switchMap((loginUser) => this.authorizationService.login(loginUser)),
       map(({ accessToken }) => loginUserSuccessAction({ accessToken })),
-      catchError(async () => loginUserFailedAction()),
+      catchError(() => of(loginUserFailedAction())),
     ),
   );
 

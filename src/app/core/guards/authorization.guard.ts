@@ -1,5 +1,5 @@
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { CanActivate, Router } from '@angular/router';
+import { map, Observable, take } from 'rxjs';
 import { AppState } from '../store/app.reducers';
 import { Store, select } from '@ngrx/store';
 import { Injectable } from '@angular/core';
@@ -12,10 +12,7 @@ import { RoutingConstants } from '../constants/routing.constants';
 export class AuthorizationGuard implements CanActivate {
   constructor(private store: Store<AppState>, private route: Router) {}
 
-  public canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ): Observable<boolean> {
+  public canActivate(): Observable<boolean> {
     return this.store.pipe(
       select(authorizationSelector),
       map((token) => {
@@ -25,13 +22,11 @@ export class AuthorizationGuard implements CanActivate {
         this.route.navigate([RoutingConstants.AUTHORIZATION]);
         return false;
       }),
+      take(1),
     );
   }
 
-  public canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ): Observable<boolean> {
-    return this.canActivate(childRoute, state);
+  public canActivateChild(): Observable<boolean> {
+    return this.canActivate();
   }
 }
