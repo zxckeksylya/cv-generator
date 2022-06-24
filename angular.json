@@ -40,8 +40,7 @@
               "src/theme.less",
               "src/styles.scss",
               "src/styles/base-control.styles.scss",
-              "src/styles/base-page.styles.scss",
-              "src/styles/notification.styles.scss"
+              "src/styles/base-page.styles.scss"
             ],
             "scripts": []
           },
@@ -108,8 +107,7 @@
             "styles": [
               "src/styles.scss",
               "src/styles/base-control.styles.scss",
-              "src/styles/base-page.styles.scss",
-              "src/styles/notification.styles.scss"
+              "src/styles/base-page.styles.scss"
             ],
             "scripts": []
           }
