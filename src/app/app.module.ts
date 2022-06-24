@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import en from '@angular/common/locales/en';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppTranslateModule } from './core/app-translate/app-translate.module';
 import { AppStoreModule } from './core/store/app-store.module';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 registerLocaleData(en);
 
@@ -24,7 +25,14 @@ registerLocaleData(en);
     AppTranslateModule,
     NzNotificationModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
