@@ -15,6 +15,7 @@ export class AuthorizationGuard implements CanActivate {
   public canActivate(): Observable<boolean> {
     return this.store.pipe(
       select(authorizationSelector),
+      take(1),
       map((token) => {
         if (token) {
           return true;
@@ -22,7 +23,6 @@ export class AuthorizationGuard implements CanActivate {
         this.route.navigate([RoutingConstants.AUTHORIZATION]);
         return false;
       }),
-      take(1),
     );
   }
 

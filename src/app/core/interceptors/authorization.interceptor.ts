@@ -10,15 +10,18 @@ const blackListForUrls = [`${environment.host}/auth/login`];
 
 @Injectable()
 export class AuthorizationInterceptor implements HttpInterceptor {
+  private token = '';
   constructor(private store: State<AppState>) {}
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!blackListForUrls.includes(req.url)) {
-      const token = this.store.pipe(select(authorizationSelector), take(1));
-      if (token) {
+      this.store
+        .pipe(select(authorizationSelector), take(1))
+        .subscribe((value) => (this.token = value));
+      if (this.token) {
         req = req.clone({
           setHeaders: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${this.token}`,
           },
         });
       }
