@@ -35,7 +35,6 @@ export class AuthorizationInterceptor implements HttpInterceptor {
               if (error.error.statusCode === 401) {
                 this.store.dispatch(clearAppStateAction());
                 this.route.navigate([RoutingConstants.AUTHORIZATION, RoutingConstants.LOGIN]);
-                return throwError(error);
               }
               return throwError(error);
             }),
