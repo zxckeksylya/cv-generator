@@ -11,10 +11,12 @@ const routes: Routes = [
       {
         path: `${RoutingConstants.PROJECTS}`,
         loadChildren: () => import('../projects/projects.module').then((m) => m.ProjectsModule),
+        title: RoutingConstants.PROJECTS,
       },
       {
         path: `${RoutingConstants.EMPLOYEES}`,
         loadChildren: () => import('../employees/employees.module').then((m) => m.EmployeesModule),
+        title: RoutingConstants.EMPLOYEES,
       },
       { path: '**', redirectTo: `${RoutingConstants.EMPLOYEES}` },
     ],

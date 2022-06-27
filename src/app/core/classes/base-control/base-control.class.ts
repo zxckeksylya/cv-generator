@@ -1,5 +1,6 @@
 import { Directive, DoCheck, Input, OnDestroy, OnInit, Optional } from '@angular/core';
-import { ControlValueAccessor, UntypedFormControl, NgControl, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { I18nKeyMessageConfig } from '../../interfaces/i18n-key-message-config.interface';
 
@@ -13,7 +14,7 @@ export class BaseControl implements ControlValueAccessor, OnInit, DoCheck, OnDes
   @Input() public classNames = '';
   @Input() public elementId = '';
 
-  public formControl = new UntypedFormControl();
+  public formControl = new FormControl();
   public required: boolean | undefined;
 
   private destroy$ = new Subject<void>();
