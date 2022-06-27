@@ -4,7 +4,7 @@ import { AuthorizationState, AUTHORIZATION_FEATURE_KEY } from './authorization.r
 export const authorizationFeatureSelector =
   createFeatureSelector<AuthorizationState>(AUTHORIZATION_FEATURE_KEY);
 
-export const authorizationSelector = createSelector(
+export const accessTokenSelector = createSelector(
   authorizationFeatureSelector,
   (state) => state.accessToken,
 );

@@ -1,10 +1,10 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { select, State } from '@ngrx/store';
-import { Observable, take } from 'rxjs';
+import { Observable, take, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AppState } from '../store/app.reducers';
-import { authorizationSelector } from '../store/authorization/authorization.selectors';
+import { accessTokenSelector } from '../store/authorization/authorization.selectors';
 
 const blackListForUrls = [`${environment.host}/auth/login`];
 
@@ -15,16 +15,20 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!blackListForUrls.includes(req.url)) {
-      this.store
-        .pipe(select(authorizationSelector), take(1))
-        .subscribe((value) => (this.token = value));
-      if (this.token) {
-        req = req.clone({
-          setHeaders: {
-            Authorization: `Bearer ${this.token}`,
-          },
-        });
-      }
+      return this.store.pipe(
+        select(accessTokenSelector),
+        take(1),
+        switchMap((token) => {
+          if (token) {
+            req = req.clone({
+              setHeaders: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
+          }
+          return next.handle(req);
+        }),
+      );
     }
     return next.handle(req);
   }
