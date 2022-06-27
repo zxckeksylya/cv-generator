@@ -1,6 +1,6 @@
 import { PageHeadingItem } from '../../interfaces/page-heading-item.interface';
 import { createReducer, on } from '@ngrx/store';
-import { setPageHeading } from './page-heading.actions';
+import { setPageHeadingAction } from './page-heading.actions';
 
 export const PAGE_HEADING_FEATURE_KEY = 'pageHeading';
 
@@ -17,7 +17,7 @@ export const initionalPageHeadingState: PageHeadingState = {
 
 export const pageHeadingReducer = createReducer(
   initionalPageHeadingState,
-  on(setPageHeading, (state, action) => ({
+  on(setPageHeadingAction, (state, action) => ({
     ...state,
     pageHeading: action.pageHeading,
   })),

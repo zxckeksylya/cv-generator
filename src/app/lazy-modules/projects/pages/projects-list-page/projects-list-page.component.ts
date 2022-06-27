@@ -1,9 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { setBreadcrumbs } from '../../../../core/store/breadcrumb/breadcrumb.actions';
+import { setBreadcrumbsAction } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
-import { setPageHeading } from '../../../../core/store/page-heading/page-heading.actions';
+import { setPageHeadingAction } from '../../../../core/store/page-heading/page-heading.actions';
 import { AppState } from 'src/app/core/store/app.reducers';
 
 @Component({
@@ -31,7 +31,7 @@ export class ProjectsListPageComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.dispatch(
-      setBreadcrumbs({
+      setBreadcrumbsAction({
         breadcrumbs: [
           {
             i18nKey: 'BREADCRUMB.MAIN',
@@ -45,7 +45,7 @@ export class ProjectsListPageComponent implements OnInit {
       }),
     );
     this.store.dispatch(
-      setPageHeading({
+      setPageHeadingAction({
         pageHeading: {
           i18nKeySection: 'PAGE-HEADING.SECTION.PROJECTS',
           i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.PROJECTS',
