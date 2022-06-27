@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { AppState } from '../../../../core/store/app.reducers';
@@ -13,11 +13,11 @@ import { formEnabledSelector } from '../../../../core/store/authorization/author
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInPageComponent implements OnInit, OnDestroy {
-  public form: FormGroup;
+  public form: UntypedFormGroup;
 
   private destroy$ = new Subject<void>();
 
-  constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {}
+  constructor(private formBuilder: UntypedFormBuilder, private store: Store<AppState>) {}
 
   public ngOnInit(): void {
     this.initMyForm();
