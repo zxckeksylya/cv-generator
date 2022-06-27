@@ -12,6 +12,7 @@ const routes: Routes = [
       {
         path: RoutingConstants.LOGIN,
         component: SignInPageComponent,
+        title: RoutingConstants.LOGIN,
       },
       { path: '**', redirectTo: RoutingConstants.LOGIN },
     ],

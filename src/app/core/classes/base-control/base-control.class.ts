@@ -1,5 +1,6 @@
 import { Directive, DoCheck, Input, OnDestroy, OnInit, Optional } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { I18nKeyMessageConfig } from '../../interfaces/i18n-key-message-config.interface';
 
