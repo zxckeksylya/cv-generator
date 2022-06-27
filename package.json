@@ -9,7 +9,7 @@
     "test": "ng test",
     "prepare": "husky install",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "npm run docs:json && start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",
     "lint": "ng lint"
   },
