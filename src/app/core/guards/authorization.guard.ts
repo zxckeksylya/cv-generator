@@ -3,8 +3,8 @@ import { map, Observable, take } from 'rxjs';
 import { AppState } from '../store/app.reducers';
 import { Store, select } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-import { authorizationSelector } from '../store/authorization/authorization.selectors';
 import { RoutingConstants } from '../constants/routing.constants';
+import { accessTokenSelector } from '../store/authorization/authorization.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class AuthorizationGuard implements CanActivate {
 
   public canActivate(): Observable<boolean> {
     return this.store.pipe(
-      select(authorizationSelector),
+      select(accessTokenSelector),
       take(1),
       map((token) => {
         if (token) {
