@@ -3,4 +3,5 @@ export const environment = {
   production: true,
   locales: [Language.ENGLISH, Language.RUSSIAN],
   defaultLocale: Language.ENGLISH,
+  host: 'https://innowise-cv-generator.herokuapp.com',
 };

@@ -16,10 +16,7 @@
   .ant-form-item-explain-error {
     color: var(--error);
   }
-  .ant-form-item-has-error :not(.ant-input-disabled):not(.ant-input-borderless).ant-input {
-    background-color: var(--neutrals-0);
-    border-color: var(--error);
-  }
+
   display: flex;
   flex-direction: column;
 
@@ -55,5 +52,9 @@
   }
   .success {
     border-color: var(--success);
+  }
+  &.ant-form-item-has-error :not(.ant-input-disabled):not(.ant-input-borderless).ant-input {
+    background-color: var(--neutrals-0);
+    border-color: var(--error);
   }
 }

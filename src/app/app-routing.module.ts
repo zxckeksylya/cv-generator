@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RoutingConstants } from './core/constants/routing.constants';
+import { AuthorizationGuard } from './core/guards/authorization.guard';
 const routes: Routes = [
   {
     path: RoutingConstants.AUTHORIZATION,
@@ -12,6 +13,7 @@ const routes: Routes = [
   {
     path: RoutingConstants.MAIN,
     loadChildren: () => import('./lazy-modules/main/main.module').then((m) => m.MainModule),
+    canActivate: [AuthorizationGuard],
   },
   {
     path: '**',

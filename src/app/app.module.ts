@@ -11,6 +11,7 @@ import { AppTranslateModule } from './core/app-translate/app-translate.module';
 import { AppStoreModule } from './core/store/app-store.module';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { AuthorizationInterceptor } from './core/interceptors/authorization.interceptor';
 
 registerLocaleData(en);
 
@@ -30,6 +31,11 @@ registerLocaleData(en);
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationInterceptor,
       multi: true,
     },
   ],
