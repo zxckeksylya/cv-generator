@@ -8,12 +8,12 @@ export interface ProjectsState {
   projects: GetProject[];
 }
 
-export const initionalProjectsState: ProjectsState = {
+export const initialProjectsState: ProjectsState = {
   projects: [],
 };
 
 export const projectsReducer = createReducer(
-  initionalProjectsState,
+  initialProjectsState,
   on(getProjectsSuccessAction, (state, action) => ({
     ...state,
     projects: action.projects,
