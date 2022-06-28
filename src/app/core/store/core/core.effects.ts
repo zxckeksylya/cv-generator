@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducers';
-import { map } from 'rxjs';
+import { tap } from 'rxjs';
 import { clearAppStateAction } from './core.actions';
 import { clearAuthorizationStateAction } from '../authorization/authorization.actions';
 import { clearBreadcrumbsStateAction } from '../breadcrumb/breadcrumb.actions';
@@ -14,7 +14,7 @@ export class CoreEffects {
     () =>
       this.actions$.pipe(
         ofType(clearAppStateAction),
-        map(() => {
+        tap(() => {
           this.store.dispatch(clearAuthorizationStateAction());
           this.store.dispatch(clearBreadcrumbsStateAction());
           this.store.dispatch(clearPageHeadingStateAction());
