@@ -16,12 +16,14 @@ import {
   AuthorizationState,
   authorizationReducer,
 } from './authorization/authorization.reducers';
+import { PROJECTS_FEATURE_KEY, ProjectsState, projectsReducer } from './projects/projects.reducers';
 
 export interface AppState {
   [THEME_FEATURE_KEY]: ThemeState;
   [BREADCRUMB_FEATURE_KEY]: BreadcrumbState;
   [PAGE_HEADING_FEATURE_KEY]: PageHeadingState;
   [AUTHORIZATION_FEATURE_KEY]: AuthorizationState;
+  [PROJECTS_FEATURE_KEY]: ProjectsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -29,6 +31,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [BREADCRUMB_FEATURE_KEY]: breadcrumbReducer,
   [PAGE_HEADING_FEATURE_KEY]: pageHeadingReducer,
   [AUTHORIZATION_FEATURE_KEY]: authorizationReducer,
+  [PROJECTS_FEATURE_KEY]: projectsReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
