@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { clearAuthorizationStateSuccessAction } from './authorization.actions';
 import {
   initTokenSuccessAction,
   loginUserAction,
@@ -13,13 +14,13 @@ export interface AuthorizationState {
   formEnabled: boolean;
 }
 
-export const initionalAuthorizationState: AuthorizationState = {
+export const initialAuthorizationState: AuthorizationState = {
   accessToken: '',
   formEnabled: true,
 };
 
 export const authorizationReducer = createReducer(
-  initionalAuthorizationState,
+  initialAuthorizationState,
   on(initTokenSuccessAction, (state, action) => ({
     ...state,
     accessToken: action.accessToken,
@@ -31,5 +32,8 @@ export const authorizationReducer = createReducer(
   on(loginUserSuccessAction, loginUserFailedAction, (state) => ({
     ...state,
     formEnabled: true,
+  })),
+  on(clearAuthorizationStateSuccessAction, () => ({
+    ...initialAuthorizationState,
   })),
 );

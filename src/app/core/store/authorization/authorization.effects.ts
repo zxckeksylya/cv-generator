@@ -12,6 +12,10 @@ import {
 import { AuthorizationService } from '../../services/authorization.service';
 import { Router } from '@angular/router';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
+import {
+  clearAuthorizationStateAction,
+  clearAuthorizationStateSuccessAction,
+} from './authorization.actions';
 
 @Injectable()
 export class AuthorizationEffects {
@@ -49,6 +53,16 @@ export class AuthorizationEffects {
     this.actions$.pipe(
       ofType(loginUserSuccessAction),
       map((accessToken) => changeTokenAction(accessToken)),
+    ),
+  );
+
+  public clearAuthorizationState$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(clearAuthorizationStateAction),
+      map(() => {
+        localStorage.removeItem('token');
+        return clearAuthorizationStateSuccessAction();
+      }),
     ),
   );
 

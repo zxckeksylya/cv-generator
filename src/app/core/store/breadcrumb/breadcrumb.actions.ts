@@ -7,3 +7,5 @@ export const setBreadcrumbsAction = createAction(
     breadcrumbs: BreadcrumbItem[];
   }>(),
 );
+
+export const clearBreadcrumbsStateAction = createAction('[BREADCRUMBS] clear breadcrumbs');

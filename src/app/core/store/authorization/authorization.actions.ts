@@ -22,3 +22,11 @@ export const changeTokenAction = createAction(
   '[AUTHORIZATION] change access token',
   props<AccessToken>(),
 );
+
+export const clearAuthorizationStateAction = createAction(
+  '[AUTHORIZATION] clear authorization state',
+);
+
+export const clearAuthorizationStateSuccessAction = createAction(
+  '[AUTHORIZATION] success clear authorization state',
+);
