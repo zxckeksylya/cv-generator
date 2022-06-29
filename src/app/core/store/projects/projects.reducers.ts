@@ -1,21 +1,29 @@
 import { createReducer, on } from '@ngrx/store';
-import { GetProject } from '../../interfaces/project/get-project.interface';
-import { getProjectsSuccessAction } from './projects.actions';
+import { ProjectMap } from '../../interfaces/project.interface';
+import { getProjectByIdSuccessAction, getProjectsSuccessAction } from './projects.actions';
+import { arrayProjectsToMap } from '../../utils/projects/array-projects-to-map.util';
 
 export const PROJECTS_FEATURE_KEY = 'projects';
 
 export interface ProjectsState {
-  projects: GetProject[];
+  projects: ProjectMap;
 }
 
 export const initialProjectsState: ProjectsState = {
-  projects: [],
+  projects: {},
 };
 
 export const projectsReducer = createReducer(
   initialProjectsState,
+  on(getProjectByIdSuccessAction, (state, project) => ({
+    ...state,
+    projects: {
+      ...state.projects,
+      [project.id]: project,
+    },
+  })),
   on(getProjectsSuccessAction, (state, action) => ({
     ...state,
-    projects: action.projects,
+    projects: arrayProjectsToMap(action.projects),
   })),
 );

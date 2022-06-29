@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
+import { getProjectByIdAction, getProjectByIdSuccessAction } from './projects.actions';
 import {
   deleteProjectAction,
   deleteProjectSuccessAction,
@@ -19,9 +20,17 @@ import {
 export class ProjectsEffect {
   public getProjects$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getProjectsAction),
+      ofType(getProjectsAction, deleteProjectSuccessAction),
       switchMap(() => this.projectsService.getProjects()),
       map((projects) => getProjectsSuccessAction({ projects })),
+    ),
+  );
+
+  public getProjectById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getProjectByIdAction, createProjectSuccessAction, updateProjectSuccessAction),
+      switchMap((item) => this.projectsService.getProjectById(item.id)),
+      map((project) => getProjectByIdSuccessAction(project)),
     ),
   );
 
@@ -29,7 +38,7 @@ export class ProjectsEffect {
     this.actions$.pipe(
       ofType(createProjectAction),
       switchMap((project) => this.projectsService.createProject(project)),
-      map((project) => createProjectSuccessAction({ project })),
+      map((project) => createProjectSuccessAction(project)),
     ),
   );
 
@@ -44,7 +53,7 @@ export class ProjectsEffect {
   public deleteProject$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteProjectAction),
-      switchMap(({ id }) => this.projectsService.deleteProject(id)),
+      switchMap((deleteProject) => this.projectsService.deleteProject(deleteProject)),
       map(() => deleteProjectSuccessAction()),
     ),
   );

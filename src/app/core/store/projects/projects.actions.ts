@@ -1,8 +1,10 @@
 import { createAction, props } from '@ngrx/store';
-import { CreateProjectResponse } from '../../interfaces/project/create-project-response.interface';
-import { CreateProject } from '../../interfaces/project/create-project.interface';
-import { GetProject } from '../../interfaces/project/get-project.interface';
-import { UpdateProject } from '../../interfaces/project/update-project.interface';
+import {
+  GetProject,
+  UpdateProject,
+  CreateProject,
+  DeleteProject,
+} from '../../interfaces/project.interface';
 
 export const getProjectsAction = createAction('[PROJECTS] get projects list');
 export const getProjectsSuccessAction = createAction(
@@ -10,7 +12,15 @@ export const getProjectsSuccessAction = createAction(
   props<{ projects: GetProject[] }>(),
 );
 
-export const getProjectById = createAction('[PROJECTS] ');
+export const getProjectByIdAction = createAction(
+  '[PROJECTS] get project by id',
+  props<{ id: string }>(),
+);
+
+export const getProjectByIdSuccessAction = createAction(
+  '[PROJECTS] success get project by id',
+  props<GetProject>(),
+);
 
 export const createProjectAction = createAction(
   '[PROJECTS] create project',
@@ -19,7 +29,7 @@ export const createProjectAction = createAction(
 
 export const createProjectSuccessAction = createAction(
   '[PROJECTS] success create project',
-  props<{ project: CreateProjectResponse }>(),
+  props<{ id: string }>(),
 );
 
 export const updateProjectAction = createAction(
@@ -29,12 +39,12 @@ export const updateProjectAction = createAction(
 
 export const updateProjectSuccessAction = createAction(
   '[PROJECTS] success update project',
-  props<UpdateProject>(),
+  props<{ id: string }>(),
 );
 
 export const deleteProjectAction = createAction(
   '[PROJECTS] delete Project',
-  props<{ id: string }>(),
+  props<DeleteProject>(),
 );
 
 export const deleteProjectSuccessAction = createAction('[PROJECTS] success delete project');
