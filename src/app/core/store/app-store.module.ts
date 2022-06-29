@@ -9,11 +9,18 @@ import { AppEffects } from './app.effects';
 import { metaReducers, reducers } from './app.reducers';
 import { AuthorizationEffects } from './authorization/authorization.effects';
 import { ThemeEffects } from './theme/theme.effects';
+import { ProjectsEffect } from './projects/projects.effects';
 @NgModule({
   imports: [
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AppEffects, ThemeEffects, AuthorizationEffects, ALertEffects]),
+    EffectsModule.forRoot([
+      AppEffects,
+      ThemeEffects,
+      AuthorizationEffects,
+      ALertEffects,
+      ProjectsEffect,
+    ]),
     StoreRouterConnectingModule.forRoot(),
   ],
   exports: [StoreModule, EffectsModule, StoreRouterConnectingModule],
