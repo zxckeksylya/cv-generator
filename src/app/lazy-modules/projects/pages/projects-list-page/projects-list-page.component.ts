@@ -1,10 +1,20 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Store } from '@ngrx/store';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  ChangeDetectorRef,
+} from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { setBreadcrumbsAction } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
 import { setPageHeadingAction } from '../../../../core/store/page-heading/page-heading.actions';
 import { AppState } from 'src/app/core/store/app.reducers';
+import { GetProject } from '../../../../core/interfaces/project.interface';
+import { getProjectsAction } from '../../../../core/store/projects/projects.actions';
+import { getProjectsSelector } from '../../../../core/store/projects/projects.selectors';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-projects-list-page',
@@ -12,12 +22,27 @@ import { AppState } from 'src/app/core/store/app.reducers';
   styleUrls: ['./projects-list-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectsListPageComponent implements OnInit {
+export class ProjectsListPageComponent implements OnInit, OnDestroy {
   public headerData: TableHeaderItem[] = [
     {
       i18nKey: 'LANGUAGES.TITLE',
     },
+    {
+      i18nKey: 'LANGUAGES.TITLE',
+    },
+    {
+      i18nKey: 'LANGUAGES.TITLE',
+    },
+    {
+      i18nKey: 'LANGUAGES.TITLE',
+    },
+    {
+      i18nKey: 'LANGUAGES.TITLE',
+    },
   ];
+
+  public projects: GetProject[] = [];
+
   public listOfData: any[] = [
     {
       name: '123',
@@ -27,9 +52,16 @@ export class ProjectsListPageComponent implements OnInit {
     },
   ];
 
-  constructor(private store: Store<AppState>) {}
+  private destroy$ = new Subject<void>();
+
+  constructor(private store: Store<AppState>, private cdr: ChangeDetectorRef) {}
 
   public ngOnInit(): void {
+    this.store.dispatch(getProjectsAction());
+    this.store.pipe(select(getProjectsSelector), takeUntil(this.destroy$)).subscribe((projects) => {
+      this.projects = projects;
+      this.cdr.markForCheck();
+    });
     this.store.dispatch(
       setBreadcrumbsAction({
         breadcrumbs: [
@@ -52,5 +84,10 @@ export class ProjectsListPageComponent implements OnInit {
         },
       }),
     );
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
