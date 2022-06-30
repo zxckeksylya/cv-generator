@@ -1,15 +1,50 @@
 <div class="base-page">
-    <form>
-        <app-text-control [label]="'PROJECTS.NAME' | translate"></app-text-control>
-        <app-text-control [label]="'PROJECTS.SECOND_NAME' | translate"></app-text-control>
-        <app-date-picker-control [label]="'PROJECTS.START_DATE' | translate"></app-date-picker-control>
-        <app-date-picker-control [label]="'PROJECTS.END_DATE' | translate"></app-date-picker-control>
-        <app-number-control [label]="'PROJECTS.TEAM_SIZE' | translate"></app-number-control>
-        <app-textarea-control [label]="'PROJECT.DESCRIPTION' | translate"></app-textarea-control>
-        <app-textarea-control [label]="'PROJECT.TASK_PERFORMED' | translate"></app-textarea-control>
-        <app-autocomplete-control [label]="'PROJECT.SPECIALIZATION' | translate"></app-autocomplete-control>
-        <app-autocomplete-control [label]="'PROJECT.PROJECT_ROLE' | translate"></app-autocomplete-control>
-        <app-autocomplete-control [label]="'PROJECT.RESPONSIBILITIES' | translate"></app-autocomplete-control>
+    <form [formGroup]="form"
+          class="form">
+        <div class="block block-base">
+
+            <app-text-control formControlName="name"
+                              [label]="'PROJECTS.NAME' | translate"
+                              class="flex-1"></app-text-control>
+
+            <app-text-control formControlName="secondName"
+                              [label]="'PROJECTS.SECOND_NAME' | translate"
+                              class="flex-1"></app-text-control>
+            <app-number-control formControlName="teamSize"
+                                [label]="'PROJECTS.TEAM_SIZE' | translate"
+                                class="flex-1"></app-number-control>
+
+        </div>
+        <div class="block block-base">
+
+            <app-date-picker-control formControlName="startDate"
+                                     [label]="'PROJECTS.START_DATE' | translate"
+                                     class="flex-1"></app-date-picker-control>
+            <app-date-picker-control formControlName="endDate"
+                                     [label]="'PROJECTS.END_DATE' | translate"
+                                     class="flex-1"></app-date-picker-control>
+        </div>
+        <div class="block block-base">
+
+            <app-autocomplete-control formControlName="specializations"
+                                      [label]="'PROJECTS.SPECIALIZATION' | translate"
+                                      class="flex-1"></app-autocomplete-control>
+            <app-autocomplete-control formControlName="projectRole"
+                                      [label]="'PROJECTS.PROJECT_ROLES' | translate"
+                                      class="flex-1"></app-autocomplete-control>
+            <app-autocomplete-control formControlName="responsibilities"
+                                      [label]="'PROJECTS.RESPONSIBILITIES' | translate"
+                                      class="flex-1"></app-autocomplete-control>
+        </div>
+        <div class="block block-textarea">
+
+            <app-textarea-control formControlName="description"
+                                  [label]="'PROJECTS.DESCRIPTION' | translate"
+                                  class="flex-1"></app-textarea-control>
+            <app-textarea-control formControlName="taskPerformed"
+                                  [label]="'PROJECTS.TASK_PERFORMED' | translate"
+                                  class="flex-1"></app-textarea-control>
+        </div>
 
     </form>
 </div>

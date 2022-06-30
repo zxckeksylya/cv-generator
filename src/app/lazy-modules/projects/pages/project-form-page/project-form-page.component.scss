@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  .block {
+    display: flex;
+    &.block-base {
+      justify-content: start;
+      gap: 60px;
+    }
+    &.block-textarea {
+      justify-content: space-between;
+      gap: 60px;
+    }
+  }
+  .flex-1 {
+    flex: 1;
+  }
+}

@@ -11,6 +11,7 @@ import { AutocompleteControlModule } from '../../core/components/controls/autoco
 import { NumberControlModule } from '../../core/components/controls/number-control/number-control.module';
 import { TextareaControlModule } from '../../core/components/controls/textarea-control/textarea-control.module';
 import { TextControlModule } from '../../core/components/controls/text-control/text-control.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { TextControlModule } from '../../core/components/controls/text-control/t
     NumberControlModule,
     TextareaControlModule,
     TextControlModule,
+    ReactiveFormsModule,
   ],
   declarations: [ProjectsListPageComponent, ProjectFormPageComponent],
 })

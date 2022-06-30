@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-project-form-page',
@@ -10,7 +10,24 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class ProjectFormPageComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.initForm();
+  }
+
+  private initForm(): void {
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      secondName: '',
+      startDate: '',
+      endDate: '',
+      teamSize: 0,
+      taskPerformed: '',
+      description: '',
+      projectRole: '',
+      specializations: '',
+      responsibilities: '',
+    });
+  }
 }
