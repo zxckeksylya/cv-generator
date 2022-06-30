@@ -12,5 +12,5 @@ export class ProjectFormPageComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {}
+  public ngOnInit(): void {}
 }

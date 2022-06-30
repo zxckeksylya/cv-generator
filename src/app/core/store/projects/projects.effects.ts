@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { map, switchMap, take } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
-import { getProjectByIdAction, getProjectByIdSuccessAction } from './projects.actions';
+import { AppState } from '../app.reducers';
+import {
+  getProjectByIdAction,
+  getProjectByIdSuccessAction,
+  initProjectsStoreAction,
+  initProjectsStoreFailedAction,
+  initProjectsStoreSuccessAction,
+} from './projects.actions';
 import {
   deleteProjectAction,
   deleteProjectSuccessAction,
@@ -15,6 +23,7 @@ import {
   getProjectsAction,
   getProjectsSuccessAction,
 } from './projects.actions';
+import { getIsInitProjectsSelector } from './projects.selectors';
 
 @Injectable()
 export class ProjectsEffect {
@@ -58,5 +67,31 @@ export class ProjectsEffect {
     ),
   );
 
-  constructor(private actions$: Actions, private projectsService: ProjectsService) {}
+  public initProjectsStore$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(initProjectsStoreAction),
+      switchMap(() =>
+        this.store.pipe(
+          select(getIsInitProjectsSelector),
+          take(1),
+          map((isInit) =>
+            isInit ? initProjectsStoreSuccessAction() : initProjectsStoreFailedAction(),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  public initProjectsStoreSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(initProjectsStoreSuccessAction),
+      map(() => getProjectsAction()),
+    ),
+  );
+
+  constructor(
+    private actions$: Actions,
+    private projectsService: ProjectsService,
+    private store: Store<AppState>,
+  ) {}
 }

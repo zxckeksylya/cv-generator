@@ -6,7 +6,14 @@ import {
   DeleteProject,
 } from '../../interfaces/project.interface';
 
+export const initProjectsStoreAction = createAction('[PROJECTS] init projects');
+
+export const initProjectsStoreSuccessAction = createAction('[PROJECTS] success init projects');
+
+export const initProjectsStoreFailedAction = createAction('[PROJECTS] failed init projects');
+
 export const getProjectsAction = createAction('[PROJECTS] get projects list');
+
 export const getProjectsSuccessAction = createAction(
   '[PROJECT] success get project list',
   props<{ projects: GetProject[] }>(),

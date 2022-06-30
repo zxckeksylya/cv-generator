@@ -12,3 +12,8 @@ export const getProjectByIdSelector = createSelector(
   projectsFeatureSelector,
   (state: ProjectsState, id: string) => state.projects[id],
 );
+
+export const getIsInitProjectsSelector = createSelector(
+  projectsFeatureSelector,
+  (state) => state.isInitProjects,
+);

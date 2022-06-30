@@ -7,10 +7,12 @@ export const PROJECTS_FEATURE_KEY = 'projects';
 
 export interface ProjectsState {
   projects: ProjectMap;
+  isInitProjects: boolean;
 }
 
 export const initialProjectsState: ProjectsState = {
   projects: {},
+  isInitProjects: false,
 };
 
 export const projectsReducer = createReducer(
@@ -24,6 +26,7 @@ export const projectsReducer = createReducer(
   })),
   on(getProjectsSuccessAction, (state, action) => ({
     ...state,
+    isInitProjects: true,
     projects: arrayProjectsToMap(action.projects),
   })),
 );
