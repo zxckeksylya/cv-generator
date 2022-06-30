@@ -1,10 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import {
-  GetProject,
-  UpdateProject,
-  CreateProject,
-  DeleteProject,
-} from '../../interfaces/project.interface';
+import { GetProject, UpdateProject, CreateProject } from '../../interfaces/project.interface';
 
 export const getProjectsAction = createAction('[PROJECTS] get projects list');
 export const getProjectsSuccessAction = createAction(
@@ -29,7 +24,7 @@ export const createProjectAction = createAction(
 
 export const createProjectSuccessAction = createAction(
   '[PROJECTS] success create project',
-  props<{ id: string }>(),
+  props<GetProject>(),
 );
 
 export const updateProjectAction = createAction(
@@ -44,7 +39,10 @@ export const updateProjectSuccessAction = createAction(
 
 export const deleteProjectAction = createAction(
   '[PROJECTS] delete Project',
-  props<DeleteProject>(),
+  props<{ id: string }>(),
 );
 
-export const deleteProjectSuccessAction = createAction('[PROJECTS] success delete project');
+export const deleteProjectSuccessAction = createAction(
+  '[PROJECTS] success delete project',
+  props<{ id: string }>(),
+);
