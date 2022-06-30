@@ -54,6 +54,9 @@ export const deleteProjectAction = createAction(
   props<DeleteProject>(),
 );
 
-export const deleteProjectSuccessAction = createAction('[PROJECTS] success delete project');
+export const deleteProjectSuccessAction = createAction(
+  '[PROJECTS] success delete project',
+  props<{ id: string }>(),
+);
 
 export const clearProjectsStoreAction = createAction('[PROJECTS] clear projects store');
