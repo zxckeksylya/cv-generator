@@ -45,5 +45,17 @@
   "control-errors": {
     "required": "Field must be filled",
     "email": "mail must be filled"
+  },
+  "PROJECTS": {
+    "NAME": "Name",
+    "SECOND_NAME": "Second name",
+    "START_DATE": "Start date",
+    "END_DATE": "End date",
+    "TEAM_SIZE": "Team size",
+    "TASK_PERFORMED": "Task performed",
+    "DESCRIPTION": "Description",
+    "SPECIALIZATION": "Specializations",
+    "PROJECT_ROLES": "Project roles",
+    "RESPONSIBILITIES": "responsibilities"
   }
 }

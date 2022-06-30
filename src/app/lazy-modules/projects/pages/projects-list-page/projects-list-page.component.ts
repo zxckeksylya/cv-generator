@@ -25,32 +25,23 @@ import { Subject, takeUntil } from 'rxjs';
 export class ProjectsListPageComponent implements OnInit, OnDestroy {
   public headerData: TableHeaderItem[] = [
     {
-      i18nKey: 'LANGUAGES.TITLE',
+      i18nKey: 'PROJECTS.NAME',
     },
     {
-      i18nKey: 'LANGUAGES.TITLE',
+      i18nKey: 'PROJECTS.SECOND_NAME',
     },
     {
-      i18nKey: 'LANGUAGES.TITLE',
+      i18nKey: 'PROJECTS.START_DATE',
     },
     {
-      i18nKey: 'LANGUAGES.TITLE',
+      i18nKey: 'PROJECTS.END_DATE',
     },
     {
-      i18nKey: 'LANGUAGES.TITLE',
+      i18nKey: 'PROJECTS.TEAM_SIZE',
     },
   ];
 
   public projects: GetProject[] = [];
-
-  public listOfData: any[] = [
-    {
-      name: '123',
-    },
-    {
-      name: '23123',
-    },
-  ];
 
   private destroy$ = new Subject<void>();
 

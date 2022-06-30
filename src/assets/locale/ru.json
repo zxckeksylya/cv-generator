@@ -45,5 +45,17 @@
   "control-errors": {
     "required": "Поле должно быть заполнено",
     "email": "должна быть заполнена почта"
+  },
+  "PROJECTS": {
+    "NAME": "Название",
+    "SECOND_NAME": "Второе название",
+    "START_DATE": "Дата начала",
+    "END_DATE": "Дата окончания",
+    "TEAM_SIZE": "Размер команды",
+    "TASK_PERFORMED": "Статус выполнения",
+    "DESCRIPTION": "Описание",
+    "SPECIALIZATION": "Специализации",
+    "PROJECT_ROLES": "Проектные роли",
+    "RESPONSIBILITIES": "Обязонасти"
   }
 }
