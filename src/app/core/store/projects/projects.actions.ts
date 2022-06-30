@@ -55,3 +55,5 @@ export const deleteProjectAction = createAction(
 );
 
 export const deleteProjectSuccessAction = createAction('[PROJECTS] success delete project');
+
+export const clearProjectsStoreAction = createAction('[PROJECTS] clear projects store');

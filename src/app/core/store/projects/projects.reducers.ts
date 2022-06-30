@@ -1,6 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 import { ProjectMap } from '../../interfaces/project.interface';
-import { getProjectByIdSuccessAction, getProjectsSuccessAction } from './projects.actions';
+import {
+  clearProjectsStoreAction,
+  getProjectByIdSuccessAction,
+  getProjectsSuccessAction,
+} from './projects.actions';
 import { arrayProjectsToMap } from '../../utils/projects/array-projects-to-map.util';
 
 export const PROJECTS_FEATURE_KEY = 'projects';
@@ -28,5 +32,8 @@ export const projectsReducer = createReducer(
     ...state,
     isInitProjects: true,
     projects: arrayProjectsToMap(action.projects),
+  })),
+  on(clearProjectsStoreAction, () => ({
+    ...initialProjectsState,
   })),
 );
