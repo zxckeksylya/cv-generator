@@ -1,6 +1,7 @@
 <div class="base-page">
     <div class="list-button">
-        <app-button class="button"
+        <app-button (buttonClick)="createProject()"
+                    class="button"
                     type="primary">{{ 'PROJECT_LIST.BUTTON' | translate}}</app-button>
     </div>
     <app-table [source]="projects"
@@ -8,7 +9,7 @@
                [rowTemplateRef]="rowRef">
         <ng-template #rowRef
                      let-item>
-            <tr>
+            <tr (click)="updateProject(item.id)">
                 <td>{{ item.name }}</td>
                 <td>{{ item.secondName }}</td>
                 <td>{{ item.startDate | date:'dd/MM/yyyy' }}</td>

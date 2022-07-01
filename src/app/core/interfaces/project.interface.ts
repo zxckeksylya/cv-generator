@@ -1,5 +1,18 @@
 import { INameId } from './name-id.interface';
 
+export interface Project {
+  name: string;
+  secondName: string;
+  startDate: string;
+  endDate: string;
+  teamSize: number;
+  taskPerformed: string;
+  description: string;
+  specializations: INameId[];
+  projectRoles: INameId[];
+  responsibilities: INameId[];
+}
+
 export interface GetProject {
   name: string;
   secondName: string;

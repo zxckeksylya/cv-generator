@@ -1,20 +1,21 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
-  OnDestroy,
   ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { setBreadcrumbsAction } from '../../../../core/store/breadcrumb/breadcrumb.actions';
-import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
-import { setPageHeadingAction } from '../../../../core/store/page-heading/page-heading.actions';
 import { AppState } from 'src/app/core/store/app.reducers';
 import { GetProject } from '../../../../core/interfaces/project.interface';
-import { getProjectsAction } from '../../../../core/store/projects/projects.actions';
+import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
+import { setBreadcrumbsAction } from '../../../../core/store/breadcrumb/breadcrumb.actions';
+import { setPageHeadingAction } from '../../../../core/store/page-heading/page-heading.actions';
+import { initProjectsStoreAction } from '../../../../core/store/projects/projects.actions';
 import { getProjectsSelector } from '../../../../core/store/projects/projects.selectors';
-import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-projects-list-page',
@@ -45,10 +46,14 @@ export class ProjectsListPageComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store<AppState>, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private store: Store<AppState>,
+    private cdr: ChangeDetectorRef,
+    private route: Router,
+  ) {}
 
   public ngOnInit(): void {
-    this.store.dispatch(getProjectsAction());
+    this.store.dispatch(initProjectsStoreAction());
     this.store.pipe(select(getProjectsSelector), takeUntil(this.destroy$)).subscribe((projects) => {
       this.projects = projects;
       this.cdr.markForCheck();
@@ -80,5 +85,22 @@ export class ProjectsListPageComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  public createProject(): void {
+    this.route.navigate([
+      RoutingConstants.MAIN,
+      RoutingConstants.PROJECTS,
+      RoutingConstants.CREATE,
+    ]);
+  }
+
+  public updateProject(id: string): void {
+    this.route.navigate([
+      RoutingConstants.MAIN,
+      RoutingConstants.PROJECTS,
+      RoutingConstants.UPDATE,
+      id,
+    ]);
   }
 }

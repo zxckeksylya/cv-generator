@@ -21,8 +21,8 @@ export class ProjectsService {
     return this.http.get<GetProject[]>(`${environment.host}/projects`);
   }
 
-  public getProjectById(id: string): Observable<GetProject> {
-    return this.http.get<GetProject>(`${environment.host}/projects`, {
+  public getProjectById(id: string): Observable<GetProject[]> {
+    return this.http.get<GetProject[]>(`${environment.host}/projects`, {
       params: {
         id,
       },
@@ -34,7 +34,7 @@ export class ProjectsService {
   }
 
   public updateProject(project: UpdateProject): Observable<UpdateProject> {
-    return this.http.patch<UpdateProject>(`${environment.host}/projects`, project);
+    return this.http.put<UpdateProject>(`${environment.host}/projects`, project);
   }
 
   public deleteProject(item: DeleteProject): Observable<DeleteProjectResponse> {

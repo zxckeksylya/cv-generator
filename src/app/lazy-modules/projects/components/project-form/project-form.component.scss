@@ -5,6 +5,7 @@
     flex-direction: column;
   }
   .block {
+    padding: 20px;
     display: flex;
     &.block-base {
       justify-content: start;
@@ -17,5 +18,10 @@
   }
   .flex-1 {
     flex: 1;
+  }
+  .buttons {
+    display: flex;
+    justify-content: end;
+    gap: 15px;
   }
 }

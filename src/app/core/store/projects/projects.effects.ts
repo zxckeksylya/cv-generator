@@ -35,7 +35,7 @@ export class ProjectsEffect {
     this.actions$.pipe(
       ofType(getProjectByIdAction, updateProjectSuccessAction),
       switchMap((item) => this.projectsService.getProjectById(item.id)),
-      map((project) => getProjectByIdSuccessAction(project)),
+      map((project) => getProjectByIdSuccessAction({ project: project[0] })),
     ),
   );
 
@@ -44,7 +44,7 @@ export class ProjectsEffect {
       ofType(createProjectAction),
       switchMap((project) => this.projectsService.createProject(project)),
       switchMap((project) => this.projectsService.getProjectById(project.id)),
-      map((project) => createProjectSuccessAction(project)),
+      map((project) => createProjectSuccessAction({ project: project[0] })),
     ),
   );
 
@@ -75,7 +75,7 @@ export class ProjectsEffect {
           select(getIsInitProjectsSelector),
           take(1),
           map((isInit) =>
-            isInit ? initProjectsStoreSuccessAction() : initProjectsStoreFailedAction(),
+            !isInit ? initProjectsStoreSuccessAction() : initProjectsStoreFailedAction(),
           ),
         ),
       ),

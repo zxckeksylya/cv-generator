@@ -10,7 +10,7 @@ export const getProjectsSelector = createSelector(projectsFeatureSelector, (stat
 
 export const getProjectByIdSelector = createSelector(
   projectsFeatureSelector,
-  (state: ProjectsState, id: string) => state.projects[id],
+  (state: ProjectsState, props: { id: string }) => state.projects[props.id],
 );
 
 export const getIsInitProjectsSelector = createSelector(

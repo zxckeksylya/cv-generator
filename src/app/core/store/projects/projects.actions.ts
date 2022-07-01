@@ -26,7 +26,7 @@ export const getProjectByIdAction = createAction(
 
 export const getProjectByIdSuccessAction = createAction(
   '[PROJECTS] success get project by id',
-  props<GetProject>(),
+  props<{ project: GetProject }>(),
 );
 
 export const createProjectAction = createAction(
@@ -36,7 +36,7 @@ export const createProjectAction = createAction(
 
 export const createProjectSuccessAction = createAction(
   '[PROJECTS] success create project',
-  props<{ id: string }>(),
+  props<{ project: GetProject }>(),
 );
 
 export const updateProjectAction = createAction(

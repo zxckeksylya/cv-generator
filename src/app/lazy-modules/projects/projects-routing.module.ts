@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjectFormPageComponent } from './pages/project-form-page/project-form-page.component';
+import { ProjectCreatePageComponent } from './pages/project-create-page/project-create-page.component';
+import { ProjectUpdatePageComponent } from './pages/project-update-page/project-update-page.component';
 import { ProjectsListPageComponent } from './pages/projects-list-page/projects-list-page.component';
+import { RoutingConstants } from '../../core/constants/routing.constants';
 
 const routes: Routes = [
   {
@@ -9,12 +11,12 @@ const routes: Routes = [
     component: ProjectsListPageComponent,
   },
   {
-    path: ':mode/:id',
-    component: ProjectFormPageComponent,
+    path: `${RoutingConstants.UPDATE}/:id`,
+    component: ProjectUpdatePageComponent,
   },
   {
-    path: ':mode',
-    component: ProjectFormPageComponent,
+    path: RoutingConstants.CREATE,
+    component: ProjectCreatePageComponent,
   },
   {
     path: '**',
