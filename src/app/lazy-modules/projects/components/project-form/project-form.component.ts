@@ -76,11 +76,23 @@ export class ProjectFormComponent implements OnInit, OnChanges {
     project.specializations = getArrayIdOutINameId(specializations);
     project.responsibilities = getArrayIdOutINameId(responsibilities);
     project.projectRoles = getArrayIdOutINameId(projectRoles);
-    this.submitted.emit(project);
+    this.submitted.emit(this.formatProject());
   }
 
   public backToProjects(): void {
     this.route.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
+  }
+
+  private formatProject(): CreateProject {
+    const { startDate, endDate, specializations, responsibilities, projectRoles } =
+      this.form.getRawValue();
+    const project: CreateProject = this.form.getRawValue();
+    project.startDate = formatDate(startDate);
+    project.endDate = formatDate(endDate);
+    project.specializations = getArrayIdOutINameId(specializations);
+    project.responsibilities = getArrayIdOutINameId(responsibilities);
+    project.projectRoles = getArrayIdOutINameId(projectRoles);
+    return project;
   }
 
   private initForm(): void {
