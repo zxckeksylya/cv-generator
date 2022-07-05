@@ -10,6 +10,7 @@ import { metaReducers, reducers } from './app.reducers';
 import { AuthorizationEffects } from './authorization/authorization.effects';
 import { CoreEffects } from './core/core.effects';
 import { ThemeEffects } from './theme/theme.effects';
+import { ResponsibilitiesEffect } from './responsibilities/responsibilities.effects';
 @NgModule({
   imports: [
     StoreModule.forRoot(reducers, { metaReducers }),
@@ -20,6 +21,7 @@ import { ThemeEffects } from './theme/theme.effects';
       AuthorizationEffects,
       ALertEffects,
       CoreEffects,
+      ResponsibilitiesEffect,
     ]),
     StoreRouterConnectingModule.forRoot(),
   ],

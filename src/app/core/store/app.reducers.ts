@@ -2,6 +2,11 @@ import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 import { themeReducer, ThemeState, THEME_FEATURE_KEY } from './theme/theme.reducers';
 import {
+  RESPONSIBILITIES_FEATURE_KEY,
+  ResponsibilitiesState,
+  responsibilitiesReducer,
+} from './responsibilities/responsibilities.reducers';
+import {
   PAGE_HEADING_FEATURE_KEY,
   PageHeadingState,
   pageHeadingReducer,
@@ -22,6 +27,7 @@ export interface AppState {
   [BREADCRUMB_FEATURE_KEY]: BreadcrumbState;
   [PAGE_HEADING_FEATURE_KEY]: PageHeadingState;
   [AUTHORIZATION_FEATURE_KEY]: AuthorizationState;
+  [RESPONSIBILITIES_FEATURE_KEY]: ResponsibilitiesState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -29,6 +35,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [BREADCRUMB_FEATURE_KEY]: breadcrumbReducer,
   [PAGE_HEADING_FEATURE_KEY]: pageHeadingReducer,
   [AUTHORIZATION_FEATURE_KEY]: authorizationReducer,
+  [RESPONSIBILITIES_FEATURE_KEY]: responsibilitiesReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
