@@ -1,22 +1,18 @@
 <div class="base-page">
-    <div class="list-button">
-        <app-button (buttonClick)="createProject()"
-                    class="button"
-                    type="primary">{{ 'PROJECT_LIST.BUTTON' | translate}}</app-button>
-    </div>
-    <app-table [source]="projects"
-               [headerItems]="headerData"
-               [rowTemplateRef]="rowRef">
-        <ng-template #rowRef
-                     let-item>
-            <tr (click)="updateProject(item.id)">
-                <td>{{ item.name }}</td>
-                <td>{{ item.secondName }}</td>
-                <td>{{ item.startDate | date:'dd/MM/yyyy' }}</td>
-                <td>{{ item.endDate | date:'dd/MM/yyyy' }}</td>
-                <td>{{ item.teamSize }}</td>
-
-            </tr>
-        </ng-template>
-    </app-table>
+  <div class="list-button">
+    <app-button (buttonClick)="createProject()" class="button" type="primary">{{
+      'PROJECT_LIST.BUTTON' | translate
+    }}</app-button>
+  </div>
+  <app-table [source]="projects" [headerItems]="headerData" [rowTemplateRef]="rowRef">
+    <ng-template #rowRef let-item>
+      <tr (click)="updateProject(item.id)">
+        <td>{{ item.name }}</td>
+        <td>{{ item.secondName }}</td>
+        <td>{{ item.startDate | date: shortDate }}</td>
+        <td>{{ item.endDate | date: shortDate }}</td>
+        <td>{{ item.teamSize }}</td>
+      </tr>
+    </ng-template>
+  </app-table>
 </div>

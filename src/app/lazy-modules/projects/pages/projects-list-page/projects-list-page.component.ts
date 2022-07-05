@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { DateConstants } from 'src/app/core/constants/date.constants';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { AppState } from 'src/app/core/store/app.reducers';
 import { GetProject } from '../../../../core/interfaces/project.interface';
@@ -43,6 +44,8 @@ export class ProjectsListPageComponent implements OnInit, OnDestroy {
   ];
 
   public projects: GetProject[] = [];
+
+  public shortDate = DateConstants.SHORT_DATE;
 
   private destroy$ = new Subject<void>();
 

@@ -11,14 +11,4 @@ type Mode = 'multiple' | 'tags' | 'default';
 })
 export class SelectControlComponent extends BaseSelectControl {
   @Input() public mode: Mode = 'default';
-  @Input() public searchField: string;
-
-  public filteredOptions: any[] = [];
-
-  public filterOptions(value: string): void {
-    this.filteredOptions =
-      this.dataSource.filter((option) =>
-        (option?.[this.searchField] ?? option).toLowerCase().includes(value),
-      ) || [];
-  }
 }

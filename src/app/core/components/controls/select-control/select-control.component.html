@@ -24,7 +24,6 @@
         (blur)="onTouched()"
         class="app-base-control__input"
         [compareWith]="compareFun"
-        (nzOnSearch)="filterOptions($event)"
       >
         <nz-option
           *ngFor="let item of dataSource"
