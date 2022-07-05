@@ -1,4 +1,5 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
+import { INameId } from '../../interfaces/name-id.interface';
 
 export const initSpecializationsStoreAction = createAction(
   '[SPECIALIZATIONS] init specializations',
@@ -16,6 +17,7 @@ export const getSpecializationsAction = createAction('[SPECIALIZATIONS] get spec
 
 export const getSpecializationsSuccessAction = createAction(
   '[SPECIALIZATION] success get specializations list',
+  props<{ specializations: INameId[] }>(),
 );
 
-export const clearSpecializationsAction = createAction('[SPECIALIZATION] ');
+export const clearSpecializationsAction = createAction('[SPECIALIZATION] clear projects store');
