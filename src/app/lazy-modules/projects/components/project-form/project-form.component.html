@@ -1,62 +1,83 @@
-<form [formGroup]="form"
-      class="form"
-      (ngSubmit)="onSubmit()">
-    <div class="block block-base">
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+  <div class="block block-base">
+    <app-text-control
+      formControlName="name"
+      [label]="'PROJECTS.NAME' | translate"
+      class="flex-1"
+    ></app-text-control>
 
-        <app-text-control formControlName="name"
-                          [label]="'PROJECTS.NAME' | translate"
-                          class="flex-1"></app-text-control>
+    <app-text-control
+      formControlName="secondName"
+      [label]="'PROJECTS.SECOND_NAME' | translate"
+      class="flex-1"
+    ></app-text-control>
+    <app-number-control
+      formControlName="teamSize"
+      [label]="'PROJECTS.TEAM_SIZE' | translate"
+      class="flex-1"
+      [step]="1"
+      [min]="0"
+    ></app-number-control>
+  </div>
+  <div class="block block-base">
+    <app-date-picker-control
+      formControlName="startDate"
+      [label]="'PROJECTS.START_DATE' | translate"
+      class="flex-1"
+    ></app-date-picker-control>
+    <app-date-picker-control
+      formControlName="endDate"
+      [label]="'PROJECTS.END_DATE' | translate"
+      class="flex-1"
+    ></app-date-picker-control>
+  </div>
+  <div class="block block-base">
+    <app-select-control
+      formControlName="specializations"
+      [label]="'PROJECTS.SPECIALIZATION' | translate"
+      class="flex-1"
+      [dataSource]="specializations"
+      optionLabelField="name"
+      mode="multiple"
+      searchField="id"
+      optionValueField="id"
+    ></app-select-control>
+    <app-select-control
+      formControlName="projectRoles"
+      [label]="'PROJECTS.PROJECT_ROLES' | translate"
+      class="flex-1"
+      [dataSource]="projectRole"
+      optionLabelField="name"
+      mode="multiple"
+      searchField="id"
+      optionValueField="id"
+    ></app-select-control>
+    <app-select-control
+      formControlName="responsibilities"
+      [label]="'PROJECTS.RESPONSIBILITIES' | translate"
+      class="flex-1"
+      [dataSource]="responsibilities"
+      optionLabelField="name"
+      mode="multiple"
+      searchField="id"
+      optionValueField="id"
+    ></app-select-control>
+  </div>
+  <div class="block block-textarea">
+    <app-textarea-control
+      formControlName="description"
+      [label]="'PROJECTS.DESCRIPTION' | translate"
+      class="flex-1"
+    ></app-textarea-control>
+    <app-textarea-control
+      formControlName="tasksPerformed"
+      [label]="'PROJECTS.TASK_PERFORMED' | translate"
+      class="flex-1"
+    ></app-textarea-control>
+  </div>
 
-        <app-text-control formControlName="secondName"
-                          [label]="'PROJECTS.SECOND_NAME' | translate"
-                          class="flex-1"></app-text-control>
-        <app-number-control formControlName="teamSize"
-                            [label]="'PROJECTS.TEAM_SIZE' | translate"
-                            class="flex-1"
-                            [step]="1"
-                            [min]="0"></app-number-control>
-
-    </div>
-    <div class="block block-base">
-
-        <app-date-picker-control formControlName="startDate"
-                                 [label]="'PROJECTS.START_DATE' | translate"
-                                 class="flex-1"></app-date-picker-control>
-        <app-date-picker-control formControlName="endDate"
-                                 [label]="'PROJECTS.END_DATE' | translate"
-                                 class="flex-1"></app-date-picker-control>
-    </div>
-    <div class="block block-base">
-
-        <app-select-control formControlName="specializations"
-                            [label]="'PROJECTS.SPECIALIZATION' | translate"
-                            class="flex-1"
-                            [dataSource]="specializations"
-                            optionLabelField="name"></app-select-control>
-        <app-select-control formControlName="projectRoles"
-                            [label]="'PROJECTS.PROJECT_ROLES' | translate"
-                            class="flex-1"
-                            [dataSource]="projectRole"
-                            optionLabelField="name"></app-select-control>
-        <app-select-control formControlName="responsibilities"
-                            [label]="'PROJECTS.RESPONSIBILITIES' | translate"
-                            class="flex-1"
-                            [dataSource]="responsibilities"
-                            optionLabelField="name"></app-select-control>
-    </div>
-    <div class="block block-textarea">
-
-        <app-textarea-control formControlName="description"
-                              [label]="'PROJECTS.DESCRIPTION' | translate"
-                              class="flex-1"></app-textarea-control>
-        <app-textarea-control formControlName="tasksPerformed"
-                              [label]="'PROJECTS.TASK_PERFORMED' | translate"
-                              class="flex-1"></app-textarea-control>
-    </div>
-
-    <div class="buttons">
-        <app-button type="primary"
-                    behaviorType="submit">{{ 'BUTTON.SAVE' | translate }}</app-button>
-        <app-button (buttonClick)="backToProjects()">{{ 'BUTTON.CANCEL' | translate }}</app-button>
-    </div>
+  <div class="buttons">
+    <app-button type="primary" behaviorType="submit">{{ 'BUTTON.SAVE' | translate }}</app-button>
+    <app-button (buttonClick)="backToProjects()">{{ 'BUTTON.CANCEL' | translate }}</app-button>
+  </div>
 </form>

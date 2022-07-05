@@ -10,11 +10,11 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CreateProject, Project } from '../../../../core/interfaces/project.interface';
 import { RoutingConstants } from '../../../../core/constants/routing.constants';
-import { INameId } from 'src/app/core/interfaces/name-id.interface';
-import { getArrayIdOutINameId } from '../../../../core/utils/get-array-id-out-i-name-id.util';
+import { GetProject, UpdateProject } from '../../../../core/interfaces/project.interface';
 import { formatDate } from '../../../../core/utils/format-date.util';
+import { getArrayIdOutINameId } from '../../../../core/utils/get-array-id-out-i-name-id.util';
+import { INameId } from '../../../../core/interfaces/name-id.interface';
 
 @Component({
   selector: 'app-project-form',
@@ -23,9 +23,9 @@ import { formatDate } from '../../../../core/utils/format-date.util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectFormComponent implements OnInit, OnChanges {
-  @Input() public project: Project;
+  @Input() public project: GetProject;
 
-  @Output() public submitted = new EventEmitter<CreateProject>();
+  @Output() public submitted = new EventEmitter<UpdateProject>();
 
   public form: FormGroup;
 
@@ -38,8 +38,16 @@ export class ProjectFormComponent implements OnInit, OnChanges {
 
   public specializations: INameId[] = [
     {
-      id: '6122b0e5615f8cfb441bca92',
       name: 'React',
+      id: '6122b0e5615f8cfb441bca92',
+    },
+    {
+      name: 'Redux',
+      id: '61486ed8915b4ac15391f752',
+    },
+    {
+      name: 'Jest',
+      id: '61486ee3915b4ac15391f753',
     },
   ];
 
@@ -68,31 +76,26 @@ export class ProjectFormComponent implements OnInit, OnChanges {
       return;
     }
 
-    const { startDate, endDate, specializations, responsibilities, projectRoles } =
-      this.form.getRawValue();
-    const project: CreateProject = this.form.getRawValue();
-    project.startDate = formatDate(startDate);
-    project.endDate = formatDate(endDate);
-    project.specializations = getArrayIdOutINameId(specializations);
-    project.responsibilities = getArrayIdOutINameId(responsibilities);
-    project.projectRoles = getArrayIdOutINameId(projectRoles);
-    this.submitted.emit(this.formatProject());
+    this.submitted.emit(this.formatProject(this.form.getRawValue()));
   }
 
   public backToProjects(): void {
+    this.form.reset();
     this.route.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
   }
 
-  private formatProject(): CreateProject {
-    const { startDate, endDate, specializations, responsibilities, projectRoles } =
-      this.form.getRawValue();
-    const project: CreateProject = this.form.getRawValue();
-    project.startDate = formatDate(startDate);
-    project.endDate = formatDate(endDate);
-    project.specializations = getArrayIdOutINameId(specializations);
-    project.responsibilities = getArrayIdOutINameId(responsibilities);
-    project.projectRoles = getArrayIdOutINameId(projectRoles);
-    return project;
+  private formatProject(project: GetProject): UpdateProject {
+    const { startDate, endDate, specializations, responsibilities, projectRoles, ...data } =
+      project;
+    const newProject: UpdateProject = {
+      ...data,
+      startDate: formatDate(startDate),
+      endDate: formatDate(endDate),
+      specializations: getArrayIdOutINameId(specializations),
+      responsibilities: getArrayIdOutINameId(responsibilities),
+      projectRoles: getArrayIdOutINameId(projectRoles),
+    };
+    return newProject;
   }
 
   private initForm(): void {
@@ -104,9 +107,9 @@ export class ProjectFormComponent implements OnInit, OnChanges {
       teamSize: 0,
       tasksPerformed: '',
       description: '',
-      projectRoles: '',
-      specializations: '',
-      responsibilities: '',
+      projectRoles: [],
+      specializations: [],
+      responsibilities: [],
     });
   }
 }

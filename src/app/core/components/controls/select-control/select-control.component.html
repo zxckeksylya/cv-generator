@@ -1,23 +1,37 @@
-<nz-form-item class="app-base-control"
-              [class]="classNames">
-    <nz-form-label *ngIf="label"
-                   [nzFor]="elementId"
-                   [nzRequired]="required"
-                   class="app-base-control__label">
-        {{ label }}
-    </nz-form-label>
-    <ng-container *ngIf="formControl.errors | getControlErrorMessage:errorsMap as errorMessageConfig">
-        <nz-form-control [nzValidateStatus]="formControl"
-                         [nzErrorTip]="errorMessageConfig && (errorMessageConfig.i18nKey || '') | translate:errorMessageConfig?.i18nParams">
-            <nz-select [id]="elementId"
-                       [formControl]="formControl"
-                       (blur)="onTouched()"
-                       class="app-base-control__input"
-                       [compareWith]="compareFun">
-                <nz-option *ngFor="let item of dataSource"
-                           [nzValue]="item"
-                           [nzLabel]="item[optionLabelField]"></nz-option>
-            </nz-select>
-        </nz-form-control>
-    </ng-container>
+<nz-form-item class="app-base-control" [class]="classNames">
+  <nz-form-label
+    *ngIf="label"
+    [nzFor]="elementId"
+    [nzRequired]="required"
+    class="app-base-control__label"
+  >
+    {{ label }}
+  </nz-form-label>
+  <ng-container
+    *ngIf="formControl.errors | getControlErrorMessage: errorsMap as errorMessageConfig"
+  >
+    <nz-form-control
+      [nzValidateStatus]="formControl"
+      [nzErrorTip]="
+        errorMessageConfig && (errorMessageConfig.i18nKey || '')
+          | translate: errorMessageConfig?.i18nParams
+      "
+    >
+      <nz-select
+        [id]="elementId"
+        [formControl]="formControl"
+        [nzMode]="mode"
+        (blur)="onTouched()"
+        class="app-base-control__input"
+        [compareWith]="compareFun"
+        (nzOnSearch)="filterOptions($event)"
+      >
+        <nz-option
+          *ngFor="let item of dataSource"
+          [nzValue]="item"
+          [nzLabel]="item[optionLabelField]"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </ng-container>
 </nz-form-item>

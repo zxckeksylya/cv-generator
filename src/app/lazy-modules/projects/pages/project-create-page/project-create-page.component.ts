@@ -18,6 +18,16 @@ export class ProjectCreatePageComponent implements OnInit {
   constructor(private store: Store<AppState>, private route: Router) {}
 
   public ngOnInit(): void {
+    this.initPageInfo();
+  }
+
+  public createProject(project: CreateProject): void {
+    this.store.dispatch(createProjectAction(project));
+
+    this.route.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
+  }
+
+  private initPageInfo(): void {
     this.store.dispatch(
       setBreadcrumbsAction({
         breadcrumbs: [
@@ -44,13 +54,5 @@ export class ProjectCreatePageComponent implements OnInit {
         },
       }),
     );
-  }
-
-  public createProject(project: CreateProject): void {
-    const newProject: CreateProject = project;
-
-    this.store.dispatch(createProjectAction(newProject));
-
-    this.route.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
   }
 }

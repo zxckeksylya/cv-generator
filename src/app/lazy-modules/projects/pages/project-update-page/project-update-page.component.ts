@@ -8,11 +8,7 @@ import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.a
 import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
 import { updateProjectAction } from 'src/app/core/store/projects/projects.actions';
 import { getProjectByIdSelector } from 'src/app/core/store/projects/projects.selectors';
-import {
-  CreateProject,
-  GetProject,
-  UpdateProject,
-} from '../../../../core/interfaces/project.interface';
+import { GetProject, UpdateProject } from '../../../../core/interfaces/project.interface';
 
 @Component({
   selector: 'app-project-update-page',
@@ -43,6 +39,21 @@ export class ProjectUpdatePageComponent implements OnInit, OnDestroy {
       )
       .subscribe((project) => (this.updatedProject = project));
 
+    this.initPageInfo();
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  public updateProject(project: UpdateProject): void {
+    this.store.dispatch(updateProjectAction({ ...project, id: this.updatedProject.id }));
+
+    this.route.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
+  }
+
+  private initPageInfo(): void {
     this.store.dispatch(
       setBreadcrumbsAction({
         breadcrumbs: [
@@ -61,6 +72,7 @@ export class ProjectUpdatePageComponent implements OnInit, OnDestroy {
         ],
       }),
     );
+
     this.store.dispatch(
       setPageHeadingAction({
         pageHeading: {
@@ -69,20 +81,5 @@ export class ProjectUpdatePageComponent implements OnInit, OnDestroy {
         },
       }),
     );
-  }
-
-  public ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
-  public updateProject(project: CreateProject): void {
-    const newProject: UpdateProject = {
-      ...project,
-      id: this.updatedProject.id,
-    };
-    this.store.dispatch(updateProjectAction(newProject));
-
-    this.route.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
   }
 }
