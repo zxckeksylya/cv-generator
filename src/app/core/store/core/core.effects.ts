@@ -7,6 +7,7 @@ import { clearAppStateAction } from './core.actions';
 import { clearAuthorizationStateAction } from '../authorization/authorization.actions';
 import { clearBreadcrumbsStateAction } from '../breadcrumb/breadcrumb.actions';
 import { clearPageHeadingStateAction } from '../page-heading/page-heading.actions';
+import { clearProjectRolesAction } from '../projects-roles/project-roles.actions';
 
 @Injectable()
 export class CoreEffects {
@@ -18,6 +19,7 @@ export class CoreEffects {
           this.store.dispatch(clearAuthorizationStateAction());
           this.store.dispatch(clearBreadcrumbsStateAction());
           this.store.dispatch(clearPageHeadingStateAction());
+          this.store.dispatch(clearProjectRolesAction());
         }),
       ),
     { dispatch: false },
