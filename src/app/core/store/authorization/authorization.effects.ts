@@ -8,6 +8,8 @@ import {
   loginUserAction,
   loginUserSuccessAction,
   loginUserFailedAction,
+  setAuthorizationUserSuccessAction,
+  setAuthorizationUserAction,
 } from './authorization.actions';
 import { AuthorizationService } from '../../services/authorization.service';
 import { Router } from '@angular/router';
@@ -16,6 +18,7 @@ import {
   clearAuthorizationStateAction,
   clearAuthorizationStateSuccessAction,
 } from './authorization.actions';
+import { UserService } from '../../services/user.service';
 
 @Injectable()
 export class AuthorizationEffects {
@@ -44,15 +47,24 @@ export class AuthorizationEffects {
     this.actions$.pipe(
       ofType(loginUserAction),
       switchMap((loginUser) => this.authorizationService.login(loginUser)),
-      map(({ accessToken }) => loginUserSuccessAction({ accessToken })),
+      map((loginResponse) => loginUserSuccessAction(loginResponse)),
       catchError(() => of(loginUserFailedAction())),
     ),
   );
 
-  public loginUserSuccess$ = createEffect(() =>
+  public loginUserSuccessForToken$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loginUserSuccessAction),
       map((accessToken) => changeTokenAction(accessToken)),
+    ),
+  );
+
+  public loginUserSuccessForResponse$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(setAuthorizationUserAction),
+      switchMap(() => this.authorizationService.whoami()),
+      switchMap((whoami) => this.userService.getUserById(whoami.userId)),
+      map((user) => setAuthorizationUserSuccessAction({ user: user[0] })),
     ),
   );
 
@@ -69,6 +81,7 @@ export class AuthorizationEffects {
   constructor(
     private actions$: Actions,
     private authorizationService: AuthorizationService,
+    private userService: UserService,
     private route: Router,
   ) {}
 }

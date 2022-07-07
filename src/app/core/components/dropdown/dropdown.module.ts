@@ -8,4 +8,4 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
   declarations: [DropdownComponent],
   exports: [DropdownComponent],
 })
-export class DropdowmModule {}
+export class DropdownModule {}

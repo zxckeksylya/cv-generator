@@ -1,0 +1,27 @@
+<app-dropdown
+  [dataSource]="dataSource"
+  [optionLabelField]="'i18nKey'"
+  [optionValueField]="'id'"
+  (selectItem)="changeAction($event)"
+>
+  <span>{{ user?.firstName }} {{ user?.lastName }}</span>
+</app-dropdown>
+<app-modal
+  [contentTemplateRef]="content"
+  [footerTemplateRef]="footer"
+  [titleTemplateRef]="title"
+  [isVisible]="isVisibleModalWindow"
+>
+</app-modal>
+
+<ng-template #title>
+  {{ user?.firstName }}
+</ng-template>
+
+<ng-template #content>
+  {{ user?.lastName }}
+</ng-template>
+
+<ng-template #footer>
+  <app-button (buttonClick)="closeModalWindow()">Close</app-button>
+</ng-template>

@@ -1,4 +1,4 @@
-export interface RoleResponse {
+export interface INameId {
   name: string;
   id: string;
 }

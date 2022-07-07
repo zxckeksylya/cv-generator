@@ -23,7 +23,7 @@
       "MAIN": "Home"
     },
     "DESCRIPTION": {
-      "EMPLOYEES": "Employess list",
+      "EMPLOYEES": "Employees list",
       "PROJECTS": "Projects list",
       "MAIN": "Home"
     }
@@ -37,7 +37,7 @@
     "PASSWORD": "Password"
   },
   "PROJECT_LIST": {
-    "BUTTON": "Add projecte"
+    "BUTTON": "Add project"
   },
   "EMPLOYEES_LIST": {
     "BUTTON": "Add employee"
@@ -45,5 +45,9 @@
   "control-errors": {
     "required": "Field must be filled",
     "email": "mail must be filled"
+  },
+  "USER_MODAL": {
+    "PROFILE": "Profile",
+    "LOGOUT": "Logout"
   }
 }
