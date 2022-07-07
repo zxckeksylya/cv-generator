@@ -6,13 +6,14 @@
 >
   <span>{{ user?.firstName }} {{ user?.lastName }}</span>
 </app-dropdown>
-<app-modal
-  [contentTemplateRef]="content"
-  [footerTemplateRef]="footer"
-  [titleTemplateRef]="title"
-  [isVisible]="isVisibleModalWindow"
+<nz-modal
+  [nzContent]="content"
+  [nzTitle]="title"
+  [nzFooter]="footer"
+  [nzVisible]="isVisibleModalWindow"
+  (nzOnCancel)="closeModalWindow()"
 >
-</app-modal>
+</nz-modal>
 
 <ng-template #title>
   {{ user?.firstName }}
