@@ -1,27 +1,33 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
-import { themeReducer, ThemeState, THEME_FEATURE_KEY } from './theme/theme.reducers';
 import {
-  PAGE_HEADING_FEATURE_KEY,
-  PageHeadingState,
-  pageHeadingReducer,
-} from './page-heading/page-heading.reducers';
+  authorizationReducer,
+  AuthorizationState,
+  AUTHORIZATION_FEATURE_KEY,
+} from './authorization/authorization.reducers';
 import {
-  BREADCRUMB_FEATURE_KEY,
-  BreadcrumbState,
   breadcrumbReducer,
+  BreadcrumbState,
+  BREADCRUMB_FEATURE_KEY,
 } from './breadcrumb/breadcrumb.reducers';
 import {
-  AUTHORIZATION_FEATURE_KEY,
-  AuthorizationState,
-  authorizationReducer,
-} from './authorization/authorization.reducers';
+  pageHeadingReducer,
+  PageHeadingState,
+  PAGE_HEADING_FEATURE_KEY,
+} from './page-heading/page-heading.reducers';
+import {
+  specializationsReducer,
+  SpecializationsState,
+  SPECIALIZATION_FEATURE_KEY,
+} from './specializations/specializations.reducers';
+import { themeReducer, ThemeState, THEME_FEATURE_KEY } from './theme/theme.reducers';
 
 export interface AppState {
   [THEME_FEATURE_KEY]: ThemeState;
   [BREADCRUMB_FEATURE_KEY]: BreadcrumbState;
   [PAGE_HEADING_FEATURE_KEY]: PageHeadingState;
   [AUTHORIZATION_FEATURE_KEY]: AuthorizationState;
+  [SPECIALIZATION_FEATURE_KEY]: SpecializationsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -29,6 +35,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [BREADCRUMB_FEATURE_KEY]: breadcrumbReducer,
   [PAGE_HEADING_FEATURE_KEY]: pageHeadingReducer,
   [AUTHORIZATION_FEATURE_KEY]: authorizationReducer,
+  [SPECIALIZATION_FEATURE_KEY]: specializationsReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
