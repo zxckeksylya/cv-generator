@@ -19,8 +19,11 @@ export const getResponsibilitiesAction = createAction(
 
 export const getResponsibilitiesSuccessAction = createAction(
   '[RESPONSIBILITIES] success get responsibilities list',
-
   props<{ responsibilities: INameId[] }>(),
+);
+
+export const getResponsibilitiesFailedAction = createAction(
+  '[RESPONSIBILITIES] failed get responsibilities list',
 );
 
 export const clearResponsibilitiesAction = createAction('[RESPONSIBILITIES] clear projects store');

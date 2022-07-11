@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { map, switchMap, take } from 'rxjs';
+import { map, switchMap, take, catchError } from 'rxjs';
 import { ResponsibilitiesService } from '../../services/responsibilities.service';
 import { AppState } from '../app.reducers';
 import {
   getResponsibilitiesAction,
+  getResponsibilitiesFailedAction,
   getResponsibilitiesSuccessAction,
   initResponsibilitiesStoreAction,
   initResponsibilitiesStoreFailedAction,
@@ -44,6 +45,7 @@ export class ResponsibilitiesEffect {
       ofType(getResponsibilitiesAction),
       switchMap(() => this.responsibilitiesService.getResponsibilities()),
       map((responsibilities) => getResponsibilitiesSuccessAction({ responsibilities })),
+      catchError(map(() => getResponsibilitiesFailedAction())),
     ),
   );
 
