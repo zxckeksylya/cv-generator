@@ -14,18 +14,28 @@
   "BREADCRUMB": {
     "MAIN": "Home",
     "EMPLOYEES": "Employees",
-    "PROJECTS": "Projects"
+    "PROJECTS": "Projects",
+    "CREATE": "Create",
+    "UPDATE": "Update"
   },
   "PAGE-HEADING": {
     "SECTION": {
       "EMPLOYEES": "Employees",
       "PROJECTS": "Projects",
-      "MAIN": "Home"
+      "MAIN": "Home",
+      "CREATE": "Create",
+      "UPDATE": "Update"
     },
     "DESCRIPTION": {
-      "EMPLOYEES": "Employess list",
+      "EMPLOYEES": "Employees list",
       "PROJECTS": "Projects list",
-      "MAIN": "Home"
+      "MAIN": "Home",
+      "CREATE": {
+        "PROJECTS": "Create project"
+      },
+      "UPDATE": {
+        "PROJECTS": "Update project"
+      }
     }
   },
   "SIGN_IN_PAGE": {
@@ -37,7 +47,7 @@
     "PASSWORD": "Password"
   },
   "PROJECT_LIST": {
-    "BUTTON": "Add projecte"
+    "BUTTON": "Add project"
   },
   "EMPLOYEES_LIST": {
     "BUTTON": "Add employee"
@@ -45,5 +55,23 @@
   "control-errors": {
     "required": "Field must be filled",
     "email": "mail must be filled"
+  },
+  "PROJECTS": {
+    "NAME": "Name",
+    "SECOND_NAME": "Second name",
+    "START_DATE": "Start date",
+    "END_DATE": "End date",
+    "TEAM_SIZE": "Team size",
+    "TASK_PERFORMED": "Task performed",
+    "DESCRIPTION": "Description",
+    "SPECIALIZATION": "Specializations",
+    "PROJECT_ROLES": "Project roles",
+    "RESPONSIBILITIES": "responsibilities"
+  },
+  "BUTTON": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "EDIT": "Edit",
+    "UPDATE": "Update"
   }
 }

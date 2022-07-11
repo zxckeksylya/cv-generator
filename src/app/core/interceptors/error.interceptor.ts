@@ -27,10 +27,14 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   private buildErrorAlert(error: HttpErrorResponse): AlertNotification {
-    const message = error.error.message.reduce(
-      (previousValue: string, currentValue: string) => previousValue + '\n' + currentValue,
-      '',
-    );
-    return { message, title: error.error.error };
+    if (Array.isArray(error.error.message)) {
+      const message = error.error.message.reduce(
+        (previousValue: string, currentValue: string) => previousValue + '\n' + currentValue,
+        '',
+      );
+      return { message, title: error.error.error };
+    }
+
+    return { message: error.error.message, title: error.error.error };
   }
 }
