@@ -43,8 +43,6 @@ export class ProjectsListPageComponent implements OnInit, OnDestroy {
     },
   ];
 
-  //add one comment
-
   public projects: GetProject[] = [];
 
   public shortDate = DateConstants.SHORT_DATE;
