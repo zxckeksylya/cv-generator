@@ -73,5 +73,16 @@
     "CANCEL": "Cancel",
     "EDIT": "Edit",
     "UPDATE": "Update"
+  },
+  "EMPLOYEES": {
+    "FIRST_NAME": "First name",
+    "LAST_NAME": "Last name",
+    "EMAIL": "email",
+    "INSTITUTION": "Institution",
+    "DIPLOMA_PROFESSIONAL": "Diploma professional",
+    "DEPARTMENT": "Department",
+    "SKILLS": "Skills",
+    "LANGUAGES": "Languages",
+    "ROLE": "Role"
   }
 }

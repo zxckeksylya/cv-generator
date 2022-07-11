@@ -72,5 +72,16 @@
     "SAVE": "Сохранить",
     "CANCEL": "Отменить",
     "EDIT": "Изменить"
+  },
+  "EMPLOYEES": {
+    "FIRST_NAME": "Имя",
+    "LAST_NAME": "Фамилия",
+    "EMAIL": "Почта",
+    "INSTITUTION": "Учебное заваедение",
+    "DIPLOMA_PROFESSIONAL": "Специальность",
+    "DEPARTMENT": "Отдел",
+    "SKILLS": "Навыки",
+    "LANGUAGES": "Языки",
+    "ROLE": "Роль"
   }
 }

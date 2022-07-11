@@ -14,6 +14,7 @@ import { SpecializationsEffect } from './specializations/specializations.effects
 import { ResponsibilitiesEffect } from './responsibilities/responsibilities.effects';
 import { ProjectRolesEffect } from './projects-roles/project-roles.effects';
 import { ProjectsEffect } from './projects/projects.effects';
+import { EmployeesEffect } from './employess/employees.effects';
 @NgModule({
   imports: [
     StoreModule.forRoot(reducers, { metaReducers }),
@@ -28,6 +29,7 @@ import { ProjectsEffect } from './projects/projects.effects';
       ResponsibilitiesEffect,
       ProjectRolesEffect,
       ProjectsEffect,
+      EmployeesEffect,
     ]),
     StoreRouterConnectingModule.forRoot(),
   ],
