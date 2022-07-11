@@ -8,6 +8,7 @@ import { clearAuthorizationStateAction } from '../authorization/authorization.ac
 import { clearBreadcrumbsStateAction } from '../breadcrumb/breadcrumb.actions';
 import { clearPageHeadingStateAction } from '../page-heading/page-heading.actions';
 import { clearSpecializationsAction } from '../specializations/specializations.actions';
+import { clearResponsibilitiesAction } from '../responsibilities/responsibilities.actions';
 
 @Injectable()
 export class CoreEffects {
@@ -20,6 +21,7 @@ export class CoreEffects {
           this.store.dispatch(clearBreadcrumbsStateAction());
           this.store.dispatch(clearPageHeadingStateAction());
           this.store.dispatch(clearSpecializationsAction());
+          this.store.dispatch(clearResponsibilitiesAction());
         }),
       ),
     { dispatch: false },

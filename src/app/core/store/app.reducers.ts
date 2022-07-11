@@ -16,6 +16,11 @@ import {
   PAGE_HEADING_FEATURE_KEY,
 } from './page-heading/page-heading.reducers';
 import {
+  responsibilitiesReducer,
+  ResponsibilitiesState,
+  RESPONSIBILITIES_FEATURE_KEY,
+} from './responsibilities/responsibilities.reducers';
+import {
   specializationsReducer,
   SpecializationsState,
   SPECIALIZATION_FEATURE_KEY,
@@ -28,6 +33,7 @@ export interface AppState {
   [PAGE_HEADING_FEATURE_KEY]: PageHeadingState;
   [AUTHORIZATION_FEATURE_KEY]: AuthorizationState;
   [SPECIALIZATION_FEATURE_KEY]: SpecializationsState;
+  [RESPONSIBILITIES_FEATURE_KEY]: ResponsibilitiesState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -36,6 +42,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [PAGE_HEADING_FEATURE_KEY]: pageHeadingReducer,
   [AUTHORIZATION_FEATURE_KEY]: authorizationReducer,
   [SPECIALIZATION_FEATURE_KEY]: specializationsReducer,
+  [RESPONSIBILITIES_FEATURE_KEY]: responsibilitiesReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
