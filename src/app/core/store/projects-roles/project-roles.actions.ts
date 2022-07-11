@@ -18,4 +18,8 @@ export const getProjectRolesSuccessAction = createAction(
   props<{ projectRoles: INameId[] }>(),
 );
 
+export const getProjectRolesFailedAction = createAction(
+  '[PROJECT_ROLES] failed get project-roles list',
+);
+
 export const clearProjectRolesAction = createAction('[PROJECT_ROLES] clear project-roles store');
