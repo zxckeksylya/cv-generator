@@ -6,7 +6,6 @@ import {
   PageHeadingState,
   pageHeadingReducer,
 } from './page-heading/page-heading.reducers';
-
 import {
   AUTHORIZATION_FEATURE_KEY,
   AuthorizationState,
@@ -18,7 +17,6 @@ export interface AppState {
   [BREADCRUMB_FEATURE_KEY]: BreadcrumbState;
   [PAGE_HEADING_FEATURE_KEY]: PageHeadingState;
   [AUTHORIZATION_FEATURE_KEY]: AuthorizationState;
-  [SPECIALIZATION_FEATURE_KEY]: SpecializationsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -26,7 +24,6 @@ export const reducers: ActionReducerMap<AppState> = {
   [BREADCRUMB_FEATURE_KEY]: breadcrumbReducer,
   [PAGE_HEADING_FEATURE_KEY]: pageHeadingReducer,
   [AUTHORIZATION_FEATURE_KEY]: authorizationReducer,
-  [SPECIALIZATION_FEATURE_KEY]: specializationsReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
