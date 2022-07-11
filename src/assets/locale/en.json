@@ -75,5 +75,9 @@
     "CANCEL": "Cancel",
     "EDIT": "Edit",
     "UPDATE": "Update"
+  },
+  "USER_MODAL": {
+    "PROFILE": "Profile",
+    "LOGOUT": "Logout"
   }
 }
