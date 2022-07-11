@@ -11,7 +11,6 @@ import { AuthorizationEffects } from './authorization/authorization.effects';
 import { CoreEffects } from './core/core.effects';
 import { ThemeEffects } from './theme/theme.effects';
 import { SpecializationsEffect } from './specializations/specializations.effects';
-import { ResponsibilitiesEffect } from './responsibilities/responsibilities.effects';
 @NgModule({
   imports: [
     StoreModule.forRoot(reducers, { metaReducers }),
@@ -23,7 +22,6 @@ import { ResponsibilitiesEffect } from './responsibilities/responsibilities.effe
       ALertEffects,
       CoreEffects,
       SpecializationsEffect,
-      ResponsibilitiesEffect,
     ]),
     StoreRouterConnectingModule.forRoot(),
   ],
