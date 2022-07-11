@@ -16,13 +16,13 @@ export const AUTHORIZATION_FEATURE_KEY = 'authorization';
 export interface AuthorizationState {
   accessToken: string;
   formEnabled: boolean;
-  user?: User;
+  user: User | null;
 }
 
 export const initialAuthorizationState: AuthorizationState = {
   accessToken: '',
   formEnabled: true,
-  user: undefined,
+  user: null,
 };
 
 export const authorizationReducer = createReducer(

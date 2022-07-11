@@ -1,19 +1,11 @@
 <app-dropdown
   [dataSource]="dataSource"
   [optionLabelField]="'i18nKey'"
-  [optionValueField]="'id'"
+  [optionValueField]="'i18nKey'"
   (selectItem)="changeAction($event)"
 >
   <span>{{ user?.firstName }} {{ user?.lastName }}</span>
 </app-dropdown>
-<nz-modal
-  [nzContent]="content"
-  [nzTitle]="title"
-  [nzFooter]="footer"
-  [nzVisible]="isVisibleModalWindow"
-  (nzOnCancel)="closeModalWindow()"
->
-</nz-modal>
 
 <ng-template #title>
   {{ user?.firstName }}
@@ -23,6 +15,6 @@
   {{ user?.lastName }}
 </ng-template>
 
-<ng-template #footer>
-  <app-button (buttonClick)="closeModalWindow()">Close</app-button>
+<ng-template #footer let-ref="modalRef">
+  <app-button (buttonClick)="ref.destroy()">Close</app-button>
 </ng-template>

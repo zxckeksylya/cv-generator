@@ -1,24 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
-import {
-  initTokenAction,
-  initTokenSuccessAction,
-  changeTokenAction,
-  loginUserAction,
-  loginUserSuccessAction,
-  loginUserFailedAction,
-  setAuthorizationUserSuccessAction,
-  setAuthorizationUserAction,
-} from './authorization.actions';
-import { AuthorizationService } from '../../services/authorization.service';
-import { Router } from '@angular/router';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
+import { AuthorizationService } from '../../services/authorization.service';
+import { UserService } from '../../services/user.service';
 import {
+  changeTokenAction,
   clearAuthorizationStateAction,
   clearAuthorizationStateSuccessAction,
+  initTokenAction,
+  initTokenSuccessAction,
+  loginUserAction,
+  loginUserFailedAction,
+  loginUserSuccessAction,
+  setAuthorizationUserAction,
+  setAuthorizationUserSuccessAction,
 } from './authorization.actions';
-import { UserService } from '../../services/user.service';
 
 @Injectable()
 export class AuthorizationEffects {
@@ -62,8 +60,8 @@ export class AuthorizationEffects {
   public loginUserSuccessForResponse$ = createEffect(() =>
     this.actions$.pipe(
       ofType(setAuthorizationUserAction),
-      switchMap(() => this.authorizationService.whoami()),
-      switchMap((whoami) => this.userService.getUserById(whoami.userId)),
+      switchMap(() => this.authorizationService.getCurrentUser()),
+      switchMap((currentUser) => this.userService.getUserById(currentUser.userId)),
       map((user) => setAuthorizationUserSuccessAction({ user: user[0] })),
     ),
   );

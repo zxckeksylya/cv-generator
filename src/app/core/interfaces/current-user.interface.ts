@@ -1,6 +1,6 @@
 import { INameId } from './name-id.interface';
 
-export interface Whoami {
+export interface CurrentUser {
   userId: string;
   role: INameId;
 }
