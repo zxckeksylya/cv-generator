@@ -49,5 +49,22 @@
   "USER_MODAL": {
     "PROFILE": "Профиль",
     "LOGOUT": "Выйти"
+  },
+  "PROJECTS": {
+    "NAME": "Название",
+    "SECOND_NAME": "Второе название",
+    "START_DATE": "Дата начала",
+    "END_DATE": "Дата окончания",
+    "TEAM_SIZE": "Размер команды",
+    "TASK_PERFORMED": "Статус выполнения",
+    "DESCRIPTION": "Описание",
+    "SPECIALIZATION": "Специализации",
+    "PROJECT_ROLES": "Проектные роли",
+    "RESPONSIBILITIES": "Обязанности"
+  },
+  "BUTTON": {
+    "SAVE": "Сохранить",
+    "CANCEL": "Отменить",
+    "EDIT": "Изменить"
   }
 }
