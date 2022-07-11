@@ -8,7 +8,7 @@ import { ButtonModule } from '../../core/components/button/button.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LanguageButtonModule } from '../../core/components/language-button/language-button.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { TranslateModule } from '@ngx-translate/core';
+import { AppTranslateModule } from 'src/app/core/app-translate/app-translate.module';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     LanguageButtonModule,
     FontAwesomeModule,
-    TranslateModule,
+    AppTranslateModule,
   ],
   declarations: [AuthorizationPageComponent, SignInPageComponent],
 })

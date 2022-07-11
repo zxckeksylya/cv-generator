@@ -1,14 +1,14 @@
-import { INameId } from './name-id.interface';
+import { RoleResponse } from './role-response.interface';
 
 export interface AuthorizationLoginResponse {
-  skills: string[];
+  skils: string[];
   languages: string[];
   firstName: string;
   lastName: string;
   email: string;
   institution: string;
   diplomaProfession: string;
-  role: INameId;
+  role: RoleResponse;
   department: string;
   id: string;
   expiresIn: string;

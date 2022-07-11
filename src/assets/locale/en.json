@@ -1,6 +1,4 @@
 {
-  "ru": "Russian",
-  "en": "English",
   "COMMON": {
     "HEADER": "Ngx Translate Application Usage in Angular"
   },
@@ -65,9 +63,5 @@
     "CANCEL": "Cancel",
     "EDIT": "Edit",
     "UPDATE": "Update"
-  },
-  "USER_MODAL": {
-    "PROFILE": "Profile",
-    "LOGOUT": "Logout"
   }
 }

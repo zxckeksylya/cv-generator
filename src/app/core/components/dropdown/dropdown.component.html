@@ -1,10 +1,14 @@
-<div nz-dropdown [nzDropdownMenu]="menu">
-  <ng-content></ng-content>
+<div nz-dropdown
+     [nzDropdownMenu]="menu">
+    <ng-content></ng-content>
 </div>
-<nz-dropdown-menu [id]="elementId" #menu="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item *ngFor="let item of dataSource" (click)="clicked(item)">
-      {{ item[optionLabelField] || item | translate }}
-    </li>
-  </ul>
+<nz-dropdown-menu [id]="elementId"
+                  #menu="nzDropdownMenu">
+    <ul nz-menu>
+        <li nz-menu-item
+            *ngFor="let item of dataSource"
+            (click)="clicked(item)">
+            {{ item[optionLabelField] || item }}
+        </li>
+    </ul>
 </nz-dropdown-menu>

@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
-import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { AuthorizationService } from '../../services/authorization.service';
-import { UserService } from '../../services/user.service';
 import {
-  changeTokenAction,
-  clearAuthorizationStateAction,
-  clearAuthorizationStateSuccessAction,
   initTokenAction,
   initTokenSuccessAction,
+  changeTokenAction,
   loginUserAction,
-  loginUserFailedAction,
   loginUserSuccessAction,
-  setAuthorizationUserAction,
-  setAuthorizationUserSuccessAction,
+  loginUserFailedAction,
+} from './authorization.actions';
+import { AuthorizationService } from '../../services/authorization.service';
+import { Router } from '@angular/router';
+import { RoutingConstants } from 'src/app/core/constants/routing.constants';
+import {
+  clearAuthorizationStateAction,
+  clearAuthorizationStateSuccessAction,
 } from './authorization.actions';
 
 @Injectable()
@@ -45,24 +44,15 @@ export class AuthorizationEffects {
     this.actions$.pipe(
       ofType(loginUserAction),
       switchMap((loginUser) => this.authorizationService.login(loginUser)),
-      map((loginResponse) => loginUserSuccessAction(loginResponse)),
+      map(({ accessToken }) => loginUserSuccessAction({ accessToken })),
       catchError(() => of(loginUserFailedAction())),
     ),
   );
 
-  public loginUserSuccessForToken$ = createEffect(() =>
+  public loginUserSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loginUserSuccessAction),
       map((accessToken) => changeTokenAction(accessToken)),
-    ),
-  );
-
-  public loginUserSuccessForResponse$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(setAuthorizationUserAction),
-      switchMap(() => this.authorizationService.getCurrentUser()),
-      switchMap((currentUser) => this.userService.getUserById(currentUser.userId)),
-      map((user) => setAuthorizationUserSuccessAction({ user: user[0] })),
     ),
   );
 
@@ -79,7 +69,6 @@ export class AuthorizationEffects {
   constructor(
     private actions$: Actions,
     private authorizationService: AuthorizationService,
-    private userService: UserService,
     private route: Router,
   ) {}
 }

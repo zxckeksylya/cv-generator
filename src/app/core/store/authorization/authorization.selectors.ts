@@ -13,5 +13,3 @@ export const formEnabledSelector = createSelector(
   authorizationFeatureSelector,
   (state) => state.formEnabled,
 );
-
-export const userSelector = createSelector(authorizationFeatureSelector, (state) => state.user);
