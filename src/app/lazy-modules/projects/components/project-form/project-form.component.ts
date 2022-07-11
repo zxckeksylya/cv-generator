@@ -1,9 +1,11 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
   SimpleChanges,
@@ -15,6 +17,15 @@ import { GetProject, UpdateProject } from '../../../../core/interfaces/project.i
 import { formatDate } from '../../../../core/utils/format-date.util';
 import { getArrayIdOutINameId } from '../../../../core/utils/get-array-id-out-i-name-id.util';
 import { INameId } from '../../../../core/interfaces/name-id.interface';
+import { AppState } from 'src/app/core/store/app.reducers';
+import { Store, select } from '@ngrx/store';
+import { initProjectRolesStoreAction } from '../../../../core/store/projects-roles/project-roles.actions';
+import { initSpecializationsStoreAction } from '../../../../core/store/specializations/specializations.actions';
+import { initResponsibilitiesStoreAction } from '../../../../core/store/responsibilities/responsibilities.actions';
+import { Subject, takeUntil } from 'rxjs';
+import { getProjectRolesSelector } from '../../../../core/store/projects-roles/project-roles.selectors';
+import { getSpecializationsSelector } from '../../../../core/store/specializations/specializations.selectors';
+import { getResponsibilitiesSelector } from 'src/app/core/store/responsibilities/responsibilities.selectors';
 
 @Component({
   selector: 'app-project-form',
@@ -22,52 +33,44 @@ import { INameId } from '../../../../core/interfaces/name-id.interface';
   styleUrls: ['./project-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectFormComponent implements OnInit, OnChanges {
+export class ProjectFormComponent implements OnInit, OnChanges, OnDestroy {
   @Input() public project: GetProject;
 
   @Output() public submitted = new EventEmitter<UpdateProject>();
 
   public form: FormGroup;
 
-  public projectRole: INameId[] = [
-    {
-      id: '6122a10c4d2043df6456eb1a',
-      name: 'Software Engineer',
-    },
-  ];
+  public projectRole: INameId[] = [];
 
-  public specializations: INameId[] = [
-    {
-      name: 'React',
-      id: '6122b0e5615f8cfb441bca92',
-    },
-    {
-      name: 'Redux',
-      id: '61486ed8915b4ac15391f752',
-    },
-    {
-      name: 'Jest',
-      id: '61486ee3915b4ac15391f753',
-    },
-  ];
+  public specializations: INameId[] = [];
 
-  public responsibilities: INameId[] = [
-    {
-      id: '6149cf7761c8580670948f93',
-      name: 'Front end application architecture implementation',
-    },
-  ];
+  public responsibilities: INameId[] = [];
 
-  constructor(private formBuilder: FormBuilder, private route: Router) {
+  private destroy$ = new Subject<void>();
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: Router,
+    private store: Store<AppState>,
+    private cdr: ChangeDetectorRef,
+  ) {
     this.initForm();
   }
-
-  public ngOnInit(): void {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['project'] && changes['project'].currentValue) {
       this.form.patchValue(changes['project'].currentValue, { emitEvent: false });
     }
+  }
+
+  public ngOnInit(): void {
+    this.initStores();
+    this.initStoresArray();
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   public onSubmit(): void {
@@ -111,5 +114,30 @@ export class ProjectFormComponent implements OnInit, OnChanges {
       specializations: [],
       responsibilities: [],
     });
+  }
+
+  private initStores(): void {
+    this.store.dispatch(initProjectRolesStoreAction());
+    this.store.dispatch(initSpecializationsStoreAction());
+    this.store.dispatch(initResponsibilitiesStoreAction());
+  }
+
+  private initStoresArray(): void {
+    this.store.pipe(select(getProjectRolesSelector), takeUntil(this.destroy$)).subscribe((data) => {
+      this.projectRole = data;
+      this.cdr.markForCheck();
+    });
+    this.store
+      .pipe(select(getSpecializationsSelector), takeUntil(this.destroy$))
+      .subscribe((data) => {
+        this.specializations = data;
+        this.cdr.markForCheck();
+      });
+    this.store
+      .pipe(select(getResponsibilitiesSelector), takeUntil(this.destroy$))
+      .subscribe((data) => {
+        this.responsibilities = data;
+        this.cdr.markForCheck();
+      });
   }
 }
