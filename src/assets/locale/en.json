@@ -45,5 +45,9 @@
   "control-errors": {
     "required": "Field must be filled",
     "email": "mail must be filled"
+  },
+  "USER_MODAL": {
+    "PROFILE": "Profile",
+    "LOGOUT": "Logout"
   }
 }
