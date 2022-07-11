@@ -16,28 +16,18 @@
   "BREADCRUMB": {
     "MAIN": "Главная",
     "EMPLOYEES": "Сотрудники",
-    "PROJECTS": "Проекты",
-    "CREATE": "Создание",
-    "UPDATE": "Изменение"
+    "PROJECTS": "Проекты"
   },
   "PAGE-HEADING": {
     "SECTION": {
       "EMPLOYEES": "Сотрудники",
       "PROJECTS": "Проекты",
-      "MAIN": "Главная",
-      "CREATE": "Создание",
-      "UPDATE": "Изменение"
+      "MAIN": "Главная"
     },
     "DESCRIPTION": {
       "EMPLOYEES": "Список сотрудников",
       "PROJECTS": "Список проектов",
-      "MAIN": "Главная",
-      "CREATE": {
-        "PROJECTS": "Создание проекта"
-      },
-      "UPDATE": {
-        "PROJECTS": "Изменение проекта"
-      }
+      "MAIN": "Главная"
     }
   },
   "SIGN_IN_PAGE": {

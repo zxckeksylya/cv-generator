@@ -16,28 +16,18 @@
   "BREADCRUMB": {
     "MAIN": "Home",
     "EMPLOYEES": "Employees",
-    "PROJECTS": "Projects",
-    "CREATE": "Create",
-    "UPDATE": "Update"
+    "PROJECTS": "Projects"
   },
   "PAGE-HEADING": {
     "SECTION": {
       "EMPLOYEES": "Employees",
       "PROJECTS": "Projects",
-      "MAIN": "Home",
-      "CREATE": "Create",
-      "UPDATE": "Update"
+      "MAIN": "Home"
     },
     "DESCRIPTION": {
-      "EMPLOYEES": "Employees list",
+      "EMPLOYEES": "Employess list",
       "PROJECTS": "Projects list",
-      "MAIN": "Home",
-      "CREATE": {
-        "PROJECTS": "Create project"
-      },
-      "UPDATE": {
-        "PROJECTS": "Update project"
-      }
+      "MAIN": "Home"
     }
   },
   "SIGN_IN_PAGE": {
@@ -49,7 +39,7 @@
     "PASSWORD": "Password"
   },
   "PROJECT_LIST": {
-    "BUTTON": "Add project"
+    "BUTTON": "Add projecte"
   },
   "EMPLOYEES_LIST": {
     "BUTTON": "Add employee"

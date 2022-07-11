@@ -1,22 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
-import { Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
-import { Subject, takeUntil } from 'rxjs';
-import { DateConstants } from 'src/app/core/constants/date.constants';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { AppState } from 'src/app/core/store/app.reducers';
-import { GetProject } from '../../../../core/interfaces/project.interface';
-import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
 import { setBreadcrumbsAction } from '../../../../core/store/breadcrumb/breadcrumb.actions';
+import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
 import { setPageHeadingAction } from '../../../../core/store/page-heading/page-heading.actions';
-import { initProjectsStoreAction } from '../../../../core/store/projects/projects.actions';
-import { getProjectsSelector } from '../../../../core/store/projects/projects.selectors';
+import { AppState } from 'src/app/core/store/app.reducers';
 
 @Component({
   selector: 'app-projects-list-page',
@@ -24,43 +12,24 @@ import { getProjectsSelector } from '../../../../core/store/projects/projects.se
   styleUrls: ['./projects-list-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectsListPageComponent implements OnInit, OnDestroy {
+export class ProjectsListPageComponent implements OnInit {
   public headerData: TableHeaderItem[] = [
     {
-      i18nKey: 'PROJECTS.NAME',
+      i18nKey: 'LANGUAGES.TITLE',
+    },
+  ];
+  public listOfData: any[] = [
+    {
+      name: '123',
     },
     {
-      i18nKey: 'PROJECTS.SECOND_NAME',
-    },
-    {
-      i18nKey: 'PROJECTS.START_DATE',
-    },
-    {
-      i18nKey: 'PROJECTS.END_DATE',
-    },
-    {
-      i18nKey: 'PROJECTS.TEAM_SIZE',
+      name: '23123',
     },
   ];
 
-  public projects: GetProject[] = [];
-
-  public shortDate = DateConstants.SHORT_DATE;
-
-  private destroy$ = new Subject<void>();
-
-  constructor(
-    private store: Store<AppState>,
-    private cdr: ChangeDetectorRef,
-    private route: Router,
-  ) {}
+  constructor(private store: Store<AppState>) {}
 
   public ngOnInit(): void {
-    this.store.dispatch(initProjectsStoreAction());
-    this.store.pipe(select(getProjectsSelector), takeUntil(this.destroy$)).subscribe((projects) => {
-      this.projects = projects;
-      this.cdr.markForCheck();
-    });
     this.store.dispatch(
       setBreadcrumbsAction({
         breadcrumbs: [
@@ -83,27 +52,5 @@ export class ProjectsListPageComponent implements OnInit, OnDestroy {
         },
       }),
     );
-  }
-
-  public ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
-  public createProject(): void {
-    this.route.navigate([
-      RoutingConstants.MAIN,
-      RoutingConstants.PROJECTS,
-      RoutingConstants.CREATE,
-    ]);
-  }
-
-  public updateProject(id: string): void {
-    this.route.navigate([
-      RoutingConstants.MAIN,
-      RoutingConstants.PROJECTS,
-      RoutingConstants.UPDATE,
-      id,
-    ]);
   }
 }
