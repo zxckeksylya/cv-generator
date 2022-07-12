@@ -31,6 +31,7 @@ import {
   ResponsibilitiesState,
   RESPONSIBILITIES_FEATURE_KEY,
 } from './responsibilities/responsibilities.reducers';
+import { SKILLS_FEATURE_KEY, SkillsState, skillsReducer } from './skill/skills.reducers';
 import {
   specializationsReducer,
   SpecializationsState,
@@ -48,6 +49,7 @@ export interface AppState {
   [PROJECT_ROLES_FEATURE_KEY]: ProjectRolesState;
   [PROJECTS_FEATURE_KEY]: ProjectsState;
   [EMPLOYEES_FEATURE_KEY]: EmployeesState;
+  [SKILLS_FEATURE_KEY]: SkillsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -60,6 +62,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [PROJECT_ROLES_FEATURE_KEY]: projectRolesReducer,
   [PROJECTS_FEATURE_KEY]: projectsReducer,
   [EMPLOYEES_FEATURE_KEY]: employeesReducer,
+  [SKILLS_FEATURE_KEY]: skillsReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
