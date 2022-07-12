@@ -10,6 +10,7 @@ import { clearPageHeadingStateAction } from '../page-heading/page-heading.action
 import { clearProjectRolesAction } from '../projects-roles/project-roles.actions';
 import { clearProjectsStoreAction } from '../projects/projects.actions';
 import { clearResponsibilitiesAction } from '../responsibilities/responsibilities.actions';
+import { clearRolesAction } from '../role/roles.actions';
 import { clearSkillsAction } from '../skill/skills.actions';
 import { clearSpecializationsAction } from '../specializations/specializations.actions';
 import { clearAppStateAction } from './core.actions';
@@ -30,6 +31,7 @@ export class CoreEffects {
           this.store.dispatch(clearEmployeesStoreAction());
           this.store.dispatch(clearProjectsStoreAction());
           this.store.dispatch(clearSkillsAction());
+          this.store.dispatch(clearRolesAction());
         }),
       ),
     { dispatch: false },

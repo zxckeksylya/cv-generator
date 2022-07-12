@@ -11,9 +11,9 @@ import {
   BREADCRUMB_FEATURE_KEY,
 } from './breadcrumb/breadcrumb.reducers';
 import {
-  EMPLOYEES_FEATURE_KEY,
-  EmployeesState,
   employeesReducer,
+  EmployeesState,
+  EMPLOYEES_FEATURE_KEY,
 } from './employess/employees.reducers';
 import {
   pageHeadingReducer,
@@ -31,7 +31,7 @@ import {
   ResponsibilitiesState,
   RESPONSIBILITIES_FEATURE_KEY,
 } from './responsibilities/responsibilities.reducers';
-import { SKILLS_FEATURE_KEY, SkillsState, skillsReducer } from './skill/skills.reducers';
+import { rolesReducer, RolesState, ROLES_FEATURE_KEY } from './role/roles.reducers';
 import {
   specializationsReducer,
   SpecializationsState,
@@ -49,7 +49,7 @@ export interface AppState {
   [PROJECT_ROLES_FEATURE_KEY]: ProjectRolesState;
   [PROJECTS_FEATURE_KEY]: ProjectsState;
   [EMPLOYEES_FEATURE_KEY]: EmployeesState;
-  [SKILLS_FEATURE_KEY]: SkillsState;
+  [ROLES_FEATURE_KEY]: RolesState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -62,7 +62,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [PROJECT_ROLES_FEATURE_KEY]: projectRolesReducer,
   [PROJECTS_FEATURE_KEY]: projectsReducer,
   [EMPLOYEES_FEATURE_KEY]: employeesReducer,
-  [SKILLS_FEATURE_KEY]: skillsReducer,
+  [ROLES_FEATURE_KEY]: rolesReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

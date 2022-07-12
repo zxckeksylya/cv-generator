@@ -13,6 +13,7 @@ import { EmployeesEffect } from './employess/employees.effects';
 import { ProjectRolesEffect } from './projects-roles/project-roles.effects';
 import { ProjectsEffect } from './projects/projects.effects';
 import { ResponsibilitiesEffect } from './responsibilities/responsibilities.effects';
+import { RolesEffect } from './role/roles.effects';
 import { SkillsEffect } from './skill/skills.effects';
 import { SpecializationsEffect } from './specializations/specializations.effects';
 import { ThemeEffects } from './theme/theme.effects';
@@ -32,6 +33,7 @@ import { ThemeEffects } from './theme/theme.effects';
       ProjectsEffect,
       EmployeesEffect,
       SkillsEffect,
+      RolesEffect,
     ]),
     StoreRouterConnectingModule.forRoot(),
   ],
