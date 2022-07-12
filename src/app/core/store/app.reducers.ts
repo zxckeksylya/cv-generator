@@ -21,6 +21,11 @@ import {
   EMPLOYEES_FEATURE_KEY,
 } from './employess/employees.reducers';
 import {
+  languagesReducer,
+  LanguagesState,
+  LANGUAGE_FEATURE_KEY,
+} from './language/language.reducers';
+import {
   pageHeadingReducer,
   PageHeadingState,
   PAGE_HEADING_FEATURE_KEY,
@@ -56,6 +61,7 @@ export interface AppState {
   [EMPLOYEES_FEATURE_KEY]: EmployeesState;
   [ROLES_FEATURE_KEY]: RolesState;
   [CATEGORIES_FEATURE_KEY]: CategoriesState;
+  [LANGUAGE_FEATURE_KEY]: LanguagesState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -70,6 +76,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [EMPLOYEES_FEATURE_KEY]: employeesReducer,
   [ROLES_FEATURE_KEY]: rolesReducer,
   [CATEGORIES_FEATURE_KEY]: categoriesReducer,
+  [LANGUAGE_FEATURE_KEY]: languagesReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

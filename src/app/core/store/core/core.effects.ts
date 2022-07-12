@@ -7,6 +7,7 @@ import { clearAuthorizationStateAction } from '../authorization/authorization.ac
 import { clearBreadcrumbsStateAction } from '../breadcrumb/breadcrumb.actions';
 import { clearCategoriesAction } from '../category/categories.actions';
 import { clearEmployeesStoreAction } from '../employess/employees.actions';
+import { clearLanguagesAction } from '../language/language.actions';
 import { clearPageHeadingStateAction } from '../page-heading/page-heading.actions';
 import { clearProjectRolesAction } from '../projects-roles/project-roles.actions';
 import { clearProjectsStoreAction } from '../projects/projects.actions';
@@ -34,6 +35,7 @@ export class CoreEffects {
           this.store.dispatch(clearSkillsAction());
           this.store.dispatch(clearRolesAction());
           this.store.dispatch(clearCategoriesAction());
+          this.store.dispatch(clearLanguagesAction());
         }),
       ),
     { dispatch: false },
