@@ -6,6 +6,7 @@ import { AppState } from '../app.reducers';
 import { clearAuthorizationStateAction } from '../authorization/authorization.actions';
 import { clearBreadcrumbsStateAction } from '../breadcrumb/breadcrumb.actions';
 import { clearEmployeesStoreAction } from '../employess/employees.actions';
+import { clearLevelsAction } from '../level/levels.actions';
 import { clearPageHeadingStateAction } from '../page-heading/page-heading.actions';
 import { clearProjectRolesAction } from '../projects-roles/project-roles.actions';
 import { clearProjectsStoreAction } from '../projects/projects.actions';
@@ -28,6 +29,7 @@ export class CoreEffects {
           this.store.dispatch(clearProjectRolesAction());
           this.store.dispatch(clearEmployeesStoreAction());
           this.store.dispatch(clearProjectsStoreAction());
+          this.store.dispatch(clearLevelsAction());
         }),
       ),
     { dispatch: false },

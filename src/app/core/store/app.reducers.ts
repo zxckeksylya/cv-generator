@@ -15,6 +15,7 @@ import {
   EmployeesState,
   employeesReducer,
 } from './employess/employees.reducers';
+import { LEVELS_FEATURE_KEY, LevelsState, levelsReducer } from './level/levels.reducers';
 import {
   pageHeadingReducer,
   PageHeadingState,
@@ -48,6 +49,7 @@ export interface AppState {
   [PROJECT_ROLES_FEATURE_KEY]: ProjectRolesState;
   [PROJECTS_FEATURE_KEY]: ProjectsState;
   [EMPLOYEES_FEATURE_KEY]: EmployeesState;
+  [LEVELS_FEATURE_KEY]: LevelsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -60,6 +62,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [PROJECT_ROLES_FEATURE_KEY]: projectRolesReducer,
   [PROJECTS_FEATURE_KEY]: projectsReducer,
   [EMPLOYEES_FEATURE_KEY]: employeesReducer,
+  [LEVELS_FEATURE_KEY]: levelsReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
