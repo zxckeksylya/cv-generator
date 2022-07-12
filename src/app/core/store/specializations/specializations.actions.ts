@@ -20,4 +20,4 @@ export const getSpecializationsSuccessAction = createAction(
   props<{ specializations: INameId[] }>(),
 );
 
-export const clearSpecializationsAction = createAction('[SPECIALIZATION] clear projects store');
+export const clearSpecializationsAction = createAction('[SPECIALIZATION] clear languages store');

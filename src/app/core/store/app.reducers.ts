@@ -37,6 +37,11 @@ import {
   SPECIALIZATION_FEATURE_KEY,
 } from './specializations/specializations.reducers';
 import { themeReducer, ThemeState, THEME_FEATURE_KEY } from './theme/theme.reducers';
+import {
+  LANGUAGE_FEATURE_KEY,
+  LanguagesState,
+  languagesReducer,
+} from './language/language.reducers';
 
 export interface AppState {
   [THEME_FEATURE_KEY]: ThemeState;
@@ -48,6 +53,7 @@ export interface AppState {
   [PROJECT_ROLES_FEATURE_KEY]: ProjectRolesState;
   [PROJECTS_FEATURE_KEY]: ProjectsState;
   [EMPLOYEES_FEATURE_KEY]: EmployeesState;
+  [LANGUAGE_FEATURE_KEY]: LanguagesState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -60,6 +66,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [PROJECT_ROLES_FEATURE_KEY]: projectRolesReducer,
   [PROJECTS_FEATURE_KEY]: projectsReducer,
   [EMPLOYEES_FEATURE_KEY]: employeesReducer,
+  [LANGUAGE_FEATURE_KEY]: languagesReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
