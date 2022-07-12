@@ -5,6 +5,7 @@ import { tap } from 'rxjs';
 import { AppState } from '../app.reducers';
 import { clearAuthorizationStateAction } from '../authorization/authorization.actions';
 import { clearBreadcrumbsStateAction } from '../breadcrumb/breadcrumb.actions';
+import { clearCategoriesAction } from '../category/categories.actions';
 import { clearEmployeesStoreAction } from '../employess/employees.actions';
 import { clearPageHeadingStateAction } from '../page-heading/page-heading.actions';
 import { clearProjectRolesAction } from '../projects-roles/project-roles.actions';
@@ -32,6 +33,7 @@ export class CoreEffects {
           this.store.dispatch(clearProjectsStoreAction());
           this.store.dispatch(clearSkillsAction());
           this.store.dispatch(clearRolesAction());
+          this.store.dispatch(clearCategoriesAction());
         }),
       ),
     { dispatch: false },

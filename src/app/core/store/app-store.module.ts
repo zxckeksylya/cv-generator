@@ -8,6 +8,7 @@ import { ALertEffects } from './alert/alert.effects';
 import { AppEffects } from './app.effects';
 import { metaReducers, reducers } from './app.reducers';
 import { AuthorizationEffects } from './authorization/authorization.effects';
+import { CategoriesEffect } from './category/categories.effects';
 import { CoreEffects } from './core/core.effects';
 import { EmployeesEffect } from './employess/employees.effects';
 import { ProjectRolesEffect } from './projects-roles/project-roles.effects';
@@ -34,6 +35,7 @@ import { ThemeEffects } from './theme/theme.effects';
       EmployeesEffect,
       SkillsEffect,
       RolesEffect,
+      CategoriesEffect,
     ]),
     StoreRouterConnectingModule.forRoot(),
   ],

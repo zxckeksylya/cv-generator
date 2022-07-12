@@ -11,6 +11,11 @@ import {
   BREADCRUMB_FEATURE_KEY,
 } from './breadcrumb/breadcrumb.reducers';
 import {
+  categoriesReducer,
+  CategoriesState,
+  CATEGORIES_FEATURE_KEY,
+} from './category/categories.reducers';
+import {
   employeesReducer,
   EmployeesState,
   EMPLOYEES_FEATURE_KEY,
@@ -50,6 +55,7 @@ export interface AppState {
   [PROJECTS_FEATURE_KEY]: ProjectsState;
   [EMPLOYEES_FEATURE_KEY]: EmployeesState;
   [ROLES_FEATURE_KEY]: RolesState;
+  [CATEGORIES_FEATURE_KEY]: CategoriesState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -63,6 +69,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [PROJECTS_FEATURE_KEY]: projectsReducer,
   [EMPLOYEES_FEATURE_KEY]: employeesReducer,
   [ROLES_FEATURE_KEY]: rolesReducer,
+  [CATEGORIES_FEATURE_KEY]: categoriesReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
