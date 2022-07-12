@@ -7,31 +7,27 @@ import { changeThemeAction, initThemeAction, initThemeSuccessAction } from './th
 
 @Injectable()
 export class ThemeEffects {
-  public changeTheme$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(changeThemeAction),
-        map((parameter) => {
-          const { theme } = parameter;
-          this.documentRef.body.dataset['paletteTheme'] = theme;
-          localStorage.setItem('theme', theme);
-          return initThemeSuccessAction({ theme });
-        }),
-      ),
-    { dispatch: false },
+  public changeTheme$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(changeThemeAction),
+      map((parameter) => {
+        const { theme } = parameter;
+        this.documentRef.body.dataset['paletteTheme'] = theme;
+        localStorage.setItem('theme', theme);
+        return initThemeSuccessAction({ theme });
+      }),
+    ),
   );
 
-  public initTheme$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(initThemeAction),
-        map(() => {
-          const theme = localStorage.getItem('theme') || Themes.LIGHT;
-          this.documentRef.body.dataset['paletteTheme'] = theme;
-          return initThemeSuccessAction({ theme });
-        }),
-      ),
-    { dispatch: false },
+  public initTheme$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(initThemeAction),
+      map(() => {
+        const theme = localStorage.getItem('theme') || Themes.LIGHT;
+        this.documentRef.body.dataset['paletteTheme'] = theme;
+        return initThemeSuccessAction({ theme });
+      }),
+    ),
   );
 
   constructor(

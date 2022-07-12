@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MainRoutingModule } from './main-routing.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { ThemeButtonModule } from '../../core/components/theme-button/theme-button.module';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     DropdownModule,
     ButtonModule,
     NzModalModule,
+    ThemeButtonModule,
   ],
   declarations: [MainPageComponent, HeaderComponent, UserProfileComponent],
 })

@@ -79,5 +79,7 @@
   "USER_MODAL": {
     "PROFILE": "Profile",
     "LOGOUT": "Logout"
-  }
+  },
+  "dark": "Dark",
+  "light": "Light"
 }
