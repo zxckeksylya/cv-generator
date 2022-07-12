@@ -62,10 +62,13 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   public changeAction(event: UserModal): void {
-    if (event === UserModal.profile) {
-      this.createProfileModal(this.title, this.content, this.footer);
-    } else if (event === UserModal.logout) {
-      this.logout();
+    switch (event) {
+      case UserModal.profile:
+        this.createProfileModal(this.title, this.content, this.footer);
+        break;
+      case UserModal.logout:
+        this.logout();
+        break;
     }
   }
 
