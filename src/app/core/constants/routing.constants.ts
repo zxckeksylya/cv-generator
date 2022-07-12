@@ -7,4 +7,5 @@ export enum RoutingConstants {
   REGISTRATION = 'registration',
   CREATE = 'create',
   UPDATE = 'update',
+  INFO = 'info',
 }

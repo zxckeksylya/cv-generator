@@ -18,3 +18,16 @@ export interface GetEmployee {
 export interface EmployeeMap {
   [id: string]: GetEmployee;
 }
+
+export interface UpdateEmployee {
+  skills: string[];
+  languages: string[];
+  firstName: string;
+  lastName: string;
+  email: string;
+  institution: string;
+  diplomaProfession: string;
+  department: string;
+  role: string;
+  id: string;
+}
