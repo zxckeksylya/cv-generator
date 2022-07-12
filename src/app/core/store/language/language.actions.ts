@@ -1,23 +1,19 @@
 import { createAction, props } from '@ngrx/store';
 import { Language } from '../../interfaces/language.interface';
 
-export const initLanguagesStoreAction = createAction('[SPECIALIZATIONS] init languages');
+export const initLanguagesStoreAction = createAction('[LANGUAGESS] init languages');
 
-export const initLanguagesStoreSuccessAction = createAction(
-  '[SPECIALIZATIONS] success init languages',
-);
+export const initLanguagesStoreSuccessAction = createAction('[LANGUAGES] success init languages');
 
-export const initLanguagesStoreFailedAction = createAction(
-  '[SPECIALIZATIONS] failed init languages',
-);
+export const initLanguagesStoreFailedAction = createAction('[LANGUAGES] failed init languages');
 
-export const getLanguagesAction = createAction('[SPECIALIZATIONS] get languages list');
+export const getLanguagesAction = createAction('[LANGUAGES] get languages list');
 
 export const getLanguagesSuccessAction = createAction(
-  '[SPECIALIZATION] success get languages list',
+  '[LANGUAGES] success get languages list',
   props<{ languages: Language[] }>(),
 );
 
-export const getLanguagesFailedAction = createAction('[PROJECT_ROLES] failed get languages list');
+export const getLanguagesFailedAction = createAction('[LANGUAGES] failed get languages list');
 
-export const clearLanguagesAction = createAction('[SPECIALIZATION] clear languages store');
+export const clearLanguagesAction = createAction('[LANGUAGES] clear languages store');
