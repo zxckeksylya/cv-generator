@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { INameId } from '../../interfaces/name-id.interface';
+import { Skill } from '../../interfaces/skill.interface';
 
 export const initSkillsStoreAction = createAction('[SKILLS] init skills');
 
@@ -11,7 +11,7 @@ export const getSkillsAction = createAction('[SKILLS] get skills list');
 
 export const getSkillsSuccessAction = createAction(
   '[SKILLS] success get skills list',
-  props<{ skills: INameId[] }>(),
+  props<{ skills: Skill[] }>(),
 );
 
 export const getSkillsFailedAction = createAction('[SKILLS] failed get skills list');

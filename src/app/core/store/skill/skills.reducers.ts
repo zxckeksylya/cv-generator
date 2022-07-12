@@ -1,11 +1,11 @@
-import { INameId } from '../../interfaces/name-id.interface';
 import { createReducer, on } from '@ngrx/store';
 import { clearSkillsAction, getSkillsSuccessAction } from './skills.actions';
+import { Skill } from '../../interfaces/skill.interface';
 
 export const SKILLS_FEATURE_KEY = 'skills';
 
 export interface SkillsState {
-  skills: INameId[];
+  skills: Skill[];
   isInitSkills: boolean;
 }
 
