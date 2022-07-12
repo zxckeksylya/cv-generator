@@ -11,10 +11,15 @@ import {
   BREADCRUMB_FEATURE_KEY,
 } from './breadcrumb/breadcrumb.reducers';
 import {
-  EMPLOYEES_FEATURE_KEY,
-  EmployeesState,
   employeesReducer,
+  EmployeesState,
+  EMPLOYEES_FEATURE_KEY,
 } from './employess/employees.reducers';
+import {
+  languagesReducer,
+  LanguagesState,
+  LANGUAGE_FEATURE_KEY,
+} from './language/language.reducers';
 import {
   pageHeadingReducer,
   PageHeadingState,
@@ -37,11 +42,6 @@ import {
   SPECIALIZATION_FEATURE_KEY,
 } from './specializations/specializations.reducers';
 import { themeReducer, ThemeState, THEME_FEATURE_KEY } from './theme/theme.reducers';
-import {
-  LANGUAGE_FEATURE_KEY,
-  LanguagesState,
-  languagesReducer,
-} from './language/language.reducers';
 
 export interface AppState {
   [THEME_FEATURE_KEY]: ThemeState;

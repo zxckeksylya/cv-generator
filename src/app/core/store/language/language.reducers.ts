@@ -1,11 +1,11 @@
-import { INameId } from '../../interfaces/name-id.interface';
 import { createReducer, on } from '@ngrx/store';
+import { Language } from '../../interfaces/language.interface';
 import { clearLanguagesAction, getLanguagesSuccessAction } from './language.actions';
 
 export const LANGUAGE_FEATURE_KEY = 'languages';
 
 export interface LanguagesState {
-  languages: INameId[];
+  languages: Language[];
   isInitLanguages: boolean;
 }
 

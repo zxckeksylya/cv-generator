@@ -9,13 +9,13 @@ import { AppEffects } from './app.effects';
 import { metaReducers, reducers } from './app.reducers';
 import { AuthorizationEffects } from './authorization/authorization.effects';
 import { CoreEffects } from './core/core.effects';
-import { ThemeEffects } from './theme/theme.effects';
-import { SpecializationsEffect } from './specializations/specializations.effects';
-import { ResponsibilitiesEffect } from './responsibilities/responsibilities.effects';
-import { ProjectRolesEffect } from './projects-roles/project-roles.effects';
-import { ProjectsEffect } from './projects/projects.effects';
 import { EmployeesEffect } from './employess/employees.effects';
 import { LanguagesEffect } from './language/language.effects';
+import { ProjectRolesEffect } from './projects-roles/project-roles.effects';
+import { ProjectsEffect } from './projects/projects.effects';
+import { ResponsibilitiesEffect } from './responsibilities/responsibilities.effects';
+import { SpecializationsEffect } from './specializations/specializations.effects';
+import { ThemeEffects } from './theme/theme.effects';
 @NgModule({
   imports: [
     StoreModule.forRoot(reducers, { metaReducers }),

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { INameId } from '../../interfaces/name-id.interface';
+import { Language } from '../../interfaces/language.interface';
 
 export const initLanguagesStoreAction = createAction('[SPECIALIZATIONS] init languages');
 
@@ -15,7 +15,7 @@ export const getLanguagesAction = createAction('[SPECIALIZATIONS] get languages 
 
 export const getLanguagesSuccessAction = createAction(
   '[SPECIALIZATION] success get languages list',
-  props<{ languages: INameId[] }>(),
+  props<{ languages: Language[] }>(),
 );
 
 export const getLanguagesFailedAction = createAction('[PROJECT_ROLES] failed get languages list');
