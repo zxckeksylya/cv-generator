@@ -12,6 +12,7 @@ import { CategoriesEffect } from './category/categories.effects';
 import { CoreEffects } from './core/core.effects';
 import { EmployeesEffect } from './employess/employees.effects';
 import { LanguagesEffect } from './language/language.effects';
+import { LevelsEffect } from './level/levels.effects';
 import { ProjectRolesEffect } from './projects-roles/project-roles.effects';
 import { ProjectsEffect } from './projects/projects.effects';
 import { ResponsibilitiesEffect } from './responsibilities/responsibilities.effects';
@@ -38,6 +39,7 @@ import { ThemeEffects } from './theme/theme.effects';
       RolesEffect,
       CategoriesEffect,
       LanguagesEffect,
+      LevelsEffect,
     ]),
     StoreRouterConnectingModule.forRoot(),
   ],

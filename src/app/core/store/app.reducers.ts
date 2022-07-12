@@ -25,6 +25,7 @@ import {
   LanguagesState,
   LANGUAGE_FEATURE_KEY,
 } from './language/language.reducers';
+import { levelsReducer, LevelsState, LEVELS_FEATURE_KEY } from './level/levels.reducers';
 import {
   pageHeadingReducer,
   PageHeadingState,
@@ -62,6 +63,7 @@ export interface AppState {
   [ROLES_FEATURE_KEY]: RolesState;
   [CATEGORIES_FEATURE_KEY]: CategoriesState;
   [LANGUAGE_FEATURE_KEY]: LanguagesState;
+  [LEVELS_FEATURE_KEY]: LevelsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -77,6 +79,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [ROLES_FEATURE_KEY]: rolesReducer,
   [CATEGORIES_FEATURE_KEY]: categoriesReducer,
   [LANGUAGE_FEATURE_KEY]: languagesReducer,
+  [LEVELS_FEATURE_KEY]: levelsReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
