@@ -73,10 +73,21 @@
   "BUTTON": {
     "SAVE": "Сохранить",
     "CANCEL": "Отменить",
-    "EDIT": "Изменить"
+    "EDIT": "Изменить",
+    "UPDATE": "Обновить",
+    "CLOSE": "Закрыть"
   },
-  "USER_MODAL": {
+  "USER_DROPDOWN": {
     "PROFILE": "Профиль",
     "LOGOUT": "Выйти"
+  },
+  "USER_MODAL": {
+    "TITLE": "Пользователь",
+    "FIRST_NAME": "Имя",
+    "SECOND_NAME": "Фамилия",
+    "EMAIL": "Почта",
+    "INSTITUTION": "Образование",
+    "DIPLOMA_PROFESSION": "Специальность",
+    "DEPARTMENT": "Отдел"
   }
 }

@@ -12,6 +12,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MainRoutingModule } from './main-routing.module';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { UserModalComponent } from './components/user-modal/user-modal.component';
+import { ModalService } from 'src/app/core/services/modal.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -25,7 +28,9 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     DropdownModule,
     ButtonModule,
     NzModalModule,
+    TranslateModule,
   ],
-  declarations: [MainPageComponent, HeaderComponent, UserProfileComponent],
+  declarations: [MainPageComponent, HeaderComponent, UserProfileComponent, UserModalComponent],
+  providers: [ModalService],
 })
 export class MainModule {}

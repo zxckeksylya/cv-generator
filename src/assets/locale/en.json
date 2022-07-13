@@ -74,10 +74,20 @@
     "SAVE": "Save",
     "CANCEL": "Cancel",
     "EDIT": "Edit",
-    "UPDATE": "Update"
+    "UPDATE": "Update",
+    "CLOSE": "Close"
   },
-  "USER_MODAL": {
+  "USER_DROPDOWN": {
     "PROFILE": "Profile",
     "LOGOUT": "Logout"
+  },
+  "USER_MODAL": {
+    "TITLE": "User",
+    "FIRST_NAME": "First name",
+    "SECOND_NAME": "Second name",
+    "EMAIL": "Email",
+    "INSTITUTION": "Institution",
+    "DIPLOMA_PROFESSION": "Diploma profession",
+    "DEPARTMENT": "Department"
   }
 }

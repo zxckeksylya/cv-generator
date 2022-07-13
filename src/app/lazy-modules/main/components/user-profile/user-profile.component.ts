@@ -4,20 +4,19 @@ import {
   Component,
   OnDestroy,
   OnInit,
-  TemplateRef,
-  ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { NzModalService } from 'ng-zorro-antd/modal';
 import { Subject, takeUntil } from 'rxjs';
 import { User } from 'src/app/core/interfaces/user.interface';
 import { RoutingConstants } from '../../../../core/constants/routing.constants';
-import { UserModal } from '../../../../core/enums/user-modal.enum';
 import { AppState } from '../../../../core/store/app.reducers';
 import { setAuthorizationUserAction } from '../../../../core/store/authorization/authorization.actions';
 import { userSelector } from '../../../../core/store/authorization/authorization.selectors';
 import { clearAppStateAction } from '../../../../core/store/core/core.actions';
+import { UserDropdownActions } from '../../enums/user-dropdown-actions.enum';
+import { ModalService, ModalOptions } from '../../../../core/services/modal.service';
+import { UserModalComponent } from '../user-modal/user-modal.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -26,18 +25,9 @@ import { clearAppStateAction } from '../../../../core/store/core/core.actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
-  @ViewChild('title', { static: false })
-  public title: TemplateRef<any>;
-
-  @ViewChild('content', { static: false })
-  public content: TemplateRef<any>;
-
-  @ViewChild('footer', { static: false })
-  public footer: TemplateRef<any>;
-
   public user: User | null;
 
-  public dataSource = [UserModal.profile, UserModal.logout];
+  public dataSource = [UserDropdownActions.PROFILE, UserDropdownActions.LOGOUT];
 
   private destroy$ = new Subject<void>();
 
@@ -45,7 +35,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private cdr: ChangeDetectorRef,
     private route: Router,
-    private modal: NzModalService,
+    private modal: ModalService,
   ) {}
 
   public ngOnInit(): void {
@@ -61,29 +51,24 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  public changeAction(event: UserModal): void {
-    switch (event) {
-      case UserModal.profile:
-        this.createProfileModal(this.title, this.content, this.footer);
+  public changeAction(action: UserDropdownActions): void {
+    switch (action) {
+      case UserDropdownActions.PROFILE:
+        this.createProfileModal();
         break;
-      case UserModal.logout:
+      case UserDropdownActions.LOGOUT:
         this.logout();
         break;
     }
   }
 
-  public createProfileModal(
-    tplTitle: TemplateRef<any>,
-    tplContent: TemplateRef<any>,
-    tplFooter: TemplateRef<any>,
-  ): void {
-    this.modal.create({
-      nzTitle: tplTitle,
-      nzContent: tplContent,
-      nzFooter: tplFooter,
-      nzMaskClosable: false,
-      nzClosable: false,
-    });
+  private createProfileModal(): void {
+    this.modal.openModal({
+      i18nHeaderKey: 'USER_MODAL.TITLE',
+      content: UserModalComponent,
+      closable: false,
+      params: { user: this.user },
+    } as ModalOptions);
   }
 
   private logout(): void {

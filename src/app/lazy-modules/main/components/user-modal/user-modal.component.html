@@ -1,0 +1,39 @@
+<div class="row">
+  <label
+    ><strong>{{ 'USER_MODAL.FIRST_NAME' | translate }}</strong></label
+  >
+  <span>{{ user?.firstName }}</span>
+</div>
+<div class="row">
+  <label
+    ><strong>{{ 'USER_MODAL.SECOND_NAME' | translate }}</strong></label
+  >
+  <span>{{ user?.lastName }}</span>
+</div>
+<div class="row">
+  <label
+    ><strong>{{ 'USER_MODAL.EMAIL' | translate }}</strong></label
+  >
+  <span>{{ user?.email }}</span>
+</div>
+<div class="row">
+  <label
+    ><strong>{{ 'USER_MODAL.INSTITUTION' | translate }}</strong></label
+  >
+  <span>{{ user?.institution }}</span>
+</div>
+<div class="row">
+  <label
+    ><strong>{{ 'USER_MODAL.DIPLOMA_PROFESSION' | translate }}</strong></label
+  >
+  <span>{{ user?.diplomaProfession }}</span>
+</div>
+<div class="row">
+  <label
+    ><strong>{{ 'USER_MODAL.DEPARTMENT' | translate }}</strong></label
+  >
+  <span>{{ user?.department }}</span>
+</div>
+<app-button (buttonClick)="destroyModal()" class="modal-button">{{
+  'BUTTON.CLOSE' | translate
+}}</app-button>

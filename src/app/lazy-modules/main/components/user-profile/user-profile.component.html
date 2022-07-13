@@ -6,15 +6,3 @@
 >
   <span>{{ user?.firstName }} {{ user?.lastName }}</span>
 </app-dropdown>
-
-<ng-template #title>
-  {{ user?.firstName }}
-</ng-template>
-
-<ng-template #content>
-  {{ user?.lastName }}
-</ng-template>
-
-<ng-template #footer let-ref="modalRef">
-  <app-button (buttonClick)="ref.destroy()">Close</app-button>
-</ng-template>

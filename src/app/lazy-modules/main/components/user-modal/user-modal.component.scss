@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .modal-button {
+    display: flex;
+    justify-content: end;
+  }
+}
