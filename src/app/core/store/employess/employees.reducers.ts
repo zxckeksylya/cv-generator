@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { EmployeeMap } from '../../interfaces/employee.interface';
-import { arrayEmployeesToMap } from '../../utils/employees/array-employees-to-map.util';
+import { EmployeeMap, GetEmployee } from '../../interfaces/employee.interface';
+import { arrayToMap } from '../../utils/array-to-map.util';
 import { getEmployeesSuccessAction } from './employees.actions';
 
 export const EMPLOYEES_FEATURE_KEY = 'employees';
@@ -20,6 +20,6 @@ export const employeesReducer = createReducer(
   on(getEmployeesSuccessAction, (state, action) => ({
     ...state,
     isInitEmployees: true,
-    employees: arrayEmployeesToMap(action.employees),
+    employees: arrayToMap<GetEmployee>(action.employees),
   })),
 );
