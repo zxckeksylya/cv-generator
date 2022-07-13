@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap, take, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {
   GetProject,
@@ -21,12 +21,21 @@ export class ProjectsService {
     return this.http.get<GetProject[]>(`${environment.host}/projects`);
   }
 
-  public getProjectById(id: string): Observable<GetProject[]> {
-    return this.http.get<GetProject[]>(`${environment.host}/projects`, {
-      params: {
-        id,
-      },
-    });
+  public getProjectById(id: string): Observable<GetProject> {
+    return this.http
+      .get<GetProject[]>(`${environment.host}/projects`, {
+        params: {
+          id,
+        },
+      })
+      .pipe(
+        take(1),
+        switchMap((data) =>
+          data[0]
+            ? of(data[0])
+            : throwError(() => new HttpErrorResponse({ status: 404, error: 'bad request' })),
+        ),
+      );
   }
 
   public createProject(project: CreateProject): Observable<CreateProjectResponse> {

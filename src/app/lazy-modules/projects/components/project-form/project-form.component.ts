@@ -12,20 +12,17 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RoutingConstants } from '../../../../core/constants/routing.constants';
-import { GetProject, UpdateProject } from '../../../../core/interfaces/project.interface';
-import { formatDate } from '../../../../core/utils/format-date.util';
-import { getArrayIdOutINameId } from '../../../../core/utils/get-array-id-out-i-name-id.util';
-import { INameId } from '../../../../core/interfaces/name-id.interface';
-import { AppState } from 'src/app/core/store/app.reducers';
-import { Store, select } from '@ngrx/store';
-import { initProjectRolesStoreAction } from '../../../../core/store/projects-roles/project-roles.actions';
-import { initSpecializationsStoreAction } from '../../../../core/store/specializations/specializations.actions';
-import { initResponsibilitiesStoreAction } from '../../../../core/store/responsibilities/responsibilities.actions';
+import { select, Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { AppState } from 'src/app/core/store/app.reducers';
+import { getResponsibilitiesSelector } from 'src/app/core/store/responsibilities/responsibilities.selectors';
+import { RoutingConstants } from '../../../../core/constants/routing.constants';
+import { INameId } from '../../../../core/interfaces/name-id.interface';
+import { GetProject, UpdateProject } from '../../../../core/interfaces/project.interface';
 import { getProjectRolesSelector } from '../../../../core/store/projects-roles/project-roles.selectors';
 import { getSpecializationsSelector } from '../../../../core/store/specializations/specializations.selectors';
-import { getResponsibilitiesSelector } from 'src/app/core/store/responsibilities/responsibilities.selectors';
+import { formatDate } from '../../../../core/utils/format-date.util';
+import { getArrayIdOutINameId } from '../../../../core/utils/get-array-id-out-i-name-id.util';
 
 @Component({
   selector: 'app-project-form',
@@ -64,8 +61,7 @@ export class ProjectFormComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.initStores();
-    this.initStoresArray();
+    this.getData();
   }
 
   public ngOnDestroy(): void {
@@ -78,7 +74,6 @@ export class ProjectFormComponent implements OnInit, OnChanges, OnDestroy {
     if (this.form.invalid) {
       return;
     }
-
     this.submitted.emit(this.formatProject(this.form.getRawValue()));
   }
 
@@ -116,13 +111,7 @@ export class ProjectFormComponent implements OnInit, OnChanges, OnDestroy {
     });
   }
 
-  private initStores(): void {
-    this.store.dispatch(initProjectRolesStoreAction());
-    this.store.dispatch(initSpecializationsStoreAction());
-    this.store.dispatch(initResponsibilitiesStoreAction());
-  }
-
-  private initStoresArray(): void {
+  private getData(): void {
     this.store.pipe(select(getProjectRolesSelector), takeUntil(this.destroy$)).subscribe((data) => {
       this.projectRole = data;
       this.cdr.markForCheck();

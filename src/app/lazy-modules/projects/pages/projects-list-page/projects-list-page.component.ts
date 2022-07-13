@@ -15,7 +15,6 @@ import { GetProject } from '../../../../core/interfaces/project.interface';
 import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
 import { setBreadcrumbsAction } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 import { setPageHeadingAction } from '../../../../core/store/page-heading/page-heading.actions';
-import { initProjectsStoreAction } from '../../../../core/store/projects/projects.actions';
 import { getProjectsSelector } from '../../../../core/store/projects/projects.selectors';
 
 @Component({
@@ -56,7 +55,6 @@ export class ProjectsListPageComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.store.dispatch(initProjectsStoreAction());
     this.store.pipe(select(getProjectsSelector), takeUntil(this.destroy$)).subscribe((projects) => {
       this.projects = projects;
       this.cdr.markForCheck();

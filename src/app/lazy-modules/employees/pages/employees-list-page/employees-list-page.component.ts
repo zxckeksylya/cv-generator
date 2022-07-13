@@ -1,20 +1,19 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  Component,
   OnDestroy,
+  OnInit,
 } from '@angular/core';
-import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { setBreadcrumbsAction } from '../../../../core/store/breadcrumb/breadcrumb.actions';
-import { select, Store } from '@ngrx/store';
-import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
-import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
-import { AppState } from 'src/app/core/store/app.reducers';
-import { GetEmployee } from 'src/app/core/interfaces/employee.interface';
-import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
-import { initEmployeesStoreAction } from '../../../../core/store/employess/employees.actions';
+import { select, Store } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
+import { RoutingConstants } from 'src/app/core/constants/routing.constants';
+import { GetEmployee } from 'src/app/core/interfaces/employee.interface';
+import { AppState } from 'src/app/core/store/app.reducers';
+import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
+import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
+import { setBreadcrumbsAction } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 import { getEmployeesSelector } from '../../../../core/store/employess/employees.selectors';
 
 @Component({
@@ -50,7 +49,6 @@ export class EmployeesListPageComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.store.dispatch(initEmployeesStoreAction());
     this.store
       .pipe(select(getEmployeesSelector), takeUntil(this.destroy$))
       .subscribe((employees) => {
