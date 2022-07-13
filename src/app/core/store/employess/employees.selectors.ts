@@ -1,12 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { mapEmployeesToArray } from '../../utils/employees/map-employees-to-array.util';
 import { EmployeesState, EMPLOYEES_FEATURE_KEY } from './employees.reducers';
 
 export const employeesFeatureSelector =
   createFeatureSelector<EmployeesState>(EMPLOYEES_FEATURE_KEY);
 
 export const getEmployeesSelector = createSelector(employeesFeatureSelector, (state) =>
-  mapEmployeesToArray(state.employees),
+  Object.values(state.employees),
 );
 
 export const getIsInitEmployeesSelector = createSelector(
