@@ -49,7 +49,6 @@ export class ProjectUpdatePageComponent implements OnInit, OnDestroy {
 
   public updateProject(project: UpdateProject): void {
     this.store.dispatch(updateProjectAction({ ...project, id: this.updatedProject.id }));
-
     this.route.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
   }
 

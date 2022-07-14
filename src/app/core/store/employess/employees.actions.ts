@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { GetEmployee } from '../../interfaces/employee.interface';
+import { GetEmployee, CreateEmployee, UpdateEmployee } from '../../interfaces/employee.interface';
 
 export const initEmployeesStoreAction = createAction('[EMPLOYEES] init employees');
 
@@ -24,13 +24,25 @@ export const getEmployeeByIdSuccessAction = createAction(
   props<{ employee: GetEmployee }>(),
 );
 
-export const createEmployeeAction = createAction('[PROJECTS] create employee');
+export const createEmployeeAction = createAction(
+  '[PROJECTS] create employee',
+  props<CreateEmployee>(),
+);
 
-export const createEmployeeSuccessAction = createAction('[PROJECTS] success create employee');
+export const createEmployeeSuccessAction = createAction(
+  '[PROJECTS] success create employee',
+  props<{ employee: GetEmployee }>(),
+);
 
-export const updateEmployeeAction = createAction('[PROJECTS] update employee');
+export const updateEmployeeAction = createAction(
+  '[PROJECTS] update employee',
+  props<UpdateEmployee>(),
+);
 
-export const updateEmployeeSuccessAction = createAction('[PROJECTS] success update employee');
+export const updateEmployeeSuccessAction = createAction(
+  '[PROJECTS] success update employee',
+  props<{ id: string }>(),
+);
 
 export const deleteEmployeeAction = createAction('[PROJECTS] delete Employee');
 

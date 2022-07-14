@@ -1,1 +1,69 @@
-<p>employee-form works!</p>
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+  <div class="block block-base">
+    <app-text-control
+      formControlName="firstName"
+      [label]="'EMPLOYEES.FIRST_NAME' | translate"
+      class="flex-1"
+    ></app-text-control>
+    <app-text-control
+      formControlName="lastName"
+      [label]="'EMPLOYEES.LAST_NAME' | translate"
+      class="flex-1"
+    ></app-text-control>
+    <app-text-control
+      formControlName="email"
+      [label]="'EMPLOYEES.EMAIL' | translate"
+      class="flex-1"
+    ></app-text-control>
+  </div>
+  <div class="block block-base">
+    <app-text-control
+      formControlName="institution"
+      [label]="'EMPLOYEES.INSTITUTION' | translate"
+      class="flex-1"
+    ></app-text-control>
+    <app-text-control
+      formControlName="diplomaProfession"
+      [label]="'EMPLOYEES.DIPLOMA_PROFESSIONAL' | translate"
+      class="flex-1"
+    ></app-text-control>
+    <app-text-control
+      formControlName="department"
+      [label]="'EMPLOYEES.DEPARTMENT' | translate"
+      class="flex-1"
+    ></app-text-control>
+  </div>
+  <div class="block block-base">
+    <app-select-control
+      formControlName="skills"
+      [label]="'EMPLOYEES.SKILLS' | translate"
+      class="flex-1"
+      [dataSource]="skills"
+      optionLabelField="name"
+      mode="multiple"
+      optionValueField="id"
+    ></app-select-control>
+    <app-select-control
+      formControlName="languages"
+      [label]="'EMPLOYEES.LANGUAGES' | translate"
+      class="flex-1"
+      [dataSource]="languages"
+      optionLabelField="name"
+      mode="multiple"
+      optionValueField="id"
+    ></app-select-control>
+    <app-select-control
+      formControlName="role"
+      [label]="'EMPLOYEES.ROLE' | translate"
+      class="flex-1"
+      [dataSource]="role"
+      optionLabelField="name"
+      optionValueField="id"
+    ></app-select-control>
+  </div>
+
+  <div class="buttons">
+    <app-button type="primary" behaviorType="submit">{{ 'BUTTON.SAVE' | translate }}</app-button>
+    <app-button (buttonClick)="backToEmployees()">{{ 'BUTTON.CANCEL' | translate }}</app-button>
+  </div>
+</form>

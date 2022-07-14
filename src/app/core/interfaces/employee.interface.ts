@@ -31,3 +31,34 @@ export interface UpdateEmployee {
   role: string;
   id: string;
 }
+
+export interface CreateEmployee extends UpdateEmployee {
+  password: string;
+}
+
+export interface CreateEmployeeResponse {
+  id: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  email: string;
+  institution: string;
+  diplomaProfession: string;
+  skills: string[];
+  role: string;
+  department: string;
+  languages: string[];
+}
+
+export interface EmployeeForm {
+  skills: Skill[];
+  languages: Language[];
+  firstName: string;
+  lastName: string;
+  email: string;
+  institution: string;
+  diplomaProfession: string;
+  department: string;
+  role: string;
+  id: string;
+}

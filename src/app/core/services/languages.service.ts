@@ -11,6 +11,6 @@ export class LanguagesService {
   constructor(private http: HttpClient) {}
 
   public getLanguages(): Observable<Language[]> {
-    return this.http.get<Language[]>(`${environment.host}/language`);
+    return this.http.get<Language[]>(`${environment.host}/languages`);
   }
 }

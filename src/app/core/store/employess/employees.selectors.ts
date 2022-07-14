@@ -8,6 +8,11 @@ export const getEmployeesSelector = createSelector(employeesFeatureSelector, (st
   Object.values(state.employees),
 );
 
+export const getEmployeeByIdSelector = createSelector(
+  employeesFeatureSelector,
+  (state: EmployeesState, props: { id: string }) => state.employees[props.id],
+);
+
 export const getIsInitEmployeesSelector = createSelector(
   employeesFeatureSelector,
   (state) => state.isInitEmployees,

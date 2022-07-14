@@ -2,7 +2,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, take, switchMap, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { GetEmployee } from '../interfaces/employee.interface';
+import { UpdateEmployee } from '../interfaces/employee.interface';
+import {
+  GetEmployee,
+  CreateEmployee,
+  CreateEmployeeResponse,
+} from '../interfaces/employee.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +34,13 @@ export class EmployeeService {
             : throwError(() => new HttpErrorResponse({ status: 404, error: 'bad request' })),
         ),
       );
+  }
+
+  public createEmployee(employee: CreateEmployee): Observable<CreateEmployeeResponse> {
+    return this.http.post<CreateEmployeeResponse>(`${environment.host}/users`, employee);
+  }
+
+  public updateEmployee(employee: UpdateEmployee): Observable<UpdateEmployee> {
+    return this.http.put<UpdateEmployee>(`${environment.host}/users`, employee);
   }
 }

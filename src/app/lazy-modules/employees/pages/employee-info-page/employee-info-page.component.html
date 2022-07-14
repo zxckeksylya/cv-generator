@@ -1,1 +1,6 @@
-<p>employee-info-page works!</p>
+<div class="base-page">
+  <app-employee-form
+    [employee]="updatedEmployee"
+    (submitted)="updateEmployee($event)"
+  ></app-employee-form>
+</div>

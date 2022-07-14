@@ -16,7 +16,8 @@
     "EMPLOYEES": "Сотрудники",
     "PROJECTS": "Проекты",
     "CREATE": "Создание",
-    "UPDATE": "Изменение"
+    "UPDATE": "Изменение",
+    "INFO": "Иформация"
   },
   "PAGE-HEADING": {
     "SECTION": {
@@ -24,17 +25,22 @@
       "PROJECTS": "Проекты",
       "MAIN": "Главная",
       "CREATE": "Создание",
-      "UPDATE": "Изменение"
+      "UPDATE": "Изменение",
+      "INFO": "Иформация"
     },
     "DESCRIPTION": {
       "EMPLOYEES": "Список сотрудников",
       "PROJECTS": "Список проектов",
       "MAIN": "Главная",
       "CREATE": {
-        "PROJECTS": "Создание проекта"
+        "PROJECTS": "Создание проекта",
+        "EMPLOYEES": "Создания сотрудника"
       },
       "UPDATE": {
         "PROJECTS": "Изменение проекта"
+      },
+      "INFO": {
+        "EMPLOYEES": "Иформация сотрудника"
       }
     }
   },

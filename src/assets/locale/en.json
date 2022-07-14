@@ -16,7 +16,8 @@
     "EMPLOYEES": "Employees",
     "PROJECTS": "Projects",
     "CREATE": "Create",
-    "UPDATE": "Update"
+    "UPDATE": "Update",
+    "INFO": "Info"
   },
   "PAGE-HEADING": {
     "SECTION": {
@@ -24,17 +25,22 @@
       "PROJECTS": "Projects",
       "MAIN": "Home",
       "CREATE": "Create",
-      "UPDATE": "Update"
+      "UPDATE": "Update",
+      "INFO": "Info"
     },
     "DESCRIPTION": {
       "EMPLOYEES": "Employees list",
       "PROJECTS": "Projects list",
       "MAIN": "Home",
       "CREATE": {
-        "PROJECTS": "Create project"
+        "PROJECTS": "Create project",
+        "EMPLOYEES": "Create employee"
       },
       "UPDATE": {
         "PROJECTS": "Update project"
+      },
+      "INFO": {
+        "EMPLOYEES": "Info employee"
       }
     }
   },
