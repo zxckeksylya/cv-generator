@@ -71,7 +71,6 @@ export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
 
   public onSubmit(): void {
     this.form.markAllAsTouched();
-    console.log(this.form.invalid);
     if (this.form.invalid) {
       return;
     }
@@ -91,7 +90,6 @@ export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
       skills: getArrayIdOutINameId(skills),
       role: role.id,
     };
-    console.log(user);
     return user;
   }
 
