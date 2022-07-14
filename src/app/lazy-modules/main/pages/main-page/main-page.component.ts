@@ -13,6 +13,8 @@ import { initResponsibilitiesStoreAction } from '../../../../core/store/responsi
 import { initLanguagesStoreAction } from '../../../../core/store/language/language.actions';
 import { initSkillsStoreAction } from '../../../../core/store/skill/skills.actions';
 import { initRolesStoreAction } from '../../../../core/store/role/roles.actions';
+import { initCategoriesStoreAction } from '../../../../core/store/category/categories.actions';
+import { initLevelsStoreAction } from '../../../../core/store/level/levels.actions';
 
 @Component({
   selector: 'app-main-page',
@@ -37,6 +39,8 @@ export class MainPageComponent implements OnInit {
     this.store.dispatch(initLanguagesStoreAction());
     this.store.dispatch(initSkillsStoreAction());
     this.store.dispatch(initRolesStoreAction());
+    this.store.dispatch(initCategoriesStoreAction());
+    this.store.dispatch(initLevelsStoreAction());
   }
 
   private initPageInfo(): void {
