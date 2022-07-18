@@ -30,7 +30,6 @@ export class ThemeButtonComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.store.pipe(select(themeSelector), takeUntil(this.destroy$)).subscribe((theme) => {
       this.theme = theme as Themes;
-      console.log(theme);
       this.cdr.markForCheck();
     });
   }
@@ -46,14 +45,14 @@ export class ThemeButtonComponent implements OnInit, OnDestroy {
 
   public changeTheme(): void {
     const selectedThemeIndex = this.themes.findIndex((value) => value === this.theme);
-    let newTheme = '';
+    let newTheme: Themes;
     if (selectedThemeIndex + 1 === this.themes.length) {
       newTheme = this.themes[0];
     } else {
       newTheme = this.themes[selectedThemeIndex + 1];
     }
 
-    this.commitTheme(newTheme as Themes);
+    this.commitTheme(newTheme);
   }
 
   private commitTheme(theme: Themes): void {

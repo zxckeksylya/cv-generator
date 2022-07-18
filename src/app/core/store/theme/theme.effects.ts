@@ -10,8 +10,7 @@ export class ThemeEffects {
   public changeTheme$ = createEffect(() =>
     this.actions$.pipe(
       ofType(changeThemeAction),
-      map((parameter) => {
-        const { theme } = parameter;
+      map(({ theme }) => {
         this.documentRef.body.dataset['paletteTheme'] = theme;
         localStorage.setItem('theme', theme);
         return initThemeSuccessAction({ theme });
