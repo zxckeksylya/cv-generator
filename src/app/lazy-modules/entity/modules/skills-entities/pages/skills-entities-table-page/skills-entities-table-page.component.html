@@ -1,0 +1,14 @@
+<app-button (buttonClick)="createSkill()">{{ 'BUTTON.EDIT' | translate }}</app-button>
+<app-table [source]="skillsNames" [headerItems]="headerData" [rowTemplateRef]="rowRef">
+  <ng-template #rowRef let-item>
+    <tr>
+      <td>{{ item }}</td>
+      <td>
+        <app-button (buttonClick)="updateSkill(item)">{{ 'BUTTON.EDIT' | translate }}</app-button>
+      </td>
+      <td>
+        <app-button (buttonClick)="deleteSkill(item)">{{ 'BUTTON.REMOVE' | translate }}</app-button>
+      </td>
+    </tr>
+  </ng-template>
+</app-table>

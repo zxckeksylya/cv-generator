@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { map, switchMap, take } from 'rxjs';
+import { concatMap, from, map, switchMap, take } from 'rxjs';
 import { ProjectsService } from '../../services/projects.service';
 import { AppState } from '../app.reducers';
+import { getProjectRoleByIdSuccessAction } from '../projects-roles/project-roles.actions';
+import { getResponsibilityByIdSuccessAction } from '../responsibilities/responsibilities.actions';
+import { getSpecializationByIdSuccessAction } from '../specializations/specializations.actions';
 import {
   createProjectAction,
   createProjectSuccessAction,
@@ -19,7 +22,12 @@ import {
   updateProjectAction,
   updateProjectSuccessAction,
 } from './projects.actions';
-import { getIsInitProjectsSelector } from './projects.selectors';
+import {
+  getIsInitProjectsSelector,
+  getProjectsByProjectRoleIdSelector,
+  getProjectsByResponsibilityIdSelector,
+  getProjectsBySpecializationIdSelector,
+} from './projects.selectors';
 
 @Injectable()
 export class ProjectsEffect {
@@ -86,6 +94,54 @@ export class ProjectsEffect {
     this.actions$.pipe(
       ofType(initProjectsStoreSuccessAction),
       map(() => getProjectsAction()),
+    ),
+  );
+
+  public changeResponsibility$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getResponsibilityByIdSuccessAction),
+      concatMap((responsibility) =>
+        this.store.pipe(
+          select((state) =>
+            getProjectsByResponsibilityIdSelector(state, { id: responsibility.responsibility.id }),
+          ),
+          take(1),
+          concatMap((projects) => from(projects)),
+          map((project) => getProjectByIdAction({ id: project.id })),
+        ),
+      ),
+    ),
+  );
+
+  public changeSpecialization$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getSpecializationByIdSuccessAction),
+      concatMap((specialization) =>
+        this.store.pipe(
+          select((state) =>
+            getProjectsBySpecializationIdSelector(state, { id: specialization.specialization.id }),
+          ),
+          take(1),
+          concatMap((projects) => from(projects)),
+          map((project) => getProjectByIdAction({ id: project.id })),
+        ),
+      ),
+    ),
+  );
+
+  public changeProjectRole$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getProjectRoleByIdSuccessAction),
+      concatMap((projectRole) =>
+        this.store.pipe(
+          select((state) =>
+            getProjectsByProjectRoleIdSelector(state, { id: projectRole.projectRole.id }),
+          ),
+          take(1),
+          concatMap((projects) => from(projects)),
+          map((project) => getProjectByIdAction({ id: project.id })),
+        ),
+      ),
     ),
   );
 

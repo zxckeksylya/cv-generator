@@ -9,7 +9,8 @@
   },
   "SECTION": {
     "EMPLOYEES": "Employees",
-    "PROJECTS": "Projects"
+    "PROJECTS": "Projects",
+    "ENTITIES": "Entities"
   },
   "BREADCRUMB": {
     "MAIN": "Home",
@@ -17,12 +18,14 @@
     "PROJECTS": "Projects",
     "CREATE": "Create",
     "UPDATE": "Update",
-    "INFO": "Info"
+    "INFO": "Info",
+    "ENTITIES": "Entities"
   },
   "PAGE-HEADING": {
     "SECTION": {
       "EMPLOYEES": "Employees",
       "PROJECTS": "Projects",
+      "ENTITIES": "Entities",
       "MAIN": "Home",
       "CREATE": "Create",
       "UPDATE": "Update",
@@ -31,6 +34,7 @@
     "DESCRIPTION": {
       "EMPLOYEES": "Employees list",
       "PROJECTS": "Projects list",
+      "ENTITIES": "Entities list",
       "MAIN": "Home",
       "CREATE": {
         "PROJECTS": "Create project",
@@ -78,7 +82,8 @@
     "SAVE": "Save",
     "CANCEL": "Cancel",
     "EDIT": "Edit",
-    "UPDATE": "Update"
+    "UPDATE": "Update",
+    "REMOVE": "Remove"
   },
   "EMPLOYEES": {
     "FIRST_NAME": "First name",
@@ -90,5 +95,17 @@
     "SKILLS": "Skills",
     "LANGUAGES": "Languages",
     "ROLE": "Role"
+  },
+  "ENTITY": {
+    "MENU": {
+      "ROLES": "Roles",
+      "CATEGORIES": "Categories",
+      "PROJECT_ROLES": "Project roles",
+      "SPECIALIZATION": "Specializations",
+      "SKILLS": "Skills",
+      "LEVELS": "Levels",
+      "RESPONSIBILITIES": "Responsibilities",
+      "LANGUAGES": "Languages"
+    }
   }
 }

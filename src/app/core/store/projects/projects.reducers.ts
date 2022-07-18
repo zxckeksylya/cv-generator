@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { GetProject, ProjectMap } from '../../interfaces/project.interface';
 import { arrayToMap } from '../../utils/array-to-map.util';
-import { deleteProjectInMap } from '../../utils/projects/delete-project-in-map.util';
+import { deleteInMap } from '../../utils/delete-in-map.util';
 import {
   clearProjectsStoreAction,
   createProjectSuccessAction,
@@ -53,6 +53,6 @@ export const projectsReducer = createReducer(
 
   on(deleteProjectSuccessAction, (state, action) => ({
     ...state,
-    projects: deleteProjectInMap(state.projects, action.id),
+    projects: deleteInMap<ProjectMap>(state.projects, action.id),
   })),
 );

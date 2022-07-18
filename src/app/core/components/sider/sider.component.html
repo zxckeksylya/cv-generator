@@ -1,27 +1,28 @@
-<nz-sider nzCollapsible
-          class="layout">
-    <ul nz-menu>
-        <li class="sider-item"
-            nz-menu-item
-            (click)="redirectToEmployees()">
-            <div class="sider-item__img">
-
-                <fa-icon [icon]="faAddressCard"></fa-icon>
-            </div>
-            <span class="text">
-                {{ 'SECTION.EMPLOYEES' | translate }}
-            </span>
-        </li>
-        <li class="sider-item"
-            nz-menu-item
-            (click)="redirectToProjects()">
-            <div class="sider-item__img">
-
-                <fa-icon [icon]="faDatabase"></fa-icon>
-            </div>
-            <span class="text">
-                {{ 'SECTION.PROJECTS' | translate }}
-            </span>
-        </li>
-    </ul>
+<nz-sider nzCollapsible class="layout">
+  <ul nz-menu>
+    <li class="sider-item" nz-menu-item (click)="redirectToEmployees()">
+      <div class="sider-item__img">
+        <fa-icon [icon]="faAddressCard"></fa-icon>
+      </div>
+      <span class="text">
+        {{ 'SECTION.EMPLOYEES' | translate }}
+      </span>
+    </li>
+    <li class="sider-item" nz-menu-item (click)="redirectToProjects()">
+      <div class="sider-item__img">
+        <fa-icon [icon]="faDatabase"></fa-icon>
+      </div>
+      <span class="text">
+        {{ 'SECTION.PROJECTS' | translate }}
+      </span>
+    </li>
+    <li class="sider-item" nz-menu-item (click)="redirectToEntities()">
+      <div class="sider-item__img">
+        <fa-icon [icon]="faGears"></fa-icon>
+      </div>
+      <span class="text">
+        {{ 'SECTION.ENTITIES' | translate }}
+      </span>
+    </li>
+  </ul>
 </nz-sider>

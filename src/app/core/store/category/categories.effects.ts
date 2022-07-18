@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { map, switchMap, take, catchError } from 'rxjs';
+import { catchError, map, switchMap, take } from 'rxjs';
 import { CategoriesService } from '../../services/categories.service';
 import { AppState } from '../app.reducers';
 import {
+  createCategoryAction,
+  createCategorySuccessAction,
   getCategoriesAction,
   getCategoriesFailedAction,
   getCategoriesSuccessAction,
+  getCategoryByIdAction,
+  getCategoryByIdSuccessAction,
   initCategoriesStoreAction,
   initCategoriesStoreFailedAction,
   initCategoriesStoreSuccessAction,
+  updateCategoryAction,
+  updateCategorySuccessAction,
 } from './categories.actions';
 import { getIsInitCategoriesSelector } from './categories.selectors';
+import { deleteCategoryAction, deleteCategorySuccessAction } from './categories.actions';
 
 @Injectable()
 export class CategoriesEffect {
@@ -44,6 +51,41 @@ export class CategoriesEffect {
       switchMap(() => this.categoriesService.getCategories()),
       map((categories) => getCategoriesSuccessAction({ categories })),
       catchError(map(() => getCategoriesFailedAction())),
+    ),
+  );
+
+  public createCategory$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createCategoryAction),
+      switchMap((name) => this.categoriesService.createCategory(name)),
+      map((category) => createCategorySuccessAction({ category })),
+    ),
+  );
+
+  public getCategoryById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getCategoryByIdAction, updateCategorySuccessAction),
+      switchMap((item) => this.categoriesService.getCategoryById(item.id)),
+      map((category) => getCategoryByIdSuccessAction({ category })),
+    ),
+  );
+
+  public updateCategory$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateCategoryAction),
+      switchMap((category) => this.categoriesService.updateCategory(category)),
+      map((category) => updateCategorySuccessAction(category)),
+    ),
+  );
+
+  public deleteCategory$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteCategoryAction),
+      switchMap((category) =>
+        this.categoriesService
+          .deleteCategory(category)
+          .pipe(map(() => deleteCategorySuccessAction(category))),
+      ),
     ),
   );
 

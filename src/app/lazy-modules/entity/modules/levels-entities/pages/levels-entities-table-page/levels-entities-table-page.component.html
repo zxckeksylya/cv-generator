@@ -1,0 +1,18 @@
+<app-button (buttonClick)="createLevel()">{{ 'BUTTON.EDIT' | translate }}</app-button>
+<app-table [source]="levels" [headerItems]="headerData" [rowTemplateRef]="rowRef">
+  <ng-template #rowRef let-item>
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>
+        <app-button (buttonClick)="updateLevel(item.id)">{{
+          'BUTTON.EDIT' | translate
+        }}</app-button>
+      </td>
+      <td>
+        <app-button (buttonClick)="deleteLevel(item.id)">{{
+          'BUTTON.REMOVE' | translate
+        }}</app-button>
+      </td>
+    </tr>
+  </ng-template>
+</app-table>

@@ -9,11 +9,13 @@
   },
   "SECTION": {
     "EMPLOYEES": "Сотрудники",
-    "PROJECTS": "Проекты"
+    "PROJECTS": "Проекты",
+    "ENTITIES": "Сущности"
   },
   "BREADCRUMB": {
     "MAIN": "Главная",
     "EMPLOYEES": "Сотрудники",
+    "ENTITIES": "Сущности",
     "PROJECTS": "Проекты",
     "CREATE": "Создание",
     "UPDATE": "Изменение",
@@ -23,6 +25,7 @@
     "SECTION": {
       "EMPLOYEES": "Сотрудники",
       "PROJECTS": "Проекты",
+      "ENTITIES": "Сущности",
       "MAIN": "Главная",
       "CREATE": "Создание",
       "UPDATE": "Изменение",
@@ -31,6 +34,7 @@
     "DESCRIPTION": {
       "EMPLOYEES": "Список сотрудников",
       "PROJECTS": "Список проектов",
+      "ENTITIES": "Список сущностей",
       "MAIN": "Главная",
       "CREATE": {
         "PROJECTS": "Создание проекта",
@@ -77,7 +81,9 @@
   "BUTTON": {
     "SAVE": "Сохранить",
     "CANCEL": "Отменить",
-    "EDIT": "Изменить"
+    "EDIT": "Изменить",
+    "UPDATE": "Обновить",
+    "REMOVE": "Удалить"
   },
   "EMPLOYEES": {
     "FIRST_NAME": "Имя",
@@ -89,5 +95,17 @@
     "SKILLS": "Навыки",
     "LANGUAGES": "Языки",
     "ROLE": "Роль"
+  },
+  "ENTITY": {
+    "MENU": {
+      "ROLES": "Роли",
+      "CATEGORIES": "Категории",
+      "PROJECT_ROLES": "Проектные роли",
+      "SPECIALIZATION": "Специализации",
+      "SKILLS": "Скилы",
+      "LEVELS": "Уровни",
+      "RESPONSIBILITIES": "Обязанности",
+      "LANGUAGES": "Языки"
+    }
   }
 }

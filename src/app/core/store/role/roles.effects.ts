@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { map, switchMap, take, catchError } from 'rxjs';
+import { catchError, map, switchMap, take } from 'rxjs';
 import { RolesService } from '../../services/roles.service';
 import { AppState } from '../app.reducers';
 import {
+  createRoleAction,
+  createRoleSuccessAction,
+  deleteRoleAction,
+  deleteRoleSuccessAction,
+  getRoleByIdAction,
+  getRoleByIdSuccessAction,
   getRolesAction,
   getRolesFailedAction,
   getRolesSuccessAction,
   initRolesStoreAction,
   initRolesStoreFailedAction,
   initRolesStoreSuccessAction,
+  updateRoleAction,
+  updateRoleSuccessAction,
 } from './roles.actions';
 import { getIsInitRolesSelector } from './roles.selectors';
 
@@ -42,6 +50,39 @@ export class RolesEffect {
       switchMap(() => this.rolesService.getRoles()),
       map((roles) => getRolesSuccessAction({ roles })),
       catchError(map(() => getRolesFailedAction())),
+    ),
+  );
+
+  public createRole$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createRoleAction),
+      switchMap((name) => this.rolesService.createRole(name)),
+      map((role) => createRoleSuccessAction({ role })),
+    ),
+  );
+
+  public getRoleById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getRoleByIdAction, updateRoleSuccessAction),
+      switchMap((item) => this.rolesService.getRoleById(item.id)),
+      map((role) => getRoleByIdSuccessAction({ role })),
+    ),
+  );
+
+  public updateRole$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateRoleAction),
+      switchMap((role) => this.rolesService.updateRole(role)),
+      map((role) => updateRoleSuccessAction(role)),
+    ),
+  );
+
+  public deleteRole$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteRoleAction),
+      switchMap((role) =>
+        this.rolesService.deleteRole(role).pipe(map(() => deleteRoleSuccessAction(role))),
+      ),
     ),
   );
 
