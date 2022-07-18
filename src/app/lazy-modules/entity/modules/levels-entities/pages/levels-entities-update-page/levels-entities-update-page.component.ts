@@ -32,11 +32,13 @@ export class LevelsEntitiesUpdatePageComponent implements OnInit, OnDestroy {
     this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
-        switchMap((params) => params.getAll('id')),
+        switchMap(params => params.getAll('id')),
         take(1),
-        switchMap((id) => this.store.pipe(select((state) => getLevelByIdSelector(state, { id })))),
+        switchMap(id => this.store.pipe(select(state => getLevelByIdSelector(state, { id })))),
       )
-      .subscribe((level) => (this.level = level));
+      .subscribe(level => {
+        this.level = level;
+      });
     this.initPageInfo();
   }
 

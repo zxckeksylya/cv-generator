@@ -32,13 +32,13 @@ export class CategoriesEntitiesUpdatePageComponent implements OnInit, OnDestroy 
     this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
-        switchMap((params) => params.getAll('id')),
+        switchMap(params => params.getAll('id')),
         take(1),
-        switchMap((id) =>
-          this.store.pipe(select((state) => getCategoryByIdSelector(state, { id }))),
-        ),
+        switchMap(id => this.store.pipe(select(state => getCategoryByIdSelector(state, { id })))),
       )
-      .subscribe((category) => (this.category = category));
+      .subscribe(category => {
+        this.category = category;
+      });
     this.initPageInfo();
   }
 

@@ -31,13 +31,15 @@ export class SkillsEntitiesUpdatePageComponent implements OnInit, OnDestroy {
     this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
-        switchMap((params) => params.getAll('name')),
+        switchMap(params => params.getAll('name')),
         take(1),
-        switchMap((name) =>
-          this.store.pipe(select((state) => getSkillByNameSelector(state, { name }))),
+        switchMap(name =>
+          this.store.pipe(select(state => getSkillByNameSelector(state, { name }))),
         ),
       )
-      .subscribe((skills) => (this.skills = skills));
+      .subscribe(skills => {
+        this.skills = skills;
+      });
   }
 
   public ngOnDestroy(): void {
@@ -46,7 +48,7 @@ export class SkillsEntitiesUpdatePageComponent implements OnInit, OnDestroy {
   }
 
   public updateSkill(name: Name): void {
-    this.skills.forEach((item) =>
+    this.skills.forEach(item =>
       this.store.dispatch(
         updateSkillAction({
           skill: {

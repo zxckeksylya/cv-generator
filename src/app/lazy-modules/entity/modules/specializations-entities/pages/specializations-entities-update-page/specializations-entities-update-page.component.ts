@@ -31,13 +31,15 @@ export class SpecializationsEntitiesUpdatePageComponent implements OnInit, OnDes
     this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
-        switchMap((params) => params.getAll('id')),
+        switchMap(params => params.getAll('id')),
         take(1),
-        switchMap((id) =>
-          this.store.pipe(select((state) => getSpecializationByIdSelector(state, { id }))),
+        switchMap(id =>
+          this.store.pipe(select(state => getSpecializationByIdSelector(state, { id }))),
         ),
       )
-      .subscribe((specialization) => (this.specialization = specialization));
+      .subscribe(specialization => {
+        this.specialization = specialization;
+      });
     this.initPageInfo();
   }
 

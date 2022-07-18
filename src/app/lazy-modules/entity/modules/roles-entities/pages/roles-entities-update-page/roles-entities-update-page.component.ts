@@ -31,11 +31,13 @@ export class RolesEntitiesUpdatePageComponent implements OnInit, OnDestroy {
     this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
-        switchMap((params) => params.getAll('id')),
+        switchMap(params => params.getAll('id')),
         take(1),
-        switchMap((id) => this.store.pipe(select((state) => getRoleByIdSelector(state, { id })))),
+        switchMap(id => this.store.pipe(select(state => getRoleByIdSelector(state, { id })))),
       )
-      .subscribe((role) => (this.role = role));
+      .subscribe(role => {
+        this.role = role;
+      });
     this.initPageInfo();
   }
 

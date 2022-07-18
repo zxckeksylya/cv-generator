@@ -32,13 +32,15 @@ export class ProjectRolesEntitiesUpdatePageComponent implements OnInit, OnDestro
     this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
-        switchMap((params) => params.getAll('id')),
+        switchMap(params => params.getAll('id')),
         take(1),
-        switchMap((id) =>
-          this.store.pipe(select((state) => getProjectRoleByIdSelector(state, { id }))),
+        switchMap(id =>
+          this.store.pipe(select(state => getProjectRoleByIdSelector(state, { id }))),
         ),
       )
-      .subscribe((projectRole) => (this.projectRole = projectRole));
+      .subscribe(projectRole => {
+        this.projectRole = projectRole;
+      });
     this.initPageInfo();
   }
 

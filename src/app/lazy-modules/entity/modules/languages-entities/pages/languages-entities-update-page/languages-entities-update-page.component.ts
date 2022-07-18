@@ -32,13 +32,15 @@ export class LanguagesEntitiesUpdatePageComponent implements OnInit, OnDestroy {
     this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
-        switchMap((params) => params.getAll('name')),
+        switchMap(params => params.getAll('name')),
         take(1),
-        switchMap((name) =>
-          this.store.pipe(select((state) => getLanguagesByNameSelector(state, { name }))),
+        switchMap(name =>
+          this.store.pipe(select(state => getLanguagesByNameSelector(state, { name }))),
         ),
       )
-      .subscribe((languages) => (this.languages = languages));
+      .subscribe(languages => {
+        this.languages = languages;
+      });
     this.initPageInfo();
   }
   public ngOnDestroy(): void {
@@ -47,7 +49,7 @@ export class LanguagesEntitiesUpdatePageComponent implements OnInit, OnDestroy {
   }
 
   public updateLanguage(name: Name): void {
-    this.languages.forEach((item) =>
+    this.languages.forEach(item =>
       this.store.dispatch(
         updateLanguageAction({
           language: {

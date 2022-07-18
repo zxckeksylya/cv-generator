@@ -32,13 +32,13 @@ export class EmployeeInfoPageComponent implements OnInit, OnDestroy {
     this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
-        switchMap((params) => params.getAll('id')),
+        switchMap(params => params.getAll('id')),
         take(1),
-        switchMap((id) =>
-          this.store.pipe(select((state) => getEmployeeByIdSelector(state, { id }))),
-        ),
+        switchMap(id => this.store.pipe(select(state => getEmployeeByIdSelector(state, { id })))),
       )
-      .subscribe((employee) => (this.updatedEmployee = employee));
+      .subscribe(employee => {
+        this.updatedEmployee = employee;
+      });
     this.initPageInfo();
   }
 

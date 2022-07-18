@@ -32,13 +32,15 @@ export class ResponsibilitiesEntitiesUpdatePageComponent implements OnInit, OnDe
     this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
-        switchMap((params) => params.getAll('id')),
+        switchMap(params => params.getAll('id')),
         take(1),
-        switchMap((id) =>
-          this.store.pipe(select((state) => getResponsibilityByIdSelector(state, { id }))),
+        switchMap(id =>
+          this.store.pipe(select(state => getResponsibilityByIdSelector(state, { id }))),
         ),
       )
-      .subscribe((responsibility) => (this.responsibility = responsibility));
+      .subscribe(responsibility => {
+        this.responsibility = responsibility;
+      });
     this.initPageInfo();
   }
 

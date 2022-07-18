@@ -25,9 +25,9 @@ export class LanguagesEntitiesCreatePageComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>, private route: Router) {}
 
   public ngOnInit(): void {
-    this.store
-      .pipe(select(getLevelsSelector), takeUntil(this.destroy$))
-      .subscribe((levels) => (this.level = levels[0]));
+    this.store.pipe(select(getLevelsSelector), takeUntil(this.destroy$)).subscribe(levels => {
+      this.level = levels[0];
+    });
     this.initPageInfo();
   }
 
