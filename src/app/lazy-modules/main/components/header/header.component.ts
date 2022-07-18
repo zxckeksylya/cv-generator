@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { faEarthEurope } from '@fortawesome/free-solid-svg-icons';
+import { faEarthEurope, faLanguage } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +9,7 @@ import { faEarthEurope } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
   public readonly faEarthEurope = faEarthEurope;
+  public readonly faLanguage = faLanguage;
 
   public ngOnInit(): void {}
 }

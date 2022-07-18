@@ -89,5 +89,7 @@
     "INSTITUTION": "Institution",
     "DIPLOMA_PROFESSION": "Diploma profession",
     "DEPARTMENT": "Department"
-  }
+  },
+  "dark": "Dark",
+  "light": "Light"
 }

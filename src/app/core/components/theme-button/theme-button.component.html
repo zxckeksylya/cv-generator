@@ -1,0 +1,5 @@
+<app-dropdown [dataSource]="themes" (selectItem)="setTheme($event)">
+  <app-button (buttonClick)="changeTheme()">
+    <ng-content></ng-content>
+  </app-button>
+</app-dropdown>

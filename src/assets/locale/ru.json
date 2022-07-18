@@ -89,5 +89,7 @@
     "INSTITUTION": "Образование",
     "DIPLOMA_PROFESSION": "Специальность",
     "DEPARTMENT": "Отдел"
-  }
+  },
+  "dark": "Темная",
+  "light": "Светлая"
 }

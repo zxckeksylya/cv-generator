@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { initThemeAction, initThemeSuccessAction } from './theme.actions';
+import { initThemeSuccessAction } from './theme.actions';
 
 export const THEME_FEATURE_KEY = 'theme';
 
@@ -13,9 +13,6 @@ export const initialThemeState: ThemeState = {
 
 export const themeReducer = createReducer(
   initialThemeState,
-  on(initThemeAction, (state) => ({
-    ...state,
-  })),
   on(initThemeSuccessAction, (state, action) => ({
     ...state,
     theme: action.theme,
