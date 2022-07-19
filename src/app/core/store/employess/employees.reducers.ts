@@ -25,7 +25,7 @@ export const employeesReducer = createReducer(
   on(getEmployeesSuccessAction, (state, action) => ({
     ...state,
     isInitEmployees: true,
-    employees: arrayToMap<GetEmployee>(action.employees),
+    employees: arrayToMap<GetEmployee>(action.employees, 'id'),
   })),
   on(getEmployeeByIdSuccessAction, (state, action) => ({
     ...state,

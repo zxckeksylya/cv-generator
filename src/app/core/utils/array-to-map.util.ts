@@ -1,13 +1,12 @@
-import { Id } from '../interfaces/id.inteface';
-
-export const arrayToMap = <T extends Id>(
+export const arrayToMap = <T extends { [id: string]: any }>(
   items: T[],
+  idField: string,
 ): {
   [id: string]: T;
 } =>
   items.reduce(
     (acc, item) => {
-      const id: string = item['id'] as string;
+      const id: string = item[idField] as string;
       return {
         ...acc,
         [id]: item,
