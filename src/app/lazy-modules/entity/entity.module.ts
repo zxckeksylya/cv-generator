@@ -7,10 +7,10 @@ import { ButtonModule } from '../../core/components/button/button.module';
 import { TableModule } from '../../core/components/table/table.module';
 import { EntityMenuComponent } from './components/entity-menu/entity-menu.component';
 import { EntityRoutingModule } from './entity-routing.module';
-import { MainPageComponent } from './pages/main-page/main-page.component';
+import { EntityMainPageComponent } from './pages/main-page/entity-main-page.component';
 
 @NgModule({
-  declarations: [MainPageComponent, EntityMenuComponent],
+  declarations: [EntityMainPageComponent, EntityMenuComponent],
   imports: [
     CommonModule,
     NzMenuModule,

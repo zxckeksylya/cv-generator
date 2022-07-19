@@ -7,12 +7,12 @@ import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-headi
 import { EntityMenuItem } from '../../../../core/interfaces/entity-menu-item.interface';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss'],
+  selector: 'app-entity-main-page',
+  templateUrl: './entity-main-page.component.html',
+  styleUrls: ['./entity-main-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainPageComponent implements OnInit {
+export class EntityMainPageComponent implements OnInit {
   public menuItems: EntityMenuItem[] = [
     {
       i18nKey: 'ENTITY.MENU.ROLES',
