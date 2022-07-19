@@ -15,11 +15,19 @@
   "BREADCRUMB": {
     "MAIN": "Главная",
     "EMPLOYEES": "Сотрудники",
-    "ENTITIES": "Сущности",
     "PROJECTS": "Проекты",
     "CREATE": "Создание",
-    "UPDATE": "Изменение",
-    "INFO": "Иформация"
+    "UPDATE": "Обновление",
+    "INFO": "Иформация",
+    "ENTITIES": "Сущности",
+    "CATEGORIES": "Категории",
+    "LANGUAGES": "Языки",
+    "LEVELS": "Уровни",
+    "PROJECT_ROLES": "Проектные роли",
+    "RESPONSIBILITIES": "Обязанности",
+    "ROLES": "Роли",
+    "SKILLS": "Навыки",
+    "SPECIALIZATIONS": "Специализации"
   },
   "PAGE-HEADING": {
     "SECTION": {
@@ -36,12 +44,43 @@
       "PROJECTS": "Список проектов",
       "ENTITIES": "Список сущностей",
       "MAIN": "Главная",
+      "ENTITY": {
+        "CATEGORIES": "Список категорий",
+        "LANGUAGES": "Список языков",
+        "LEVELS": "Список уровней",
+        "PROJECT_ROLES": "Список проектных ролей",
+        "RESPONSIBILITIES": "Список обязонностей",
+        "ROLES": "Список ролей",
+        "SKILLS": "Список навыков",
+        "SPECIALIZATIONS": "Список специализаций"
+      },
       "CREATE": {
         "PROJECTS": "Создание проекта",
-        "EMPLOYEES": "Создания сотрудника"
+        "EMPLOYEES": "Создания сотрудника",
+        "ENTITY": {
+          "CATEGORY": "Создать категорию",
+          "LANGUAGE": "Создать язык",
+          "LEVEL": "Создать уровень",
+          "PROJECT_ROLES": "Создать проектную роль",
+          "RESPONSIBILITY": "Создать обязонность",
+          "ROLE": "Создать роль",
+          "SKILL": "Создать навык",
+          "SPECIALIZATION": "Создать специализацию"
+        }
       },
+
       "UPDATE": {
-        "PROJECTS": "Изменение проекта"
+        "PROJECTS": "Изменение проекта",
+        "ENTITY": {
+          "CATEGORY": "Обновить категорию",
+          "LANGUAGE": "Обновить язык",
+          "LEVEL": "Обновить уровень",
+          "PROJECT_ROLES": "Обновить проектную роль",
+          "RESPONSIBILITY": "Обновить обязонность",
+          "ROLE": "Обновить роль",
+          "SKILL": "Обновить навык",
+          "SPECIALIZATION": "Обновить специализацию"
+        }
       },
       "INFO": {
         "EMPLOYEES": "Иформация сотрудника"
