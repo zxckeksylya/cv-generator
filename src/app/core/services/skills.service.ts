@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, switchMap, take, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -9,6 +9,7 @@ import {
   Skill,
   UpdateSkill,
 } from '../interfaces/skill.interface';
+import { generateHttpErrorResponse } from '../utils/generate-http-error-response.util';
 
 @Injectable({
   providedIn: 'root',
@@ -33,10 +34,8 @@ export class SkillsService {
       })
       .pipe(
         take(1),
-        switchMap((data) =>
-          data[0]
-            ? of(data[0])
-            : throwError(() => new HttpErrorResponse({ status: 404, error: 'bad request' })),
+        switchMap(data =>
+          data[0] ? of(data[0]) : throwError(() => generateHttpErrorResponse('Bad request', 404)),
         ),
       );
   }

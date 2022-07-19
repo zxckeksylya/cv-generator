@@ -1,13 +1,14 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, take, switchMap, of, throwError } from 'rxjs';
+import { Observable, of, switchMap, take, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UpdateEmployee } from '../interfaces/employee.interface';
 import {
-  GetEmployee,
   CreateEmployee,
   CreateEmployeeResponse,
+  GetEmployee,
+  UpdateEmployee,
 } from '../interfaces/employee.interface';
+import { generateHttpErrorResponse } from '../utils/generate-http-error-response.util';
 
 @Injectable({
   providedIn: 'root',
@@ -28,10 +29,8 @@ export class EmployeeService {
       })
       .pipe(
         take(1),
-        switchMap((data) =>
-          data[0]
-            ? of(data[0])
-            : throwError(() => new HttpErrorResponse({ status: 404, error: 'bad request' })),
+        switchMap(data =>
+          data[0] ? of(data[0]) : throwError(() => generateHttpErrorResponse('Bad request', 404)),
         ),
       );
   }
