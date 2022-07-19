@@ -30,7 +30,7 @@ export const categoriesReducer = createReducer(
   on(getCategoriesSuccessAction, (state, action) => ({
     ...state,
     isInitCategories: true,
-    categories: arrayToMap<INameId>(action.categories),
+    categories: arrayToMap<INameId>(action.categories, 'id'),
   })),
   on(createCategorySuccessAction, (state, action) => ({
     ...state,

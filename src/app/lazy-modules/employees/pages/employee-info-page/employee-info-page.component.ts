@@ -1,15 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { Subject, takeUntil, switchMap, take } from 'rxjs';
+import { Subject, switchMap, take, takeUntil } from 'rxjs';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { GetEmployee } from 'src/app/core/interfaces/employee.interface';
 import { AppState } from 'src/app/core/store/app.reducers';
 import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.actions';
 import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
-import { getEmployeeByIdSelector } from '../../../../core/store/employess/employees.selectors';
 import { UpdateEmployee } from '../../../../core/interfaces/employee.interface';
 import { updateEmployeeAction } from '../../../../core/store/employess/employees.actions';
+import { getEmployeeByIdSelector } from '../../../../core/store/employess/employees.selectors';
 
 @Component({
   selector: 'app-employee-info-page',

@@ -30,7 +30,7 @@ export const responsibilitiesReducer = createReducer(
   on(getResponsibilitiesSuccessAction, (state, action) => ({
     ...state,
     isInitResponsibilities: true,
-    responsibilities: arrayToMap<INameId>(action.responsibilities),
+    responsibilities: arrayToMap<INameId>(action.responsibilities, 'id'),
   })),
   on(createResponsibilitySuccessAction, (state, action) => ({
     ...state,

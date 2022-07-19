@@ -36,7 +36,7 @@ export const projectsReducer = createReducer(
   on(getProjectsSuccessAction, (state, action) => ({
     ...state,
     isInitProjects: true,
-    projects: arrayToMap<GetProject>(action.projects),
+    projects: arrayToMap<GetProject>(action.projects, 'id'),
   })),
 
   on(clearProjectsStoreAction, () => ({

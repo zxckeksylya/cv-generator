@@ -35,39 +35,39 @@ export class ProjectsEffect {
     this.actions$.pipe(
       ofType(getProjectsAction),
       switchMap(() => this.projectsService.getProjects()),
-      map((projects) => getProjectsSuccessAction({ projects })),
+      map(projects => getProjectsSuccessAction({ projects })),
     ),
   );
 
   public getProjectById$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getProjectByIdAction, updateProjectSuccessAction),
-      switchMap((item) => this.projectsService.getProjectById(item.id)),
-      map((project) => getProjectByIdSuccessAction({ project })),
+      switchMap(item => this.projectsService.getProjectById(item.id)),
+      map(project => getProjectByIdSuccessAction({ project })),
     ),
   );
 
   public createProject$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createProjectAction),
-      switchMap((project) => this.projectsService.createProject(project)),
-      switchMap((project) => this.projectsService.getProjectById(project.id)),
-      map((project) => createProjectSuccessAction({ project })),
+      switchMap(project => this.projectsService.createProject(project)),
+      switchMap(project => this.projectsService.getProjectById(project.id)),
+      map(project => createProjectSuccessAction({ project })),
     ),
   );
 
   public updateProject$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateProjectAction),
-      switchMap((project) => this.projectsService.updateProject(project)),
-      map((project) => updateProjectSuccessAction(project)),
+      switchMap(project => this.projectsService.updateProject(project)),
+      map(project => updateProjectSuccessAction(project)),
     ),
   );
 
   public deleteProject$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteProjectAction),
-      switchMap((deleteProject) =>
+      switchMap(deleteProject =>
         this.projectsService
           .deleteProject(deleteProject)
           .pipe(map(() => deleteProjectSuccessAction(deleteProject))),
@@ -82,7 +82,7 @@ export class ProjectsEffect {
         this.store.pipe(
           select(getIsInitProjectsSelector),
           take(1),
-          map((isInit) =>
+          map(isInit =>
             !isInit ? initProjectsStoreSuccessAction() : initProjectsStoreFailedAction(),
           ),
         ),
@@ -100,14 +100,14 @@ export class ProjectsEffect {
   public changeResponsibility$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getResponsibilityByIdSuccessAction),
-      concatMap((responsibility) =>
+      concatMap(responsibility =>
         this.store.pipe(
-          select((state) =>
+          select(state =>
             getProjectsByResponsibilityIdSelector(state, { id: responsibility.responsibility.id }),
           ),
           take(1),
-          concatMap((projects) => from(projects)),
-          map((project) => getProjectByIdAction({ id: project.id })),
+          concatMap(projects => from(projects)),
+          map(project => getProjectByIdAction({ id: project.id })),
         ),
       ),
     ),
@@ -116,14 +116,14 @@ export class ProjectsEffect {
   public changeSpecialization$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getSpecializationByIdSuccessAction),
-      concatMap((specialization) =>
+      concatMap(specialization =>
         this.store.pipe(
-          select((state) =>
+          select(state =>
             getProjectsBySpecializationIdSelector(state, { id: specialization.specialization.id }),
           ),
           take(1),
-          concatMap((projects) => from(projects)),
-          map((project) => getProjectByIdAction({ id: project.id })),
+          concatMap(projects => from(projects)),
+          map(project => getProjectByIdAction({ id: project.id })),
         ),
       ),
     ),
@@ -132,14 +132,14 @@ export class ProjectsEffect {
   public changeProjectRole$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getProjectRoleByIdSuccessAction),
-      concatMap((projectRole) =>
+      concatMap(projectRole =>
         this.store.pipe(
-          select((state) =>
+          select(state =>
             getProjectsByProjectRoleIdSelector(state, { id: projectRole.projectRole.id }),
           ),
           take(1),
-          concatMap((projects) => from(projects)),
-          map((project) => getProjectByIdAction({ id: project.id })),
+          concatMap(projects => from(projects)),
+          map(project => getProjectByIdAction({ id: project.id })),
         ),
       ),
     ),

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { catchError, map, switchMap, take } from 'rxjs';
+import { catchError, map, of, switchMap, take } from 'rxjs';
 import { RolesService } from '../../services/roles.service';
 import { AppState } from '../app.reducers';
 import {
@@ -31,7 +31,7 @@ export class RolesEffect {
         this.store.pipe(
           select(getIsInitRolesSelector),
           take(1),
-          map((isInit) => (!isInit ? initRolesStoreSuccessAction() : initRolesStoreFailedAction())),
+          map(isInit => (!isInit ? initRolesStoreSuccessAction() : initRolesStoreFailedAction())),
         ),
       ),
     ),
@@ -48,39 +48,39 @@ export class RolesEffect {
     this.actions$.pipe(
       ofType(getRolesAction),
       switchMap(() => this.rolesService.getRoles()),
-      map((roles) => getRolesSuccessAction({ roles })),
-      catchError(map(() => getRolesFailedAction())),
+      map(roles => getRolesSuccessAction({ roles })),
+      catchError(() => of(getRolesFailedAction())),
     ),
   );
 
   public createRole$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createRoleAction),
-      switchMap((name) => this.rolesService.createRole(name)),
-      map((role) => createRoleSuccessAction({ role })),
+      switchMap(name => this.rolesService.createRole(name)),
+      map(role => createRoleSuccessAction({ role })),
     ),
   );
 
   public getRoleById$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getRoleByIdAction, updateRoleSuccessAction),
-      switchMap((item) => this.rolesService.getRoleById(item.id)),
-      map((role) => getRoleByIdSuccessAction({ role })),
+      switchMap(item => this.rolesService.getRoleById(item.id)),
+      map(role => getRoleByIdSuccessAction({ role })),
     ),
   );
 
   public updateRole$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateRoleAction),
-      switchMap((role) => this.rolesService.updateRole(role)),
-      map((role) => updateRoleSuccessAction(role)),
+      switchMap(role => this.rolesService.updateRole(role)),
+      map(role => updateRoleSuccessAction(role)),
     ),
   );
 
   public deleteRole$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteRoleAction),
-      switchMap((role) =>
+      switchMap(role =>
         this.rolesService.deleteRole(role).pipe(map(() => deleteRoleSuccessAction(role))),
       ),
     ),

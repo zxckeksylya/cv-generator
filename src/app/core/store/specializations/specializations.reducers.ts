@@ -30,7 +30,7 @@ export const specializationsReducer = createReducer(
   on(getSpecializationsSuccessAction, (state, action) => ({
     ...state,
     isInitSpecializations: true,
-    specializations: arrayToMap<INameId>(action.specializations),
+    specializations: arrayToMap<INameId>(action.specializations, 'id'),
   })),
   on(createSpecializationSuccessAction, (state, action) => ({
     ...state,

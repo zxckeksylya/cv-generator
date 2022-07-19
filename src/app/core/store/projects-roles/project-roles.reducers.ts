@@ -32,7 +32,7 @@ export const projectRolesReducer = createReducer(
   on(getProjectRolesSuccessAction, (state, action) => ({
     ...state,
     isInitProjectRoles: true,
-    projectRoles: arrayToMap<INameId>(action.projectRoles),
+    projectRoles: arrayToMap<INameId>(action.projectRoles, 'id'),
   })),
   on(createProjectRoleSuccessAction, (state, action) => ({
     ...state,

@@ -30,7 +30,7 @@ export const levelsReducer = createReducer(
   on(getLevelsSuccessAction, (state, action) => ({
     ...state,
     isInitLevels: true,
-    levels: arrayToMap<INameId>(action.levels),
+    levels: arrayToMap<INameId>(action.levels, 'id'),
   })),
   on(createLevelSuccessAction, (state, action) => ({
     ...state,

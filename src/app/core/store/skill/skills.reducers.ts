@@ -29,7 +29,7 @@ export const skillsReducer = createReducer(
   on(getSkillsSuccessAction, (state, action) => ({
     ...state,
     isInitSkills: true,
-    skills: arrayToMap<Skill>(action.skills),
+    skills: arrayToMap<Skill>(action.skills, 'id'),
   })),
   on(createSkillSuccessAction, (state, action) => ({
     ...state,

@@ -29,7 +29,7 @@ export const languagesReducer = createReducer(
   on(getLanguagesSuccessAction, (state, action) => ({
     ...state,
     isInitLanguages: true,
-    languages: arrayToMap<Language>(action.languages),
+    languages: arrayToMap<Language>(action.languages, 'id'),
   })),
   on(createLanguageSuccessAction, (state, action) => ({
     ...state,

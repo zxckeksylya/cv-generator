@@ -7,7 +7,7 @@ import {
   createRoleSuccessAction,
   deleteRoleSuccessAction,
   getRoleByIdSuccessAction,
-  getRolesSuccessAction
+  getRolesSuccessAction,
 } from './roles.actions';
 
 export const ROLES_FEATURE_KEY = 'roles';
@@ -30,7 +30,7 @@ export const rolesReducer = createReducer(
   on(getRolesSuccessAction, (state, action) => ({
     ...state,
     isInitRoles: true,
-    roles: arrayToMap<INameId>(action.roles),
+    roles: arrayToMap<INameId>(action.roles, 'id'),
   })),
   on(createRoleSuccessAction, (state, action) => ({
     ...state,
