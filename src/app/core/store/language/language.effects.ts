@@ -9,7 +9,7 @@ import {
 import { AppState } from '../app.reducers';
 import { select, Store } from '@ngrx/store';
 import { LanguagesService } from '../../services/languages.service';
-import { map, switchMap, take, catchError } from 'rxjs';
+import { map, switchMap, take, catchError, of } from 'rxjs';
 import { getIsInitLanguagesSelector } from './language.selectors';
 import { getLanguagesAction, getLanguagesFailedAction } from './language.actions';
 
@@ -42,7 +42,7 @@ export class LanguagesEffect {
       ofType(getLanguagesAction),
       switchMap(() => this.languagesService.getLanguages()),
       map((languages) => getLanguagesSuccessAction({ languages })),
-      catchError(map(() => getLanguagesFailedAction())),
+      catchError(() => of(getLanguagesFailedAction())),
     ),
   );
 

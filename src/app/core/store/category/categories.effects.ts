@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { map, switchMap, take, catchError } from 'rxjs';
+import { map, switchMap, take, catchError, of } from 'rxjs';
 import { CategoriesService } from '../../services/categories.service';
 import { AppState } from '../app.reducers';
 import {
@@ -43,7 +43,7 @@ export class CategoriesEffect {
       ofType(getCategoriesAction),
       switchMap(() => this.categoriesService.getCategories()),
       map((categories) => getCategoriesSuccessAction({ categories })),
-      catchError(map(() => getCategoriesFailedAction())),
+      catchError(() => of(getCategoriesFailedAction())),
     ),
   );
 

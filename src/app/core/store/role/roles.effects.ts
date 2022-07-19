@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { map, switchMap, take, catchError } from 'rxjs';
+import { map, switchMap, take, catchError, of } from 'rxjs';
 import { RolesService } from '../../services/roles.service';
 import { AppState } from '../app.reducers';
 import {
@@ -41,7 +41,7 @@ export class RolesEffect {
       ofType(getRolesAction),
       switchMap(() => this.rolesService.getRoles()),
       map((roles) => getRolesSuccessAction({ roles })),
-      catchError(map(() => getRolesFailedAction())),
+      catchError(() => of(getRolesFailedAction())),
     ),
   );
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { map, switchMap, take, catchError } from 'rxjs';
+import { map, switchMap, take, catchError, of } from 'rxjs';
 import { LevelsService } from '../../services/levels.service';
 import { AppState } from '../app.reducers';
 import {
@@ -43,7 +43,7 @@ export class LevelsEffect {
       ofType(getLevelsAction),
       switchMap(() => this.levelsService.getLevels()),
       map((levels) => getLevelsSuccessAction({ levels })),
-      catchError(map(() => getLevelsFailedAction())),
+      catchError(() => of(getLevelsFailedAction())),
     ),
   );
 

@@ -37,7 +37,9 @@ export class ProjectUpdatePageComponent implements OnInit, OnDestroy {
           this.store.pipe(select((state) => getProjectByIdSelector(state, { id }))),
         ),
       )
-      .subscribe((project) => (this.updatedProject = project));
+      .subscribe((project) => {
+        this.updatedProject = project;
+      });
 
     this.initPageInfo();
   }
