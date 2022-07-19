@@ -52,7 +52,7 @@ export class RolesEntitiesCreatePageComponent implements OnInit {
     this.store.dispatch(
       setPageHeadingAction({
         pageHeading: {
-          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITY',
+          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITIES',
           i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.CREATE.ENTITY.ROLE',
         },
       }),

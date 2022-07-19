@@ -82,7 +82,7 @@ export class SpecializationsEntitiesTablePageComponent implements OnInit, OnDest
   private initData(): void {
     this.store
       .pipe(select(getSpecializationsSelector), takeUntil(this.destroy$))
-      .subscribe((specializations) => {
+      .subscribe(specializations => {
         this.specializations = specializations;
         this.cdr.markForCheck();
       });
@@ -101,7 +101,7 @@ export class SpecializationsEntitiesTablePageComponent implements OnInit, OnDest
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}`,
           },
           {
-            i18nKey: 'BREADCRUMB.SPECIALIZATION',
+            i18nKey: 'BREADCRUMB.SPECIALIZATIONS',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}/${RoutingConstants.SPECIALIZATION}`,
           },
         ],

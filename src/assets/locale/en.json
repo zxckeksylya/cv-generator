@@ -19,7 +19,15 @@
     "CREATE": "Create",
     "UPDATE": "Update",
     "INFO": "Info",
-    "ENTITIES": "Entities"
+    "ENTITIES": "Entities",
+    "CATEGORIES": "Categories",
+    "LANGUAGES": "Languages",
+    "LEVELS": "Levels",
+    "PROJECT_ROLES": "Project roles",
+    "RESPONSIBILITIES": "Responsibilities",
+    "ROLES": "Roles",
+    "SKILLS": "Skills",
+    "SPECIALIZATIONS": "Specializations"
   },
   "PAGE-HEADING": {
     "SECTION": {
@@ -36,12 +44,42 @@
       "PROJECTS": "Projects list",
       "ENTITIES": "Entities list",
       "MAIN": "Home",
+      "ENTITY": {
+        "CATEGORIES": "Categories list",
+        "LANGUAGES": "Languages list",
+        "LEVELS": "Levels list",
+        "PROJECT_ROLES": "Project roles list",
+        "RESPONSIBILITIES": "Responsibilities list",
+        "ROLES": "Roles list",
+        "SKILLS": "Skills list",
+        "SPECIALIZATIONS": "Specializations list"
+      },
       "CREATE": {
         "PROJECTS": "Create project",
-        "EMPLOYEES": "Create employee"
+        "EMPLOYEES": "Create employee",
+        "ENTITY": {
+          "CATEGORY": "Create category",
+          "LANGUAGE": "Create language",
+          "LEVEL": "Create level",
+          "PROJECT_ROLES": "Create project role",
+          "RESPONSIBILITY": "Create responsibility",
+          "ROLE": "Create role",
+          "SKILL": "Create skill",
+          "SPECIALIZATION": "Create specializations"
+        }
       },
       "UPDATE": {
-        "PROJECTS": "Update project"
+        "PROJECTS": "Update project",
+        "ENTITY": {
+          "CATEGORY": "Update category",
+          "LANGUAGE": "Update language",
+          "LEVEL": "Update level",
+          "PROJECT_ROLES": "Update project role",
+          "RESPONSIBILITY": "Update responsibility",
+          "ROLE": "Update role",
+          "SKILL": "Update skill",
+          "SPECIALIZATION": "Update specializations"
+        }
       },
       "INFO": {
         "EMPLOYEES": "Info employee"

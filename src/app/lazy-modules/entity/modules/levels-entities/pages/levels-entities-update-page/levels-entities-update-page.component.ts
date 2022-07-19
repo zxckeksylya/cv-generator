@@ -78,8 +78,8 @@ export class LevelsEntitiesUpdatePageComponent implements OnInit, OnDestroy {
     this.store.dispatch(
       setPageHeadingAction({
         pageHeading: {
-          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITY',
-          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.UPDATE.ENTITY.LEVELS',
+          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITIES',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.UPDATE.ENTITY.LEVEL',
         },
       }),
     );

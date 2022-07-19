@@ -43,7 +43,7 @@ export class ProjectRolesEntitiesCreatePageComponent implements OnInit {
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}`,
           },
           {
-            i18nKey: 'BREADCRUMB.CATEGORIES',
+            i18nKey: 'BREADCRUMB.PROJECT_ROLES',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}/${RoutingConstants.PROJECT_ROLES}`,
           },
           {
@@ -56,7 +56,7 @@ export class ProjectRolesEntitiesCreatePageComponent implements OnInit {
     this.store.dispatch(
       setPageHeadingAction({
         pageHeading: {
-          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITY',
+          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITIES',
           i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.CREATE.ENTITY.PROJECT_ROLES',
         },
       }),

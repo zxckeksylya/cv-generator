@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Subject, switchMap, take, takeUntil } from 'rxjs';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
@@ -22,11 +22,7 @@ export class EmployeeInfoPageComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(
-    private store: Store<AppState>,
-    private route: Router,
-    private activatedRoute: ActivatedRoute,
-  ) {}
+  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) {}
 
   public ngOnInit(): void {
     this.activatedRoute.paramMap

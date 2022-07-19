@@ -2,16 +2,14 @@ import { Location } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnChanges,
-  SimpleChanges,
-  OnDestroy,
   Output,
-  EventEmitter,
   SimpleChange,
+  SimpleChanges,
 } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Name } from 'src/app/core/interfaces/name.interface';
 
 @Component({
@@ -20,14 +18,12 @@ import { Name } from 'src/app/core/interfaces/name.interface';
   styleUrls: ['./entity-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EntityFormComponent implements OnChanges, OnDestroy {
+export class EntityFormComponent implements OnChanges {
   @Input() public name: string;
 
   @Output() public submitted = new EventEmitter<Name>();
 
   public form: FormGroup;
-
-  private destroy$ = new Subject<void>();
 
   constructor(private formBuilder: FormBuilder, private location: Location) {
     this.initForm();
@@ -38,11 +34,6 @@ export class EntityFormComponent implements OnChanges, OnDestroy {
     if (nameCurrentValue) {
       this.form.patchValue({ name: nameCurrentValue }, { emitEvent: false });
     }
-  }
-
-  public ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   public onSubmit(): void {

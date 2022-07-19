@@ -16,6 +16,8 @@ import {
   getSkillsNamesSelector,
 } from '../../../../../../core/store/skill/skills.selectors';
 import { deleteSkillAction } from '../../../../../../core/store/skill/skills.actions';
+import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.actions';
+import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
 
 @Component({
   selector: 'app-skills-entities-table-page',
@@ -48,6 +50,7 @@ export class SkillsEntitiesTablePageComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.initData();
+    this.initPageInfo();
   }
 
   public ngOnDestroy(): void {
@@ -77,19 +80,48 @@ export class SkillsEntitiesTablePageComponent implements OnInit, OnDestroy {
   public deleteSkill(name: string): void {
     this.store
       .pipe(
-        select((state) => getSkillByNameSelector(state, { name })),
+        select(state => getSkillByNameSelector(state, { name })),
         takeUntil(this.destroy$),
         take(1),
       )
-      .subscribe((skills) => {
-        skills.forEach((item) => this.store.dispatch(deleteSkillAction({ id: item.id })));
+      .subscribe(skills => {
+        skills.forEach(item => this.store.dispatch(deleteSkillAction({ id: item.id })));
       });
   }
 
-  public initData(): void {
-    this.store.pipe(select(getSkillsNamesSelector), takeUntil(this.destroy$)).subscribe((names) => {
+  private initData(): void {
+    this.store.pipe(select(getSkillsNamesSelector), takeUntil(this.destroy$)).subscribe(names => {
       this.skillsNames = names;
       this.cdr.markForCheck();
     });
+  }
+
+  private initPageInfo(): void {
+    this.store.dispatch(
+      setBreadcrumbsAction({
+        breadcrumbs: [
+          {
+            i18nKey: 'BREADCRUMB.MAIN',
+            path: `${RoutingConstants.MAIN}`,
+          },
+          {
+            i18nKey: 'BREADCRUMB.ENTITIES',
+            path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}`,
+          },
+          {
+            i18nKey: 'BREADCRUMB.SKILLS',
+            path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}/${RoutingConstants.SKILLS}`,
+          },
+        ],
+      }),
+    );
+    this.store.dispatch(
+      setPageHeadingAction({
+        pageHeading: {
+          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITIES',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.ENTITY.SKILLS',
+        },
+      }),
+    );
   }
 }

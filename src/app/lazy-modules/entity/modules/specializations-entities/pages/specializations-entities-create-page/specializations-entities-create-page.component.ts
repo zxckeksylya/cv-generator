@@ -43,7 +43,7 @@ export class SpecializationsEntitiesCreatePageComponent implements OnInit {
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}`,
           },
           {
-            i18nKey: 'BREADCRUMB.SPECIALIZATION',
+            i18nKey: 'BREADCRUMB.SPECIALIZATIONS',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}/${RoutingConstants.SPECIALIZATION}`,
           },
           {

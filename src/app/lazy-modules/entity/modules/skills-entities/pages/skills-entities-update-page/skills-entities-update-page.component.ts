@@ -28,18 +28,8 @@ export class SkillsEntitiesUpdatePageComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
   ) {}
   public ngOnInit(): void {
-    this.activatedRoute.paramMap
-      .pipe(
-        takeUntil(this.destroy$),
-        switchMap(params => params.getAll('name')),
-        take(1),
-        switchMap(name =>
-          this.store.pipe(select(state => getSkillByNameSelector(state, { name }))),
-        ),
-      )
-      .subscribe(skills => {
-        this.skills = skills;
-      });
+    this.initData();
+    this.initPageInfo();
   }
 
   public ngOnDestroy(): void {
@@ -63,6 +53,21 @@ export class SkillsEntitiesUpdatePageComponent implements OnInit, OnDestroy {
       ),
     );
     this.route.navigate([RoutingConstants.MAIN, RoutingConstants.ENTITY, RoutingConstants.SKILLS]);
+  }
+
+  private initData(): void {
+    this.activatedRoute.paramMap
+      .pipe(
+        takeUntil(this.destroy$),
+        switchMap(params => params.getAll('name')),
+        take(1),
+        switchMap(name =>
+          this.store.pipe(select(state => getSkillByNameSelector(state, { name }))),
+        ),
+      )
+      .subscribe(skills => {
+        this.skills = skills;
+      });
   }
 
   private initPageInfo(): void {
@@ -91,8 +96,8 @@ export class SkillsEntitiesUpdatePageComponent implements OnInit, OnDestroy {
     this.store.dispatch(
       setPageHeadingAction({
         pageHeading: {
-          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITY',
-          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.UPDATE.ENTITY.SKILLS',
+          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITIES',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.UPDATE.ENTITY.SKILL',
         },
       }),
     );

@@ -2,19 +2,21 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  OnInit,
   OnDestroy,
+  OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store, select } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Subject, take, takeUntil } from 'rxjs';
 import { TableHeaderItem } from 'src/app/core/interfaces/table-header-item.interface';
-import { AppState } from '../../../../../../core/store/app.reducers';
+import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.actions';
+import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
 import { RoutingConstants } from '../../../../../../core/constants/routing.constants';
+import { AppState } from '../../../../../../core/store/app.reducers';
 import { deleteLanguageAction } from '../../../../../../core/store/language/language.actions';
 import {
-  getLanguagesNamesSelector,
   getLanguagesByNameSelector,
+  getLanguagesNamesSelector,
 } from '../../../../../../core/store/language/language.selectors';
 
 @Component({
@@ -48,6 +50,7 @@ export class LanguagesEntitiesTablePageComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.initData();
+    this.initPageInfo();
   }
 
   public ngOnDestroy(): void {
@@ -77,21 +80,50 @@ export class LanguagesEntitiesTablePageComponent implements OnInit, OnDestroy {
   public deleteLanguage(name: string): void {
     this.store
       .pipe(
-        select((state) => getLanguagesByNameSelector(state, { name })),
+        select(state => getLanguagesByNameSelector(state, { name })),
         takeUntil(this.destroy$),
         take(1),
       )
-      .subscribe((languages) => {
-        languages.forEach((item) => this.store.dispatch(deleteLanguageAction({ id: item.id })));
+      .subscribe(languages => {
+        languages.forEach(item => this.store.dispatch(deleteLanguageAction({ id: item.id })));
       });
   }
 
   private initData(): void {
     this.store
       .pipe(select(getLanguagesNamesSelector), takeUntil(this.destroy$))
-      .subscribe((names) => {
+      .subscribe(names => {
         this.languagesNames = names;
         this.cdr.markForCheck();
       });
+  }
+
+  private initPageInfo(): void {
+    this.store.dispatch(
+      setBreadcrumbsAction({
+        breadcrumbs: [
+          {
+            i18nKey: 'BREADCRUMB.MAIN',
+            path: `${RoutingConstants.MAIN}`,
+          },
+          {
+            i18nKey: 'BREADCRUMB.ENTITIES',
+            path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}`,
+          },
+          {
+            i18nKey: 'BREADCRUMB.LANGUAGES',
+            path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}/${RoutingConstants.LANGUAGES}`,
+          },
+        ],
+      }),
+    );
+    this.store.dispatch(
+      setPageHeadingAction({
+        pageHeading: {
+          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITIES',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.ENTITY.LANGUAGES',
+        },
+      }),
+    );
   }
 }

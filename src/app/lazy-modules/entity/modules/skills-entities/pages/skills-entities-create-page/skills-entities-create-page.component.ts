@@ -69,7 +69,7 @@ export class SkillsEntitiesCreatePageComponent implements OnInit, OnDestroy {
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}`,
           },
           {
-            i18nKey: 'BREADCRUMB.LEVELS',
+            i18nKey: 'BREADCRUMB.SKILLS',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}/${RoutingConstants.SKILLS}`,
           },
           {
@@ -82,8 +82,8 @@ export class SkillsEntitiesCreatePageComponent implements OnInit, OnDestroy {
     this.store.dispatch(
       setPageHeadingAction({
         pageHeading: {
-          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITY',
-          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.CREATE.ENTITY.SKILLS',
+          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITIES',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.CREATE.ENTITY.SKILL',
         },
       }),
     );

@@ -14,6 +14,8 @@ import { AppState } from 'src/app/core/store/app.reducers';
 import { getCategoriesSelector } from '../../../../../../core/store/category/categories.selectors';
 import { RoutingConstants } from '../../../../../../core/constants/routing.constants';
 import { deleteCategoryAction } from '../../../../../../core/store/category/categories.actions';
+import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.actions';
+import { setPageHeadingAction } from '../../../../../../core/store/page-heading/page-heading.actions';
 
 @Component({
   selector: 'app-categories-entities-table-page',
@@ -46,6 +48,7 @@ export class CategoriesEntitiesTablePageComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.initData();
+    this.initPageInfo();
   }
 
   public ngOnDestroy(): void {
@@ -79,9 +82,38 @@ export class CategoriesEntitiesTablePageComponent implements OnInit, OnDestroy {
   private initData(): void {
     this.store
       .pipe(select(getCategoriesSelector), takeUntil(this.destroy$))
-      .subscribe((categories) => {
+      .subscribe(categories => {
         this.categories = categories;
         this.cdr.markForCheck();
       });
+  }
+
+  private initPageInfo(): void {
+    this.store.dispatch(
+      setBreadcrumbsAction({
+        breadcrumbs: [
+          {
+            i18nKey: 'BREADCRUMB.MAIN',
+            path: `${RoutingConstants.MAIN}`,
+          },
+          {
+            i18nKey: 'BREADCRUMB.ENTITIES',
+            path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}`,
+          },
+          {
+            i18nKey: 'BREADCRUMB.CATEGORIES',
+            path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}/${RoutingConstants.CATEGORIES}`,
+          },
+        ],
+      }),
+    );
+    this.store.dispatch(
+      setPageHeadingAction({
+        pageHeading: {
+          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITIES',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.ENTITY.CATEGORIES',
+        },
+      }),
+    );
   }
 }

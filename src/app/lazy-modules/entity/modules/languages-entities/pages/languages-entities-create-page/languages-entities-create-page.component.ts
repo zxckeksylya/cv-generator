@@ -68,7 +68,7 @@ export class LanguagesEntitiesCreatePageComponent implements OnInit, OnDestroy {
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}`,
           },
           {
-            i18nKey: 'BREADCRUMB.LEVELS',
+            i18nKey: 'BREADCRUMB.LANGUAGES',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}/${RoutingConstants.LANGUAGES}`,
           },
           {
@@ -81,8 +81,8 @@ export class LanguagesEntitiesCreatePageComponent implements OnInit, OnDestroy {
     this.store.dispatch(
       setPageHeadingAction({
         pageHeading: {
-          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITY',
-          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.CREATE.ENTITY.LANGUAGES',
+          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITIES',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.CREATE.ENTITY.LANGUAGE',
         },
       }),
     );

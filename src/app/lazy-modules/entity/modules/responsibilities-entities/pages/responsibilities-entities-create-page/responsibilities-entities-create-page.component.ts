@@ -43,7 +43,7 @@ export class ResponsibilitiesEntitiesCreatePageComponent implements OnInit {
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}`,
           },
           {
-            i18nKey: 'BREADCRUMB.LEVELS',
+            i18nKey: 'BREADCRUMB.RESPONSIBILITIES',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.ENTITY}/${RoutingConstants.RESPONSIBILITIES}`,
           },
           {
@@ -56,8 +56,8 @@ export class ResponsibilitiesEntitiesCreatePageComponent implements OnInit {
     this.store.dispatch(
       setPageHeadingAction({
         pageHeading: {
-          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITY',
-          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.CREATE.ENTITY.RESPONSIBILITIES',
+          i18nKeySection: 'PAGE-HEADING.SECTION.ENTITIES',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.CREATE.ENTITY.RESPONSIBILITY',
         },
       }),
     );
