@@ -1,6 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { RESPONSIBILITIES_FEATURE_KEY } from './responsibilities.reducers';
-import { ResponsibilitiesState } from './responsibilities.reducers';
+import { ResponsibilitiesState, RESPONSIBILITIES_FEATURE_KEY } from './responsibilities.reducers';
 
 export const responsibilitiesFeatureSelector = createFeatureSelector<ResponsibilitiesState>(
   RESPONSIBILITIES_FEATURE_KEY,
@@ -8,12 +7,15 @@ export const responsibilitiesFeatureSelector = createFeatureSelector<Responsibil
 
 export const getResponsibilitiesSelector = createSelector(
   responsibilitiesFeatureSelector,
-
-  (state) => state.responsibilities,
+  (state) => Object.values(state.responsibilities),
 );
 
 export const getIsInitResponsibilitiesSelector = createSelector(
   responsibilitiesFeatureSelector,
-
   (state) => state.isInitResponsibilities,
+);
+
+export const getResponsibilityByIdSelector = createSelector(
+  responsibilitiesFeatureSelector,
+  (state: ResponsibilitiesState, props: { id: string }) => state.responsibilities[props.id],
 );

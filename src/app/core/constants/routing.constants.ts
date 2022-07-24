@@ -8,4 +8,13 @@ export enum RoutingConstants {
   CREATE = 'create',
   UPDATE = 'update',
   INFO = 'info',
+  ENTITY = 'entity',
+  ROLES = 'roles',
+  CATEGORIES = 'categories',
+  PROJECT_ROLES = 'project-roles',
+  SPECIALIZATION = 'specializations',
+  SKILLS = 'skills',
+  LEVELS = 'levels',
+  RESPONSIBILITIES = 'responsibilities',
+  LANGUAGES = 'languages',
 }

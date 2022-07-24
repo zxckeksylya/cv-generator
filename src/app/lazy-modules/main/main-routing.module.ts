@@ -18,6 +18,11 @@ const routes: Routes = [
         loadChildren: () => import('../employees/employees.module').then((m) => m.EmployeesModule),
         title: RoutingConstants.EMPLOYEES,
       },
+      {
+        path: RoutingConstants.ENTITY,
+        loadChildren: () => import('../entity/entity.module').then((m) => m.EntityModule),
+        title: RoutingConstants.ENTITY,
+      },
       { path: '**', redirectTo: `${RoutingConstants.EMPLOYEES}` },
     ],
   },

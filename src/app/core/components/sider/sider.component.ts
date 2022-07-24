@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard, faGears } from '@fortawesome/free-solid-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import { RoutingConstants } from '../../constants/routing.constants';
 
@@ -13,6 +13,7 @@ import { RoutingConstants } from '../../constants/routing.constants';
 export class SiderComponent {
   public readonly faAddressCard = faAddressCard;
   public readonly faDatabase = faDatabase;
+  public readonly faGears = faGears;
 
   constructor(private router: Router) {}
 
@@ -22,5 +23,8 @@ export class SiderComponent {
 
   public redirectToProjects(): void {
     this.router.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
+  }
+  public redirectToEntities(): void {
+    this.router.navigate([RoutingConstants.MAIN, RoutingConstants.ENTITY]);
   }
 }

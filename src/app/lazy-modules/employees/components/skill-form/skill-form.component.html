@@ -1,0 +1,35 @@
+<div [formGroup]="form" (blur)="onTouched()" class="form">
+  <app-select-control
+    [label]="'EMPLOYEES.SKILL.NAME' | translate"
+    [dataSource]="skillsNames"
+    formControlName="name"
+  ></app-select-control>
+  <div>
+    <app-select-control
+      [label]="'EMPLOYEES.SKILL.LEVEL' | translate"
+      [dataSource]="levels"
+      formControlName="level"
+      [optionLabelField]="'name'"
+      [optionValueField]="'id'"
+    ></app-select-control>
+    <app-select-control
+      [label]="'EMPLOYEES.SKILL.CATEGORY' | translate"
+      [dataSource]="categories"
+      formControlName="category"
+      [optionLabelField]="'name'"
+      [optionValueField]="'id'"
+    ></app-select-control>
+  </div>
+  <div>
+    <app-number-control
+      [step]="1"
+      formControlName="experience"
+      [label]="'EMPLOYEES.SKILL.EXPERIENCE' | translate"
+    ></app-number-control>
+    <app-number-control
+      [step]="1"
+      formControlName="lastUsed"
+      [label]="'EMPLOYEES.SKILL.LAST_USED' | translate"
+    ></app-number-control>
+  </div>
+</div>

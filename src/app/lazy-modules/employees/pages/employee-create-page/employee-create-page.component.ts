@@ -6,7 +6,7 @@ import { AppState } from 'src/app/core/store/app.reducers';
 import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.actions';
 import { createEmployeeAction } from 'src/app/core/store/employess/employees.actions';
 import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
-import { UpdateEmployee } from '../../../../core/interfaces/employee.interface';
+import { EmployeeForm } from '../../../../core/interfaces/employee.interface';
 
 @Component({
   selector: 'app-employee-create-page',
@@ -21,7 +21,7 @@ export class EmployeeCreatePageComponent implements OnInit {
     this.initPageInfo();
   }
 
-  public createEmployee(employee: UpdateEmployee): void {
+  public createEmployee(employee: EmployeeForm): void {
     this.store.dispatch(createEmployeeAction({ password: 'string', ...employee }));
     this.route.navigate([RoutingConstants.MAIN, RoutingConstants.EMPLOYEES]);
   }

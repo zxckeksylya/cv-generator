@@ -1,18 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { map, switchMap, take, catchError, of } from 'rxjs';
+import { catchError, concatMap, from, map, of, switchMap, take } from 'rxjs';
 import { SkillsService } from '../../services/skills.service';
 import { AppState } from '../app.reducers';
+import { getCategoryByIdSuccessAction } from '../category/categories.actions';
 import {
+  createEmployeeSuccessAction,
+  updateEmployeeSuccessAction,
+} from '../employess/employees.actions';
+import { getLevelByIdSuccessAction } from '../level/levels.actions';
+import { getEmployeeByIdSelector } from '../employess/employees.selectors';
+import {
+  createSkillAction,
+  deleteSkillAction,
+  deleteSkillSuccessAction,
+  getSkillByIdAction,
+  getSkillByIdSuccessAction,
   getSkillsAction,
   getSkillsFailedAction,
   getSkillsSuccessAction,
   initSkillsStoreAction,
   initSkillsStoreFailedAction,
   initSkillsStoreSuccessAction,
+  updateSkillAction,
+  updateSkillSuccessAction,
 } from './skills.actions';
-import { getIsInitSkillsSelector } from './skills.selectors';
+import {
+  getIsInitSkillsSelector,
+  getSkillsByCategoryId,
+  getSkillsByLevelId,
+} from './skills.selectors';
 
 @Injectable()
 export class SkillsEffect {
@@ -23,9 +41,7 @@ export class SkillsEffect {
         this.store.pipe(
           select(getIsInitSkillsSelector),
           take(1),
-          map((isInit) =>
-            !isInit ? initSkillsStoreSuccessAction() : initSkillsStoreFailedAction(),
-          ),
+          map(isInit => (!isInit ? initSkillsStoreSuccessAction() : initSkillsStoreFailedAction())),
         ),
       ),
     ),
@@ -42,8 +58,95 @@ export class SkillsEffect {
     this.actions$.pipe(
       ofType(getSkillsAction),
       switchMap(() => this.skillsService.getSkills()),
-      map((skills) => getSkillsSuccessAction({ skills })),
+      map(skills => getSkillsSuccessAction({ skills })),
       catchError(() => of(getSkillsFailedAction())),
+    ),
+  );
+
+  public createSkill$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createSkillAction),
+      switchMap(skill => this.skillsService.createSkill(skill)),
+      switchMap(skill => this.skillsService.getSkillById(skill.id)),
+      map(skill => getSkillByIdSuccessAction({ skill })),
+    ),
+  );
+
+  public getSkillById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getSkillByIdAction, updateSkillSuccessAction),
+      concatMap(item => this.skillsService.getSkillById(item.id)),
+      map(skill => getSkillByIdSuccessAction({ skill })),
+    ),
+  );
+
+  public updateSkill$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateSkillAction),
+      concatMap(skill =>
+        this.skillsService
+          .updateSkill(skill.skill)
+          .pipe(map(item => updateSkillSuccessAction(item))),
+      ),
+    ),
+  );
+
+  public deleteSkill$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteSkillAction),
+      concatMap(skill =>
+        this.skillsService.deleteSkill(skill.id).pipe(map(() => deleteSkillSuccessAction(skill))),
+      ),
+    ),
+  );
+
+  public changeLevelEffect$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getLevelByIdSuccessAction),
+      concatMap(level =>
+        this.store.pipe(
+          select(state => getSkillsByLevelId(state, { id: level.level.id })),
+          take(1),
+          concatMap(skills => from(skills)),
+          map(skill => getSkillByIdAction({ id: skill.id })),
+        ),
+      ),
+    ),
+  );
+
+  public changeCategoryEffect$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getCategoryByIdSuccessAction),
+      concatMap(category =>
+        this.store.pipe(
+          select(state => getSkillsByCategoryId(state, { id: category.category.id })),
+          take(1),
+          concatMap(skills => from(skills)),
+          map(skill => getSkillByIdAction({ id: skill.id })),
+        ),
+      ),
+    ),
+  );
+
+  public createEmployee$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createEmployeeSuccessAction),
+      concatMap(employee => from(employee.employee.skills)),
+      map(skill => getSkillByIdAction({ id: skill.id })),
+    ),
+  );
+
+  public updateEmployee$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateEmployeeSuccessAction),
+      concatMap(item =>
+        this.store.pipe(
+          select(state => getEmployeeByIdSelector(state, { id: item.id })),
+          take(1),
+          concatMap(employee => from(employee.languages)),
+          map(skill => getSkillByIdAction({ id: skill.id })),
+        ),
+      ),
     ),
   );
 

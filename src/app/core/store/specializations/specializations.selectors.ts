@@ -5,12 +5,16 @@ export const specializationsFeatureSelector = createFeatureSelector<Specializati
   SPECIALIZATION_FEATURE_KEY,
 );
 
-export const getSpecializationsSelector = createSelector(
-  specializationsFeatureSelector,
-  (state) => state.specializations,
+export const getSpecializationsSelector = createSelector(specializationsFeatureSelector, (state) =>
+  Object.values(state.specializations),
 );
 
 export const getIsInitSpecializationsSelector = createSelector(
   specializationsFeatureSelector,
   (state) => state.isInitSpecializations,
+);
+
+export const getSpecializationByIdSelector = createSelector(
+  specializationsFeatureSelector,
+  (state: SpecializationsState, props: { id: string }) => state.specializations[props.id],
 );

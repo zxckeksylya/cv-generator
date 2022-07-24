@@ -1,16 +1,24 @@
-import { INameId } from '../../interfaces/name-id.interface';
 import { createReducer, on } from '@ngrx/store';
-import { clearLevelsAction, getLevelsSuccessAction } from './levels.actions';
+import { INameId, INameIdMap } from '../../interfaces/name-id.interface';
+import { arrayToMap } from '../../utils/array-to-map.util';
+import { deleteInMap } from '../../utils/delete-in-map.util';
+import {
+  clearLevelsAction,
+  createLevelSuccessAction,
+  deleteLevelSuccessAction,
+  getLevelByIdSuccessAction,
+  getLevelsSuccessAction,
+} from './levels.actions';
 
 export const LEVELS_FEATURE_KEY = 'levels';
 
 export interface LevelsState {
-  levels: INameId[];
+  levels: INameIdMap;
   isInitLevels: boolean;
 }
 
 export const initialLevelsState: LevelsState = {
-  levels: [],
+  levels: {},
   isInitLevels: false,
 };
 
@@ -22,6 +30,24 @@ export const levelsReducer = createReducer(
   on(getLevelsSuccessAction, (state, action) => ({
     ...state,
     isInitLevels: true,
-    levels: action.levels,
+    levels: arrayToMap<INameId>(action.levels, 'id'),
+  })),
+  on(createLevelSuccessAction, (state, action) => ({
+    ...state,
+    levels: {
+      [action.level.id]: action.level,
+      ...state.levels,
+    },
+  })),
+  on(getLevelByIdSuccessAction, (state, action) => ({
+    ...state,
+    levels: {
+      ...state.levels,
+      [action.level.id]: action.level,
+    },
+  })),
+  on(deleteLevelSuccessAction, (state, action) => ({
+    ...state,
+    levels: deleteInMap<INameIdMap>(state.levels, action.id),
   })),
 );

@@ -3,9 +3,9 @@ import { EmployeeMap, GetEmployee } from '../../interfaces/employee.interface';
 import { arrayToMap } from '../../utils/array-to-map.util';
 import {
   clearEmployeesStoreAction,
-  getEmployeesSuccessAction,
-  getEmployeeByIdSuccessAction,
   createEmployeeSuccessAction,
+  getEmployeeByIdSuccessAction,
+  getEmployeesSuccessAction,
 } from './employees.actions';
 
 export const EMPLOYEES_FEATURE_KEY = 'employees';

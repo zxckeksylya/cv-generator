@@ -1,0 +1,18 @@
+<app-button (buttonClick)="createCategory()">{{ 'BUTTON.EDIT' | translate }}</app-button>
+<app-table [source]="categories" [headerItems]="headerData" [rowTemplateRef]="rowRef">
+  <ng-template #rowRef let-item>
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>
+        <app-button (buttonClick)="updateCategory(item.id)">{{
+          'BUTTON.EDIT' | translate
+        }}</app-button>
+      </td>
+      <td>
+        <app-button (buttonClick)="deleteCategory(item.id)">{{
+          'BUTTON.REMOVE' | translate
+        }}</app-button>
+      </td>
+    </tr>
+  </ng-template>
+</app-table>

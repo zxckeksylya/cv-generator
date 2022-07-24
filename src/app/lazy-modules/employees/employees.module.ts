@@ -15,6 +15,9 @@ import { EmployeesRoutingModule } from './employees-routing.module';
 import { EmployeeCreatePageComponent } from './pages/employee-create-page/employee-create-page.component';
 import { EmployeeInfoPageComponent } from './pages/employee-info-page/employee-info-page.component';
 import { EmployeesListPageComponent } from './pages/employees-list-page/employees-list-page.component';
+import { LanguageFormComponent } from './components/language-form/language-form.component';
+import { SkillFormComponent } from './components/skill-form/skill-form.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -30,12 +33,16 @@ import { EmployeesListPageComponent } from './pages/employees-list-page/employee
     TextControlModule,
     ReactiveFormsModule,
     SelectControlModule,
+    NumberControlModule,
+    FontAwesomeModule,
   ],
   declarations: [
     EmployeesListPageComponent,
     EmployeeFormComponent,
     EmployeeCreatePageComponent,
     EmployeeInfoPageComponent,
+    LanguageFormComponent,
+    SkillFormComponent,
   ],
 })
 export class EmployeesModule {}
