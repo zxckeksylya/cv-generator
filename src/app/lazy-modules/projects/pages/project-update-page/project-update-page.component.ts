@@ -31,13 +31,13 @@ export class ProjectUpdatePageComponent implements OnInit, OnDestroy {
     this.activatedRoute.paramMap
       .pipe(
         takeUntil(this.destroy$),
-        switchMap((params) => params.getAll('id')),
+        switchMap(params => params.getAll('id')),
         take(1),
-        switchMap((id) =>
-          this.store.pipe(select((state) => getProjectByIdSelector(state, { id }))),
-        ),
+        switchMap(id => this.store.pipe(select(state => getProjectByIdSelector(state, { id })))),
       )
-      .subscribe((project) => (this.updatedProject = project));
+      .subscribe(project => {
+        this.updatedProject = project;
+      });
 
     this.initPageInfo();
   }
@@ -49,7 +49,6 @@ export class ProjectUpdatePageComponent implements OnInit, OnDestroy {
 
   public updateProject(project: UpdateProject): void {
     this.store.dispatch(updateProjectAction({ ...project, id: this.updatedProject.id }));
-
     this.route.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
   }
 

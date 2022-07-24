@@ -23,7 +23,6 @@ export class ProjectCreatePageComponent implements OnInit {
 
   public createProject(project: CreateProject): void {
     this.store.dispatch(createProjectAction(project));
-
     this.route.navigate([RoutingConstants.MAIN, RoutingConstants.PROJECTS]);
   }
 

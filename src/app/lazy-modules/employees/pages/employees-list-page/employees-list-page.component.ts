@@ -63,6 +63,23 @@ export class EmployeesListPageComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  public createEmployee(): void {
+    this.route.navigate([
+      RoutingConstants.MAIN,
+      RoutingConstants.EMPLOYEES,
+      RoutingConstants.CREATE,
+    ]);
+  }
+
+  public updateEmployee(id: string): void {
+    this.route.navigate([
+      RoutingConstants.MAIN,
+      RoutingConstants.EMPLOYEES,
+      RoutingConstants.INFO,
+      id,
+    ]);
+  }
+
   private initPageInfo(): void {
     this.store.dispatch(
       setBreadcrumbsAction({

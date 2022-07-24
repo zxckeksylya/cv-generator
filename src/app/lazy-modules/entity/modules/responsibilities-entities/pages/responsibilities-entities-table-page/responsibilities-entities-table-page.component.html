@@ -1,0 +1,18 @@
+<app-button (buttonClick)="createResponsibility()">{{ 'BUTTON.EDIT' | translate }}</app-button>
+<app-table [source]="responsibilities" [headerItems]="headerData" [rowTemplateRef]="rowRef">
+  <ng-template #rowRef let-item>
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>
+        <app-button (buttonClick)="updateResponsibility(item.id)">{{
+          'BUTTON.EDIT' | translate
+        }}</app-button>
+      </td>
+      <td>
+        <app-button (buttonClick)="deleteResponsibility(item.id)">{{
+          'BUTTON.REMOVE' | translate
+        }}</app-button>
+      </td>
+    </tr>
+  </ng-template>
+</app-table>

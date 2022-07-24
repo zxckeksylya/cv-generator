@@ -1,0 +1,53 @@
+<div [formGroup]="form" (blur)="onTouched()" class="form">
+  <app-select-control
+    [label]="'EMPLOYEES.LANGUAGE.NAME' | translate"
+    [dataSource]="languagesNames"
+    formControlName="name"
+  ></app-select-control>
+  <div>
+    <app-select-control
+      [label]="'EMPLOYEES.LANGUAGE.EVERY_DAY.READING' | translate"
+      [dataSource]="levels"
+      formControlName="everydayReadingLevel"
+      [optionLabelField]="'name'"
+      [optionValueField]="'id'"
+    ></app-select-control>
+    <app-select-control
+      [label]="'EMPLOYEES.LANGUAGE.EVERY_DAY.WRITING' | translate"
+      [dataSource]="levels"
+      formControlName="everydayWritingLevel"
+      [optionLabelField]="'name'"
+      [optionValueField]="'id'"
+    ></app-select-control>
+    <app-select-control
+      [label]="'EMPLOYEES.LANGUAGE.EVERY_DAY.SPEAKING' | translate"
+      [dataSource]="levels"
+      formControlName="everydaySpeakingLevel"
+      [optionLabelField]="'name'"
+      [optionValueField]="'id'"
+    ></app-select-control>
+  </div>
+  <div>
+    <app-select-control
+      [label]="'EMPLOYEES.LANGUAGE.PROFESSIONAL.READING' | translate"
+      [dataSource]="levels"
+      formControlName="professionalReadingLevel"
+      [optionLabelField]="'name'"
+      [optionValueField]="'id'"
+    ></app-select-control>
+    <app-select-control
+      [label]="'EMPLOYEES.LANGUAGE.PROFESSIONAL.WRITING' | translate"
+      [dataSource]="levels"
+      formControlName="professionalWritingLevel"
+      [optionLabelField]="'name'"
+      [optionValueField]="'id'"
+    ></app-select-control>
+    <app-select-control
+      [label]="'EMPLOYEES.LANGUAGE.PROFESSIONAL.SPEAKING' | translate"
+      [dataSource]="levels"
+      formControlName="professionalSpeakingLevel"
+      [optionLabelField]="'name'"
+      [optionValueField]="'id'"
+    ></app-select-control>
+  </div>
+</div>

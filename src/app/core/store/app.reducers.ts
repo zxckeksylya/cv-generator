@@ -11,10 +11,21 @@ import {
   BREADCRUMB_FEATURE_KEY,
 } from './breadcrumb/breadcrumb.reducers';
 import {
-  EMPLOYEES_FEATURE_KEY,
-  EmployeesState,
+  categoriesReducer,
+  CategoriesState,
+  CATEGORIES_FEATURE_KEY,
+} from './category/categories.reducers';
+import {
   employeesReducer,
+  EmployeesState,
+  EMPLOYEES_FEATURE_KEY,
 } from './employess/employees.reducers';
+import {
+  languagesReducer,
+  LanguagesState,
+  LANGUAGE_FEATURE_KEY,
+} from './language/language.reducers';
+import { levelsReducer, LevelsState, LEVELS_FEATURE_KEY } from './level/levels.reducers';
 import {
   pageHeadingReducer,
   PageHeadingState,
@@ -31,6 +42,8 @@ import {
   ResponsibilitiesState,
   RESPONSIBILITIES_FEATURE_KEY,
 } from './responsibilities/responsibilities.reducers';
+import { rolesReducer, RolesState, ROLES_FEATURE_KEY } from './role/roles.reducers';
+import { SKILLS_FEATURE_KEY, SkillsState, skillsReducer } from './skill/skills.reducers';
 import {
   specializationsReducer,
   SpecializationsState,
@@ -48,6 +61,11 @@ export interface AppState {
   [PROJECT_ROLES_FEATURE_KEY]: ProjectRolesState;
   [PROJECTS_FEATURE_KEY]: ProjectsState;
   [EMPLOYEES_FEATURE_KEY]: EmployeesState;
+  [ROLES_FEATURE_KEY]: RolesState;
+  [CATEGORIES_FEATURE_KEY]: CategoriesState;
+  [LANGUAGE_FEATURE_KEY]: LanguagesState;
+  [LEVELS_FEATURE_KEY]: LevelsState;
+  [SKILLS_FEATURE_KEY]: SkillsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -60,6 +78,11 @@ export const reducers: ActionReducerMap<AppState> = {
   [PROJECT_ROLES_FEATURE_KEY]: projectRolesReducer,
   [PROJECTS_FEATURE_KEY]: projectsReducer,
   [EMPLOYEES_FEATURE_KEY]: employeesReducer,
+  [ROLES_FEATURE_KEY]: rolesReducer,
+  [CATEGORIES_FEATURE_KEY]: categoriesReducer,
+  [LANGUAGE_FEATURE_KEY]: languagesReducer,
+  [LEVELS_FEATURE_KEY]: levelsReducer,
+  [SKILLS_FEATURE_KEY]: skillsReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

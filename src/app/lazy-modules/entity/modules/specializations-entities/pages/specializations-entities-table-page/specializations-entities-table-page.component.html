@@ -1,0 +1,18 @@
+<app-button (buttonClick)="createSpecialization()">{{ 'BUTTON.EDIT' | translate }}</app-button>
+<app-table [source]="specializations" [headerItems]="headerData" [rowTemplateRef]="rowRef">
+  <ng-template #rowRef let-item>
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>
+        <app-button (buttonClick)="updateSpecialization(item.id)">{{
+          'BUTTON.EDIT' | translate
+        }}</app-button>
+      </td>
+      <td>
+        <app-button (buttonClick)="deleteSpecialization(item.id)">{{
+          'BUTTON.REMOVE' | translate
+        }}</app-button>
+      </td>
+    </tr>
+  </ng-template>
+</app-table>
