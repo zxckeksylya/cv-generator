@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable, of, switchMap, take, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {
-  CreateEmployee,
+  CreateEmployeeRequest,
   CreateEmployeeResponse,
   GetEmployee,
-  UpdateEmployee,
+  UpdateEmployeeRequest,
 } from '../interfaces/employee.interface';
 import { generateHttpErrorResponse } from '../utils/generate-http-error-response.util';
 
@@ -35,11 +35,11 @@ export class EmployeeService {
       );
   }
 
-  public createEmployee(employee: CreateEmployee): Observable<CreateEmployeeResponse> {
+  public createEmployee(employee: CreateEmployeeRequest): Observable<CreateEmployeeResponse> {
     return this.http.post<CreateEmployeeResponse>(`${environment.host}/users`, employee);
   }
 
-  public updateEmployee(employee: UpdateEmployee): Observable<UpdateEmployee> {
-    return this.http.put<UpdateEmployee>(`${environment.host}/users`, employee);
+  public updateEmployee(employee: UpdateEmployeeRequest): Observable<UpdateEmployeeRequest> {
+    return this.http.put<UpdateEmployeeRequest>(`${environment.host}/users`, employee);
   }
 }

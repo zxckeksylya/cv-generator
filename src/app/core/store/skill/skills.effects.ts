@@ -5,7 +5,12 @@ import { catchError, concatMap, from, map, of, switchMap, take } from 'rxjs';
 import { SkillsService } from '../../services/skills.service';
 import { AppState } from '../app.reducers';
 import { getCategoryByIdSuccessAction } from '../category/categories.actions';
+import {
+  createEmployeeSuccessAction,
+  updateEmployeeSuccessAction,
+} from '../employess/employees.actions';
 import { getLevelByIdSuccessAction } from '../level/levels.actions';
+import { getEmployeeByIdSelector } from '../employess/employees.selectors';
 import {
   createSkillAction,
   deleteSkillAction,
@@ -117,6 +122,28 @@ export class SkillsEffect {
           select(state => getSkillsByCategoryId(state, { id: category.category.id })),
           take(1),
           concatMap(skills => from(skills)),
+          map(skill => getSkillByIdAction({ id: skill.id })),
+        ),
+      ),
+    ),
+  );
+
+  public createEmployee$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createEmployeeSuccessAction),
+      concatMap(employee => from(employee.employee.skills)),
+      map(skill => getSkillByIdAction({ id: skill.id })),
+    ),
+  );
+
+  public updateEmployee$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateEmployeeSuccessAction),
+      concatMap(item =>
+        this.store.pipe(
+          select(state => getEmployeeByIdSelector(state, { id: item.id })),
+          take(1),
+          concatMap(employee => from(employee.languages)),
           map(skill => getSkillByIdAction({ id: skill.id })),
         ),
       ),

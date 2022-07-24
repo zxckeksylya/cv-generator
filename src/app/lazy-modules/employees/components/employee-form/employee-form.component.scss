@@ -24,4 +24,26 @@
     justify-content: end;
     gap: 15px;
   }
+  .skills {
+    &__block {
+      flex-wrap: wrap;
+    }
+    &__control {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+  }
+  .languages {
+    &__block {
+      flex-wrap: wrap;
+    }
+    &__control {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+  }
 }

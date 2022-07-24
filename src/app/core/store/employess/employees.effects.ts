@@ -1,33 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { map, switchMap, take, concatMap, from } from 'rxjs';
+import { concatMap, from, map, switchMap, take, toArray } from 'rxjs';
 import { EmployeeService } from '../../services/employee.service';
+import { LanguagesService } from '../../services/languages.service';
+import { SkillsService } from '../../services/skills.service';
 import { AppState } from '../app.reducers';
+import { getLanguageByIdSuccessAction } from '../language/language.actions';
+import { getRoleByIdSuccessAction } from '../role/roles.actions';
+import { getSkillByIdSuccessAction } from '../skill/skills.actions';
 import {
   createEmployeeAction,
   createEmployeeSuccessAction,
+  getEmployeeByIdAction,
   getEmployeeByIdSuccessAction,
   getEmployeesAction,
   getEmployeesSuccessAction,
   initEmployeesStoreAction,
   initEmployeesStoreFailedAction,
   initEmployeesStoreSuccessAction,
+  updateEmployeeAction,
+  updateEmployeeSuccessAction,
 } from './employees.actions';
 import {
+  getEmployeeByRoleIdSelector,
+  getEmployeesByLanguageIdSelector,
   getEmployeesBySkillIdSelector,
   getIsInitEmployeesSelector,
-  getEmployeesByLanguageIdSelector,
-  getEmployeeByRoleIdSelector,
 } from './employees.selectors';
-import {
-  getEmployeeByIdAction,
-  updateEmployeeSuccessAction,
-  updateEmployeeAction,
-} from './employees.actions';
-import { getSkillByIdSuccessAction } from '../skill/skills.actions';
-import { getLanguageByIdSuccessAction } from '../language/language.actions';
-import { getRoleByIdSuccessAction } from '../role/roles.actions';
 
 @Injectable()
 export class EmployeesEffect {
@@ -72,7 +72,27 @@ export class EmployeesEffect {
   public createEmployee$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createEmployeeAction),
-      switchMap(employee => this.employeeService.createEmployee(employee)),
+      concatMap(employee =>
+        from(employee.languages).pipe(
+          concatMap(language => this.languageService.createLanguage(language)),
+          take(employee.languages.length),
+          toArray(),
+          concatMap(newLanguages =>
+            from(employee.skills).pipe(
+              concatMap(skill => this.skillsService.createSkill(skill)),
+              take(employee.skills.length),
+              toArray(),
+              switchMap(newSkills =>
+                this.employeeService.createEmployee({
+                  ...employee,
+                  languages: newLanguages.map(item => item.id),
+                  skills: newSkills.map(item => item.id),
+                }),
+              ),
+            ),
+          ),
+        ),
+      ),
       switchMap(employee => this.employeeService.getEmployeeById(employee.id)),
       map(employee => createEmployeeSuccessAction({ employee })),
     ),
@@ -81,7 +101,27 @@ export class EmployeesEffect {
   public updateEmployee$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateEmployeeAction),
-      switchMap(employee => this.employeeService.updateEmployee(employee)),
+      concatMap(employee =>
+        from(employee.languages).pipe(
+          concatMap(language => this.languageService.createLanguage(language)),
+          take(employee.languages.length),
+          toArray(),
+          concatMap(newLanguages =>
+            from(employee.skills).pipe(
+              concatMap(skill => this.skillsService.createSkill(skill)),
+              take(employee.skills.length),
+              toArray(),
+              switchMap(newSkills =>
+                this.employeeService.updateEmployee({
+                  ...employee,
+                  languages: newLanguages.map(item => item.id),
+                  skills: newSkills.map(item => item.id),
+                }),
+              ),
+            ),
+          ),
+        ),
+      ),
       map(employee => updateEmployeeSuccessAction(employee)),
     ),
   );
@@ -131,6 +171,8 @@ export class EmployeesEffect {
   constructor(
     private actions$: Actions,
     private employeeService: EmployeeService,
+    private languageService: LanguagesService,
+    private skillsService: SkillsService,
     private store: Store<AppState>,
   ) {}
 }

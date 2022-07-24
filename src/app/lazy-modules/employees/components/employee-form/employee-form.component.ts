@@ -1,28 +1,25 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
+  EventEmitter,
   Input,
+  OnChanges,
+  OnDestroy,
   OnInit,
   Output,
-  EventEmitter,
-  OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { GetEmployee, UpdateEmployee } from '../../../../core/interfaces/employee.interface';
-import { INameId } from '../../../../core/interfaces/name-id.interface';
-import { Language } from '../../../../core/interfaces/language.interface';
-import { Skill } from 'src/app/core/interfaces/skill.interface';
-import { OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subject, takeUntil } from 'rxjs';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AppState } from 'src/app/core/store/app.reducers';
 import { select, Store } from '@ngrx/store';
-import { getArrayIdOutINameId } from '../../../../core/utils/get-array-id-out-i-name-id.util';
-import { getSkillsSelector } from 'src/app/core/store/skill/skills.selectors';
+import { Subject, takeUntil } from 'rxjs';
+import { AppState } from 'src/app/core/store/app.reducers';
 import { getRolesSelector } from 'src/app/core/store/role/roles.selectors';
-import { getLanguagesSelector } from 'src/app/core/store/language/language.selectors';
 import { RoutingConstants } from '../../../../core/constants/routing.constants';
+import { EmployeeForm, GetEmployee } from '../../../../core/interfaces/employee.interface';
+import { INameId } from '../../../../core/interfaces/name-id.interface';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employee-form',
@@ -33,15 +30,13 @@ import { RoutingConstants } from '../../../../core/constants/routing.constants';
 export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
   @Input() public employee: GetEmployee;
 
-  @Output() public submitted = new EventEmitter<UpdateEmployee>();
+  @Output() public submitted = new EventEmitter<EmployeeForm>();
+
+  public readonly faXmark = faXmark;
 
   public form: FormGroup;
 
   public role: INameId[] = [];
-
-  public languages: Language[] = [];
-
-  public skills: Skill[] = [];
 
   private destroy$ = new Subject<void>();
 
@@ -56,11 +51,19 @@ export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['employee'] && changes['employee'].currentValue) {
+      changes['employee'].currentValue.languages.forEach(() => this.addLanguage());
+      changes['employee'].currentValue.skills.forEach(() => this.addSkill());
       this.form.patchValue(changes['employee'].currentValue, { emitEvent: false });
     }
   }
 
   public ngOnInit(): void {
+    if (this.getLanguagesControls().length === 0) {
+      this.addLanguage();
+    }
+    if (this.getSkillsControls().length === 0) {
+      this.addSkill();
+    }
     this.getData();
   }
 
@@ -82,13 +85,65 @@ export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
     this.route.navigate([RoutingConstants.MAIN, RoutingConstants.EMPLOYEES]);
   }
 
-  private formatEmployee(employee: GetEmployee): UpdateEmployee {
-    const { languages, skills, role, ...data } = employee;
+  public getLanguagesControls(): any {
+    return (this.form.get('languages') as FormArray).controls;
+  }
+
+  public addLanguage(): void {
+    (this.form.get('languages') as FormArray).push(new FormControl());
+  }
+
+  public deleteLanguage(index: number): void {
+    if (this.getLanguagesControls().length > 1) {
+      (this.form.get('languages') as FormArray).removeAt(index);
+    }
+  }
+
+  public getSkillsControls(): any {
+    return (this.form.get('skills') as FormArray).controls;
+  }
+
+  public addSkill(): void {
+    const control = this.form.get('skills') as FormArray;
+    control.push(new FormControl());
+  }
+
+  public deleteSkill(index: number): void {
+    if (this.getSkillsControls().length > 1) {
+      (this.form.get('skills') as FormArray).removeAt(index);
+    }
+  }
+
+  private formatEmployee(employee: any): EmployeeForm {
+    const languages = employee.languages.map((item: any) => {
+      const newItem = {
+        name: item.name,
+        everydayReadingLevel: item.everydayReadingLevel.id,
+        everydaySpeakingLevel: item.everydaySpeakingLevel.id,
+        everydayWritingLevel: item.everydayWritingLevel.id,
+        professionalReadingLevel: item.professionalReadingLevel.id,
+        professionalSpeakingLevel: item.professionalSpeakingLevel.id,
+        professionalWritingLevel: item.professionalWritingLevel.id,
+      };
+      return newItem;
+    });
+
+    const skills = employee.skills.map((item: any) => {
+      const newItem = {
+        name: item.name,
+        category: item.category.id,
+        level: item.level.id,
+        experience: item.experience,
+        lastUsed: item.lastUsed,
+      };
+      return newItem;
+    });
+    const { role, ...data } = employee;
     const user = {
       ...data,
-      languages: getArrayIdOutINameId(languages),
-      skills: getArrayIdOutINameId(skills),
       role: role.id,
+      languages,
+      skills,
     };
     return user;
   }
@@ -102,22 +157,14 @@ export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
       diplomaProfession: '',
       department: '',
       role: '',
-      skills: [],
-      languages: [],
+      skills: this.formBuilder.array([]),
+      languages: this.formBuilder.array([]),
     });
   }
 
   private getData(): void {
-    this.store.pipe(select(getSkillsSelector), takeUntil(this.destroy$)).subscribe((data) => {
-      this.skills = data;
-      this.cdr.markForCheck();
-    });
-    this.store.pipe(select(getRolesSelector), takeUntil(this.destroy$)).subscribe((data) => {
+    this.store.pipe(select(getRolesSelector), takeUntil(this.destroy$)).subscribe(data => {
       this.role = data;
-      this.cdr.markForCheck();
-    });
-    this.store.pipe(select(getLanguagesSelector), takeUntil(this.destroy$)).subscribe((data) => {
-      this.languages = data;
       this.cdr.markForCheck();
     });
   }

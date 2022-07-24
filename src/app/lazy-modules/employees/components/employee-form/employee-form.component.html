@@ -35,24 +35,6 @@
   </div>
   <div class="block block-base">
     <app-select-control
-      formControlName="skills"
-      [label]="'EMPLOYEES.SKILLS' | translate"
-      class="flex-1"
-      [dataSource]="skills"
-      optionLabelField="name"
-      mode="multiple"
-      optionValueField="id"
-    ></app-select-control>
-    <app-select-control
-      formControlName="languages"
-      [label]="'EMPLOYEES.LANGUAGES' | translate"
-      class="flex-1"
-      [dataSource]="languages"
-      optionLabelField="name"
-      mode="multiple"
-      optionValueField="id"
-    ></app-select-control>
-    <app-select-control
       formControlName="role"
       [label]="'EMPLOYEES.ROLE' | translate"
       class="flex-1"
@@ -62,7 +44,44 @@
     ></app-select-control>
   </div>
 
+  <div class="languages">
+    <div class="languages__form-header form-header">
+      {{ 'EMPLOYEES.LANGUAGES' | translate }}
+    </div>
+    <div class="languages__form-body form-body">
+      <div formArrayName="languages" class="block block-base languages__block">
+        <div
+          *ngFor="let language of getLanguagesControls(); let i = index"
+          class="languages__control"
+        >
+          <app-language-form [formControlName]="i"></app-language-form>
+          <app-button (buttonClick)="deleteLanguage(i)"
+            ><fa-icon [icon]="faXmark"></fa-icon
+          ></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skills">
+    <div class="skills__form-header form-header">
+      {{ 'EMPLOYEES.SKILLS' | translate }}
+    </div>
+    <div class="skills__form-body form-body">
+      <div formArrayName="skills" class="block block-base skills__block">
+        <div *ngFor="let skill of getSkillsControls(); let i = index" class="skills__control">
+          <app-skill-form [formControlName]="i"></app-skill-form>
+          <app-button (buttonClick)="deleteSkill(i)"
+            ><fa-icon [icon]="faXmark"></fa-icon
+          ></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="buttons">
+    <app-button (buttonClick)="addSkill()"> add skill</app-button>
+    <app-button (buttonClick)="addLanguage()"> add language</app-button>
     <app-button type="primary" behaviorType="submit">{{ 'BUTTON.SAVE' | translate }}</app-button>
     <app-button (buttonClick)="backToEmployees()">{{ 'BUTTON.CANCEL' | translate }}</app-button>
   </div>
