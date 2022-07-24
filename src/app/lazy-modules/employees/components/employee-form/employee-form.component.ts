@@ -18,6 +18,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { AppState } from 'src/app/core/store/app.reducers';
 import { getRolesSelector } from 'src/app/core/store/role/roles.selectors';
 import { RoutingConstants } from '../../../../core/constants/routing.constants';
+import { CollapseItem } from '../../../../core/interfaces/collapse-item.interface';
 import { EmployeeForm, GetEmployee } from '../../../../core/interfaces/employee.interface';
 import { INameId } from '../../../../core/interfaces/name-id.interface';
 
@@ -38,6 +39,10 @@ export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
 
   public role: INameId[] = [];
 
+  public languagesCollapseItems: CollapseItem[] = [];
+
+  public skillsCollapseItems: CollapseItem[] = [];
+
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -51,7 +56,9 @@ export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['employee'] && changes['employee'].currentValue) {
-      changes['employee'].currentValue.languages.forEach(() => this.addLanguage());
+      changes['employee'].currentValue.languages.forEach(() => {
+        this.addLanguage();
+      });
       changes['employee'].currentValue.skills.forEach(() => this.addSkill());
       this.form.patchValue(changes['employee'].currentValue, { emitEvent: false });
     }
@@ -90,11 +97,17 @@ export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public addLanguage(): void {
+    this.languagesCollapseItems = [
+      ...this.languagesCollapseItems,
+      { active: false, name: 'language', disabled: false },
+    ];
     (this.form.get('languages') as FormArray).push(new FormControl());
+    this.cdr.markForCheck();
   }
 
   public deleteLanguage(index: number): void {
     if (this.getLanguagesControls().length > 1) {
+      this.languagesCollapseItems.splice(index, 1);
       (this.form.get('languages') as FormArray).removeAt(index);
     }
   }
@@ -104,12 +117,17 @@ export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public addSkill(): void {
+    this.skillsCollapseItems = [
+      ...this.skillsCollapseItems,
+      { active: false, name: 'skill', disabled: false },
+    ];
     const control = this.form.get('skills') as FormArray;
     control.push(new FormControl());
   }
 
   public deleteSkill(index: number): void {
     if (this.getSkillsControls().length > 1) {
+      this.skillsCollapseItems.splice(index, 1);
       (this.form.get('skills') as FormArray).removeAt(index);
     }
   }

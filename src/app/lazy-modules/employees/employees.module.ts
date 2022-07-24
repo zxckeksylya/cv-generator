@@ -18,6 +18,7 @@ import { EmployeesListPageComponent } from './pages/employees-list-page/employee
 import { LanguageFormComponent } from './components/language-form/language-form.component';
 import { SkillFormComponent } from './components/skill-form/skill-form.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CollapseModule } from '../../core/components/collapse/collapse.module';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SelectControlModule,
     NumberControlModule,
     FontAwesomeModule,
+    CollapseModule,
   ],
   declarations: [
     EmployeesListPageComponent,
