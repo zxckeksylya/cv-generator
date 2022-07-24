@@ -112,19 +112,19 @@ export class ProjectFormComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private getData(): void {
-    this.store.pipe(select(getProjectRolesSelector), takeUntil(this.destroy$)).subscribe((data) => {
+    this.store.pipe(select(getProjectRolesSelector), takeUntil(this.destroy$)).subscribe(data => {
       this.projectRole = data;
       this.cdr.markForCheck();
     });
     this.store
       .pipe(select(getSpecializationsSelector), takeUntil(this.destroy$))
-      .subscribe((data) => {
+      .subscribe(data => {
         this.specializations = data;
         this.cdr.markForCheck();
       });
     this.store
       .pipe(select(getResponsibilitiesSelector), takeUntil(this.destroy$))
-      .subscribe((data) => {
+      .subscribe(data => {
         this.responsibilities = data;
         this.cdr.markForCheck();
       });

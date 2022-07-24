@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { BreadcrumbComponent } from './breadcrumb.component';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { RouterModule } from '@angular/router';
-import { AppTranslateModule } from '../../app-translate/app-translate.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  imports: [CommonModule, NzBreadCrumbModule, RouterModule, AppTranslateModule],
+  imports: [CommonModule, NzBreadCrumbModule, RouterModule, TranslateModule],
   declarations: [BreadcrumbComponent],
   exports: [BreadcrumbComponent],
 })

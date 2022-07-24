@@ -4,6 +4,7 @@ import {
   OnInit,
   OnDestroy,
   ChangeDetectorRef,
+  ApplicationRef,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.reducers';
@@ -29,6 +30,7 @@ export class LanguageButtonComponent implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private translateService: TranslateService,
     private cdr: ChangeDetectorRef,
+    private applicationRef: ApplicationRef,
   ) {}
 
   public ngOnInit(): void {
@@ -45,7 +47,7 @@ export class LanguageButtonComponent implements OnInit, OnDestroy {
   }
 
   public changeLanguage(): void {
-    const selectedLanguageIndex = this.languages.findIndex((value) => value === this.language);
+    const selectedLanguageIndex = this.languages.findIndex(value => value === this.language);
     let newLanguage = '';
     if (selectedLanguageIndex + 1 === this.languages.length) {
       newLanguage = this.languages[0];

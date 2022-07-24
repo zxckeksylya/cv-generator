@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { select, Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { AppState } from 'src/app/core/store/app.reducers';
@@ -19,7 +20,6 @@ import { getRolesSelector } from 'src/app/core/store/role/roles.selectors';
 import { RoutingConstants } from '../../../../core/constants/routing.constants';
 import { EmployeeForm, GetEmployee } from '../../../../core/interfaces/employee.interface';
 import { INameId } from '../../../../core/interfaces/name-id.interface';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employee-form',
