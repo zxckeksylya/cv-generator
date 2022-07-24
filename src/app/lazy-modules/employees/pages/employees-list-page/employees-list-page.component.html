@@ -1,8 +1,17 @@
 <div class="base-page">
-    <div class="list-button">
-        <app-button class="button"
-                    type="primary">{{ 'EMPLOYEES_LIST.BUTTON' | translate}}</app-button>
-    </div>
-    <app-table [source]="listOfData"
-               [headerItems]="headerData"></app-table>
+  <div class="list-button">
+    <app-button (buttonClick)="createEmployee()" class="button" type="primary">{{
+      'EMPLOYEES_LIST.BUTTON' | translate
+    }}</app-button>
+  </div>
+  <app-table [source]="employees" [headerItems]="headerData" [rowTemplateRef]="rowRef">
+    <ng-template #rowRef let-item>
+      <tr (click)="updateEmployee(item.id)">
+        <td>{{ item.firstName }}</td>
+        <td>{{ item.lastName }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.department }}</td>
+      </tr>
+    </ng-template>
+  </app-table>
 </div>

@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap, take, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {
-  GetProject,
-  UpdateProject,
   CreateProject,
   CreateProjectResponse,
   DeleteProject,
   DeleteProjectResponse,
+  GetProject,
+  UpdateProject,
 } from '../interfaces/project.interface';
+import { generateHttpErrorResponse } from '../utils/generate-http-error-response.util';
 
 @Injectable({
   providedIn: 'root',
@@ -21,12 +22,19 @@ export class ProjectsService {
     return this.http.get<GetProject[]>(`${environment.host}/projects`);
   }
 
-  public getProjectById(id: string): Observable<GetProject[]> {
-    return this.http.get<GetProject[]>(`${environment.host}/projects`, {
-      params: {
-        id,
-      },
-    });
+  public getProjectById(id: string): Observable<GetProject> {
+    return this.http
+      .get<GetProject[]>(`${environment.host}/projects`, {
+        params: {
+          id,
+        },
+      })
+      .pipe(
+        take(1),
+        switchMap(data =>
+          data[0] ? of(data[0]) : throwError(() => generateHttpErrorResponse('Bad request', 404)),
+        ),
+      );
   }
 
   public createProject(project: CreateProject): Observable<CreateProjectResponse> {

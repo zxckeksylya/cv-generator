@@ -1,0 +1,18 @@
+<app-button (buttonClick)="createLanguage()">{{ 'BUTTON.EDIT' | translate }}</app-button>
+<app-table [source]="languagesNames" [headerItems]="headerData" [rowTemplateRef]="rowRef">
+  <ng-template #rowRef let-item>
+    <tr>
+      <td>{{ item }}</td>
+      <td>
+        <app-button (buttonClick)="updateLanguage(item)">{{
+          'BUTTON.EDIT' | translate
+        }}</app-button>
+      </td>
+      <td>
+        <app-button (buttonClick)="deleteLanguage(item)">{{
+          'BUTTON.REMOVE' | translate
+        }}</app-button>
+      </td>
+    </tr>
+  </ng-template>
+</app-table>

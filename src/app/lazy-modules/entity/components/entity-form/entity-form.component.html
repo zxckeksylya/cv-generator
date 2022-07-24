@@ -1,0 +1,10 @@
+<div class="base-page">
+  <form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+    <app-text-control
+      formControlName="name"
+      [label]="'PROJECTS.NAME' | translate"
+    ></app-text-control>
+    <app-button behaviorType="submit">{{ 'BUTTON.SAVE' | translate }}</app-button>
+    <app-button (buttonClick)="back()">{{ 'BUTTON.CANCEL' | translate }}</app-button>
+  </form>
+</div>

@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { map, switchMap, take, catchError } from 'rxjs';
+import { catchError, map, of, switchMap, take } from 'rxjs';
 import { ResponsibilitiesService } from '../../services/responsibilities.service';
 import { AppState } from '../app.reducers';
 import {
+  createResponsibilityAction,
+  createResponsibilitySuccessAction,
+  deleteResponsibilityAction,
+  deleteResponsibilitySuccessAction,
   getResponsibilitiesAction,
   getResponsibilitiesFailedAction,
   getResponsibilitiesSuccessAction,
+  getResponsibilityByIdAction,
+  getResponsibilityByIdSuccessAction,
   initResponsibilitiesStoreAction,
   initResponsibilitiesStoreFailedAction,
   initResponsibilitiesStoreSuccessAction,
+  updateResponsibilityAction,
+  updateResponsibilitySuccessAction,
 } from './responsibilities.actions';
 import { getIsInitResponsibilitiesSelector } from './responsibilities.selectors';
 
@@ -23,7 +31,7 @@ export class ResponsibilitiesEffect {
         this.store.pipe(
           select(getIsInitResponsibilitiesSelector),
           take(1),
-          map((isInit) =>
+          map(isInit =>
             !isInit
               ? initResponsibilitiesStoreSuccessAction()
               : initResponsibilitiesStoreFailedAction(),
@@ -44,8 +52,45 @@ export class ResponsibilitiesEffect {
     this.actions$.pipe(
       ofType(getResponsibilitiesAction),
       switchMap(() => this.responsibilitiesService.getResponsibilities()),
-      map((responsibilities) => getResponsibilitiesSuccessAction({ responsibilities })),
-      catchError(map(() => getResponsibilitiesFailedAction())),
+      map(responsibilities => getResponsibilitiesSuccessAction({ responsibilities })),
+      catchError(() => of(getResponsibilitiesFailedAction())),
+    ),
+  );
+
+  public createResponsibility$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createResponsibilityAction),
+      switchMap(name => this.responsibilitiesService.createResponsibility(name)),
+      map(responsibility => createResponsibilitySuccessAction({ responsibility })),
+    ),
+  );
+
+  public getResponsibilityById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getResponsibilityByIdAction, updateResponsibilitySuccessAction),
+      switchMap(item => this.responsibilitiesService.getResponsibilityById(item.id)),
+      map(responsibility => getResponsibilityByIdSuccessAction({ responsibility })),
+    ),
+  );
+
+  public updateResponsibility$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateResponsibilityAction),
+      switchMap(responsibility =>
+        this.responsibilitiesService.updateResponsibility(responsibility),
+      ),
+      map(responsibility => updateResponsibilitySuccessAction(responsibility)),
+    ),
+  );
+
+  public deleteResponsibility$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteResponsibilityAction),
+      switchMap(responsibility =>
+        this.responsibilitiesService
+          .deleteResponsibility(responsibility)
+          .pipe(map(() => deleteResponsibilitySuccessAction(responsibility))),
+      ),
     ),
   );
 
