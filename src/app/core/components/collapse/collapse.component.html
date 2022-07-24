@@ -1,0 +1,11 @@
+<nz-collapse>
+  <nz-collapse-panel
+    *ngFor="let item of collapseItems; let i = index"
+    [nzHeader]="item.name"
+    [nzActive]="item.active"
+    [nzDisabled]="item.disabled"
+  >
+    <ng-container
+      *ngTemplateOutlet="collapseRef; context: { $implicit: i }"
+    ></ng-container></nz-collapse-panel
+></nz-collapse>

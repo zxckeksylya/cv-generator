@@ -45,37 +45,28 @@
   </div>
 
   <div class="languages">
-    <div class="languages__form-header form-header">
-      {{ 'EMPLOYEES.LANGUAGES' | translate }}
-    </div>
-    <div class="languages__form-body form-body">
-      <div formArrayName="languages" class="block block-base languages__block">
-        <div
-          *ngFor="let language of getLanguagesControls(); let i = index"
-          class="languages__control"
-        >
-          <app-language-form [formControlName]="i"></app-language-form>
-          <app-button (buttonClick)="deleteLanguage(i)"
+    <div formArrayName="languages" class="block block-base languages__block">
+      <app-collapse [collapseItems]="languagesCollapseItems" [collapseRef]="languageCollapseRef">
+        <ng-template #languageCollapseRef let-item>
+          <app-language-form [formControlName]="item"></app-language-form>
+          <app-button (buttonClick)="deleteLanguage(item)"
             ><fa-icon [icon]="faXmark"></fa-icon
           ></app-button>
-        </div>
-      </div>
+        </ng-template>
+      </app-collapse>
     </div>
   </div>
 
   <div class="skills">
-    <div class="skills__form-header form-header">
-      {{ 'EMPLOYEES.SKILLS' | translate }}
-    </div>
-    <div class="skills__form-body form-body">
-      <div formArrayName="skills" class="block block-base skills__block">
-        <div *ngFor="let skill of getSkillsControls(); let i = index" class="skills__control">
-          <app-skill-form [formControlName]="i"></app-skill-form>
-          <app-button (buttonClick)="deleteSkill(i)"
+    <div formArrayName="skills" class="block block-base skills__block">
+      <app-collapse [collapseItems]="skillsCollapseItems" [collapseRef]="skillCollapseRef">
+        <ng-template #skillCollapseRef let-item>
+          <app-skill-form [formControlName]="item"></app-skill-form>
+          <app-button (buttonClick)="deleteSkill(item)"
             ><fa-icon [icon]="faXmark"></fa-icon
           ></app-button>
-        </div>
-      </div>
+        </ng-template>
+      </app-collapse>
     </div>
   </div>
 
