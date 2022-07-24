@@ -36,6 +36,16 @@ export const createLanguageSuccessAction = createAction(
   props<{ language: Language }>(),
 );
 
+export const baseCreateLanguageAction = createAction(
+  '[LANGUAGES] base create language',
+  props<CreateLanguage>(),
+);
+
+export const baseCreateLanguageSuccessAction = createAction(
+  '[LANGUAGES] success base create language',
+  props<{ language: Language }>(),
+);
+
 export const updateLanguageAction = createAction(
   '[LANGUAGES] update language',
   props<{ language: UpdateLanguage }>(),
@@ -59,3 +69,5 @@ export const deleteLanguageSuccessAction = createAction(
 export const changeNotLanguageAction = createAction('[LANGUAGES] change not language');
 
 export const clearLanguagesAction = createAction('[LANGUAGES] clear languages store');
+
+export const clearLastCreatedLanguages = createAction('[LANGUAGES] clear last created languages');

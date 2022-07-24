@@ -15,37 +15,37 @@ export const getEmployeesSuccessAction = createAction(
 );
 
 export const getEmployeeByIdAction = createAction(
-  '[PROJECTS] get employee by id',
+  '[EMPLOYEES] get employee by id',
   props<{ id: string }>(),
 );
 
 export const getEmployeeByIdSuccessAction = createAction(
-  '[PROJECTS] success get employee by id',
+  '[EMPLOYEES] success get employee by id',
   props<{ employee: GetEmployee }>(),
 );
 
 export const createEmployeeAction = createAction(
-  '[PROJECTS] create employee',
+  '[EMPLOYEES] create employee',
   props<CreateEmployee>(),
 );
 
 export const createEmployeeSuccessAction = createAction(
-  '[PROJECTS] success create employee',
+  '[EMPLOYEES] success create employee',
   props<{ employee: GetEmployee }>(),
 );
 
 export const updateEmployeeAction = createAction(
-  '[PROJECTS] update employee',
+  '[EMPLOYEES] update employee',
   props<UpdateEmployee>(),
 );
 
 export const updateEmployeeSuccessAction = createAction(
-  '[PROJECTS] success update employee',
+  '[EMPLOYEES] success update employee',
   props<{ id: string }>(),
 );
 
-export const deleteEmployeeAction = createAction('[PROJECTS] delete Employee');
+export const deleteEmployeeAction = createAction('[EMPLOYEES] delete Employee');
 
-export const deleteEmployeeSuccessAction = createAction('[PROJECTS] success delete employee');
+export const deleteEmployeeSuccessAction = createAction('[EMPLOYEES] success delete employee');
 
-export const clearEmployeesStoreAction = createAction('[PROJECTS] clear employees store');
+export const clearEmployeesStoreAction = createAction('[EMPLOYEES] clear employees store');

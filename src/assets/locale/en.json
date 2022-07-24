@@ -132,7 +132,27 @@
     "DEPARTMENT": "Department",
     "SKILLS": "Skills",
     "LANGUAGES": "Languages",
-    "ROLE": "Role"
+    "ROLE": "Role",
+    "LANGUAGE": {
+      "NAME": "Name",
+      "EVERY_DAY": {
+        "READING": "Every day reading level",
+        "WRITING": "Every day writing level",
+        "SPEAKING": "Every day speaking level"
+      },
+      "PROFESSIONAL": {
+        "READING": "Professional reading level",
+        "WRITING": "Professional writing level",
+        "SPEAKING": "Professional speaking level"
+      }
+    },
+    "SKILL": {
+      "NAME": "Name",
+      "LEVEL": "Level",
+      "CATEGORY": "Category",
+      "EXPERIENCE": "Experience",
+      "LAST_USED": "Last used"
+    }
   },
   "ENTITY": {
     "MENU": {

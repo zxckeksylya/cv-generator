@@ -28,7 +28,7 @@
         <nz-option
           *ngFor="let item of dataSource"
           [nzValue]="item"
-          [nzLabel]="item[optionLabelField]"
+          [nzLabel]="item[optionLabelField] ?? item"
         ></nz-option>
       </nz-select>
     </nz-form-control>

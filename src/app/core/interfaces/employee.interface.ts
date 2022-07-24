@@ -1,6 +1,6 @@
-import { Language } from './language.interface';
+import { CreateLanguage, Language } from './language.interface';
 import { INameId } from './name-id.interface';
-import { Skill } from './skill.interface';
+import { CreateSkill, Skill } from './skill.interface';
 
 export interface GetEmployee {
   skills: Skill[];
@@ -20,6 +20,19 @@ export interface EmployeeMap {
 }
 
 export interface UpdateEmployee {
+  skills: CreateSkill[];
+  languages: CreateLanguage[];
+  firstName: string;
+  lastName: string;
+  email: string;
+  institution: string;
+  diplomaProfession: string;
+  department: string;
+  role: string;
+  id: string;
+}
+
+export interface UpdateEmployeeRequest {
   skills: string[];
   languages: string[];
   firstName: string;
@@ -32,8 +45,42 @@ export interface UpdateEmployee {
   id: string;
 }
 
-export interface CreateEmployee extends UpdateEmployee {
+export interface CreateEmployee {
+  skills: CreateSkill[];
+  languages: CreateLanguage[];
+  firstName: string;
+  lastName: string;
+  email: string;
+  institution: string;
+  diplomaProfession: string;
+  department: string;
+  role: string;
   password: string;
+}
+
+export interface CreateEmployeeRequest {
+  skills: string[];
+  languages: string[];
+  firstName: string;
+  lastName: string;
+  email: string;
+  institution: string;
+  diplomaProfession: string;
+  department: string;
+  role: string;
+  password: string;
+}
+
+export interface CreateNewEmployee {
+  firstName: string;
+  lastName: string;
+  email: string;
+  institution: string;
+  diplomaProfession: string;
+  department: string;
+  role: string;
+  languages: CreateLanguage[];
+  skills: CreateSkill[];
 }
 
 export interface CreateEmployeeResponse {
@@ -51,8 +98,8 @@ export interface CreateEmployeeResponse {
 }
 
 export interface EmployeeForm {
-  skills: Skill[];
-  languages: Language[];
+  skills: CreateSkill[];
+  languages: CreateLanguage[];
   firstName: string;
   lastName: string;
   email: string;
@@ -60,5 +107,4 @@ export interface EmployeeForm {
   diplomaProfession: string;
   department: string;
   role: string;
-  id: string;
 }

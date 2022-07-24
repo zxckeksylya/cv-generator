@@ -34,7 +34,7 @@
             [nzValue]="item[optionValueField] ?? item"
             [nzLabel]="item[optionLabelField]"
           >
-            {{ item[optionLabelField] }}
+            {{ item[optionLabelField] ?? item }}
           </nz-auto-option>
         </nz-autocomplete>
       </nz-input-group>

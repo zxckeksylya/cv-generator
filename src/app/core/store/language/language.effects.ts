@@ -2,10 +2,18 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { catchError, concatMap, from, map, of, switchMap, take } from 'rxjs';
+import { EmployeeService } from '../../services/employee.service';
 import { LanguagesService } from '../../services/languages.service';
 import { AppState } from '../app.reducers';
+import {
+  createEmployeeSuccessAction,
+  updateEmployeeSuccessAction,
+} from '../employess/employees.actions';
+import { getEmployeeByIdSelector } from '../employess/employees.selectors';
 import { getLevelByIdSuccessAction } from '../level/levels.actions';
 import {
+  baseCreateLanguageAction,
+  baseCreateLanguageSuccessAction,
   createLanguageAction,
   createLanguageSuccessAction,
   deleteLanguageAction,
@@ -56,11 +64,20 @@ export class LanguagesEffect {
     ),
   );
 
+  public baseCreateLanguage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(baseCreateLanguageAction, createLanguageAction),
+      switchMap(language => this.languagesService.createLanguage(language)),
+      switchMap(language => this.languagesService.getLanguageById(language.id)),
+      map(language => baseCreateLanguageSuccessAction({ language })),
+    ),
+  );
+
   public createLanguage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createLanguageAction),
-      switchMap(language => this.languagesService.createLanguage(language)),
-      switchMap(language => this.languagesService.getLanguageById(language.id)),
+      concatMap(language => this.languagesService.createLanguage(language)),
+      concatMap(language => this.languagesService.getLanguageById(language.id)),
       map(language => createLanguageSuccessAction({ language })),
     ),
   );
@@ -109,9 +126,32 @@ export class LanguagesEffect {
     ),
   );
 
+  public createEmployee$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createEmployeeSuccessAction),
+      concatMap(employee => from(employee.employee.languages)),
+      map(language => getLanguageByIdAction({ id: language.id })),
+    ),
+  );
+
+  public updateEmployee$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateEmployeeSuccessAction),
+      concatMap(item =>
+        this.store.pipe(
+          select(state => getEmployeeByIdSelector(state, { id: item.id })),
+          take(1),
+          concatMap(employee => from(employee.languages)),
+          map(language => getLanguageByIdAction({ id: language.id })),
+        ),
+      ),
+    ),
+  );
+
   constructor(
     private actions$: Actions,
     private languagesService: LanguagesService,
+    private employeeService: EmployeeService,
     private store: Store<AppState>,
   ) {}
 }

@@ -1,13 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Subject, switchMap, take, takeUntil } from 'rxjs';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { GetEmployee } from 'src/app/core/interfaces/employee.interface';
+import { EmployeeForm, GetEmployee } from 'src/app/core/interfaces/employee.interface';
 import { AppState } from 'src/app/core/store/app.reducers';
 import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.actions';
 import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
-import { UpdateEmployee } from '../../../../core/interfaces/employee.interface';
 import { updateEmployeeAction } from '../../../../core/store/employess/employees.actions';
 import { getEmployeeByIdSelector } from '../../../../core/store/employess/employees.selectors';
 
@@ -22,7 +21,11 @@ export class EmployeeInfoPageComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private store: Store<AppState>,
+    private activatedRoute: ActivatedRoute,
+    private route: Router,
+  ) {}
 
   public ngOnInit(): void {
     this.activatedRoute.paramMap
@@ -43,8 +46,9 @@ export class EmployeeInfoPageComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  public updateEmployee(employee: UpdateEmployee): void {
+  public updateEmployee(employee: EmployeeForm): void {
     this.store.dispatch(updateEmployeeAction({ ...employee, id: this.updatedEmployee.id }));
+    this.route.navigate([RoutingConstants.MAIN, RoutingConstants.EMPLOYEES]);
   }
 
   private initPageInfo(): void {

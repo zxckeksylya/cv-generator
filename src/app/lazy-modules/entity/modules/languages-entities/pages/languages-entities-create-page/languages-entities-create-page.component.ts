@@ -6,7 +6,7 @@ import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { Name } from 'src/app/core/interfaces/name.interface';
 import { AppState } from 'src/app/core/store/app.reducers';
 import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.actions';
-import { createLanguageAction } from 'src/app/core/store/language/language.actions';
+import { baseCreateLanguageAction } from 'src/app/core/store/language/language.actions';
 import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
 import { INameId } from '../../../../../../core/interfaces/name-id.interface';
 import { getLevelsSelector } from '../../../../../../core/store/level/levels.selectors';
@@ -38,7 +38,7 @@ export class LanguagesEntitiesCreatePageComponent implements OnInit, OnDestroy {
 
   public createLanguage(name: Name): void {
     this.store.dispatch(
-      createLanguageAction({
+      baseCreateLanguageAction({
         name: name.name,
         everydayReadingLevel: this.level.id,
         everydaySpeakingLevel: this.level.id,

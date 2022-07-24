@@ -3,18 +3,18 @@ import { LanguagesState, LANGUAGE_FEATURE_KEY } from './language.reducers';
 
 export const languagesFeatureSelector = createFeatureSelector<LanguagesState>(LANGUAGE_FEATURE_KEY);
 
-export const getLanguagesSelector = createSelector(languagesFeatureSelector, (state) =>
+export const getLanguagesSelector = createSelector(languagesFeatureSelector, state =>
   Object.values(state.languages),
 );
 
-export const getLanguagesNamesSelector = createSelector(languagesFeatureSelector, (state) => [
-  ...new Set(Object.values(state.languages).map((item) => item.name)),
+export const getLanguagesNamesSelector = createSelector(languagesFeatureSelector, state => [
+  ...new Set(Object.values(state.languages).map(item => item.name)),
 ]);
 
 export const getLanguagesByNameSelector = createSelector(
   languagesFeatureSelector,
   (state: LanguagesState, props: { name: string }) =>
-    Object.values(state.languages).filter((item) => item.name === props.name),
+    Object.values(state.languages).filter(item => item.name === props.name),
 );
 
 export const getLanguageByIdSelector = createSelector(
@@ -24,13 +24,13 @@ export const getLanguageByIdSelector = createSelector(
 
 export const getFirstLanguage = createSelector(
   languagesFeatureSelector,
-  (state) => Object.values(state.languages)[0],
+  state => Object.values(state.languages)[0],
 );
 
 export const getLanguagesByLevelIdSelector = createSelector(
   languagesFeatureSelector,
   (state: LanguagesState, props: { id: string }) =>
-    Object.values(state.languages).filter((item) =>
+    Object.values(state.languages).filter(item =>
       item.everydayReadingLevel.id === props.id ||
       item.everydaySpeakingLevel.id === props.id ||
       item.everydayWritingLevel.id === props.id ||
@@ -44,5 +44,9 @@ export const getLanguagesByLevelIdSelector = createSelector(
 
 export const getIsInitLanguagesSelector = createSelector(
   languagesFeatureSelector,
-  (state) => state.isInitLanguages,
+  state => state.isInitLanguages,
+);
+
+export const getLastCreatedLanguages = createSelector(languagesFeatureSelector, state =>
+  Object.values(state.lastCreatedLanguages).map(item => item.id),
 );
