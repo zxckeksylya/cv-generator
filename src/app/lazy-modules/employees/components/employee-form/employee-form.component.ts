@@ -102,7 +102,6 @@ export class EmployeeFormComponent implements OnInit, OnChanges, OnDestroy {
       { active: false, name: 'language', disabled: false },
     ];
     (this.form.get('languages') as FormArray).push(new FormControl());
-    this.cdr.markForCheck();
   }
 
   public deleteLanguage(index: number): void {

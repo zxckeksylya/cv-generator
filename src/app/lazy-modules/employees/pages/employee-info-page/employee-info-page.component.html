@@ -1,6 +1,23 @@
 <div class="base-page">
-  <app-employee-form
-    [employee]="updatedEmployee"
-    (submitted)="updateEmployee($event)"
-  ></app-employee-form>
+  <app-tabs
+    [tabs]="[
+      { i18nKey: 'EMPLOYEES.TABS.INFO', contentRef: employeeInfo },
+      { i18nKey: 'EMPLOYEES.TABS.CV', contentRef: cvInfo }
+    ]"
+  >
+    <ng-template #employeeInfo>
+      <app-employee-form
+        [employee]="updatedEmployee"
+        (submitted)="updateEmployee($event)"
+      ></app-employee-form>
+    </ng-template>
+    <ng-template #cvInfo>
+      <app-button (buttonClick)="addCv()"> add cv</app-button>
+      <app-collapse [collapseItems]="cvCollapseItems" [collapseRef]="cvItem">
+        <ng-template #cvItem let-item>
+          <app-cv-form [cv]="cvs[item]" [user]="updatedEmployee"></app-cv-form>
+        </ng-template>
+      </app-collapse>
+    </ng-template>
+  </app-tabs>
 </div>

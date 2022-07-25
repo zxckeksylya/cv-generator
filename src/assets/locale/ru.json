@@ -151,6 +151,10 @@
     "DEPARTMENT": "Отдел",
     "SKILLS": "Навыки",
     "ROLE": "Роль",
+    "TABS": {
+      "INFO": "Инфо",
+      "CV": "CV"
+    },
     "LANGUAGES": "Языки",
     "LANGUAGE": {
       "NAME": "Название",

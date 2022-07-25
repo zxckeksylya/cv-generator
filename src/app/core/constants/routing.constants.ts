@@ -17,4 +17,5 @@ export enum RoutingConstants {
   LEVELS = 'levels',
   RESPONSIBILITIES = 'responsibilities',
   LANGUAGES = 'languages',
+  CVS = 'cvs',
 }
