@@ -15,6 +15,7 @@ import {
   CategoriesState,
   CATEGORIES_FEATURE_KEY,
 } from './category/categories.reducers';
+import { cvReducer, CVState, CV_FEATURE_KEY } from './cv/cv.reducers';
 import {
   employeesReducer,
   EmployeesState,
@@ -43,7 +44,7 @@ import {
   RESPONSIBILITIES_FEATURE_KEY,
 } from './responsibilities/responsibilities.reducers';
 import { rolesReducer, RolesState, ROLES_FEATURE_KEY } from './role/roles.reducers';
-import { SKILLS_FEATURE_KEY, SkillsState, skillsReducer } from './skill/skills.reducers';
+import { skillsReducer, SkillsState, SKILLS_FEATURE_KEY } from './skill/skills.reducers';
 import {
   specializationsReducer,
   SpecializationsState,
@@ -66,6 +67,7 @@ export interface AppState {
   [LANGUAGE_FEATURE_KEY]: LanguagesState;
   [LEVELS_FEATURE_KEY]: LevelsState;
   [SKILLS_FEATURE_KEY]: SkillsState;
+  [CV_FEATURE_KEY]: CVState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -83,6 +85,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [LANGUAGE_FEATURE_KEY]: languagesReducer,
   [LEVELS_FEATURE_KEY]: levelsReducer,
   [SKILLS_FEATURE_KEY]: skillsReducer,
+  [CV_FEATURE_KEY]: cvReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

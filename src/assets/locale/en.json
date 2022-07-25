@@ -151,6 +151,10 @@
     "SKILLS": "Skills",
     "LANGUAGES": "Languages",
     "ROLE": "Role",
+    "TABS": {
+      "INFO": "Info",
+      "CV": "CV"
+    },
     "LANGUAGE": {
       "NAME": "Name",
       "EVERY_DAY": {

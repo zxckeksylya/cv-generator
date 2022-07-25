@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <app-text-control formControlName="name" [label]="'CV.FORM.NAME' | translate"></app-text-control>
+  <app-textarea-control
+    formControlName="description"
+    [label]="'CV.FORM.DESCRIPTION' | translate"
+  ></app-textarea-control>
+  <app-select-control
+    formControlName="projects"
+    [label]="'CV.FORM.PROJECTS' | translate"
+    [mode]="'multiple'"
+    [dataSource]="projects"
+    [optionLabelField]="'name'"
+    [optionValueField]="'id'"
+  ></app-select-control>
+  <app-button behaviorType="submit">{{ 'BUTTON.SAVE' | translate }}</app-button>
+</form>

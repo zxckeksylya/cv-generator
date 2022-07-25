@@ -10,6 +10,7 @@ import { metaReducers, reducers } from './app.reducers';
 import { AuthorizationEffects } from './authorization/authorization.effects';
 import { CategoriesEffect } from './category/categories.effects';
 import { CoreEffects } from './core/core.effects';
+import { CVEffect } from './cv/cv.effects';
 import { EmployeesEffect } from './employess/employees.effects';
 import { LanguagesEffect } from './language/language.effects';
 import { LevelsEffect } from './level/levels.effects';
@@ -40,6 +41,7 @@ import { ThemeEffects } from './theme/theme.effects';
       CategoriesEffect,
       LanguagesEffect,
       LevelsEffect,
+      CVEffect,
     ]),
     StoreRouterConnectingModule.forRoot(),
   ],
