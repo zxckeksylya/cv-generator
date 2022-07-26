@@ -21,6 +21,7 @@ import { RolesEffect } from './role/roles.effects';
 import { SkillsEffect } from './skill/skills.effects';
 import { SpecializationsEffect } from './specializations/specializations.effects';
 import { ThemeEffects } from './theme/theme.effects';
+import { VirtualCVEffect } from './virtual-cv/virtual-cv.effects';
 @NgModule({
   imports: [
     StoreModule.forRoot(reducers, { metaReducers }),
@@ -42,6 +43,7 @@ import { ThemeEffects } from './theme/theme.effects';
       LanguagesEffect,
       LevelsEffect,
       CVEffect,
+      VirtualCVEffect,
     ]),
     StoreRouterConnectingModule.forRoot(),
   ],

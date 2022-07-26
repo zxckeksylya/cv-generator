@@ -1,0 +1,18 @@
+<form [formGroup]="form">
+  <app-text-control
+    formControlName="skillType"
+    [label]="'VIRTUAL_CVS.DATA.SKILL.SKILL_TYPE' | translate"
+  ></app-text-control>
+  <div formArrayName="skillsOfType">
+    <app-collapse [collapseItems]="skillsOfTypeCollapseItems" [collapseRef]="skillsOfTypeRef">
+      <ng-template #skillsOfTypeRef let-item>
+        <app-virtual-cv-skills-of-type-form
+          [formControlName]="item"
+        ></app-virtual-cv-skills-of-type-form>
+        <app-button (buttonClick)="deleteSkillOfType(item)">
+          <fa-icon [icon]="faXmark"></fa-icon>
+        </app-button>
+      </ng-template>
+    </app-collapse>
+  </div>
+</form>

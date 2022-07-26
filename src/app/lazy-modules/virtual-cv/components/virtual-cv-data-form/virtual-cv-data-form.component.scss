@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  .collapses {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex: 1;
+  }
+}

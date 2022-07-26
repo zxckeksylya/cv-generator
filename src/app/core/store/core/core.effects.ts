@@ -6,6 +6,7 @@ import { AppState } from '../app.reducers';
 import { clearAuthorizationStateAction } from '../authorization/authorization.actions';
 import { clearBreadcrumbsStateAction } from '../breadcrumb/breadcrumb.actions';
 import { clearCategoriesAction } from '../category/categories.actions';
+import { clearCVStoreAction } from '../cv/cv.actions';
 import { clearEmployeesStoreAction } from '../employess/employees.actions';
 import { clearLanguagesAction } from '../language/language.actions';
 import { clearLevelsAction } from '../level/levels.actions';
@@ -16,6 +17,7 @@ import { clearResponsibilitiesAction } from '../responsibilities/responsibilitie
 import { clearRolesAction } from '../role/roles.actions';
 import { clearSkillsAction } from '../skill/skills.actions';
 import { clearSpecializationsAction } from '../specializations/specializations.actions';
+import { clearVirtualCVsAction } from '../virtual-cv/virtual-cv.actions';
 import { clearAppStateAction } from './core.actions';
 
 @Injectable()
@@ -38,6 +40,8 @@ export class CoreEffects {
           this.store.dispatch(clearCategoriesAction());
           this.store.dispatch(clearLanguagesAction());
           this.store.dispatch(clearLevelsAction());
+          this.store.dispatch(clearCVStoreAction());
+          this.store.dispatch(clearVirtualCVsAction());
         }),
       ),
     { dispatch: false },

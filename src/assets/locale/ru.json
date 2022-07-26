@@ -12,7 +12,8 @@
   "SECTION": {
     "EMPLOYEES": "Сотрудники",
     "PROJECTS": "Проекты",
-    "ENTITIES": "Сущности"
+    "ENTITIES": "Сущности",
+    "VIRTUAL_CVS": "Виртуальные cv"
   },
   "BREADCRUMB": {
     "MAIN": "Главная",
@@ -29,7 +30,8 @@
     "RESPONSIBILITIES": "Обязанности",
     "ROLES": "Роли",
     "SKILLS": "Навыки",
-    "SPECIALIZATIONS": "Специализации"
+    "SPECIALIZATIONS": "Специализации",
+    "VIRTUAL_CVS": "Виртуальные cv"
   },
   "PAGE-HEADING": {
     "SECTION": {
@@ -39,13 +41,15 @@
       "MAIN": "Главная",
       "CREATE": "Создание",
       "UPDATE": "Изменение",
-      "INFO": "Иформация"
+      "INFO": "Иформация",
+      "VIRTUAL_CVS": "Виртуальные cv"
     },
     "DESCRIPTION": {
       "EMPLOYEES": "Список сотрудников",
       "PROJECTS": "Список проектов",
       "ENTITIES": "Список сущностей",
       "MAIN": "Главная",
+      "VIRTUAL_CVS": "Virtual-cvs",
       "ENTITY": {
         "CATEGORIES": "Список категорий",
         "LANGUAGES": "Список языков",
@@ -68,7 +72,8 @@
           "ROLE": "Создать роль",
           "SKILL": "Создать навык",
           "SPECIALIZATION": "Создать специализацию"
-        }
+        },
+        "VIRTUAL_CVS": "Создать виртульную cv"
       },
 
       "UPDATE": {
@@ -82,7 +87,8 @@
           "ROLE": "Обновить роль",
           "SKILL": "Обновить навык",
           "SPECIALIZATION": "Обновить специализацию"
-        }
+        },
+        "VIRTUAL_CVS": "Обновить виртуальную cv"
       },
       "INFO": {
         "EMPLOYEES": "Иформация сотрудника"
@@ -187,6 +193,64 @@
       "LEVELS": "Уровни",
       "RESPONSIBILITIES": "Обязанности",
       "LANGUAGES": "Языки"
+    }
+  },
+  "VIRTUAL_CVS": {
+    "USER": "Пользователь",
+    "CV": "CV",
+    "USER_NAME": "Иям Пользователя",
+    "BUTTON": "Добавить виртульную cv",
+    "DATA": {
+      "EDUCATION": {
+        "ESTABLISHMENT": "Учреждение",
+        "PROFESSION": "Профессия"
+      },
+      "GENERAL": {
+        "FIRST_NAME": "Имя",
+        "LAST_NAME": "Фамиля",
+        "NAME": "Name"
+      },
+      "RESUME": {
+        "CONTENT": "Содержание"
+      },
+      "FOREIGN_LANGUAGE": {
+        "NAME": "Имя",
+        "EVERY_DAY": {
+          "READING": "Ежедневный уровень чтения",
+          "WRITING": "Ежедневный уровень письма",
+          "SPEAKING": "Ежедневный уровень разговора"
+        },
+        "PROFESSIONAL": {
+          "READING": "Профисианальный уровень чтения",
+          "WRITING": "Профисианальный уровень письма",
+          "SPEAKING": "Профисианальный уровень разговора"
+        }
+      },
+      "PROJECT": {
+        "NAME": "Название",
+        "START_DATE": "Дата начала",
+        "END_DATE": "Дата конца",
+        "TEAM_SIZE": "Размер команды",
+        "TASKS_PERFORMED": "Статус выполнения",
+        "NAME_FORM": "Название",
+        "SPECIALIZATION_NAME": "Название"
+      },
+      "SKILL": {
+        "SKILL_TYPE": "Тип умения",
+        "SKILLS_OF_TYPE": {
+          "SKILL_NAME": "Название",
+          "EXPERIENCE_YEARS": "Опыт",
+          "LEVEL": "Уровень",
+          "LAST_USED_YEAR": "Год последнего использования"
+        }
+      }
+    }
+  },
+  "CV": {
+    "FORM": {
+      "NAME": "Название",
+      "DESCRIPTION": "Описание",
+      "PROJECTS": "Проекты"
     }
   }
 }

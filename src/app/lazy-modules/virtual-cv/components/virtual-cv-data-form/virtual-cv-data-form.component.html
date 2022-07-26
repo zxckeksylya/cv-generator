@@ -1,0 +1,40 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <app-virtual-cv-education-form formControlName="education"></app-virtual-cv-education-form>
+  <app-virtual-cv-general-form formControlName="general"></app-virtual-cv-general-form>
+  <app-virtual-cv-resume-form formControlName="resume"></app-virtual-cv-resume-form>
+  <div class="collapses">
+    <div>
+      <div formArrayName="foreignLanguage">
+        <app-collapse
+          [collapseItems]="foreignLanguageCollapseItems"
+          [collapseRef]="languageCollapseRef"
+        >
+          <ng-template #languageCollapseRef let-item>
+            <app-virtual-cv-foreign-language-form
+              [formControlName]="item"
+            ></app-virtual-cv-foreign-language-form>
+          </ng-template>
+        </app-collapse>
+      </div>
+    </div>
+    <div>
+      <div formArrayName="projects">
+        <app-collapse [collapseItems]="projectsCollapseItems" [collapseRef]="projectCollapseRef">
+          <ng-template #projectCollapseRef let-item>
+            <app-virtual-cv-project-form [formControlName]="item"></app-virtual-cv-project-form>
+          </ng-template>
+        </app-collapse>
+      </div>
+    </div>
+    <div>
+      <div formArrayName="skills">
+        <app-collapse [collapseItems]="skillsCollapseItems" [collapseRef]="skillCollapseRef">
+          <ng-template #skillCollapseRef let-item>
+            <app-virtual-cv-skill-form [formControlName]="item"></app-virtual-cv-skill-form>
+          </ng-template>
+        </app-collapse>
+      </div>
+    </div>
+  </div>
+  <app-button [behaviorType]="'submit'"> asdas</app-button>
+</form>

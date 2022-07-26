@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+  <app-text-control
+    formControlName="firstName"
+    [label]="'VIRTUAL_CVS.DATA.GENERAL.FIRST_NAME' | translate"
+  >
+  </app-text-control>
+  <app-text-control
+    formControlName="lastName"
+    [label]="'VIRTUAL_CVS.DATA.GENERAL.LAST_NAME' | translate"
+  >
+  </app-text-control>
+  <app-text-control formControlName="name" [label]="'VIRTUAL_CVS.DATA.GENERAL.NAME' | translate">
+  </app-text-control>
+</form>

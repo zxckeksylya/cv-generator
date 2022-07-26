@@ -1,0 +1,14 @@
+<div class="base-page">
+  <div class="list-button">
+    <app-button (buttonClick)="createVirtualCV()" class="button" type="primary">{{
+      'VIRTUAL_CVS.BUTTON' | translate
+    }}</app-button>
+  </div>
+  <app-table [source]="virtualCVs" [headerItems]="headerData" [rowTemplateRef]="rowRef">
+    <ng-template #rowRef let-item>
+      <tr (click)="updateVirtualCV(item.id)">
+        <td>{{ item.data.general.firstName }} {{ item.data.general.lastName }}</td>
+      </tr>
+    </ng-template>
+  </app-table>
+</div>
