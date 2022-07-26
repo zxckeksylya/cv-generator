@@ -12,7 +12,8 @@
   "SECTION": {
     "EMPLOYEES": "Employees",
     "PROJECTS": "Projects",
-    "ENTITIES": "Entities"
+    "ENTITIES": "Entities",
+    "VIRTUAL_CVS": "Virtual-cvs"
   },
   "BREADCRUMB": {
     "MAIN": "Home",
@@ -29,7 +30,8 @@
     "RESPONSIBILITIES": "Responsibilities",
     "ROLES": "Roles",
     "SKILLS": "Skills",
-    "SPECIALIZATIONS": "Specializations"
+    "SPECIALIZATIONS": "Specializations",
+    "VIRTUAL_CVS": "Virtual-cvs"
   },
   "PAGE-HEADING": {
     "SECTION": {
@@ -39,13 +41,15 @@
       "MAIN": "Home",
       "CREATE": "Create",
       "UPDATE": "Update",
-      "INFO": "Info"
+      "INFO": "Info",
+      "VIRTUAL_CVS": "Virtual-cvs"
     },
     "DESCRIPTION": {
       "EMPLOYEES": "Employees list",
       "PROJECTS": "Projects list",
       "ENTITIES": "Entities list",
       "MAIN": "Home",
+      "VIRTUAL_CVS": "Virtual-cvs",
       "ENTITY": {
         "CATEGORIES": "Categories list",
         "LANGUAGES": "Languages list",
@@ -68,7 +72,8 @@
           "ROLE": "Create role",
           "SKILL": "Create skill",
           "SPECIALIZATION": "Create specializations"
-        }
+        },
+        "VIRTUAL_CVS": "Create virtual-cv"
       },
       "UPDATE": {
         "PROJECTS": "Update project",
@@ -81,7 +86,8 @@
           "ROLE": "Update role",
           "SKILL": "Update skill",
           "SPECIALIZATION": "Update specializations"
-        }
+        },
+        "VIRTUAL_CVS": "Update virtual-cv"
       },
       "INFO": {
         "EMPLOYEES": "Info employee"
@@ -186,6 +192,64 @@
       "LEVELS": "Levels",
       "RESPONSIBILITIES": "Responsibilities",
       "LANGUAGES": "Languages"
+    }
+  },
+  "VIRTUAL_CVS": {
+    "USER": "User",
+    "CV": "CV",
+    "USER_NAME": "User name",
+    "BUTTON": "Add virtual-cv",
+    "DATA": {
+      "EDUCATION": {
+        "ESTABLISHMENT": "Establishment",
+        "PROFESSION": "Profession"
+      },
+      "GENERAL": {
+        "FIRST_NAME": "First name",
+        "LAST_NAME": "Last name",
+        "NAME": "Name"
+      },
+      "RESUME": {
+        "CONTENT": "Content"
+      },
+      "FOREIGN_LANGUAGE": {
+        "NAME": "Name",
+        "EVERY_DAY": {
+          "READING": "Every day reading level",
+          "WRITING": "Every day writing level",
+          "SPEAKING": "Every day speaking level"
+        },
+        "PROFESSIONAL": {
+          "READING": "Professional reading level",
+          "WRITING": "Professional writing level",
+          "SPEAKING": "Professional speaking level"
+        }
+      },
+      "PROJECT": {
+        "NAME": "Name",
+        "START_DATE": "Start date",
+        "END_DATE": "End date",
+        "TEAM_SIZE": "Team size",
+        "TASKS_PERFORMED": "Tasks performed",
+        "NAME_FORM": "Name",
+        "SPECIALIZATION_NAME": "Name"
+      },
+      "SKILL": {
+        "SKILL_TYPE": "Skill type",
+        "SKILLS_OF_TYPE": {
+          "SKILL_NAME": "Name",
+          "EXPERIENCE_YEARS": "Experience",
+          "LEVEL": "Level",
+          "LAST_USED_YEAR": "Last user year"
+        }
+      }
+    }
+  },
+  "CV": {
+    "FORM": {
+      "NAME": "Name",
+      "DESCRIPTION": "Description",
+      "PROJECTS": "Projects"
     }
   }
 }

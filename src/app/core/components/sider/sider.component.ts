@@ -1,7 +1,11 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { faAddressCard, faGears } from '@fortawesome/free-solid-svg-icons';
-import { faDatabase } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAddressCard,
+  faDatabase,
+  faGears,
+  faPersonDigging,
+} from '@fortawesome/free-solid-svg-icons';
 import { RoutingConstants } from '../../constants/routing.constants';
 
 @Component({
@@ -14,6 +18,7 @@ export class SiderComponent {
   public readonly faAddressCard = faAddressCard;
   public readonly faDatabase = faDatabase;
   public readonly faGears = faGears;
+  public readonly faPersonDigging = faPersonDigging;
 
   constructor(private router: Router) {}
 
@@ -26,5 +31,8 @@ export class SiderComponent {
   }
   public redirectToEntities(): void {
     this.router.navigate([RoutingConstants.MAIN, RoutingConstants.ENTITY]);
+  }
+  public redirectToVirtualCVs(): void {
+    this.router.navigate([RoutingConstants.MAIN, RoutingConstants.VIRTUAL_CVS]);
   }
 }

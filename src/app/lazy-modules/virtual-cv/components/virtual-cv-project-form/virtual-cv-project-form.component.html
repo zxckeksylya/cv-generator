@@ -1,0 +1,70 @@
+<form [formGroup]="form">
+  <app-text-control
+    formControlName="name"
+    [label]="'VIRTUAL_CVS.DATA.PROJECT.NAME' | translate"
+  ></app-text-control>
+  <app-date-picker-control
+    formControlName="startDate"
+    [label]="'VIRTUAL_CVS.DATA.PROJECT.START_DATE' | translate"
+  ></app-date-picker-control>
+  <app-date-picker-control
+    formControlName="endDate"
+    [label]="'VIRTUAL_CVS.DATA.PROJECT.END_DATE' | translate"
+  ></app-date-picker-control>
+  <app-number-control
+    formControlName="teamSize"
+    [label]="'VIRTUAL_CVS.DATA.PROJECT.TEAM_SIZE' | translate"
+  ></app-number-control>
+  <app-text-control
+    formControlName="tasksPerformed"
+    [label]="'VIRTUAL_CVS.DATA.PROJECT.TASKS_PERFORMED' | translate"
+  ></app-text-control>
+
+  <div class="collapses">
+    <div>
+      <div formArrayName="projectRoles">
+        <app-collapse [collapseItems]="projectRolesCollapseItems" [collapseRef]="projectRolesRef">
+          <ng-template #projectRolesRef let-item>
+            <app-virtual-cv-name-form [formControlName]="item"></app-virtual-cv-name-form>
+            <app-button (buttonClick)="deleteProjectRole(item)">
+              <fa-icon [icon]="faXmark"></fa-icon>
+            </app-button>
+          </ng-template>
+        </app-collapse>
+      </div>
+    </div>
+    <div>
+      <div formArrayName="responsibilities">
+        <app-collapse
+          [collapseItems]="responsibilitiesCollapseItems"
+          [collapseRef]="responsibilitiesRef"
+        >
+          <ng-template #responsibilitiesRef let-item>
+            <app-virtual-cv-name-form [formControlName]="item"></app-virtual-cv-name-form>
+            <app-button (buttonClick)="deleteResponsibility(item)">
+              <fa-icon [icon]="faXmark"></fa-icon>
+            </app-button>
+          </ng-template>
+        </app-collapse>
+      </div>
+    </div>
+    <div>
+      <div formArrayName="specializations">
+        <app-collapse
+          [collapseItems]="specializationsCollapseItems"
+          [collapseRef]="specializationsRef"
+        >
+          <ng-template #specializationsRef let-item>
+            <app-text-control
+              [formControlName]="item"
+              [label]="'VIRTUAL_CVS.DATA.PROJECT.SPECIALIZATION_NAME' | translate"
+            ></app-text-control>
+            <app-button (buttonClick)="deleteSpecialization(item)">
+              <fa-icon [icon]="faXmark"></fa-icon>
+            </app-button>
+          </ng-template>
+        </app-collapse>
+      </div>
+    </div>
+  </div>
+</form>

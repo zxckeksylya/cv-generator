@@ -16,6 +16,7 @@ import { initRolesStoreAction } from '../../../../core/store/role/roles.actions'
 import { initCategoriesStoreAction } from '../../../../core/store/category/categories.actions';
 import { initLevelsStoreAction } from '../../../../core/store/level/levels.actions';
 import { initCVsStoreAction } from '../../../../core/store/cv/cv.actions';
+import { initVirtualCVStoreAction } from '../../../../core/store/virtual-cv/virtual-cv.actions';
 
 @Component({
   selector: 'app-main-page',
@@ -43,6 +44,7 @@ export class MainPageComponent implements OnInit {
     this.store.dispatch(initCategoriesStoreAction());
     this.store.dispatch(initLevelsStoreAction());
     this.store.dispatch(initCVsStoreAction());
+    this.store.dispatch(initVirtualCVStoreAction());
   }
 
   private initPageInfo(): void {

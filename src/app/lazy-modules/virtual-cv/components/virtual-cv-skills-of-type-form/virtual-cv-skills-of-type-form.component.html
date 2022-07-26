@@ -1,0 +1,22 @@
+<form [formGroup]="form">
+  <app-text-control
+    formControlName="skillName"
+    [label]="'VIRTUAL_CVS.DATA.SKILL.SKILLS_OF_TYPE.SKILL_NAME' | translate"
+  >
+  </app-text-control>
+  <app-number-control
+    formControlName="experienceYears"
+    [label]="'VIRTUAL_CVS.DATA.SKILL.SKILLS_OF_TYPE.EXPERIENCE_YEARS' | translate"
+  >
+  </app-number-control>
+  <app-text-control
+    formControlName="level"
+    [label]="'VIRTUAL_CVS.DATA.SKILL.SKILLS_OF_TYPE.LEVEL' | translate"
+  >
+  </app-text-control>
+  <app-number-control
+    formControlName="lastUsedYear"
+    [label]="'VIRTUAL_CVS.DATA.SKILL.SKILLS_OF_TYPE.LAST_USED_YEAR' | translate"
+  >
+  </app-number-control>
+</form>

@@ -25,7 +25,6 @@ export const httpLoaderFactory = (http: HttpClient): TranslateLoader =>
         provide: MissingTranslationHandler,
         useClass: MissingTranslationService,
       },
-      useDefaultLang: false,
     }),
   ],
   exports: [TranslateModule],

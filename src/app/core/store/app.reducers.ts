@@ -51,6 +51,11 @@ import {
   SPECIALIZATION_FEATURE_KEY,
 } from './specializations/specializations.reducers';
 import { themeReducer, ThemeState, THEME_FEATURE_KEY } from './theme/theme.reducers';
+import {
+  VirtualCVState,
+  VIRTUAL_CV_FEATURE_KEY,
+  virtualCVReducer,
+} from './virtual-cv/virtual-cv.reducers';
 
 export interface AppState {
   [THEME_FEATURE_KEY]: ThemeState;
@@ -68,6 +73,7 @@ export interface AppState {
   [LEVELS_FEATURE_KEY]: LevelsState;
   [SKILLS_FEATURE_KEY]: SkillsState;
   [CV_FEATURE_KEY]: CVState;
+  [VIRTUAL_CV_FEATURE_KEY]: VirtualCVState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -86,6 +92,7 @@ export const reducers: ActionReducerMap<AppState> = {
   [LEVELS_FEATURE_KEY]: levelsReducer,
   [SKILLS_FEATURE_KEY]: skillsReducer,
   [CV_FEATURE_KEY]: cvReducer,
+  [VIRTUAL_CV_FEATURE_KEY]: virtualCVReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

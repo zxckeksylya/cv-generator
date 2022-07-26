@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { TableComponent } from './table.component';
-import { AppTranslateModule } from '../../app-translate/app-translate.module';
 
 @NgModule({
-  imports: [CommonModule, NzTableModule, AppTranslateModule],
+  imports: [CommonModule, NzTableModule, TranslateModule],
   declarations: [TableComponent],
   exports: [TableComponent],
 })

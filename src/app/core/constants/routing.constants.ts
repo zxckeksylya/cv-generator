@@ -18,4 +18,5 @@ export enum RoutingConstants {
   RESPONSIBILITIES = 'responsibilities',
   LANGUAGES = 'languages',
   CVS = 'cvs',
+  VIRTUAL_CVS = 'virtual-cvs',
 }

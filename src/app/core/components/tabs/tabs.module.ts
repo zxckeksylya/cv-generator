@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TabsComponent } from './tabs.component';
+import { TranslateModule } from '@ngx-translate/core';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { AppTranslateModule } from '../../app-translate/app-translate.module';
+import { TabsComponent } from './tabs.component';
 
 @NgModule({
-  imports: [CommonModule, NzTabsModule, AppTranslateModule],
+  imports: [CommonModule, NzTabsModule, TranslateModule],
   declarations: [TabsComponent],
   exports: [TabsComponent],
 })

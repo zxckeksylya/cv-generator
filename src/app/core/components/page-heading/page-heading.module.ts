@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { PageHeadingComponent } from './page-heading.component';
-import { AppTranslateModule } from '../../app-translate/app-translate.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  imports: [CommonModule, AppTranslateModule],
+  imports: [CommonModule, TranslateModule],
   declarations: [PageHeadingComponent],
   exports: [PageHeadingComponent],
 })

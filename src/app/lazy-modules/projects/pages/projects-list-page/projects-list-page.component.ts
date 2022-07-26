@@ -55,7 +55,7 @@ export class ProjectsListPageComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.store.pipe(select(getProjectsSelector), takeUntil(this.destroy$)).subscribe((projects) => {
+    this.store.pipe(select(getProjectsSelector), takeUntil(this.destroy$)).subscribe(projects => {
       this.projects = projects;
       this.cdr.markForCheck();
     });
