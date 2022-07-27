@@ -6,7 +6,7 @@
   </div>
   <app-table [source]="virtualCVs" [headerItems]="headerData" [rowTemplateRef]="rowRef">
     <ng-template #rowRef let-item>
-      <tr (click)="updateVirtualCV(item.id)">
+      <tr (click)="infoVirtualCV(item.id)">
         <td>{{ item.data.general.firstName }} {{ item.data.general.lastName }}</td>
       </tr>
     </ng-template>

@@ -232,7 +232,8 @@
         "TEAM_SIZE": "Team size",
         "TASKS_PERFORMED": "Tasks performed",
         "NAME_FORM": "Name",
-        "SPECIALIZATION_NAME": "Name"
+        "SPECIALIZATION_NAME": "Name",
+        "DESCRIPTION": "Description"
       },
       "SKILL": {
         "SKILL_TYPE": "Skill type",

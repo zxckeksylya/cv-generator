@@ -233,7 +233,8 @@
         "TEAM_SIZE": "Размер команды",
         "TASKS_PERFORMED": "Статус выполнения",
         "NAME_FORM": "Название",
-        "SPECIALIZATION_NAME": "Название"
+        "SPECIALIZATION_NAME": "Название",
+        "DESCRIPTION": "Описание"
       },
       "SKILL": {
         "SKILL_TYPE": "Тип умения",

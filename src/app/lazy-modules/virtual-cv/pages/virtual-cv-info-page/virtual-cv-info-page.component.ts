@@ -1,27 +1,29 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Subject, switchMap, take, takeUntil } from 'rxjs';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
-import { VirtualCV } from 'src/app/core/interfaces/virtual-cv.interface';
 import { AppState } from 'src/app/core/store/app.reducers';
 import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.actions';
 import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
-import { VirtualCVData } from '../../../../core/interfaces/virtual-cv.interface';
-import { updateVirtualCVAction } from '../../../../core/store/virtual-cv/virtual-cv.actions';
-import { getVirtualCvByIdSelector } from '../../../../core/store/virtual-cv/virtual-cv.selectors';
+import { getVirtualCvByIdSelector } from 'src/app/core/store/virtual-cv/virtual-cv.selectors';
+import { VirtualCV } from '../../../../core/interfaces/virtual-cv.interface';
 
 @Component({
-  selector: 'app-virtual-cv-update-page',
-  templateUrl: './virtual-cv-update-page.component.html',
-  styleUrls: ['./virtual-cv-update-page.component.scss'],
+  selector: 'app-virtual-cv-info-page',
+  templateUrl: './virtual-cv-info-page.component.html',
+  styleUrls: ['./virtual-cv-info-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VirtualCvUpdatePageComponent implements OnInit, OnDestroy {
+export class VirtualCvInfoPageComponent implements OnInit, OnDestroy {
   public virtualCV: VirtualCV;
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store<AppState>, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private store: Store<AppState>,
+    private activatedRoute: ActivatedRoute,
+    private route: Router,
+  ) {}
   public ngOnInit(): void {
     this.activatedRoute.paramMap
       .pipe(
@@ -40,11 +42,13 @@ export class VirtualCvUpdatePageComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
-  public updateVirtualCV(virtualCVData: VirtualCVData): void {
-    this.store.dispatch(
-      updateVirtualCVAction({ virtualCV: { ...this.virtualCV, data: virtualCVData } }),
-    );
+  public updateVirtualCV(id: string): void {
+    this.route.navigate([
+      RoutingConstants.MAIN,
+      RoutingConstants.VIRTUAL_CVS,
+      RoutingConstants.UPDATE,
+      id,
+    ]);
   }
 
   private initPageInfo(): void {
@@ -60,8 +64,8 @@ export class VirtualCvUpdatePageComponent implements OnInit, OnDestroy {
             path: `${RoutingConstants.MAIN}/${RoutingConstants.VIRTUAL_CVS}`,
           },
           {
-            i18nKey: 'BREADCRUMB.UPDATE',
-            path: `${RoutingConstants.MAIN}/${RoutingConstants.VIRTUAL_CVS}/${RoutingConstants.UPDATE}`,
+            i18nKey: 'BREADCRUMB.INFO',
+            path: `${RoutingConstants.MAIN}/${RoutingConstants.VIRTUAL_CVS}/${RoutingConstants.INFO}`,
           },
         ],
       }),
@@ -70,7 +74,7 @@ export class VirtualCvUpdatePageComponent implements OnInit, OnDestroy {
       setPageHeadingAction({
         pageHeading: {
           i18nKeySection: 'PAGE-HEADING.SECTION.VIRTUAL_CVS',
-          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.UPDATE.VIRTUAL_CVS',
+          i18nKeyDescription: 'PAGE-HEADING.DESCRIPTION.INFO.VIRTUAL_CVS',
         },
       }),
     );

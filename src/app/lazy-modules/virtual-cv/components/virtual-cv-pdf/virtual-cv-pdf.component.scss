@@ -1,0 +1,33 @@
+:host {
+  display: block;
+
+  .cv {
+    padding: 0px 10px;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      color: var(--neutrals-900);
+    }
+    &__employee {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__block {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__section {
+      border-bottom: 1px solid var(--neutrals-900);
+    }
+    &__language {
+      list-style-type: none;
+    }
+  }
+}
