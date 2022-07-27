@@ -24,6 +24,8 @@ import { CollapseModule } from '../../core/components/collapse/collapse.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { VirtualCvDataFormComponent } from './components/virtual-cv-data-form/virtual-cv-data-form.component';
 import { DatePickerControlModule } from 'src/app/core/components/controls/date-picker-control/date-picker-control.module';
+import { VirtualCvPdfComponent } from './components/virtual-cv-pdf/virtual-cv-pdf.component';
+import { VirtualCvInfoPageComponent } from './pages/virtual-cv-info-page/virtual-cv-info-page.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { DatePickerControlModule } from 'src/app/core/components/controls/date-p
     VirtualCvSkillFormComponent,
     VirtualCvSkillsOfTypeFormComponent,
     VirtualCvDataFormComponent,
+    VirtualCvPdfComponent,
+    VirtualCvInfoPageComponent,
   ],
   imports: [
     CommonModule,

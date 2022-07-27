@@ -88,7 +88,6 @@ export class VirtualCvDataFormComponent implements OnInit, OnChanges, OnDestroy 
       return;
     }
     this.submitted.emit(this.formatForm(this.form.getRawValue()));
-    console.log(this.formatForm(this.form.getRawValue()));
   }
 
   public addForeignLanguage(name: string): void {

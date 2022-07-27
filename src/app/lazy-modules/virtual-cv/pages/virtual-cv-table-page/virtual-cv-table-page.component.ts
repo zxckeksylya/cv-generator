@@ -57,11 +57,11 @@ export class VirtualCvTablePageComponent implements OnInit, OnDestroy {
     ]);
   }
 
-  public updateVirtualCV(id: string): void {
+  public infoVirtualCV(id: string): void {
     this.route.navigate([
       RoutingConstants.MAIN,
       RoutingConstants.VIRTUAL_CVS,
-      RoutingConstants.UPDATE,
+      RoutingConstants.INFO,
       id,
     ]);
   }

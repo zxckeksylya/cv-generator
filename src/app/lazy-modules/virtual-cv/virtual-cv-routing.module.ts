@@ -4,6 +4,7 @@ import { VirtualCvTablePageComponent } from './pages/virtual-cv-table-page/virtu
 import { RoutingConstants } from '../../core/constants/routing.constants';
 import { VirtualCvCreatePageComponent } from './pages/virtual-cv-create-page/virtual-cv-create-page.component';
 import { VirtualCvUpdatePageComponent } from './pages/virtual-cv-update-page/virtual-cv-update-page.component';
+import { VirtualCvInfoPageComponent } from './pages/virtual-cv-info-page/virtual-cv-info-page.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: `${RoutingConstants.UPDATE}/:id`,
     component: VirtualCvUpdatePageComponent,
+  },
+  {
+    path: `${RoutingConstants.INFO}/:id`,
+    component: VirtualCvInfoPageComponent,
   },
   {
     path: '**',

@@ -43,6 +43,7 @@ export interface VirtualCVProject {
   name: string;
   startDate: string;
   endDate: string;
+  description: string;
   teamSize: string;
   tasksPerformed: string;
   projectRoles: VirtualCVName[];

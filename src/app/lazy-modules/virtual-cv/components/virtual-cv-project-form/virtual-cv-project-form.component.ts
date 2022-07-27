@@ -31,6 +31,7 @@ export class VirtualCvProjectFormComponent implements OnInit, OnDestroy, Control
     endDate: '',
     teamSize: '',
     tasksPerformed: '',
+    description: '',
     projectRoles: this.fb.array([]),
     responsibilities: this.fb.array([]),
     specializations: this.fb.array([]),

@@ -32,6 +32,8 @@
     "@ngrx/store-devtools": "^13.1.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "module": "^1.2.5",
     "ng-zorro-antd": "^13.2.1",
     "rxjs": "~7.5.0",
