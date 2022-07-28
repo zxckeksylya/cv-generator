@@ -91,7 +91,8 @@
         "VIRTUAL_CVS": "Обновить виртуальную cv"
       },
       "INFO": {
-        "EMPLOYEES": "Иформация сотрудника"
+        "EMPLOYEES": "Иформация сотрудника",
+        "VIRTUAL_CVS": "Информация о виртуальной cv"
       }
     }
   },
@@ -196,12 +197,13 @@
     }
   },
   "VIRTUAL_CVS": {
-    "USER": "Пользователь",
+    "USER": "Сотрудник",
     "CV": "CV",
-    "USER_NAME": "Иям Пользователя",
+    "USER_NAME": "Имя сотрудника",
     "BUTTON": "Добавить виртульную cv",
     "DATA": {
       "EDUCATION": {
+        "EDUCATION": "Образование",
         "ESTABLISHMENT": "Учреждение",
         "PROFESSION": "Профессия"
       },
@@ -214,6 +216,7 @@
         "CONTENT": "Содержание"
       },
       "FOREIGN_LANGUAGE": {
+        "LANGUAGES": "Языки",
         "NAME": "Имя",
         "EVERY_DAY": {
           "READING": "Ежедневный уровень чтения",
@@ -227,6 +230,7 @@
         }
       },
       "PROJECT": {
+        "PROJECTS": "Проекты",
         "NAME": "Название",
         "START_DATE": "Дата начала",
         "END_DATE": "Дата конца",
@@ -234,9 +238,13 @@
         "TASKS_PERFORMED": "Статус выполнения",
         "NAME_FORM": "Название",
         "SPECIALIZATION_NAME": "Название",
-        "DESCRIPTION": "Описание"
+        "DESCRIPTION": "Описание",
+        "SPECIALIZATIONS": "Specializations",
+        "RESPONSIBILITIES": "Responsibilities",
+        "PROJECT_ROLES": "Project roles"
       },
       "SKILL": {
+        "SKILL": "Навыки",
         "SKILL_TYPE": "Тип умения",
         "SKILLS_OF_TYPE": {
           "SKILL_NAME": "Название",

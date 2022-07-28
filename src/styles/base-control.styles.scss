@@ -28,6 +28,15 @@
       margin: 0;
     }
   }
+  .ant-picker-input > input {
+    color: var(--neutrals-900);
+  }
+  .ant-select-multiple .ant-select-selection-item {
+    background-color: var(--neutrals-70);
+  }
+  .ant-select-dropdown {
+    background-color: red;
+  }
   .anticon svg {
     color: var(--neutrals-150);
   }

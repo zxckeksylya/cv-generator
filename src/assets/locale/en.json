@@ -90,7 +90,8 @@
         "VIRTUAL_CVS": "Update virtual-cv"
       },
       "INFO": {
-        "EMPLOYEES": "Info employee"
+        "EMPLOYEES": "Info employee",
+        "VIRTUAL_CVS": "Info virtual-cvs"
       }
     }
   },
@@ -195,12 +196,13 @@
     }
   },
   "VIRTUAL_CVS": {
-    "USER": "User",
+    "USER": "Employee",
     "CV": "CV",
     "USER_NAME": "User name",
     "BUTTON": "Add virtual-cv",
     "DATA": {
       "EDUCATION": {
+        "EDUCATION": "Education",
         "ESTABLISHMENT": "Establishment",
         "PROFESSION": "Profession"
       },
@@ -213,6 +215,7 @@
         "CONTENT": "Content"
       },
       "FOREIGN_LANGUAGE": {
+        "LANGUAGES": "Languages",
         "NAME": "Name",
         "EVERY_DAY": {
           "READING": "Every day reading level",
@@ -226,6 +229,7 @@
         }
       },
       "PROJECT": {
+        "PROJECTS": "Projects",
         "NAME": "Name",
         "START_DATE": "Start date",
         "END_DATE": "End date",
@@ -233,9 +237,13 @@
         "TASKS_PERFORMED": "Tasks performed",
         "NAME_FORM": "Name",
         "SPECIALIZATION_NAME": "Name",
-        "DESCRIPTION": "Description"
+        "DESCRIPTION": "Description",
+        "SPECIALIZATIONS": "Specializations",
+        "RESPONSIBILITIES": "Responsibilities",
+        "PROJECT_ROLES": "Project roles"
       },
       "SKILL": {
+        "SKILL": "Skills",
         "SKILL_TYPE": "Skill type",
         "SKILLS_OF_TYPE": {
           "SKILL_NAME": "Name",

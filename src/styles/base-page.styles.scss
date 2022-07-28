@@ -4,4 +4,19 @@
   background-color: var(--neutrals-0);
   padding: 15px 24px;
   height: 100%;
+  overflow-y: scroll;
+}
+.cdk-overlay-container {
+  .ant-select-dropdown {
+    background-color: var(--neutrals-0);
+  }
+  .ant-select-item {
+    color: var(--neutrals-900);
+  }
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    color: var(--neutrals-0);
+  }
+  .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+    background-color: var(--neutrals-100);
+  }
 }
