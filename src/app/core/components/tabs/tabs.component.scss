@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  ::ng-deep {
+    .ant-tabs-tab-btn {
+      color: var(--neutrals-900);
+    }
+  }
+}

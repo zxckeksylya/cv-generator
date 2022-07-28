@@ -2,26 +2,26 @@
 <div #invoice class="cv">
   <h1 class="cv__title">Innowise</h1>
   <section class="cv__employee cv__section">
-    <h2>Employee</h2>
+    <h2>{{ 'VIRTUAL_CVS.USER' | translate }}</h2>
     <h3>{{ data.general.firstName }} {{ data.general.lastName }}</h3>
   </section>
 
   <section class="cv__education cv__section">
-    <h2>Education</h2>
+    <h2>{{ 'VIRTUAL_CVS.DATA.EDUCATION.EDUCATION' | translate }}</h2>
     <div class="cv__info--education">
       <div class="cv__block">
-        <h3>Establishment</h3>
+        <h3>{{ 'VIRTUAL_CVS.DATA.EDUCATION.ESTABLISHMENT' | translate }}</h3>
         <h4>{{ data.education.establishment }}</h4>
       </div>
       <div class="cv__block">
-        <h3>profession</h3>
+        <h3>{{ 'VIRTUAL_CVS.DATA.EDUCATION.PROFESSION' | translate }}</h3>
         <h4>{{ data.education.profession }}</h4>
       </div>
     </div>
   </section>
 
   <section class="cv__languages cv__section">
-    <h2>foreignLanguage</h2>
+    <h2>{{ 'VIRTUAL_CVS.DATA.FOREIGN_LANGUAGE.LANGUAGES' | translate }}</h2>
     <ul>
       <li *ngFor="let lang of data.foreignLanguage">
         <ul class="cv__language">
@@ -29,27 +29,27 @@
             <h4>{{ lang.name }}</h4>
           </li>
           <li class="cv__block">
-            <h3>everydayReadingLevel</h3>
+            <h3>{{ 'VIRTUAL_CVS.DATA.FOREIGN_LANGUAGE.EVERY_DAY.READING' | translate }}</h3>
             <h4>{{ lang.everydayReadingLevel }}</h4>
           </li>
           <li class="cv__block">
-            <h3>everydaySpeakingLevel</h3>
+            <h3>{{ 'VIRTUAL_CVS.DATA.FOREIGN_LANGUAGE.EVERY_DAY.SPEAKING' | translate }}</h3>
             <h4>{{ lang.everydaySpeakingLevel }}</h4>
           </li>
           <li class="cv__block">
-            <h3>everydayWritingLevel</h3>
+            <h3>{{ 'VIRTUAL_CVS.DATA.FOREIGN_LANGUAGE.EVERY_DAY.WRITING' | translate }}</h3>
             <h4>{{ lang.everydayWritingLevel }}</h4>
           </li>
           <li class="cv__block">
-            <h3>professionalReadingLevel</h3>
+            <h3>{{ 'VIRTUAL_CVS.DATA.FOREIGN_LANGUAGE.PROFESSIONAL.READING' | translate }}</h3>
             <h4>{{ lang.professionalReadingLevel }}</h4>
           </li>
           <li class="cv__block">
-            <h3>professionalSpeakingLevel</h3>
+            <h3>{{ 'VIRTUAL_CVS.DATA.FOREIGN_LANGUAGE.PROFESSIONAL.SPEAKING' | translate }}</h3>
             <h4>{{ lang.professionalSpeakingLevel }}</h4>
           </li>
           <li class="cv__block">
-            <h3>professionalWritingLevel</h3>
+            <h3>{{ 'VIRTUAL_CVS.DATA.FOREIGN_LANGUAGE.PROFESSIONAL.WRITING' | translate }}</h3>
             <h4>{{ lang.professionalWritingLevel }}</h4>
           </li>
         </ul>
@@ -57,33 +57,33 @@
     </ul>
   </section>
   <section class="cv__skills cv__section">
-    <h2>skills</h2>
+    <h2>{{ 'VIRTUAL_CVS.DATA.SKILL.SKILL' | translate }}</h2>
     <ul>
       <li *ngFor="let skill of data.skills">
+        <h3>{{ 'VIRTUAL_CVS.DATA.SKILL.SKILL_TYPE' | translate }}</h3>
+        <h4>{{ skill.skillType }}</h4>
         <ul>
-          <li>
-            <h3>skillType</h3>
-            <h4>{{ skill.skillType }}</h4>
+          <li *ngFor="let skillOfType of skill.skillsOfType">
             <ul>
-              <li *ngFor="let skillOfType of skill.skillsOfType">
-                <ul>
-                  <li class="cv__block">
-                    <h3>skillName</h3>
-                    <h4>{{ skillOfType.skillName }}</h4>
-                  </li>
-                  <li class="cv__block">
-                    <h3>experienceYears</h3>
-                    <h4>{{ skillOfType.experienceYears }}</h4>
-                  </li>
-                  <li class="cv__block">
-                    <h3>level</h3>
-                    <h4>{{ skillOfType.level }}</h4>
-                  </li>
-                  <li class="cv__block">
-                    <h3>lastUsedYear</h3>
-                    <h4>{{ skillOfType.lastUsedYear }}</h4>
-                  </li>
-                </ul>
+              <li class="cv__block">
+                <h3>{{ 'VIRTUAL_CVS.DATA.SKILL.SKILLS_OF_TYPE.SKILL_NAME' | translate }}</h3>
+                <h4>{{ skillOfType.skillName }}</h4>
+              </li>
+              <li class="cv__block">
+                <h3>
+                  {{ 'VIRTUAL_CVS.DATA.SKILL.SKILLS_OF_TYPE.EXPERIENCE_YEARS' | translate }}
+                </h3>
+                <h4>{{ skillOfType.experienceYears }}</h4>
+              </li>
+              <li class="cv__block">
+                <h3>{{ 'VIRTUAL_CVS.DATA.SKILL.SKILLS_OF_TYPE.LEVEL' | translate }}</h3>
+                <h4>{{ skillOfType.level }}</h4>
+              </li>
+              <li class="cv__block">
+                <h3>
+                  {{ 'VIRTUAL_CVS.DATA.SKILL.SKILLS_OF_TYPE.LAST_USED_YEAR' | translate }}
+                </h3>
+                <h4>{{ skillOfType.lastUsedYear }}</h4>
               </li>
             </ul>
           </li>
@@ -93,34 +93,34 @@
   </section>
 
   <section class="cv__projects cv__section">
-    <h2>projects</h2>
+    <h2>{{ 'VIRTUAL_CVS.DATA.PROJECT.PROJECTS' | translate }}</h2>
     <ul>
       <li *ngFor="let project of data.projects">
         <div class="cv__block">
-          <h3>name</h3>
+          <h3>{{ 'VIRTUAL_CVS.DATA.PROJECT.NAME' | translate }}</h3>
           <h4>{{ project.name }}</h4>
         </div>
         <div class="cv__block">
-          <h3>startDate</h3>
-          <h4>{{ project.startDate }}</h4>
+          <h3>{{ 'VIRTUAL_CVS.DATA.PROJECT.START_DATE' | translate }}</h3>
+          <h4>{{ project.startDate | date }}</h4>
         </div>
         <div class="cv__block">
-          <h3>endDate</h3>
-          <h4>{{ project.endDate }}</h4>
+          <h3>{{ 'VIRTUAL_CVS.DATA.PROJECT.END_DATE' | translate }}</h3>
+          <h4>{{ project.endDate | date }}</h4>
         </div>
         <div class="cv__block">
-          <h3>description</h3>
+          <h3>{{ 'VIRTUAL_CVS.DATA.PROJECT.DESCRIPTION' | translate }}</h3>
           <p>{{ project.description }}</p>
         </div>
         <div class="cv__block">
-          <h3>teamSize</h3>
+          <h3>{{ 'VIRTUAL_CVS.DATA.PROJECT.TEAM_SIZE' | translate }}</h3>
           <h4>{{ project.teamSize }}</h4>
         </div>
         <div class="cv__block">
-          <h3>tasksPerformed</h3>
+          <h3>{{ 'VIRTUAL_CVS.DATA.PROJECT.TASKS_PERFORMED' | translate }}</h3>
           <h4>{{ project.tasksPerformed }}</h4>
         </div>
-        <h3>specializations</h3>
+        <h3>{{ 'VIRTUAL_CVS.DATA.PROJECT.SPECIALIZATIONS' | translate }}</h3>
         <ul>
           <li *ngFor="let specialization of project.specializations">
             <h3>
@@ -128,13 +128,13 @@
             </h3>
           </li>
         </ul>
-        <h3>responsibilities</h3>
+        <h3>{{ 'VIRTUAL_CVS.DATA.PROJECT.RESPONSIBILITIES' | translate }}</h3>
         <ul>
           <li *ngFor="let responsibility of project.responsibilities">
             <h3>{{ responsibility.name }}</h3>
           </li>
         </ul>
-        <h3>projectRoles</h3>
+        <h3>{{ 'VIRTUAL_CVS.DATA.PROJECT.PROJECT_ROLES' | translate }}</h3>
         <ul>
           <li *ngFor="let projectRole of project.projectRoles">
             <h3>{{ projectRole.name }}</h3>

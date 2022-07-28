@@ -100,7 +100,7 @@ export class EmployeeInfoPageComponent implements OnInit, OnDestroy {
             path: `${RoutingConstants.MAIN}`,
           },
           {
-            i18nKey: 'BREADCRUMB.PROJECTS',
+            i18nKey: 'BREADCRUMB.EMPLOYEES',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.EMPLOYEES}`,
           },
           {

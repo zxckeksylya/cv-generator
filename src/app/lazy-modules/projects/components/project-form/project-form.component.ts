@@ -99,15 +99,15 @@ export class ProjectFormComponent implements OnInit, OnChanges, OnDestroy {
   private initForm(): void {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      secondName: '',
-      startDate: '',
-      endDate: '',
-      teamSize: 0,
-      tasksPerformed: '',
-      description: '',
-      projectRoles: [],
-      specializations: [],
-      responsibilities: [],
+      secondName: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      teamSize: [0, Validators.required],
+      tasksPerformed: ['', Validators.required],
+      description: ['', Validators.required],
+      projectRoles: [[], Validators.required],
+      specializations: [[], Validators.required],
+      responsibilities: [[], Validators.required],
     });
   }
 

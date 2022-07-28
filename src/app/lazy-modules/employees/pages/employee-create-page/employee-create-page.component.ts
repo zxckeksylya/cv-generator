@@ -35,7 +35,7 @@ export class EmployeeCreatePageComponent implements OnInit {
             path: `${RoutingConstants.MAIN}`,
           },
           {
-            i18nKey: 'BREADCRUMB.PROJECTS',
+            i18nKey: 'BREADCRUMB.EMPLOYEES',
             path: `${RoutingConstants.MAIN}/${RoutingConstants.EMPLOYEES}`,
           },
           {
