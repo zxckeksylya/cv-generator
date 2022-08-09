@@ -160,7 +160,8 @@
     "ROLE": "Role",
     "TABS": {
       "INFO": "Info",
-      "CV": "CV"
+      "CV": "CV",
+      "VIRTUAL_CV": "Virtual-cv"
     },
     "LANGUAGE": {
       "NAME": "Name",

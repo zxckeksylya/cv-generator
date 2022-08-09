@@ -47,3 +47,10 @@ export const updateVirtualCVSuccessAction = createAction(
 );
 
 export const clearVirtualCVsAction = createAction('[VIRTUAL-CV] clear virtual-cv store');
+
+export const activateEmployeeAction = createAction(
+  '[VIRTUAL-CV] activate employee',
+  props<{ id: string }>(),
+);
+
+export const clearActivateEmployeeAction = createAction('[VIRTUAL-CV] clear active employee');

@@ -49,3 +49,8 @@ export const getIsInitEmployeesSelector = createSelector(
   employeesFeatureSelector,
   state => state.isInitEmployees,
 );
+
+export const getActiveEmployeeSelector = createSelector(
+  employeesFeatureSelector,
+  state => state.activatedEmployee,
+);

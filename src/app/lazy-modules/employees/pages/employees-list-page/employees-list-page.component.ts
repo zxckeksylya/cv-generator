@@ -12,6 +12,7 @@ import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { GetEmployee } from 'src/app/core/interfaces/employee.interface';
 import { AppState } from 'src/app/core/store/app.reducers';
 import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
+import { activateEmployeeAction } from 'src/app/core/store/virtual-cv/virtual-cv.actions';
 import { TableHeaderItem } from '../../../../core/interfaces/table-header-item.interface';
 import { setBreadcrumbsAction } from '../../../../core/store/breadcrumb/breadcrumb.actions';
 import { getEmployeesSelector } from '../../../../core/store/employess/employees.selectors';
@@ -49,12 +50,10 @@ export class EmployeesListPageComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.store
-      .pipe(select(getEmployeesSelector), takeUntil(this.destroy$))
-      .subscribe((employees) => {
-        this.employees = employees;
-        this.cdr.markForCheck();
-      });
+    this.store.pipe(select(getEmployeesSelector), takeUntil(this.destroy$)).subscribe(employees => {
+      this.employees = employees;
+      this.cdr.markForCheck();
+    });
     this.initPageInfo();
   }
 
@@ -72,6 +71,7 @@ export class EmployeesListPageComponent implements OnInit, OnDestroy {
   }
 
   public updateEmployee(id: string): void {
+    this.store.dispatch(activateEmployeeAction({ id }));
     this.route.navigate([
       RoutingConstants.MAIN,
       RoutingConstants.EMPLOYEES,

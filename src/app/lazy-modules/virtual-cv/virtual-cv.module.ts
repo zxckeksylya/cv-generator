@@ -26,6 +26,8 @@ import { VirtualCvDataFormComponent } from './components/virtual-cv-data-form/vi
 import { DatePickerControlModule } from 'src/app/core/components/controls/date-picker-control/date-picker-control.module';
 import { VirtualCvPdfComponent } from './components/virtual-cv-pdf/virtual-cv-pdf.component';
 import { VirtualCvInfoPageComponent } from './pages/virtual-cv-info-page/virtual-cv-info-page.component';
+import { VirtualCvMenuComponent } from './components/virtual-cv-menu/virtual-cv-menu.component';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { VirtualCvInfoPageComponent } from './pages/virtual-cv-info-page/virtual
     VirtualCvDataFormComponent,
     VirtualCvPdfComponent,
     VirtualCvInfoPageComponent,
+    VirtualCvMenuComponent,
   ],
   imports: [
     CommonModule,
@@ -57,6 +60,7 @@ import { VirtualCvInfoPageComponent } from './pages/virtual-cv-info-page/virtual
     CollapseModule,
     FontAwesomeModule,
     DatePickerControlModule,
+    NzMenuModule,
   ],
 })
 export class VirtualCvModule {}
