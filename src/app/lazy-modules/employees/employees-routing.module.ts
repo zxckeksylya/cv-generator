@@ -13,7 +13,14 @@ const routes: Routes = [
   {
     path: `${RoutingConstants.INFO}/:id`,
     component: EmployeeInfoPageComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('../virtual-cv/virtual-cv.module').then(m => m.VirtualCvModule),
+      },
+    ],
   },
+
   {
     path: RoutingConstants.CREATE,
     component: EmployeeCreatePageComponent,

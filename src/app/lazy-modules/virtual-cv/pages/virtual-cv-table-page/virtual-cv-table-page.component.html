@@ -1,14 +1,13 @@
-<div class="base-page">
-  <div class="list-button">
-    <app-button (buttonClick)="createVirtualCV()" class="button" type="primary">{{
-      'VIRTUAL_CVS.BUTTON' | translate
-    }}</app-button>
+<div class="main-page">
+  <div>
+    <div class="list-button">
+      <app-button (buttonClick)="createVirtualCV()" class="button" type="primary">{{
+        'VIRTUAL_CVS.BUTTON' | translate
+      }}</app-button>
+    </div>
+    <app-virtual-cv-menu [employee]="employeeID" [menuItems]="menuItems"></app-virtual-cv-menu>
   </div>
-  <app-table [source]="virtualCVs" [headerItems]="headerData" [rowTemplateRef]="rowRef">
-    <ng-template #rowRef let-item>
-      <tr (click)="infoVirtualCV(item.id)">
-        <td>{{ item.data.general.firstName }} {{ item.data.general.lastName }}</td>
-      </tr>
-    </ng-template>
-  </app-table>
+  <div class="block">
+    <router-outlet></router-outlet>
+  </div>
 </div>

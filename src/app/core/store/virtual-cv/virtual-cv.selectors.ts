@@ -17,3 +17,14 @@ export const getVirtualCvByIdSelector = createSelector(
   virtualCVFeatureSelector,
   (state: VirtualCVState, props: { id: string }) => state.virtualCVs[props.id],
 );
+
+export const getVirtualCVsByEmployeeIdSelector = createSelector(
+  virtualCVFeatureSelector,
+  (state: VirtualCVState, props: { id: string }) =>
+    Object.values(state.virtualCVs).filter(item => item.user === props.id),
+);
+
+export const getActiveEmployeeSelector = createSelector(
+  virtualCVFeatureSelector,
+  state => state.activeEmployee,
+);

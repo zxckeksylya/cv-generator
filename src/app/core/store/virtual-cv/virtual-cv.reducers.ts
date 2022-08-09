@@ -5,18 +5,22 @@ import {
   getVirtualCVsSuccessAction,
   getVirtualCVByIdSuccessAction,
   clearVirtualCVsAction,
+  activateEmployeeAction,
 } from './virtual-cv.actions';
 import { arrayToMap } from '../../utils/array-to-map.util';
+import { clearActivateEmployeeAction } from './virtual-cv.actions';
 export const VIRTUAL_CV_FEATURE_KEY = 'virtual-cv';
 
 export interface VirtualCVState {
   virtualCVs: VirtualCVMap;
   isInitVirtualCVs: boolean;
+  activeEmployee: string;
 }
 
 export const initialVirtualCVsState: VirtualCVState = {
   virtualCVs: {},
   isInitVirtualCVs: false,
+  activeEmployee: '',
 };
 
 export const virtualCVReducer = createReducer(
@@ -42,5 +46,13 @@ export const virtualCVReducer = createReducer(
       ...state.virtualCVs,
       [action.virtualCV.id]: action.virtualCV,
     },
+  })),
+  on(activateEmployeeAction, (state, action) => ({
+    ...state,
+    activeEmployee: action.id,
+  })),
+  on(clearActivateEmployeeAction, state => ({
+    ...state,
+    activeEmployee: '',
   })),
 );

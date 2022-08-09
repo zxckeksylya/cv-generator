@@ -10,18 +10,20 @@ const routes: Routes = [
   {
     path: '',
     component: VirtualCvTablePageComponent,
-  },
-  {
-    path: RoutingConstants.CREATE,
-    component: VirtualCvCreatePageComponent,
-  },
-  {
-    path: `${RoutingConstants.UPDATE}/:id`,
-    component: VirtualCvUpdatePageComponent,
-  },
-  {
-    path: `${RoutingConstants.INFO}/:id`,
-    component: VirtualCvInfoPageComponent,
+    children: [
+      {
+        path: RoutingConstants.CREATE,
+        component: VirtualCvCreatePageComponent,
+      },
+      {
+        path: `${RoutingConstants.UPDATE}/:id`,
+        component: VirtualCvUpdatePageComponent,
+      },
+      {
+        path: `${RoutingConstants.INFO}/:id`,
+        component: VirtualCvInfoPageComponent,
+      },
+    ],
   },
   {
     path: '**',

@@ -18,6 +18,7 @@ import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-headi
 import { getCVsByEmployeeIdSelector } from '../../../../core/store/cv/cv.selectors';
 import { updateEmployeeAction } from '../../../../core/store/employess/employees.actions';
 import { CollapseItem } from '../../../../core/interfaces/collapse-item.interface';
+import { clearActivateEmployeeAction } from 'src/app/core/store/virtual-cv/virtual-cv.actions';
 
 @Component({
   selector: 'app-employee-info-page',
@@ -51,6 +52,7 @@ export class EmployeeInfoPageComponent implements OnInit, OnDestroy {
           this.store.pipe(
             select(state => getEmployeeByIdSelector(state, { id })),
             takeUntil(this.destroy$),
+            take(1),
             switchMap(employee =>
               this.store.pipe(
                 select(state => getCVsByEmployeeIdSelector(state, { id: employee.id })),
@@ -75,6 +77,7 @@ export class EmployeeInfoPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    this.store.dispatch(clearActivateEmployeeAction());
     this.destroy$.next();
     this.destroy$.complete();
   }

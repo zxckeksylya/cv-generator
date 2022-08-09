@@ -13,11 +13,13 @@ export const EMPLOYEES_FEATURE_KEY = 'employees';
 export interface EmployeesState {
   employees: EmployeeMap;
   isInitEmployees: boolean;
+  activatedEmployee: string;
 }
 
 export const initialEmployeesState: EmployeesState = {
   employees: {},
   isInitEmployees: false,
+  activatedEmployee: '',
 };
 
 export const employeesReducer = createReducer(

@@ -23,11 +23,6 @@ const routes: Routes = [
         loadChildren: () => import('../entity/entity.module').then(m => m.EntityModule),
         title: RoutingConstants.ENTITY,
       },
-      {
-        path: RoutingConstants.VIRTUAL_CVS,
-        loadChildren: () => import('../virtual-cv/virtual-cv.module').then(m => m.VirtualCvModule),
-        title: RoutingConstants.VIRTUAL_CVS,
-      },
       { path: '**', redirectTo: `${RoutingConstants.EMPLOYEES}` },
     ],
   },

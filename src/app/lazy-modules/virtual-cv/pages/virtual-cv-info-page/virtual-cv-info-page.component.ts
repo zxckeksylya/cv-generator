@@ -1,13 +1,20 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { Subject, switchMap, take, takeUntil } from 'rxjs';
+import { Subject, switchMap, takeUntil } from 'rxjs';
 import { RoutingConstants } from 'src/app/core/constants/routing.constants';
 import { AppState } from 'src/app/core/store/app.reducers';
 import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.actions';
 import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
 import { getVirtualCvByIdSelector } from 'src/app/core/store/virtual-cv/virtual-cv.selectors';
 import { VirtualCV } from '../../../../core/interfaces/virtual-cv.interface';
+import { getActiveEmployeeSelector } from '../../../../core/store/virtual-cv/virtual-cv.selectors';
 
 @Component({
   selector: 'app-virtual-cv-info-page',
@@ -17,11 +24,13 @@ import { VirtualCV } from '../../../../core/interfaces/virtual-cv.interface';
 })
 export class VirtualCvInfoPageComponent implements OnInit, OnDestroy {
   public virtualCV: VirtualCV;
+  private employeeID: string;
   private destroy$ = new Subject<void>();
 
   constructor(
     private store: Store<AppState>,
     private activatedRoute: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
     private route: Router,
   ) {}
   public ngOnInit(): void {
@@ -29,12 +38,13 @@ export class VirtualCvInfoPageComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.destroy$),
         switchMap(params => params.getAll('id')),
-        take(1),
         switchMap(id => this.store.pipe(select(state => getVirtualCvByIdSelector(state, { id })))),
       )
       .subscribe(item => {
         this.virtualCV = item;
+        this.cdr.markForCheck();
       });
+    this.initData();
     this.initPageInfo();
   }
 
@@ -45,7 +55,9 @@ export class VirtualCvInfoPageComponent implements OnInit, OnDestroy {
   public updateVirtualCV(id: string): void {
     this.route.navigate([
       RoutingConstants.MAIN,
-      RoutingConstants.VIRTUAL_CVS,
+      RoutingConstants.EMPLOYEES,
+      RoutingConstants.INFO,
+      this.employeeID,
       RoutingConstants.UPDATE,
       id,
     ]);
@@ -78,5 +90,10 @@ export class VirtualCvInfoPageComponent implements OnInit, OnDestroy {
         },
       }),
     );
+  }
+  private initData(): void {
+    this.store.pipe(select(getActiveEmployeeSelector), takeUntil(this.destroy$)).subscribe(item => {
+      this.employeeID = item;
+    });
   }
 }

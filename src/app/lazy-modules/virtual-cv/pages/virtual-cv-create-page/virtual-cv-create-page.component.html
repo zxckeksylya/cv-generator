@@ -1,20 +1,11 @@
-<div class="base-page">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <app-select-control
-      [label]="'VIRTUAL_CVS.USER' | translate"
-      formControlName="userId"
-      optionLabelField="firstName"
-      optionValueField="id"
-      [dataSource]="employee"
-    ></app-select-control>
-    <app-select-control
-      [label]="'VIRTUAL_CVS.CV' | translate"
-      formControlName="cvId"
-      optionLabelField="name"
-      optionValueField="id"
-      [dataSource]="cvs"
-    ></app-select-control>
-    <app-button behaviorType="submit">{{ 'BUTTON.SAVE' | translate }}</app-button>
-    <app-button (buttonClick)="onBack()">{{ 'BUTTON.CLOSE' | translate }}</app-button>
-  </form>
-</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <app-select-control
+    [label]="'VIRTUAL_CVS.CV' | translate"
+    formControlName="cvId"
+    optionLabelField="name"
+    optionValueField="id"
+    [dataSource]="cvs"
+  ></app-select-control>
+  <app-button behaviorType="submit">{{ 'BUTTON.SAVE' | translate }}</app-button>
+  <app-button (buttonClick)="onBack()">{{ 'BUTTON.CLOSE' | translate }}</app-button>
+</form>

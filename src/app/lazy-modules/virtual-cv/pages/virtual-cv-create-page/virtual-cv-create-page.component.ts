@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -15,10 +16,10 @@ import { AppState } from 'src/app/core/store/app.reducers';
 import { setBreadcrumbsAction } from 'src/app/core/store/breadcrumb/breadcrumb.actions';
 import { setPageHeadingAction } from 'src/app/core/store/page-heading/page-heading.actions';
 import { createVirtualCVAction } from 'src/app/core/store/virtual-cv/virtual-cv.actions';
+import { getActiveEmployeeSelector } from 'src/app/core/store/virtual-cv/virtual-cv.selectors';
 import { GetEmployee } from '../../../../core/interfaces/employee.interface';
 import { CreateVirtualCV } from '../../../../core/interfaces/virtual-cv.interface';
 import { getCVSelector } from '../../../../core/store/cv/cv.selectors';
-import { getEmployeesSelector } from '../../../../core/store/employess/employees.selectors';
 
 @Component({
   selector: 'app-virtual-cv-create-page',
@@ -28,6 +29,8 @@ import { getEmployeesSelector } from '../../../../core/store/employess/employees
 })
 export class VirtualCvCreatePageComponent implements OnInit, OnDestroy {
   public form: FormGroup;
+
+  public activeEmployee: string;
 
   public employee: GetEmployee[] = [];
 
@@ -40,6 +43,7 @@ export class VirtualCvCreatePageComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef,
     private route: Router,
+    private location: Location,
   ) {}
 
   public ngOnInit(): void {
@@ -60,21 +64,21 @@ export class VirtualCvCreatePageComponent implements OnInit, OnDestroy {
     this.store.dispatch(
       createVirtualCVAction({ virtualCV: this.formatForm(this.form.getRawValue()) }),
     );
-    this.route.navigate([RoutingConstants.MAIN, RoutingConstants.VIRTUAL_CVS]);
+    this.location.back();
   }
 
   public onBack(): void {
-    this.route.navigate([RoutingConstants.MAIN, RoutingConstants.VIRTUAL_CVS]);
+    this.location.back();
   }
   private initForm(): void {
     this.form = this.formBuilder.group({
-      userId: '',
       cvId: '',
     });
   }
 
   private formatForm(obj: any): CreateVirtualCV {
-    const userId = obj.userId.id;
+    console.log(this.activeEmployee);
+    const userId = this.activeEmployee;
     const cvId = obj.cvId.id;
     return { userId, cvId };
   }
@@ -109,12 +113,12 @@ export class VirtualCvCreatePageComponent implements OnInit, OnDestroy {
   }
 
   private initData(): void {
-    this.store.pipe(select(getEmployeesSelector), takeUntil(this.destroy$)).subscribe(employees => {
-      this.employee = employees;
-      this.cdr.markForCheck();
-    });
     this.store.pipe(select(getCVSelector), takeUntil(this.destroy$)).subscribe(cvs => {
       this.cvs = cvs;
+      this.cdr.markForCheck();
+    });
+    this.store.pipe(select(getActiveEmployeeSelector), takeUntil(this.destroy$)).subscribe(item => {
+      this.activeEmployee = item;
       this.cdr.markForCheck();
     });
   }
