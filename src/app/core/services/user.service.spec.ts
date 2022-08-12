@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/user.interface';
 import { UserService } from './user.service';
 
-fdescribe('UserService', () => {
+describe('UserService', () => {
   let injector: TestBed;
   let service: UserService;
   let httpMock: HttpTestingController;

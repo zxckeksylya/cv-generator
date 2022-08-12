@@ -1,7 +1,7 @@
 import { BreadcrumbItem } from '../../interfaces/breadcrump-item.interface';
 import { setBreadcrumbsAction, clearBreadcrumbsStateAction } from './breadcrumb.actions';
 import { breadcrumbReducer, initialBreadcrumbState, BreadcrumbState } from './breadcrumb.reducers';
-fdescribe('breadcrumbReducer', () => {
+describe('breadcrumbReducer', () => {
   describe('unknown action', () => {
     it('should return the default state', () => {
       const action = {

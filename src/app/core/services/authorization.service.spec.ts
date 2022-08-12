@@ -6,7 +6,7 @@ import { AuthorizationLoginResponse } from '../interfaces/authorization-login-re
 import { environment } from 'src/environments/environment';
 import { CurrentUser } from '../interfaces/current-user.interface';
 
-fdescribe('AuthorizationService', () => {
+describe('AuthorizationService', () => {
   let injector: TestBed;
   let service: AuthorizationService;
   let httpMock: HttpTestingController;

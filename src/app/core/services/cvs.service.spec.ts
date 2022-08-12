@@ -9,7 +9,7 @@ import {
   CreateCVResponse,
 } from '../interfaces/cv.interface';
 import { environment } from 'src/environments/environment';
-fdescribe('CVService', () => {
+describe('CVService', () => {
   let injector: TestBed;
   let service: CVService;
   let httpMock: HttpTestingController;

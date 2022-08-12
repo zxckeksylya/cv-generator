@@ -9,7 +9,7 @@ import {
 } from '../interfaces/employee.interface';
 import { environment } from 'src/environments/environment';
 
-fdescribe('EmployeeService', () => {
+describe('EmployeeService', () => {
   let injector: TestBed;
   let service: EmployeeService;
   let httpMock: HttpTestingController;

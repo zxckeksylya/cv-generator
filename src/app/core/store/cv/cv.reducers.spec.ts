@@ -7,7 +7,7 @@ import {
 } from './cv.actions';
 import { cvReducer, CVState, initialCVState } from './cv.reducers';
 
-fdescribe('cvReducer', () => {
+describe('cvReducer', () => {
   describe('unknown action', () => {
     it('should return the default state', () => {
       const action = {

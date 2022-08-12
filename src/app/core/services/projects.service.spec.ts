@@ -8,7 +8,7 @@ import {
   UpdateProject,
   CreateProject,
 } from '../interfaces/project.interface';
-fdescribe('ProjectsService', () => {
+describe('ProjectsService', () => {
   let injector: TestBed;
   let service: ProjectsService;
   let httpMock: HttpTestingController;

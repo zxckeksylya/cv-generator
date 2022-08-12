@@ -6,7 +6,7 @@ import {
 } from './levels.actions';
 import { INameId } from '../../interfaces/name-id.interface';
 import { getLevelByIdSuccessAction, deleteLevelSuccessAction } from './levels.actions';
-fdescribe('levelsReducer', () => {
+describe('levelsReducer', () => {
   describe('unknown action', () => {
     it('should return the default state', () => {
       const action = {

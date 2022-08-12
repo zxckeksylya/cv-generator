@@ -8,7 +8,7 @@ import {
 } from './roles.actions';
 import { initialRolesState, rolesReducer, RolesState } from './roles.reducers';
 
-fdescribe('rolesReducer', () => {
+describe('rolesReducer', () => {
   describe('unknown action', () => {
     it('should return the default state', () => {
       const action = {

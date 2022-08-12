@@ -14,7 +14,7 @@ import {
   initialAuthorizationState,
 } from './authorization.reducers';
 
-fdescribe('authorizationReducer', () => {
+describe('authorizationReducer', () => {
   describe('unknown action', () => {
     it('should return the default state', () => {
       const action = {

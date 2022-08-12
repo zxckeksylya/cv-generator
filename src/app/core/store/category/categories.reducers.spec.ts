@@ -8,7 +8,7 @@ import {
 } from './categories.actions';
 import { categoriesReducer, CategoriesState, initialCategoriesState } from './categories.reducers';
 
-fdescribe('categoriesReducer', () => {
+describe('categoriesReducer', () => {
   describe('unknown action', () => {
     it('should return the default state', () => {
       const action = {

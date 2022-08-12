@@ -12,7 +12,7 @@ import {
   ResponsibilitiesState,
 } from './responsibilities.reducers';
 
-fdescribe('responsibilitiesReducer', () => {
+describe('responsibilitiesReducer', () => {
   describe('unknown action', () => {
     it('should return the default state', () => {
       const action = {

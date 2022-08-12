@@ -12,7 +12,7 @@ import {
   SpecializationsState,
 } from './specializations.reducers';
 
-fdescribe('specializationsReducer', () => {
+describe('specializationsReducer', () => {
   describe('unknown action', () => {
     it('should return the default state', () => {
       const action = {

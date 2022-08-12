@@ -3,7 +3,7 @@ import { first } from 'rxjs';
 
 import { ButtonComponent } from './button.component';
 
-fdescribe('ButtonComponent', () => {
+describe('ButtonComponent', () => {
   let component: ButtonComponent;
   let fixture: ComponentFixture<ButtonComponent>;
 

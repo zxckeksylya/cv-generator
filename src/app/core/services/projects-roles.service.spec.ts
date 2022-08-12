@@ -4,7 +4,7 @@ import { HttpTestingController, HttpClientTestingModule } from '@angular/common/
 import { INameId } from '../interfaces/name-id.interface';
 import { environment } from 'src/environments/environment';
 
-fdescribe('ProjectsRolesService', () => {
+describe('ProjectsRolesService', () => {
   let injector: TestBed;
   let service: ProjectsRolesService;
   let httpMock: HttpTestingController;

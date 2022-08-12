@@ -3,7 +3,7 @@ import { getTestBed, TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments/environment';
 import { INameId } from '../interfaces/name-id.interface';
 import { CategoriesService } from './categories.service';
-fdescribe('CategoriesService', () => {
+describe('CategoriesService', () => {
   let injector: TestBed;
   let service: CategoriesService;
   let httpMock: HttpTestingController;

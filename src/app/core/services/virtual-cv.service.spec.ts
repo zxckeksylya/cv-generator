@@ -3,7 +3,7 @@ import { getTestBed, TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments/environment';
 import { VirtualCVService } from './virtual-cv.service';
 import { VirtualCV, CreateVirtualCV } from '../interfaces/virtual-cv.interface';
-fdescribe('VirtualCVService', () => {
+describe('VirtualCVService', () => {
   let injector: TestBed;
   let service: VirtualCVService;
   let httpMock: HttpTestingController;

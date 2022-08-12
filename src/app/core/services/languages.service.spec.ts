@@ -9,7 +9,7 @@ import {
   CreateLanguage,
 } from '../interfaces/language.interface';
 
-fdescribe('LanguagesService', () => {
+describe('LanguagesService', () => {
   let injector: TestBed;
   let service: LanguagesService;
   let httpMock: HttpTestingController;

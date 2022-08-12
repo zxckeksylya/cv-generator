@@ -8,7 +8,7 @@ import {
   UpdateSkill,
 } from '../interfaces/skill.interface';
 import { SkillsService } from './skills.service';
-fdescribe('SkillsService', () => {
+describe('SkillsService', () => {
   let injector: TestBed;
   let service: SkillsService;
   let httpMock: HttpTestingController;

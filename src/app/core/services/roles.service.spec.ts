@@ -4,7 +4,7 @@ import { RolesService } from './roles.service';
 import { INameId } from '../interfaces/name-id.interface';
 import { environment } from 'src/environments/environment';
 
-fdescribe('RolesService', () => {
+describe('RolesService', () => {
   let injector: TestBed;
   let service: RolesService;
   let httpMock: HttpTestingController;
