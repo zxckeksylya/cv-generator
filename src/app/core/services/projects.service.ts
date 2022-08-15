@@ -6,11 +6,11 @@ import {
   CreateProject,
   CreateProjectResponse,
   DeleteProject,
-  DeleteProjectResponse,
   GetProject,
   UpdateProject,
 } from '../interfaces/project.interface';
 import { generateHttpErrorResponse } from '../utils/generate-http-error-response.util';
+import { DeleteCount } from '../interfaces/delete-count.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -45,7 +45,9 @@ export class ProjectsService {
     return this.http.put<UpdateProject>(`${environment.host}/projects`, project);
   }
 
-  public deleteProject(item: DeleteProject): Observable<DeleteProjectResponse> {
-    return this.http.delete<DeleteProjectResponse>(`${environment.host}/projects/${item.id}`);
+  public deleteProject(item: DeleteProject): Observable<DeleteCount> {
+    return this.http.request<DeleteCount>('delete', `${environment.host}/projects`, {
+      body: item,
+    });
   }
 }

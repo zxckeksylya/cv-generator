@@ -1,13 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  OnInit,
-  OnDestroy,
-  ChangeDetectorRef,
-  ApplicationRef,
-} from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../store/app.reducers';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '../../enums/language.enum';
@@ -26,12 +17,7 @@ export class LanguageButtonComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(
-    private store: Store<AppState>,
-    private translateService: TranslateService,
-    private cdr: ChangeDetectorRef,
-    private applicationRef: ApplicationRef,
-  ) {}
+  constructor(private translateService: TranslateService) {}
 
   public ngOnInit(): void {
     this.language = this.translateService.getDefaultLang() as Language;
