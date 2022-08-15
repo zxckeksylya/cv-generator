@@ -9,6 +9,8 @@ describe('SiderComponent', () => {
   let component: SiderComponent;
   let fixture: ComponentFixture<SiderComponent>;
   let router: any;
+  let spy: jasmine.Spy<any>;
+
   const routerStub = {
     navigate: (): void => {},
   };
@@ -25,6 +27,7 @@ describe('SiderComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     router = TestBed.get(Router);
+    spy = spyOn(router, 'navigate');
   });
 
   it('should create', () => {
@@ -32,19 +35,16 @@ describe('SiderComponent', () => {
   });
   describe('navigate', () => {
     it('should call navigate to employees', () => {
-      const spy = spyOn(router, 'navigate');
       component.redirectToEmployees();
       fixture.detectChanges();
       expect(spy).toHaveBeenCalled();
     });
     it('should call navigate to entities', () => {
-      const spy = spyOn(router, 'navigate');
       component.redirectToEntities();
       fixture.detectChanges();
       expect(spy).toHaveBeenCalled();
     });
     it('should call navigate to projects', () => {
-      const spy = spyOn(router, 'navigate');
       component.redirectToProjects();
       fixture.detectChanges();
       expect(spy).toHaveBeenCalled();

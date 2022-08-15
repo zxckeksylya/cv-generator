@@ -1,3 +1,3 @@
-fdescribe('getArrayIdOutINameId', () => {
+describe('getArrayIdOutINameId', () => {
   it('should return ');
 });
