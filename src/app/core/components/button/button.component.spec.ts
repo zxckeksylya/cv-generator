@@ -24,9 +24,8 @@ describe('ButtonComponent', () => {
   });
 
   it('raises the selected event when clicked', () => {
-    const comp = new ButtonComponent();
     const event = new Event('');
-    comp.buttonClick.pipe(first()).subscribe((value: any) => expect(value).toBe(event));
-    comp.onButtonClick(event);
+    component.buttonClick.pipe(first()).subscribe((value: any) => expect(value).toBe(event));
+    component.onButtonClick(event);
   });
 });

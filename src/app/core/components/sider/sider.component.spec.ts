@@ -11,14 +11,14 @@ describe('SiderComponent', () => {
   let router: any;
   let spy: jasmine.Spy<any>;
 
-  const routerStub = {
+  const routerMock = {
     navigate: (): void => {},
   };
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppTranslateModule, HttpClientTestingModule],
       declarations: [SiderComponent],
-      providers: [{ provide: Router, useValue: routerStub }],
+      providers: [{ provide: Router, useValue: routerMock }],
     }).compileComponents();
   });
 
