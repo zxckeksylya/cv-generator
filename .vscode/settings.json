@@ -11,4 +11,9 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "liveServer.settings.port": 5501,
+    "i18n-ally.localesPaths": [
+        "src/assets/locale",
+        "src/app/core/store/language",
+        "coverage/cv-generator/app/core/store/language"
+    ],
 }
